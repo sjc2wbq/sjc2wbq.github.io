@@ -207,15 +207,6 @@
 
     
     
-      
-      
-        
-        
-        
-      
-
-      
-    
 
     
       
@@ -239,8 +230,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/11/19/hello-world/" itemprop="url">
-                  Hello World
+                <a class="post-title-link" href="/2016/06/02/regular-expressioncheckPhone/" itemprop="url">
+                  regular expression of checkPhone
                 </a>
               
             
@@ -253,19 +244,38 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-19T05:42:07+08:00" content="2016-11-19">
-              2016-11-19
+            <time itemprop="dateCreated" datetime="2016-06-02T14:25:41+08:00" content="2016-06-02">
+              2016-06-02
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/11/19/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/19/hello-world/" itemprop="commentsCount"></span>
+                <a href="/2016/06/02/regular-expressioncheckPhone/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/02/regular-expressioncheckPhone/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -275,7 +285,7 @@
 
           
           
-             <span id="/2016/11/19/hello-world/" class="leancloud_visitors" data-flag-title="Hello World">
+             <span id="/2016/06/02/regular-expressioncheckPhone/" class="leancloud_visitors" data-flag-title="regular expression of checkPhone">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -297,17 +307,1144 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+            <p>正则表达式是个神奇的东西，这种东东就该备着以防不时之需，哈哈😄</p>
+<p><img src="/image/regex.png" alt=""></p>
+<blockquote>
+<p>判断手机号的正则表达式</p>
+</blockquote>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">-(<span class="built_in">NSString</span> *)checkPhoneNum:(<span class="built_in">NSString</span> *)mobile&#123;</div><div class="line">    <span class="keyword">if</span> (mobile.length &lt; <span class="number">11</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">@"手机号长度只能是11位"</span>;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">         <span class="comment">//移动号段正则表达式              </span></div><div class="line">        <span class="built_in">NSString</span> *<span class="built_in">CM_NUM</span> = <span class="string">@"^((13[4-9])|(147)|(15[0-2,7-9])|(178)|(18[2-4,7-8]))//d&#123;8&#125;|(1705)//d&#123;7&#125;$"</span>;</div><div class="line"></div><div class="line">        <span class="comment">// 联通号段正则表达式          </span></div><div class="line">        <span class="built_in">NSString</span> *CU_NUM = <span class="string">@"^((13[0-2])|(145)|(15[5-6])|(176)|(18[5,6]))//d&#123;8&#125;|(1709)//d&#123;7&#125;$"</span>;  </div><div class="line"></div><div class="line">         <span class="comment">//电信号段正则表达式             </span></div><div class="line">        <span class="built_in">NSString</span> *<span class="built_in">CT_NUM</span> = <span class="string">@"^((133)|(153)|(177)|(18[0,1,9]))//d&#123;8&#125;$"</span>;</div><div class="line"></div><div class="line">        <span class="built_in">NSPredicate</span> *pred1 = [<span class="built_in">NSPredicate</span> predicateWithFormat:<span class="string">@"SELF MATCHES %@"</span>, <span class="built_in">CM_NUM</span>];</div><div class="line">        <span class="built_in">BOOL</span> isMatch1 = [pred1 evaluateWithObject:mobile];</div><div class="line">        <span class="built_in">NSPredicate</span> *pred2 = [<span class="built_in">NSPredicate</span> predicateWithFormat:<span class="string">@"SELF MATCHES %@"</span>, CU_NUM];</div><div class="line">        <span class="built_in">BOOL</span> isMatch2 = [pred2 evaluateWithObject:mobile];</div><div class="line">        <span class="built_in">NSPredicate</span> *pred3 = [<span class="built_in">NSPredicate</span> predicateWithFormat:<span class="string">@"SELF MATCHES %@"</span>, <span class="built_in">CT_NUM</span>];</div><div class="line">        <span class="built_in">BOOL</span> isMatch3 = [pred3 evaluateWithObject:mobile];</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (isMatch1 || isMatch2 || isMatch3) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">nil</span>;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">@"请输入正确的电话号码"</span>;</div><div class="line">        &#125;    </div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">nil</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>使用</p>
+</blockquote>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSString</span> *phoneErr = [<span class="keyword">self</span> checkPhoneNum:strPhone];</div><div class="line"><span class="keyword">if</span>(strPhone) &#123;</div><div class="line">    [<span class="keyword">self</span> showAlertInfo:phoneErr];</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
           
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/31/困/" itemprop="url">
+                  困
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-31T11:21:55+08:00" content="2016-05-31">
+              2016-05-31
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/life/" itemprop="url" rel="index">
+                    <span itemprop="name">life</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/31/困/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/31/困/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/05/31/困/" class="leancloud_visitors" data-flag-title="困">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="/image/fighting.jpg" alt=""><br><strong>stay calm stay focus</strong></p>
+<p>  没睡好</p>
+<p>  很困</p>
+<p>  记一下:</p>
+<blockquote>
+<p>一个好用的库/(ㄒoㄒ)/~~</p>
+</blockquote>
+<ul>
+<li><a href="https://github.com/forkingdog/FDFullscreenPopGesture" target="_blank" rel="external">左滑返回第三方框架</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/28/用Swift创建Singleton的几种方式/" itemprop="url">
+                  用Swift创建Singleton的几种方式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-28T20:40:41+08:00" content="2016-04-28">
+              2016-04-28
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/28/用Swift创建Singleton的几种方式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/28/用Swift创建Singleton的几种方式/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/04/28/用Swift创建Singleton的几种方式/" class="leancloud_visitors" data-flag-title="用Swift创建Singleton的几种方式">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>单例，作为日常中出场率较高的设计模式，还是值得单独一篇文章来列举下常见的创建方式。Objective-C 下，一般是这么创建单例</p>
+<h4 id="OC单例创建"><a href="#OC单例创建" class="headerlink" title="OC单例创建"></a>OC单例创建</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Persion</span> : <span class="title">NSObject</span></span></div><div class="line"><span class="keyword">@end</span></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Persion</span></span></div><div class="line">+ (<span class="keyword">instancetype</span>)sharedInstance &#123;</div><div class="line">    <span class="keyword">static</span> Persion *sharedInstance = <span class="literal">nil</span>;</div><div class="line">    <span class="keyword">static</span> <span class="built_in">dispatch_once_t</span> onceToken;</div><div class="line">    <span class="built_in">dispatch_once</span>(&amp;onceToken, ^&#123;</div><div class="line">        sharedInstance = [[Persion alloc] init];</div><div class="line">    &#125;);</div><div class="line">    <span class="keyword">return</span> sharedInstance;</div><div class="line">&#125;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<p>在使用单例时，我们需要知道</p>
+<ul>
+<li>单例是全局唯一。 在程序的生命周期中，不管在何处使用 ，都应该是同一个对象。</li>
+<li>确保单例的唯一性，需要是初始化方法私有化。这样的话，需要我们重载类的所有初始化方法</li>
+<li>也因为第一条，在生命周期中只有唯一一个，就意味着我们需要确保单例的线程安全。<br>— 不多说，下面列举几种swift 单例的创建方法</li>
+</ul>
+<h4 id="先来一段比较丑的创建方式"><a href="#先来一段比较丑的创建方式" class="headerlink" title="先来一段比较丑的创建方式"></a>先来一段比较丑的创建方式</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> TheOneAndOnlyPerson &#123;</div><div class="line">    <span class="keyword">class</span> var sharedInstance: TheOneAndOnlyPerson &#123;</div><div class="line">        <span class="keyword">struct</span> Static &#123;</div><div class="line">            <span class="keyword">static</span> var onceToken: <span class="built_in">dispatch_once_t</span> = <span class="number">0</span></div><div class="line">            <span class="keyword">static</span> var instance: TheOneAndOnlyPerson? = <span class="literal">nil</span></div><div class="line">        &#125;</div><div class="line">        <span class="built_in">dispatch_once</span>(&amp;Static.onceToken) &#123;</div><div class="line">            Static.instance = TheOneAndOnlyPerson()</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> Static.instance!</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这有点违背了swift的简洁风格了吧~~pass（反正不推荐）</p>
+<h4 id="结构体创建方式"><a href="#结构体创建方式" class="headerlink" title="结构体创建方式"></a>结构体创建方式</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> TheOneAndOnlyPerson &#123;</div><div class="line">    <span class="keyword">class</span> var sharedInstance: TheOneAndOnlyPerson &#123;</div><div class="line">        <span class="keyword">struct</span> Static &#123;</div><div class="line">            <span class="keyword">static</span> let instance = TheOneAndOnlyPerson()</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> Static.instance</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="一行创建单例-推荐"><a href="#一行创建单例-推荐" class="headerlink" title="一行创建单例 (推荐)"></a>一行创建单例 (推荐)</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> TheOneAndOnlyPerson &#123;</div><div class="line">    <span class="keyword">static</span> let sharedInstance = TheOneAndOnlyPerson()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>不要忘了重载类的初始化方法</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/20/show/" itemprop="url">
+                  iOS开源项目收集
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-20T22:50:45+08:00" content="2016-04-20">
+              2016-04-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/20/show/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/20/show/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/04/20/show/" class="leancloud_visitors" data-flag-title="iOS开源项目收集">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>平时自己使用或者看过的iOS代码，收集于此，于己于人方便.<br>项目会先在<a href="https://github.com/sjc2wbq">github</a>更新，之后迁移到<a href="sjc2wbq.github.io">github.io</a> 上 github 地址<br>其他项目总结</p>
+</blockquote>
+<ul>
+<li><a href="https://github.com/Tim9Liu9/TimLiu-iOS#下拉刷新">TimLiu-iOS</a> github iOS排行榜</li>
+<li><a href="https://github.com/superleexpert/open-source-library-tags">open-source-library-tags</a> 佳宾同学自己项目总结</li>
+<li><a href="https://github.com/ipader/SwiftGuide/blob/master/Featured.md">SwiftGuide Swift</a> 开源项目精选</li>
+<li><a href="http://github.ibireme.com/github/list/ios/">Github-iOS备忘</a> 分类、折叠查看 开源项目总结</li>
+</ul>
+<h3 id="UI部分"><a href="#UI部分" class="headerlink" title="UI部分"></a>UI部分</h3><ul>
+<li><p>下拉刷新</p>
+<ul>
+<li><a href="https://github.com/CoderMJLee/MJRefresh#上拉刷新07-自动回弹的上拉01">MJRefresh</a> 国内人开发,看文档先列出来几点<ul>
+<li>自定义程度高（文字，动图，heade、footer 等等）</li>
+<li>易使用</li>
+<li>中文文档，目前已经 4000 多 star</li>
+</ul>
+</li>
+<li><a href="https://github.com/samvermette/SVPullToRefresh">SVPullToRefresh</a> 应该算本人使用比较早的一个下拉，上拉刷新，api 较少，使用方便</li>
+</ul>
+</li>
+<li><p>音视频播放</p>
+<ul>
+<li><a href="https://github.com/36Kr-Mobile/KRVideoPlayer">KRVideoPlayer</a><br>类似Weico的播放器，支持竖屏模式下全屏播放。支持 pod 安装使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod search KRVideoPlayer</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>使用MPMoviePlayer进行视频播放，自定义控制层 来控制视频的暂定，播放，前进后退等等</p>
+<p>示例图片<br><img src="/image/kr_player.gif" alt=""></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/20/show/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/20/Blog/" itemprop="url">
+                  Blog
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-20T13:29:02+08:00" content="2016-03-20">
+              2016-03-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/20/Blog/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/20/Blog/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/03/20/Blog/" class="leancloud_visitors" data-flag-title="Blog">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><p>架构设计</p>
+<ul>
+<li><a href="">博客中谈了较多架构层的干货，可以关注下</a><ul>
+<li><a href="http://casatwy.com/iosying-yong-jia-gou-tan-kai-pian.html" target="_blank" rel="external">iOS应用架构谈 开篇</a></li>
+<li><a href="http://casatwy.com/iosying-yong-jia-gou-tan-viewceng-de-zu-zhi-he-diao-yong-fang-an.html" target="_blank" rel="external">iOS应用架构谈 view层的组织和调用方案</a></li>
+<li><a href="http://casatwy.com/iosying-yong-jia-gou-tan-wang-luo-ceng-she-ji-fang-an.html" target="_blank" rel="external">iOS应用架构谈 网络层设计方案</a></li>
+<li><a href="http://casatwy.com/iosying-yong-jia-gou-tan-ben-di-chi-jiu-hua-fang-an-ji-dong-tai-bu-shu.html" target="_blank" rel="external">iOS应用架构谈 本地持久化方案及动态部署</a></li>
+</ul>
+</li>
+<li><a href="http://www.jianshu.com/p/921ab32c3c71" target="_blank" rel="external">iOS大型项目开发漫谈</a> cp 个人见解总会有很多地方值得</li>
+<li><a href="http://blog.ibireme.com/2015/11/12/smooth_user_interfaces_for_ios/" target="_blank" rel="external">iOS 保持界面流畅的技巧</a>专业的界面调优，下面简单列几条概要<ul>
+<li>CPU 资源消耗原因和解决方案 （分析）</li>
+<li>GPU 资源消耗原因和解决方案 （分析）</li>
+<li>AsyncDisplayKit （解决方案）</li>
+<li>微博 Demo 性能优化技巧 （示例讲解）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>干货</p>
+<ul>
+<li><a href="http://blog.ibireme.com" target="_blank" rel="external">伽蓝之堂</a><br>干货之多，受益无穷。大量自己实践总结，优秀国际技术翻译引进。举例：<ul>
+<li><a href="http://blog.ibireme.com/2015/11/12/smooth_user_interfaces_for_ios/" target="_blank" rel="external">iOS 保持界面流畅的技巧</a></li>
+<li><a href="http://blog.ibireme.com/2015/11/12/smooth_user_interfaces_for_ios/" target="_blank" rel="external">深入理解RunLoop</a></li>
+<li><a href="http://blog.ibireme.com/2013/08/12/color-model/" target="_blank" rel="external">颜色模型</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-picture " itemscope itemtype="http://schema.org/Article">
+
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a href="/2016/03/01/pic/"><div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 100%;"><img src="/image/4.jpg" alt=""></div></div><div class="group-picture-row"><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/2.jpg" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/3.jpg" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/1.jpg" alt=""></div></div></div></div>
+</a>
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/01/7788/" itemprop="url">
+                  pieces colloction
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-01T09:35:22+08:00" content="2016-03-01">
+              2016-03-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/01/7788/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/01/7788/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/03/01/7788/" class="leancloud_visitors" data-flag-title="pieces colloction">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <ul>
+<li><h2 id="formatter设置：-formatter-stringFromDate-date"><a href="#formatter设置：-formatter-stringFromDate-date" class="headerlink" title="formatter设置： [formatter stringFromDate:date]"></a>formatter设置： <em>[formatter stringFromDate:date]</em></h2></li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSDate</span> *date = _datePicker.date;</div><div class="line"><span class="built_in">NSDateFormatter</span> *formatter = [<span class="built_in">NSDateFormatter</span> new];</div><div class="line">formatter.dateFormat = <span class="string">@"yyyy-MM-dd HH:mm:ss"</span>;</div><div class="line"><span class="built_in">NSString</span> *tempStr = [formatter stringFromDate:date];</div><div class="line"><span class="comment">//2014-05-06 16:22:22 -&gt; yyyy-MM-dd HH:mm:ss</span></div></pre></td></tr></table></figure>
+<ul>
+<li><h2 id="appearance-全局布局以及attributes设置navigationBar"><a href="#appearance-全局布局以及attributes设置navigationBar" class="headerlink" title="appearance 全局布局以及attributes设置navigationBar"></a>appearance 全局布局以及attributes设置navigationBar</h2></li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//BarTintcolor</span></div><div class="line">[[<span class="built_in">UINavigationBar</span> appearance]setBarTintColor:[<span class="built_in">UIColor</span> orangeColor]];</div><div class="line">[[<span class="built_in">UINavigationBar</span> appearance]setTranslucent:<span class="literal">NO</span>];</div><div class="line">[<span class="built_in">UIView</span> appearance].backgroundColor = [<span class="built_in">UIColor</span> whiteColor];</div><div class="line">[[<span class="built_in">UINavigationBar</span> appearance]setTitleTextAttributes:@&#123;<span class="built_in">NSForegroundColorAttributeName</span>: [<span class="built_in">UIColor</span> colorFromHexCode:<span class="string">@"534530"</span>],<span class="built_in">NSFontAttributeName</span>:[<span class="built_in">UIFont</span> systemFontOfSize:<span class="number">22</span>]&#125;];</div><div class="line">[[<span class="built_in">UITableView</span> appearance]setSeparatorColor:[<span class="built_in">UIColor</span> colorFromHexCode:<span class="string">@"9c896f"</span>]];</div><div class="line">[[<span class="built_in">UIBarButtonItem</span> appearance]setTintColor:[<span class="built_in">UIColor</span> colorFromHexCode:<span class="string">@"726754"</span>]];</div></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSDictionary</span> *attributes = [<span class="built_in">NSDictionary</span> dictionaryWithObjectsAndKeys:[<span class="built_in">UIColor</span> whiteColor],<span class="built_in">NSForegroundColorAttributeName</span>,<span class="literal">nil</span>];</div><div class="line">[nav.navigationBar setTitleTextAttributes:attributes];</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/03/01/7788/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/14/Tableview/" itemprop="url">
+                  tableViewCell、collectionViewCell 
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-14T09:35:22+08:00" content="2016-02-14">
+              2016-02-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/14/Tableview/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/14/Tableview/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/02/14/Tableview/" class="leancloud_visitors" data-flag-title="tableViewCell、collectionViewCell ">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li>注册重用法</li>
+<li>tableview自适应高度</li>
+<li>tableview撤销高亮</li>
+<li>参数的传递<ol>
+<li>纯代码（didselectRow）</li>
+<li>storyBoard方式（prepareForSegue）</li>
+</ol>
+</li>
+</ul>
+<h3 id="tableViewCell、collectionViewCell重用注册法"><a href="#tableViewCell、collectionViewCell重用注册法" class="headerlink" title="tableViewCell、collectionViewCell重用注册法"></a>tableViewCell、collectionViewCell重用注册法</h3><blockquote>
+<ol>
+<li><strong>纯代码</strong>注册时用<strong>registerClass</strong>如下图示例</li>
+<li><strong>xib界面</strong>注册时用<strong>registerNib</strong>作(tableView或collectionView)的cell  </li>
+<li><strong>storyboard</strong></li>
+</ol>
+</blockquote>
+<ul>
+<li><h4 id="注册方法"><a href="#注册方法" class="headerlink" title="注册方法"></a>注册方法</h4></li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[<span class="keyword">self</span>.myCollectionView registerClass:[MycollectionViewCell <span class="keyword">class</span>]</div><div class="line">         forCellWithReuseIdentifier:<span class="string">@"cell"</span>];</div><div class="line"></div><div class="line">[<span class="keyword">self</span>.myCollectionView registerNib:[<span class="built_in">UINib</span> nibWithNibName:<span class="string">@"mycollectionCell"</span></div><div class="line">                            bundle:<span class="literal">nil</span>]</div><div class="line">         forCellWithReuseIdentifier:cellIndentify];</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/14/Tableview/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/14/文件系统/" itemprop="url">
+                  file system
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-14T09:35:22+08:00" content="2016-02-14">
+              2016-02-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/14/文件系统/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/14/文件系统/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/02/14/文件系统/" class="leancloud_visitors" data-flag-title="file system">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>ios的文件管理有1.属性列表2.归档3.数据库(SQLite)4.coreData4种方式</p>
+</blockquote>
+<h1 id="属性列表Plist"><a href="#属性列表Plist" class="headerlink" title="属性列表Plist"></a>属性列表Plist</h1><h2 id="IPA的存储空间"><a href="#IPA的存储空间" class="headerlink" title="IPA的存储空间"></a>IPA的存储空间</h2><h3 id="沙盒-Sandbox-读可写"><a href="#沙盒-Sandbox-读可写" class="headerlink" title="沙盒        Sandbox :读可写"></a>沙盒        Sandbox :读可写</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSString</span> *docPath = <span class="built_in">NSSearchPathForDirectoriesInDomains</span>(<span class="built_in">NSDocumentDirectory</span>, <span class="built_in">NSUserDomainMask</span>, <span class="literal">YES</span>).firstObject;</div></pre></td></tr></table></figure>
+<h3 id="应用程序文件-Bundle-只读"><a href="#应用程序文件-Bundle-只读" class="headerlink" title="应用程序文件 Bundle :只读"></a>应用程序文件 Bundle :只读</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSString</span> *settingPath = [[<span class="built_in">NSBundle</span> mainBundle] pathForResource:<span class="string">@"Setting"</span> ofType:<span class="string">@"plist"</span>];</div></pre></td></tr></table></figure>
+<h2 id="手动创建plist文件"><a href="#手动创建plist文件" class="headerlink" title="手动创建plist文件"></a>手动创建plist文件</h2><h3 id="info-Plist"><a href="#info-Plist" class="headerlink" title="info.Plist"></a>info.Plist</h3><blockquote>
+<p>系统plist文件</p>
+<h4 id="通过对应的key获取info-plist中的信息"><a href="#通过对应的key获取info-plist中的信息" class="headerlink" title="通过对应的key获取info.plist中的信息"></a>通过对应的key获取info.plist中的信息</h4><p>如版本号versio</p>
+</blockquote>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSDictionary</span> *infoDic = [[<span class="built_in">NSBundle</span> mainBundle] infoDictionary];</div><div class="line"><span class="built_in">NSString</span> *versionNumber = infoDic[versionKey];</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/14/文件系统/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/13/网络请求NSURLSession/" itemprop="url">
+                  网络请求
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-13T09:35:22+08:00" content="2016-02-13">
+              2016-02-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/13/网络请求NSURLSession/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/13/网络请求NSURLSession/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/02/13/网络请求NSURLSession/" class="leancloud_visitors" data-flag-title="网络请求">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="工作流程（AFNetworking）"><a href="#工作流程（AFNetworking）" class="headerlink" title="工作流程（AFNetworking）"></a>工作流程（AFNetworking）</h1><h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><h3 id="工作模式"><a href="#工作模式" class="headerlink" title="工作模式"></a>工作模式</h3><p>创建一个NSURLSessionConfiguration，用于第二步创建NSSession时设置工作模式和网络设置：</p>
+<h3 id="网络设置"><a href="#网络设置" class="headerlink" title="网络设置"></a>网络设置</h3><p>创建一个NSURLSession，系统提供了两个创建方法：</p>
+<h2 id="task"><a href="#task" class="headerlink" title="task"></a>task</h2><blockquote>
+<p>创建一个NSURLRequest调用刚才的NSURLSession对象提供的Task函数，创建一个<strong>NSURLSessionTask</strong>。<br>根据职能不同Task有三种<strong>子类</strong>：<br>NSURLSessionUploadTask：上传用的Task，传完以后不会再下载返回结果；<br>NSURLSessionDownloadTask：下载用的Task；<br>NSURLSessionDataTask：可以上传内容，上传完成后再进行下载。</p>
+</blockquote>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/13/网络请求NSURLSession/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -330,6 +1467,10 @@
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -368,21 +1509,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-count">2</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

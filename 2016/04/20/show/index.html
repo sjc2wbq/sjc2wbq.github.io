@@ -1,0 +1,1016 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="pieces colloction," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="平时自己使用或者看过的iOS代码，收集于此，于己于人方便.项目会先在github更新，之后迁移到github.io 上 github 地址其他项目总结
+
+
+TimLiu-iOS github iOS排行榜
+open-source-library-tags 佳宾同学自己项目总结
+SwiftGuide Swift 开源项目精选
+Github-iOS备忘 分类、折叠查看 开源项目总结
+
+UI部分
+下拉">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS开源项目收集">
+<meta property="og:url" content="http://yoursite.com/2016/04/20/show/index.html">
+<meta property="og:site_name" content="NOTES">
+<meta property="og:description" content="平时自己使用或者看过的iOS代码，收集于此，于己于人方便.项目会先在github更新，之后迁移到github.io 上 github 地址其他项目总结
+
+
+TimLiu-iOS github iOS排行榜
+open-source-library-tags 佳宾同学自己项目总结
+SwiftGuide Swift 开源项目精选
+Github-iOS备忘 分类、折叠查看 开源项目总结
+
+UI部分
+下拉">
+<meta property="og:image" content="http://yoursite.com/image/kr_player.gif">
+<meta property="og:image" content="http://yoursite.com/image/MessageDisplayKit.gif">
+<meta property="og:updated_time" content="2016-05-20T05:10:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS开源项目收集">
+<meta name="twitter:description" content="平时自己使用或者看过的iOS代码，收集于此，于己于人方便.项目会先在github更新，之后迁移到github.io 上 github 地址其他项目总结
+
+
+TimLiu-iOS github iOS排行榜
+open-source-library-tags 佳宾同学自己项目总结
+SwiftGuide Swift 开源项目精选
+Github-iOS备忘 分类、折叠查看 开源项目总结
+
+UI部分
+下拉">
+<meta name="twitter:image" content="http://yoursite.com/image/kr_player.gif">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6238580700384069000,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> iOS开源项目收集 | NOTES </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">NOTES</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">hardworking</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iOS开源项目收集
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-20T22:50:45+08:00" content="2016-04-20">
+              2016-04-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/20/show/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/20/show/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/04/20/show/" class="leancloud_visitors" data-flag-title="iOS开源项目收集">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>平时自己使用或者看过的iOS代码，收集于此，于己于人方便.<br>项目会先在<a href="https://github.com/sjc2wbq" target="_blank" rel="external">github</a>更新，之后迁移到<a href="sjc2wbq.github.io">github.io</a> 上 github 地址<br>其他项目总结</p>
+</blockquote>
+<ul>
+<li><a href="https://github.com/Tim9Liu9/TimLiu-iOS#下拉刷新" target="_blank" rel="external">TimLiu-iOS</a> github iOS排行榜</li>
+<li><a href="https://github.com/superleexpert/open-source-library-tags" target="_blank" rel="external">open-source-library-tags</a> 佳宾同学自己项目总结</li>
+<li><a href="https://github.com/ipader/SwiftGuide/blob/master/Featured.md" target="_blank" rel="external">SwiftGuide Swift</a> 开源项目精选</li>
+<li><a href="http://github.ibireme.com/github/list/ios/" target="_blank" rel="external">Github-iOS备忘</a> 分类、折叠查看 开源项目总结</li>
+</ul>
+<h3 id="UI部分"><a href="#UI部分" class="headerlink" title="UI部分"></a>UI部分</h3><ul>
+<li><p>下拉刷新</p>
+<ul>
+<li><a href="https://github.com/CoderMJLee/MJRefresh#上拉刷新07-自动回弹的上拉01" target="_blank" rel="external">MJRefresh</a> 国内人开发,看文档先列出来几点<ul>
+<li>自定义程度高（文字，动图，heade、footer 等等）</li>
+<li>易使用</li>
+<li>中文文档，目前已经 4000 多 star</li>
+</ul>
+</li>
+<li><a href="https://github.com/samvermette/SVPullToRefresh" target="_blank" rel="external">SVPullToRefresh</a> 应该算本人使用比较早的一个下拉，上拉刷新，api 较少，使用方便</li>
+</ul>
+</li>
+<li><p>音视频播放</p>
+<ul>
+<li><a href="https://github.com/36Kr-Mobile/KRVideoPlayer" target="_blank" rel="external">KRVideoPlayer</a><br>类似Weico的播放器，支持竖屏模式下全屏播放。支持 pod 安装使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod search KRVideoPlayer</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>使用MPMoviePlayer进行视频播放，自定义控制层 来控制视频的暂定，播放，前进后退等等</p>
+<p>示例图片<br><img src="/image/kr_player.gif" alt=""></p>
+<a id="more"></a>
+<ul>
+<li>下一个效果</li>
+</ul>
+</li>
+<li>图片相关<ul>
+<li><a href="https://github.com/36Kr-Mobile/KRVideoPlayer" target="_blank" rel="external">Nuke (Swift)</a> 图片 下载、loading、缓存 的一个先进、轻量库</li>
+</ul>
+</li>
+<li>模糊效果</li>
+<li>AutoLayout</li>
+</ul>
+<h3 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h3><ul>
+<li><a href="https://github.com/cobub/razor" target="_blank" rel="external">razor 开源</a> 统计平台，包含 web , ios ,Android,wp 端代码</li>
+<li><a href="https://github.com/evgenyneu/SigmaSwiftStatistics" target="_blank" rel="external">SigmaSwiftStatistics</a> lauguage: Swift 。 数学复杂计算</li>
+<li><p><a href="https://github.com/krzyzanowskim/CryptoSwift" target="_blank" rel="external">CryptoSwift</a> 语言：Swift 。 主流的几种加密</p>
+<ul>
+<li><p>require</p>
+<blockquote>
+<p>一个好的心情</p>
+</blockquote>
+</li>
+<li><p>功能</p>
+<h4 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h4><ul>
+<li>MD5</li>
+<li>SHA1</li>
+<li>SHA224</li>
+<li>SHA256</li>
+<li>SHA384</li>
+<li>SHA512</li>
+<li>CRC32 (well, kind of hash)</li>
+<li>CRC16 (well, kind of hash)</li>
+</ul>
+<h4 id="Cipher"><a href="#Cipher" class="headerlink" title="Cipher"></a>Cipher</h4><ul>
+<li>AES-128, AES-192, AES-256</li>
+<li>ChaCha20</li>
+</ul>
+<h4 id="Message-authenticators"><a href="#Message-authenticators" class="headerlink" title="Message authenticators"></a>Message authenticators</h4><ul>
+<li>Poly1305</li>
+<li>HMAC MD5, SHA1, SHA256</li>
+</ul>
+<h4 id="Cipher-block-mode"><a href="#Cipher-block-mode" class="headerlink" title="Cipher block mode"></a>Cipher block mode</h4><ul>
+<li>Electronic codebook (ECB)</li>
+<li>Cipher-block chaining (CBC)</li>
+<li>Cipher feedback (CFB)</li>
+<li>Counter (CTR)</li>
+</ul>
+<h4 id="Data-padding"><a href="#Data-padding" class="headerlink" title="Data padding"></a>Data padding</h4><ul>
+<li>PKCS#7</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>为什么要用swift 再写一次在很多平台都有的功能<blockquote>
+<p>Why? Becanse I can.</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h3><ul>
+<li>时间选择器</li>
+<li>其他选择器<ul>
+<li><a href="https://github.com/krzyzanowskim/CryptoSwift" target="_blank" rel="external">城市列表</a> 带有当前城市，<br>热门城市，和按省分类列表</li>
+</ul>
+</li>
+</ul>
+<h3 id="display"><a href="#display" class="headerlink" title="display"></a>display</h3><ul>
+<li><a href="https://github.com/xhzengAIB/MessageDisplayKit" target="_blank" rel="external">C-41</a> 这个app的功能不重要，重要的是演示了如何使用下边功能<ul>
+<li>Core Data</li>
+<li>Unit Test</li>
+<li>ReactiveCocoa</li>
+<li>Model-View-ViewModel</li>
+</ul>
+</li>
+<li><a href="https://github.com/xhzengAIB/MessageDisplayKit" target="_blank" rel="external">MessageDisplayKit</a><br>一个类似微信App的IM应用，拥有发送文字、图片、语音、视频、地理位置消息，管理本地通信录、分享朋友圈、漂流交友、摇一摇和更多有趣的功能<br>支持 pod<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod &apos;MessageDisplayKi&apos;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="/image/MessageDisplayKit.gif" alt=""></p>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/pieces-colloction/" rel="tag">#pieces colloction</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/20/Blog/" rel="next" title="Blog">
+                <i class="fa fa-chevron-left"></i> Blog
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/28/用Swift创建Singleton的几种方式/" rel="prev" title="用Swift创建Singleton的几种方式">
+                用Swift创建Singleton的几种方式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/04/20/show/"
+     data-title="iOS开源项目收集"
+     data-content=""
+     data-url="http://yoursite.com/2016/04/20/show/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/20/show/"
+           data-title="iOS开源项目收集" data-url="http://yoursite.com/2016/04/20/show/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="JunChuan Shi" />
+          <p class="site-author-name" itemprop="name">JunChuan Shi</p>
+          <p class="site-description motion-element" itemprop="description">学习，生活，记点杂七杂八的东西</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/sjc2wbq" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/512359286" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank">
+                  
+                    <i class="fa fa-linkedin"></i> Linkin
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">links</p>
+            
+              <span class="links-of-author-item">
+                <a href="http://sjc2wbq.github.io" target="_blank">sjc2wbq</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#UI部分"><span class="nav-number">1.</span> <span class="nav-text">UI部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据"><span class="nav-number">2.</span> <span class="nav-text">数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Hash"><span class="nav-number">2.1.</span> <span class="nav-text">Hash</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cipher"><span class="nav-number">2.2.</span> <span class="nav-text">Cipher</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Message-authenticators"><span class="nav-number">2.3.</span> <span class="nav-text">Message authenticators</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cipher-block-mode"><span class="nav-number">2.4.</span> <span class="nav-text">Cipher block mode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Data-padding"><span class="nav-number">2.5.</span> <span class="nav-text">Data padding</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择器"><span class="nav-number">3.</span> <span class="nav-text">选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#display"><span class="nav-number">4.</span> <span class="nav-text">display</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JunChuan Shi</span>
+</div>
+
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"junsung"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("oFvKqE8V0ohPN50wwvT0mC27-gzGzoHsz", "BsCaXEB1L7yGEyhWothiqq3Y");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+
+</body>
+</html>
