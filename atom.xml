@@ -1,0 +1,973 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>NOTES</title>
+  <subtitle>hardworking</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://sjc2wbq.github.io/"/>
+  <updated>2017-04-04T20:54:47.000Z</updated>
+  <id>http://sjc2wbq.github.io/</id>
+  
+  <author>
+    <name>JunChuan Shi</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Big little lies</title>
+    <link href="http://sjc2wbq.github.io/2017/04/05/music/"/>
+    <id>http://sjc2wbq.github.io/2017/04/05/music/</id>
+    <published>2017-04-04T20:19:21.000Z</published>
+    <updated>2017-04-04T20:54:47.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近看了一部美剧《Big little lies》，里面的音乐很好听</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="298" height="52" src="http://music.163.com/outchain/player?type=0&id=631130037&auto=1&height=32"></iframe>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近看了一部美剧《Big little lies》，里面的音乐很好听&lt;/p&gt;
+&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=&quot;298&quot; height=&quot;52&quot; src=&quot;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>choochoo</title>
+    <link href="http://sjc2wbq.github.io/2016/08/19/choochoo/"/>
+    <id>http://sjc2wbq.github.io/2016/08/19/choochoo/</id>
+    <published>2016-08-19T06:16:33.000Z</published>
+    <updated>2016-11-24T04:08:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="我们家楚楚最好"><a href="#我们家楚楚最好" class="headerlink" title="我们家楚楚最好"></a>我们家楚楚最好</h1>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;我们家楚楚最好&quot;&gt;&lt;a href=&quot;#我们家楚楚最好&quot; class=&quot;headerlink&quot; title=&quot;我们家楚楚最好&quot;&gt;&lt;/a&gt;我们家楚楚最好&lt;/h1&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>regular expression of checkPhone</title>
+    <link href="http://sjc2wbq.github.io/2016/06/02/regular-expressioncheckPhone/"/>
+    <id>http://sjc2wbq.github.io/2016/06/02/regular-expressioncheckPhone/</id>
+    <published>2016-06-02T06:25:41.000Z</published>
+    <updated>2016-06-02T10:59:26.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>正则表达式是个神奇的东西，这种东东就该备着以防不时之需，哈哈😄</p>
+<p><img src="/image/regex.png" alt=""></p>
+<blockquote>
+<p>判断手机号的正则表达式</p>
+</blockquote>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">-(<span class="built_in">NSString</span> *)checkPhoneNum:(<span class="built_in">NSString</span> *)mobile&#123;</div><div class="line">    <span class="keyword">if</span> (mobile.length &lt; <span class="number">11</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">@"手机号长度只能是11位"</span>;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">         <span class="comment">//移动号段正则表达式              </span></div><div class="line">        <span class="built_in">NSString</span> *<span class="built_in">CM_NUM</span> = <span class="string">@"^((13[4-9])|(147)|(15[0-2,7-9])|(178)|(18[2-4,7-8]))//d&#123;8&#125;|(1705)//d&#123;7&#125;$"</span>;</div><div class="line"></div><div class="line">        <span class="comment">// 联通号段正则表达式          </span></div><div class="line">        <span class="built_in">NSString</span> *CU_NUM = <span class="string">@"^((13[0-2])|(145)|(15[5-6])|(176)|(18[5,6]))//d&#123;8&#125;|(1709)//d&#123;7&#125;$"</span>;  </div><div class="line"></div><div class="line">         <span class="comment">//电信号段正则表达式             </span></div><div class="line">        <span class="built_in">NSString</span> *<span class="built_in">CT_NUM</span> = <span class="string">@"^((133)|(153)|(177)|(18[0,1,9]))//d&#123;8&#125;$"</span>;</div><div class="line"></div><div class="line">        <span class="built_in">NSPredicate</span> *pred1 = [<span class="built_in">NSPredicate</span> predicateWithFormat:<span class="string">@"SELF MATCHES %@"</span>, <span class="built_in">CM_NUM</span>];</div><div class="line">        <span class="built_in">BOOL</span> isMatch1 = [pred1 evaluateWithObject:mobile];</div><div class="line">        <span class="built_in">NSPredicate</span> *pred2 = [<span class="built_in">NSPredicate</span> predicateWithFormat:<span class="string">@"SELF MATCHES %@"</span>, CU_NUM];</div><div class="line">        <span class="built_in">BOOL</span> isMatch2 = [pred2 evaluateWithObject:mobile];</div><div class="line">        <span class="built_in">NSPredicate</span> *pred3 = [<span class="built_in">NSPredicate</span> predicateWithFormat:<span class="string">@"SELF MATCHES %@"</span>, <span class="built_in">CT_NUM</span>];</div><div class="line">        <span class="built_in">BOOL</span> isMatch3 = [pred3 evaluateWithObject:mobile];</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (isMatch1 || isMatch2 || isMatch3) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">nil</span>;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">@"请输入正确的电话号码"</span>;</div><div class="line">        &#125;    </div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">nil</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>使用</p>
+</blockquote>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSString</span> *phoneErr = [<span class="keyword">self</span> checkPhoneNum:strPhone];</div><div class="line"><span class="keyword">if</span>(strPhone) &#123;</div><div class="line">    [<span class="keyword">self</span> showAlertInfo:phoneErr];</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;正则表达式是个神奇的东西，这种东东就该备着以防不时之需，哈哈😄&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/image/regex.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;判断手机号的正则表达式&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure cla
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://sjc2wbq.github.io/categories/iOS/"/>
+    
+    
+      <category term="regular expression" scheme="http://sjc2wbq.github.io/tags/regular-expression/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>困</title>
+    <link href="http://sjc2wbq.github.io/2016/05/31/%E5%9B%B0/"/>
+    <id>http://sjc2wbq.github.io/2016/05/31/困/</id>
+    <published>2016-05-31T03:21:55.000Z</published>
+    <updated>2016-05-31T13:25:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/image/fighting.jpg" alt=""><br><strong>stay calm stay focus</strong></p>
+<p>  没睡好</p>
+<p>  很困</p>
+<p>  记一下:</p>
+<blockquote>
+<p>一个好用的库/(ㄒoㄒ)/~~</p>
+</blockquote>
+<ul>
+<li><a href="https://github.com/forkingdog/FDFullscreenPopGesture" target="_blank" rel="external">左滑返回第三方框架</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;/image/fighting.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;strong&gt;stay calm stay focus&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;  没睡好&lt;/p&gt;
+&lt;p&gt;  很困&lt;/p&gt;
+&lt;p&gt;  记一下:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;
+    
+    </summary>
+    
+      <category term="life" scheme="http://sjc2wbq.github.io/categories/life/"/>
+    
+    
+      <category term="困" scheme="http://sjc2wbq.github.io/tags/%E5%9B%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>用Swift创建Singleton的几种方式</title>
+    <link href="http://sjc2wbq.github.io/2016/04/28/%E7%94%A8Swift%E5%88%9B%E5%BB%BASingleton%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/"/>
+    <id>http://sjc2wbq.github.io/2016/04/28/用Swift创建Singleton的几种方式/</id>
+    <published>2016-04-28T12:40:41.000Z</published>
+    <updated>2016-05-20T04:15:58.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>单例，作为日常中出场率较高的设计模式，还是值得单独一篇文章来列举下常见的创建方式。Objective-C 下，一般是这么创建单例</p>
+<h4 id="OC单例创建"><a href="#OC单例创建" class="headerlink" title="OC单例创建"></a>OC单例创建</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Persion</span> : <span class="title">NSObject</span></span></div><div class="line"><span class="keyword">@end</span></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Persion</span></span></div><div class="line">+ (<span class="keyword">instancetype</span>)sharedInstance &#123;</div><div class="line">    <span class="keyword">static</span> Persion *sharedInstance = <span class="literal">nil</span>;</div><div class="line">    <span class="keyword">static</span> <span class="built_in">dispatch_once_t</span> onceToken;</div><div class="line">    <span class="built_in">dispatch_once</span>(&amp;onceToken, ^&#123;</div><div class="line">        sharedInstance = [[Persion alloc] init];</div><div class="line">    &#125;);</div><div class="line">    <span class="keyword">return</span> sharedInstance;</div><div class="line">&#125;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<p>在使用单例时，我们需要知道</p>
+<ul>
+<li>单例是全局唯一。 在程序的生命周期中，不管在何处使用 ，都应该是同一个对象。</li>
+<li>确保单例的唯一性，需要是初始化方法私有化。这样的话，需要我们重载类的所有初始化方法</li>
+<li>也因为第一条，在生命周期中只有唯一一个，就意味着我们需要确保单例的线程安全。<br>— 不多说，下面列举几种swift 单例的创建方法</li>
+</ul>
+<h4 id="先来一段比较丑的创建方式"><a href="#先来一段比较丑的创建方式" class="headerlink" title="先来一段比较丑的创建方式"></a>先来一段比较丑的创建方式</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> TheOneAndOnlyPerson &#123;</div><div class="line">    <span class="keyword">class</span> var sharedInstance: TheOneAndOnlyPerson &#123;</div><div class="line">        <span class="keyword">struct</span> Static &#123;</div><div class="line">            <span class="keyword">static</span> var onceToken: <span class="built_in">dispatch_once_t</span> = <span class="number">0</span></div><div class="line">            <span class="keyword">static</span> var instance: TheOneAndOnlyPerson? = <span class="literal">nil</span></div><div class="line">        &#125;</div><div class="line">        <span class="built_in">dispatch_once</span>(&amp;Static.onceToken) &#123;</div><div class="line">            Static.instance = TheOneAndOnlyPerson()</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> Static.instance!</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这有点违背了swift的简洁风格了吧~~pass（反正不推荐）</p>
+<h4 id="结构体创建方式"><a href="#结构体创建方式" class="headerlink" title="结构体创建方式"></a>结构体创建方式</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> TheOneAndOnlyPerson &#123;</div><div class="line">    <span class="keyword">class</span> var sharedInstance: TheOneAndOnlyPerson &#123;</div><div class="line">        <span class="keyword">struct</span> Static &#123;</div><div class="line">            <span class="keyword">static</span> let instance = TheOneAndOnlyPerson()</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> Static.instance</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="一行创建单例-推荐"><a href="#一行创建单例-推荐" class="headerlink" title="一行创建单例 (推荐)"></a>一行创建单例 (推荐)</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> TheOneAndOnlyPerson &#123;</div><div class="line">    <span class="keyword">static</span> let sharedInstance = TheOneAndOnlyPerson()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>不要忘了重载类的初始化方法</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;单例，作为日常中出场率较高的设计模式，还是值得单独一篇文章来列举下常见的创建方式。Objective-C 下，一般是这么创建单例&lt;/p&gt;
+&lt;h4 id=&quot;OC单例创建&quot;&gt;&lt;a href=&quot;#OC单例创建&quot; class=&quot;headerlink&quot; title=&quot;OC单例创建&quot;&gt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://sjc2wbq.github.io/categories/iOS/"/>
+    
+    
+      <category term="swift" scheme="http://sjc2wbq.github.io/tags/swift/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS开源项目收集</title>
+    <link href="http://sjc2wbq.github.io/2016/04/20/show/"/>
+    <id>http://sjc2wbq.github.io/2016/04/20/show/</id>
+    <published>2016-04-20T14:50:45.000Z</published>
+    <updated>2016-05-20T05:10:49.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>平时自己使用或者看过的iOS代码，收集于此，于己于人方便.<br>项目会先在<a href="https://github.com/sjc2wbq" target="_blank" rel="external">github</a>更新，之后迁移到<a href="sjc2wbq.github.io">github.io</a> 上 github 地址<br>其他项目总结</p>
+</blockquote>
+<ul>
+<li><a href="https://github.com/Tim9Liu9/TimLiu-iOS#下拉刷新" target="_blank" rel="external">TimLiu-iOS</a> github iOS排行榜</li>
+<li><a href="https://github.com/superleexpert/open-source-library-tags" target="_blank" rel="external">open-source-library-tags</a> 佳宾同学自己项目总结</li>
+<li><a href="https://github.com/ipader/SwiftGuide/blob/master/Featured.md" target="_blank" rel="external">SwiftGuide Swift</a> 开源项目精选</li>
+<li><a href="http://github.ibireme.com/github/list/ios/" target="_blank" rel="external">Github-iOS备忘</a> 分类、折叠查看 开源项目总结</li>
+</ul>
+<h3 id="UI部分"><a href="#UI部分" class="headerlink" title="UI部分"></a>UI部分</h3><ul>
+<li><p>下拉刷新</p>
+<ul>
+<li><a href="https://github.com/CoderMJLee/MJRefresh#上拉刷新07-自动回弹的上拉01" target="_blank" rel="external">MJRefresh</a> 国内人开发,看文档先列出来几点<ul>
+<li>自定义程度高（文字，动图，heade、footer 等等）</li>
+<li>易使用</li>
+<li>中文文档，目前已经 4000 多 star</li>
+</ul>
+</li>
+<li><a href="https://github.com/samvermette/SVPullToRefresh" target="_blank" rel="external">SVPullToRefresh</a> 应该算本人使用比较早的一个下拉，上拉刷新，api 较少，使用方便</li>
+</ul>
+</li>
+<li><p>音视频播放</p>
+<ul>
+<li><a href="https://github.com/36Kr-Mobile/KRVideoPlayer" target="_blank" rel="external">KRVideoPlayer</a><br>类似Weico的播放器，支持竖屏模式下全屏播放。支持 pod 安装使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod search KRVideoPlayer</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>使用MPMoviePlayer进行视频播放，自定义控制层 来控制视频的暂定，播放，前进后退等等</p>
+<p>示例图片<br><img src="/image/kr_player.gif" alt=""></p>
+<a id="more"></a>
+<ul>
+<li>下一个效果</li>
+</ul>
+</li>
+<li>图片相关<ul>
+<li><a href="https://github.com/36Kr-Mobile/KRVideoPlayer" target="_blank" rel="external">Nuke (Swift)</a> 图片 下载、loading、缓存 的一个先进、轻量库</li>
+</ul>
+</li>
+<li>模糊效果</li>
+<li>AutoLayout</li>
+</ul>
+<h3 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h3><ul>
+<li><a href="https://github.com/cobub/razor" target="_blank" rel="external">razor 开源</a> 统计平台，包含 web , ios ,Android,wp 端代码</li>
+<li><a href="https://github.com/evgenyneu/SigmaSwiftStatistics" target="_blank" rel="external">SigmaSwiftStatistics</a> lauguage: Swift 。 数学复杂计算</li>
+<li><p><a href="https://github.com/krzyzanowskim/CryptoSwift" target="_blank" rel="external">CryptoSwift</a> 语言：Swift 。 主流的几种加密</p>
+<ul>
+<li><p>require</p>
+<blockquote>
+<p>一个好的心情</p>
+</blockquote>
+</li>
+<li><p>功能</p>
+<h4 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h4><ul>
+<li>MD5</li>
+<li>SHA1</li>
+<li>SHA224</li>
+<li>SHA256</li>
+<li>SHA384</li>
+<li>SHA512</li>
+<li>CRC32 (well, kind of hash)</li>
+<li>CRC16 (well, kind of hash)</li>
+</ul>
+<h4 id="Cipher"><a href="#Cipher" class="headerlink" title="Cipher"></a>Cipher</h4><ul>
+<li>AES-128, AES-192, AES-256</li>
+<li>ChaCha20</li>
+</ul>
+<h4 id="Message-authenticators"><a href="#Message-authenticators" class="headerlink" title="Message authenticators"></a>Message authenticators</h4><ul>
+<li>Poly1305</li>
+<li>HMAC MD5, SHA1, SHA256</li>
+</ul>
+<h4 id="Cipher-block-mode"><a href="#Cipher-block-mode" class="headerlink" title="Cipher block mode"></a>Cipher block mode</h4><ul>
+<li>Electronic codebook (ECB)</li>
+<li>Cipher-block chaining (CBC)</li>
+<li>Cipher feedback (CFB)</li>
+<li>Counter (CTR)</li>
+</ul>
+<h4 id="Data-padding"><a href="#Data-padding" class="headerlink" title="Data padding"></a>Data padding</h4><ul>
+<li>PKCS#7</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>为什么要用swift 再写一次在很多平台都有的功能<blockquote>
+<p>Why? Becanse I can.</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h3><ul>
+<li>时间选择器</li>
+<li>其他选择器<ul>
+<li><a href="https://github.com/krzyzanowskim/CryptoSwift" target="_blank" rel="external">城市列表</a> 带有当前城市，<br>热门城市，和按省分类列表</li>
+</ul>
+</li>
+</ul>
+<h3 id="display"><a href="#display" class="headerlink" title="display"></a>display</h3><ul>
+<li><a href="https://github.com/xhzengAIB/MessageDisplayKit" target="_blank" rel="external">C-41</a> 这个app的功能不重要，重要的是演示了如何使用下边功能<ul>
+<li>Core Data</li>
+<li>Unit Test</li>
+<li>ReactiveCocoa</li>
+<li>Model-View-ViewModel</li>
+</ul>
+</li>
+<li><a href="https://github.com/xhzengAIB/MessageDisplayKit" target="_blank" rel="external">MessageDisplayKit</a><br>一个类似微信App的IM应用，拥有发送文字、图片、语音、视频、地理位置消息，管理本地通信录、分享朋友圈、漂流交友、摇一摇和更多有趣的功能<br>支持 pod<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod &apos;MessageDisplayKi&apos;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="/image/MessageDisplayKit.gif" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;平时自己使用或者看过的iOS代码，收集于此，于己于人方便.&lt;br&gt;项目会先在&lt;a href=&quot;https://github.com/sjc2wbq&quot;&gt;github&lt;/a&gt;更新，之后迁移到&lt;a href=&quot;sjc2wbq.github.io&quot;&gt;github.io&lt;/a&gt; 上 github 地址&lt;br&gt;其他项目总结&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/Tim9Liu9/TimLiu-iOS#下拉刷新&quot;&gt;TimLiu-iOS&lt;/a&gt; github iOS排行榜&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/superleexpert/open-source-library-tags&quot;&gt;open-source-library-tags&lt;/a&gt; 佳宾同学自己项目总结&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/ipader/SwiftGuide/blob/master/Featured.md&quot;&gt;SwiftGuide Swift&lt;/a&gt; 开源项目精选&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://github.ibireme.com/github/list/ios/&quot;&gt;Github-iOS备忘&lt;/a&gt; 分类、折叠查看 开源项目总结&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;UI部分&quot;&gt;&lt;a href=&quot;#UI部分&quot; class=&quot;headerlink&quot; title=&quot;UI部分&quot;&gt;&lt;/a&gt;UI部分&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;下拉刷新&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/CoderMJLee/MJRefresh#上拉刷新07-自动回弹的上拉01&quot;&gt;MJRefresh&lt;/a&gt; 国内人开发,看文档先列出来几点&lt;ul&gt;
+&lt;li&gt;自定义程度高（文字，动图，heade、footer 等等）&lt;/li&gt;
+&lt;li&gt;易使用&lt;/li&gt;
+&lt;li&gt;中文文档，目前已经 4000 多 star&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/samvermette/SVPullToRefresh&quot;&gt;SVPullToRefresh&lt;/a&gt; 应该算本人使用比较早的一个下拉，上拉刷新，api 较少，使用方便&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;音视频播放&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/36Kr-Mobile/KRVideoPlayer&quot;&gt;KRVideoPlayer&lt;/a&gt;&lt;br&gt;类似Weico的播放器，支持竖屏模式下全屏播放。支持 pod 安装使用&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;pod search KRVideoPlayer&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;使用MPMoviePlayer进行视频播放，自定义控制层 来控制视频的暂定，播放，前进后退等等&lt;/p&gt;
+&lt;p&gt;示例图片&lt;br&gt;&lt;img src=&quot;/image/kr_player.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://sjc2wbq.github.io/categories/iOS/"/>
+    
+    
+      <category term="pieces colloction" scheme="http://sjc2wbq.github.io/tags/pieces-colloction/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Blog</title>
+    <link href="http://sjc2wbq.github.io/2016/03/20/Blog/"/>
+    <id>http://sjc2wbq.github.io/2016/03/20/Blog/</id>
+    <published>2016-03-20T05:29:02.000Z</published>
+    <updated>2016-05-20T04:11:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<ul>
+<li><p>架构设计</p>
+<ul>
+<li><a href="">博客中谈了较多架构层的干货，可以关注下</a><ul>
+<li><a href="http://casatwy.com/iosying-yong-jia-gou-tan-kai-pian.html" target="_blank" rel="external">iOS应用架构谈 开篇</a></li>
+<li><a href="http://casatwy.com/iosying-yong-jia-gou-tan-viewceng-de-zu-zhi-he-diao-yong-fang-an.html" target="_blank" rel="external">iOS应用架构谈 view层的组织和调用方案</a></li>
+<li><a href="http://casatwy.com/iosying-yong-jia-gou-tan-wang-luo-ceng-she-ji-fang-an.html" target="_blank" rel="external">iOS应用架构谈 网络层设计方案</a></li>
+<li><a href="http://casatwy.com/iosying-yong-jia-gou-tan-ben-di-chi-jiu-hua-fang-an-ji-dong-tai-bu-shu.html" target="_blank" rel="external">iOS应用架构谈 本地持久化方案及动态部署</a></li>
+</ul>
+</li>
+<li><a href="http://www.jianshu.com/p/921ab32c3c71" target="_blank" rel="external">iOS大型项目开发漫谈</a> cp 个人见解总会有很多地方值得</li>
+<li><a href="http://blog.ibireme.com/2015/11/12/smooth_user_interfaces_for_ios/" target="_blank" rel="external">iOS 保持界面流畅的技巧</a>专业的界面调优，下面简单列几条概要<ul>
+<li>CPU 资源消耗原因和解决方案 （分析）</li>
+<li>GPU 资源消耗原因和解决方案 （分析）</li>
+<li>AsyncDisplayKit （解决方案）</li>
+<li>微博 Demo 性能优化技巧 （示例讲解）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>干货</p>
+<ul>
+<li><a href="http://blog.ibireme.com" target="_blank" rel="external">伽蓝之堂</a><br>干货之多，受益无穷。大量自己实践总结，优秀国际技术翻译引进。举例：<ul>
+<li><a href="http://blog.ibireme.com/2015/11/12/smooth_user_interfaces_for_ios/" target="_blank" rel="external">iOS 保持界面流畅的技巧</a></li>
+<li><a href="http://blog.ibireme.com/2015/11/12/smooth_user_interfaces_for_ios/" target="_blank" rel="external">深入理解RunLoop</a></li>
+<li><a href="http://blog.ibireme.com/2013/08/12/color-model/" target="_blank" rel="external">颜色模型</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;架构设计&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;&quot;&gt;博客中谈了较多架构层的干货，可以关注下&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://casatwy.com/iosying-yong-jia-gou-tan-kai-pian.html&quot;
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://sjc2wbq.github.io/categories/iOS/"/>
+    
+    
+      <category term="pieces" scheme="http://sjc2wbq.github.io/tags/pieces/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://sjc2wbq.github.io/2016/03/01/pic/"/>
+    <id>http://sjc2wbq.github.io/2016/03/01/pic/</id>
+    <published>2016-03-01T01:35:22.000Z</published>
+    <updated>2016-05-20T04:06:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 100%;"><img src="/image/4.jpg" alt=""></div></div><div class="group-picture-row"><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/2.jpg" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/3.jpg" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/1.jpg" alt=""></div></div></div></div>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;div class=&quot;group-picture&quot;&gt;&lt;div class=&quot;group-picture-container&quot;&gt;&lt;div class=&quot;group-picture-row&quot;&gt;&lt;div class=&quot;group-picture-column&quot; style=&quot;widt
+    
+    </summary>
+    
+      <category term="life" scheme="http://sjc2wbq.github.io/categories/life/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>pieces colloction</title>
+    <link href="http://sjc2wbq.github.io/2016/03/01/7788/"/>
+    <id>http://sjc2wbq.github.io/2016/03/01/7788/</id>
+    <published>2016-03-01T01:35:22.000Z</published>
+    <updated>2016-05-20T04:10:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<ul>
+<li><h2 id="formatter设置：-formatter-stringFromDate-date"><a href="#formatter设置：-formatter-stringFromDate-date" class="headerlink" title="formatter设置： [formatter stringFromDate:date]"></a>formatter设置： <em>[formatter stringFromDate:date]</em></h2></li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSDate</span> *date = _datePicker.date;</div><div class="line"><span class="built_in">NSDateFormatter</span> *formatter = [<span class="built_in">NSDateFormatter</span> new];</div><div class="line">formatter.dateFormat = <span class="string">@"yyyy-MM-dd HH:mm:ss"</span>;</div><div class="line"><span class="built_in">NSString</span> *tempStr = [formatter stringFromDate:date];</div><div class="line"><span class="comment">//2014-05-06 16:22:22 -&gt; yyyy-MM-dd HH:mm:ss</span></div></pre></td></tr></table></figure>
+<ul>
+<li><h2 id="appearance-全局布局以及attributes设置navigationBar"><a href="#appearance-全局布局以及attributes设置navigationBar" class="headerlink" title="appearance 全局布局以及attributes设置navigationBar"></a>appearance 全局布局以及attributes设置navigationBar</h2></li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//BarTintcolor</span></div><div class="line">[[<span class="built_in">UINavigationBar</span> appearance]setBarTintColor:[<span class="built_in">UIColor</span> orangeColor]];</div><div class="line">[[<span class="built_in">UINavigationBar</span> appearance]setTranslucent:<span class="literal">NO</span>];</div><div class="line">[<span class="built_in">UIView</span> appearance].backgroundColor = [<span class="built_in">UIColor</span> whiteColor];</div><div class="line">[[<span class="built_in">UINavigationBar</span> appearance]setTitleTextAttributes:@&#123;<span class="built_in">NSForegroundColorAttributeName</span>: [<span class="built_in">UIColor</span> colorFromHexCode:<span class="string">@"534530"</span>],<span class="built_in">NSFontAttributeName</span>:[<span class="built_in">UIFont</span> systemFontOfSize:<span class="number">22</span>]&#125;];</div><div class="line">[[<span class="built_in">UITableView</span> appearance]setSeparatorColor:[<span class="built_in">UIColor</span> colorFromHexCode:<span class="string">@"9c896f"</span>]];</div><div class="line">[[<span class="built_in">UIBarButtonItem</span> appearance]setTintColor:[<span class="built_in">UIColor</span> colorFromHexCode:<span class="string">@"726754"</span>]];</div></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSDictionary</span> *attributes = [<span class="built_in">NSDictionary</span> dictionaryWithObjectsAndKeys:[<span class="built_in">UIColor</span> whiteColor],<span class="built_in">NSForegroundColorAttributeName</span>,<span class="literal">nil</span>];</div><div class="line">[nav.navigationBar setTitleTextAttributes:attributes];</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<ul>
+<li><h2 id="时间戳"><a href="#时间戳" class="headerlink" title="时间戳"></a>时间戳</h2><blockquote>
+<p>当前时间距离1970年的秒数</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSDate</span> *date = [<span class="built_in">NSDate</span> date];<span class="comment">//当前时间</span></div><div class="line">        <span class="built_in">NSTimeInterval</span> timeStamp = [date timeIntervalSince1970];</div></pre></td></tr></table></figure>
+<ul>
+<li><h2 id="本地文件url"><a href="#本地文件url" class="headerlink" title="本地文件url"></a>本地文件url</h2><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="built_in">NSURL</span> fileURLWithPath:path]</div></pre></td></tr></table></figure>
+</li>
+<li><h2 id="深拷贝浅拷贝"><a href="#深拷贝浅拷贝" class="headerlink" title="深拷贝浅拷贝"></a>深拷贝浅拷贝</h2><blockquote>
+<p>只有multabalAry = [multabalAry copy]才是浅拷贝？</p>
+</blockquote>
+</li>
+<li><h2 id="自定义分组tableView的headView"><a href="#自定义分组tableView的headView" class="headerlink" title="自定义分组tableView的headView"></a>自定义分组tableView的headView</h2></li>
+</ul>
+<p><strong>注册</strong><br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[_tableView registerClass:[<span class="built_in">UITableViewHeaderFooterView</span> <span class="keyword">class</span>] forHeaderFooterViewReuseIdentifier:<span class="string">@"HeaderView"</span>];</div></pre></td></tr></table></figure></p>
+<p><strong>重用</strong><br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-(<span class="built_in">UIView</span> *)tableView:(<span class="built_in">UITableView</span> *)tableView viewForHeaderInSection:(<span class="built_in">NSInteger</span>)section&#123;</div><div class="line">    <span class="built_in">UITableViewHeaderFooterView</span> *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:<span class="string">@"HeaderView"</span>];</div><div class="line">    <span class="keyword">return</span> view;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li><h2 id="关闭系统对图片的渲染让图片始终保持原样，storyboard图片属性-Render-as：original-image"><a href="#关闭系统对图片的渲染让图片始终保持原样，storyboard图片属性-Render-as：original-image" class="headerlink" title="关闭系统对图片的渲染让图片始终保持原样，storyboard图片属性 Render as：original image"></a>关闭系统对图片的渲染让图片始终保持原样，storyboard图片属性 Render as：original image</h2></li>
+<li><h2 id="取随机数-arc4random"><a href="#取随机数-arc4random" class="headerlink" title="取随机数 arc4random()"></a>取随机数 arc4random()</h2></li>
+<li><h2 id="线程单例"><a href="#线程单例" class="headerlink" title="线程单例"></a>线程单例</h2></li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">+(TwoViewController *)sharedTwoVC&#123;</div><div class="line">    <span class="keyword">static</span> TwoViewController *twoVc = <span class="literal">nil</span>;</div><div class="line">    <span class="keyword">static</span> <span class="built_in">dispatch_once_t</span> onceToken;</div><div class="line">    <span class="built_in">dispatch_once</span>(&amp;onceToken, ^&#123;</div><div class="line">        twoVc = [<span class="keyword">self</span> new];</div><div class="line">        twoVc.navi = [[<span class="built_in">UINavigationController</span> alloc]initWithRootViewController:twoVc];</div><div class="line">        twoVc.title = <span class="string">@"two"</span>;</div><div class="line">    &#125;);</div><div class="line">    <span class="keyword">return</span> twoVc;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><h2 id="tableview去掉横线左右空白"><a href="#tableview去掉横线左右空白" class="headerlink" title="tableview去掉横线左右空白"></a>tableview去掉横线左右空白</h2></li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cell.separatorInset = <span class="built_in">UIEdgeInsetsZero</span>;</div><div class="line">cell.layoutMargins = <span class="built_in">UIEdgeInsetsZero</span>;</div><div class="line">cell.preservesSuperviewLayoutMargins = <span class="literal">NO</span>;</div></pre></td></tr></table></figure>
+<ul>
+<li><h2 id="xib创建view时，自定义view的layer"><a href="#xib创建view时，自定义view的layer" class="headerlink" title="xib创建view时，自定义view的layer"></a>xib创建view时，自定义view的layer</h2></li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-(<span class="keyword">void</span>)awakeFromNib&#123;</div><div class="line">    [<span class="keyword">self</span>.gifImage.layer setCornerRadius:<span class="number">9</span>];</div><div class="line">    [<span class="keyword">self</span>.gifImage.layer setMasksToBounds:<span class="literal">YES</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><h2 id="启动页设置"><a href="#启动页设置" class="headerlink" title="启动页设置"></a>启动页设置</h2></li>
+</ul>
+<ul>
+<li><h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2></li>
+</ul>
+<blockquote>
+<p>1-8,4-7,5-6</p>
+</blockquote>
+<ol>
+<li>init (初始化)</li>
+<li>loadView （执行一次）<blockquote>
+<p>手动重写时，需要手动创建Controller的view（可以手动自定义一个view或者[super loadView]）（如果不重写loadView会自动通过[super loadView]）</p>
+</blockquote>
+</li>
+<li>viewDidLoad （执行一次）</li>
+<li>ViewWillAppear （多次执行）</li>
+<li>ViewDidAppear （多次执行）<blockquote>
+<p>视图跳转时</p>
+</blockquote>
+</li>
+<li>ViewWillDisAppear （多次执行）</li>
+<li>ViewDidDisAppear （多次执行）</li>
+<li>dealloc （销毁控制器）</li>
+</ol>
+<p>###</p>
+<ul>
+<li><h2 id="回传数据方式-return和block回调的区别-return方式是顺序执行完才返回，会占据当前线程资源，不允许其他任务执行，而block不会，block则是在耗时操作做完后“通知”你，然后回调"><a href="#回传数据方式-return和block回调的区别-return方式是顺序执行完才返回，会占据当前线程资源，不允许其他任务执行，而block不会，block则是在耗时操作做完后“通知”你，然后回调" class="headerlink" title="回传数据方式 return和block回调的区别:return方式是顺序执行完才返回，会占据当前线程资源，不允许其他任务执行，而block不会，block则是在耗时操作做完后“通知”你，然后回调"></a>回传数据方式 return和block回调的区别:return方式是顺序执行完才返回，会占据当前线程资源，不允许其他任务执行，而block不会，block则是在耗时操作做完后“通知”你，然后回调</h2><p>（比方 ：去买手抓饼，block形式：你把电话号给了老板，让他做完通知你，你可以去做其他事（回调））</p>
+<pre><code>return：你在旁边等着，直到饼做完，才能做其他事
+</code></pre><p>-(KindModel *)func{<br>//各种操作，耗时<br>  return XX;<br>}</p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;&lt;h2 id=&quot;formatter设置：-formatter-stringFromDate-date&quot;&gt;&lt;a href=&quot;#formatter设置：-formatter-stringFromDate-date&quot; class=&quot;headerlink&quot; title=&quot;formatter设置： [formatter stringFromDate:date]&quot;&gt;&lt;/a&gt;formatter设置： &lt;em&gt;[formatter stringFromDate:date]&lt;/em&gt;&lt;/h2&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSDate&lt;/span&gt; *date = _datePicker.date;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSDateFormatter&lt;/span&gt; *formatter = [&lt;span class=&quot;built_in&quot;&gt;NSDateFormatter&lt;/span&gt; new];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;formatter.dateFormat = &lt;span class=&quot;string&quot;&gt;@&quot;yyyy-MM-dd HH:mm:ss&quot;&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt; *tempStr = [formatter stringFromDate:date];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//2014-05-06 16:22:22 -&amp;gt; yyyy-MM-dd HH:mm:ss&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;h2 id=&quot;appearance-全局布局以及attributes设置navigationBar&quot;&gt;&lt;a href=&quot;#appearance-全局布局以及attributes设置navigationBar&quot; class=&quot;headerlink&quot; title=&quot;appearance 全局布局以及attributes设置navigationBar&quot;&gt;&lt;/a&gt;appearance 全局布局以及attributes设置navigationBar&lt;/h2&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//BarTintcolor&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;[[&lt;span class=&quot;built_in&quot;&gt;UINavigationBar&lt;/span&gt; appearance]setBarTintColor:[&lt;span class=&quot;built_in&quot;&gt;UIColor&lt;/span&gt; orangeColor]];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;[[&lt;span class=&quot;built_in&quot;&gt;UINavigationBar&lt;/span&gt; appearance]setTranslucent:&lt;span class=&quot;literal&quot;&gt;NO&lt;/span&gt;];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;[&lt;span class=&quot;built_in&quot;&gt;UIView&lt;/span&gt; appearance].backgroundColor = [&lt;span class=&quot;built_in&quot;&gt;UIColor&lt;/span&gt; whiteColor];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;[[&lt;span class=&quot;built_in&quot;&gt;UINavigationBar&lt;/span&gt; appearance]setTitleTextAttributes:@&amp;#123;&lt;span class=&quot;built_in&quot;&gt;NSForegroundColorAttributeName&lt;/span&gt;: [&lt;span class=&quot;built_in&quot;&gt;UIColor&lt;/span&gt; colorFromHexCode:&lt;span class=&quot;string&quot;&gt;@&quot;534530&quot;&lt;/span&gt;],&lt;span class=&quot;built_in&quot;&gt;NSFontAttributeName&lt;/span&gt;:[&lt;span class=&quot;built_in&quot;&gt;UIFont&lt;/span&gt; systemFontOfSize:&lt;span class=&quot;number&quot;&gt;22&lt;/span&gt;]&amp;#125;];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;[[&lt;span class=&quot;built_in&quot;&gt;UITableView&lt;/span&gt; appearance]setSeparatorColor:[&lt;span class=&quot;built_in&quot;&gt;UIColor&lt;/span&gt; colorFromHexCode:&lt;span class=&quot;string&quot;&gt;@&quot;9c896f&quot;&lt;/span&gt;]];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;[[&lt;span class=&quot;built_in&quot;&gt;UIBarButtonItem&lt;/span&gt; appearance]setTintColor:[&lt;span class=&quot;built_in&quot;&gt;UIColor&lt;/span&gt; colorFromHexCode:&lt;span class=&quot;string&quot;&gt;@&quot;726754&quot;&lt;/span&gt;]];&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSDictionary&lt;/span&gt; *attributes = [&lt;span class=&quot;built_in&quot;&gt;NSDictionary&lt;/span&gt; dictionaryWithObjectsAndKeys:[&lt;span class=&quot;built_in&quot;&gt;UIColor&lt;/span&gt; whiteColor],&lt;span class=&quot;built_in&quot;&gt;NSForegroundColorAttributeName&lt;/span&gt;,&lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;[nav.navigationBar setTitleTextAttributes:attributes];&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://sjc2wbq.github.io/categories/iOS/"/>
+    
+    
+      <category term="pieces colloction" scheme="http://sjc2wbq.github.io/tags/pieces-colloction/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>file system</title>
+    <link href="http://sjc2wbq.github.io/2016/02/14/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/"/>
+    <id>http://sjc2wbq.github.io/2016/02/14/文件系统/</id>
+    <published>2016-02-14T01:35:22.000Z</published>
+    <updated>2016-05-20T04:13:03.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>ios的文件管理有1.属性列表2.归档3.数据库(SQLite)4.coreData4种方式</p>
+</blockquote>
+<h1 id="属性列表Plist"><a href="#属性列表Plist" class="headerlink" title="属性列表Plist"></a>属性列表Plist</h1><h2 id="IPA的存储空间"><a href="#IPA的存储空间" class="headerlink" title="IPA的存储空间"></a>IPA的存储空间</h2><h3 id="沙盒-Sandbox-读可写"><a href="#沙盒-Sandbox-读可写" class="headerlink" title="沙盒        Sandbox :读可写"></a>沙盒        Sandbox :读可写</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSString</span> *docPath = <span class="built_in">NSSearchPathForDirectoriesInDomains</span>(<span class="built_in">NSDocumentDirectory</span>, <span class="built_in">NSUserDomainMask</span>, <span class="literal">YES</span>).firstObject;</div></pre></td></tr></table></figure>
+<h3 id="应用程序文件-Bundle-只读"><a href="#应用程序文件-Bundle-只读" class="headerlink" title="应用程序文件 Bundle :只读"></a>应用程序文件 Bundle :只读</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSString</span> *settingPath = [[<span class="built_in">NSBundle</span> mainBundle] pathForResource:<span class="string">@"Setting"</span> ofType:<span class="string">@"plist"</span>];</div></pre></td></tr></table></figure>
+<h2 id="手动创建plist文件"><a href="#手动创建plist文件" class="headerlink" title="手动创建plist文件"></a>手动创建plist文件</h2><h3 id="info-Plist"><a href="#info-Plist" class="headerlink" title="info.Plist"></a>info.Plist</h3><blockquote>
+<p>系统plist文件</p>
+<h4 id="通过对应的key获取info-plist中的信息"><a href="#通过对应的key获取info-plist中的信息" class="headerlink" title="通过对应的key获取info.plist中的信息"></a>通过对应的key获取info.plist中的信息</h4><p>如版本号versio</p>
+</blockquote>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSDictionary</span> *infoDic = [[<span class="built_in">NSBundle</span> mainBundle] infoDictionary];</div><div class="line"><span class="built_in">NSString</span> *versionNumber = infoDic[versionKey];</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="配置一个自定义plist"><a href="#配置一个自定义plist" class="headerlink" title="配置一个自定义plist"></a>配置一个自定义plist</h3><blockquote>
+<ol>
+<li>首次运行时,需要有一个默认的配置文件plist(模板,通常是bundle中的plist)</li>
+<li>因为用户要能够修改配置,bundle中的文件是只读, 所以要把bundle中的模板写到Documents文件夹下</li>
+</ol>
+</blockquote>
+<h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><ol>
+<li>创建一个模板（plist）</li>
+<li>运行时检查是否复制过模板到Documents下,没复制过 就复制一份</li>
+<li>设置页面显示时,读取Documents目录下的模板,把相关设置显示在界面上</li>
+<li>当用户更改设置时,同步修改对应模板</li>
+</ol>
+<h2 id="系统自动创建plist：NSUserDefaults"><a href="#系统自动创建plist：NSUserDefaults" class="headerlink" title="系统自动创建plist：NSUserDefaults"></a>系统自动创建plist：NSUserDefaults</h2><ul>
+<li>本质上就是一个plist文不过是系统提供的.</li>
+<li>存储的位置在沙盒(SandBox) ~/Library/Preferences/</li>
+</ul>
+<p><strong>只有当我们添加过值(setObject)以后,这个文件才会自动生成</strong><br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSUserDefaults</span> *userDefaults = [<span class="built_in">NSUserDefaults</span> standardUserDefaults];</div><div class="line">[userDefaults setObject:<span class="string">@"小明"</span> forKey:<span class="string">@"name"</span>];</div></pre></td></tr></table></figure></p>
+<p><strong>额外的提供了向系统plist中存非对象类型的方法</strong><br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[userDefaults setInteger:<span class="number">12</span> forKey:<span class="string">@"age"</span>];</div><div class="line">[userDefaults setBool:<span class="literal">YES</span> forKey:<span class="string">@"Marry"</span>];</div></pre></td></tr></table></figure></p>
+<p><strong>文件的写入,是在每个runloop时进行,我们可以手动调用保存的方法,防止系统以外崩溃而导致没有存储的情况发生</strong><br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[userDefaults synchronize];</div></pre></td></tr></table></figure></p>
+<h1 id="归档Archive"><a href="#归档Archive" class="headerlink" title="归档Archive"></a>归档Archive</h1><blockquote>
+<p>归档/解档 : 压缩+解压缩<br> 把对象类型存到磁盘中的统一解决方案</p>
+</blockquote>
+<h2 id="被归档对象需要遵循-NSCoding协议"><a href="#被归档对象需要遵循-NSCoding协议" class="headerlink" title="被归档对象需要遵循 NSCoding协议"></a>被归档对象需要遵循 NSCoding协议</h2><blockquote>
+<p>通过协议方法对被归档对象编码解码</p>
+</blockquote>
+<h3 id="对被归档对象编码"><a href="#对被归档对象编码" class="headerlink" title="对被归档对象编码"></a>对被归档对象编码</h3><blockquote>
+<p>[aCoder encodeObject:self.name forKey:@”name”];</p>
+</blockquote>
+<h3 id="对被归档对象解码"><a href="#对被归档对象解码" class="headerlink" title="对被归档对象解码"></a>对被归档对象解码</h3><blockquote>
+<p>self.name = [aDecoder decodeObjectForKey:@”name”];</p>
+</blockquote>
+<h2 id="归档操作"><a href="#归档操作" class="headerlink" title="归档操作"></a>归档操作</h2><blockquote>
+<p>archiveRootObject</p>
+</blockquote>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">BOOL</span> isSucessed = [<span class="built_in">NSKeyedArchiver</span> archiveRootObject:stu toFile:<span class="keyword">self</span>.archivePath];</div></pre></td></tr></table></figure>
+<h2 id="解档操作"><a href="#解档操作" class="headerlink" title="解档操作"></a>解档操作</h2><blockquote>
+<p>unarchiveObjectWithFile</p>
+</blockquote>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Student *stu = [<span class="built_in">NSKeyedUnarchiver</span> unarchiveObjectWithFile:<span class="keyword">self</span>.archivePath];</div></pre></td></tr></table></figure>
+<h2 id="RUNTIME类简化对象归档时的编码解码操作"><a href="#RUNTIME类简化对象归档时的编码解码操作" class="headerlink" title="RUNTIME类简化对象归档时的编码解码操作"></a>RUNTIME类简化对象归档时的编码解码操作</h2><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">-(<span class="keyword">void</span>)func&#123;</div><div class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span> outCount = <span class="number">0</span>;</div><div class="line">Ivar *varList = class_copyIvarList(<span class="keyword">self</span>.class,&amp;outCount);</div><div class="line"><span class="comment">//参数1:要获取的属性列表所在的class类</span></div><div class="line"><span class="comment">//参数2:二级指针,回传属性的数量</span></div><div class="line"><span class="comment">//返回值:所有属性列表,不包含父类的</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">char</span> *name = ivar_getName(tmpIvar);</div><div class="line"><span class="comment">//从Ivar构造体中获取属性名字符串</span></div><div class="line">free(varList);</div><div class="line"><span class="comment">//varList用完必须释放，c语言没有自动释放</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="示例-将运用runtime的编码解码代码做成宏定义"><a href="#示例-将运用runtime的编码解码代码做成宏定义" class="headerlink" title="示例:将运用runtime的编码解码代码做成宏定义"></a>示例:将运用runtime的编码解码代码做成宏定义</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)encodeWithCoder:(<span class="built_in">NSCoder</span> *)aCoder&#123;</div><div class="line">    <span class="comment">//1.获取属性列表</span></div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> outCount = <span class="number">0</span>;</div><div class="line">    Ivar *varList = class_copyIvarList(<span class="keyword">self</span>.class, &amp;outCount);</div><div class="line">    <span class="comment">//2.通过for循环,对每个属性进行设置</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i&lt; outCount; i++) &#123;</div><div class="line">        <span class="comment">//Ivar是结构体,包含属性名等..</span></div><div class="line">        Ivar tmpIvar = varList[i];</div><div class="line">        <span class="comment">//从Ivar构造体中获取属性名字符串</span></div><div class="line">        <span class="keyword">const</span> <span class="keyword">char</span> *name = ivar_getName(tmpIvar);</div><div class="line">        <span class="comment">//C字符串-&gt;OC字符串</span></div><div class="line">        <span class="comment">//3.获取属性的名称的字符串</span></div><div class="line">        <span class="built_in">NSString</span> *propertyName = [<span class="built_in">NSString</span> stringWithUTF8String:name];</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"propertyName %@"</span>, propertyName);</div><div class="line">        <span class="comment">//KVC</span></div><div class="line">        <span class="keyword">id</span> obj = [<span class="keyword">self</span> valueForKey:propertyName];</div><div class="line">        <span class="comment">//4.通过KVC模式,获取对应的值</span></div><div class="line">        [aCoder encodeObject:obj forKey:propertyName];</div><div class="line">    &#125;</div><div class="line">    free(varList);</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">instancetype</span>)initWithCoder:(<span class="built_in">NSCoder</span> *)aDecoder&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">self</span> = [<span class="keyword">super</span> init]) &#123;</div><div class="line">        <span class="comment">//1.拿属性列表</span></div><div class="line">        <span class="keyword">unsigned</span> <span class="keyword">int</span> outCount = <span class="number">0</span>;</div><div class="line">        Ivar *varList = class_copyIvarList(<span class="keyword">self</span>.class, &amp;outCount);</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; outCount; i++) &#123;</div><div class="line">            Ivar tmpVar = varList[i];</div><div class="line">            <span class="keyword">const</span> <span class="keyword">char</span> *name = ivar_getName(tmpVar);</div><div class="line">            <span class="built_in">NSString</span> *propertyName = [<span class="built_in">NSString</span> stringWithUTF8String:name];</div><div class="line">            <span class="comment">//从压缩包(aDecoder)中根据key解压缩出值</span></div><div class="line">            <span class="keyword">id</span> obj = [aDecoder decodeObjectForKey:propertyName];</div><div class="line">            [<span class="keyword">self</span> setValue:obj forKey:propertyName];</div><div class="line">        &#125;</div><div class="line">        free(varList);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><h1 id="CoreData"><a href="#CoreData" class="headerlink" title="CoreData"></a>CoreData</h1>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;ios的文件管理有1.属性列表2.归档3.数据库(SQLite)4.coreData4种方式&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;属性列表Plist&quot;&gt;&lt;a href=&quot;#属性列表Plist&quot; class=&quot;headerlink&quot; title=&quot;属性列表Plist&quot;&gt;&lt;/a&gt;属性列表Plist&lt;/h1&gt;&lt;h2 id=&quot;IPA的存储空间&quot;&gt;&lt;a href=&quot;#IPA的存储空间&quot; class=&quot;headerlink&quot; title=&quot;IPA的存储空间&quot;&gt;&lt;/a&gt;IPA的存储空间&lt;/h2&gt;&lt;h3 id=&quot;沙盒-Sandbox-读可写&quot;&gt;&lt;a href=&quot;#沙盒-Sandbox-读可写&quot; class=&quot;headerlink&quot; title=&quot;沙盒        Sandbox :读可写&quot;&gt;&lt;/a&gt;沙盒        Sandbox :读可写&lt;/h3&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt; *docPath = &lt;span class=&quot;built_in&quot;&gt;NSSearchPathForDirectoriesInDomains&lt;/span&gt;(&lt;span class=&quot;built_in&quot;&gt;NSDocumentDirectory&lt;/span&gt;, &lt;span class=&quot;built_in&quot;&gt;NSUserDomainMask&lt;/span&gt;, &lt;span class=&quot;literal&quot;&gt;YES&lt;/span&gt;).firstObject;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;应用程序文件-Bundle-只读&quot;&gt;&lt;a href=&quot;#应用程序文件-Bundle-只读&quot; class=&quot;headerlink&quot; title=&quot;应用程序文件 Bundle :只读&quot;&gt;&lt;/a&gt;应用程序文件 Bundle :只读&lt;/h3&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt; *settingPath = [[&lt;span class=&quot;built_in&quot;&gt;NSBundle&lt;/span&gt; mainBundle] pathForResource:&lt;span class=&quot;string&quot;&gt;@&quot;Setting&quot;&lt;/span&gt; ofType:&lt;span class=&quot;string&quot;&gt;@&quot;plist&quot;&lt;/span&gt;];&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;手动创建plist文件&quot;&gt;&lt;a href=&quot;#手动创建plist文件&quot; class=&quot;headerlink&quot; title=&quot;手动创建plist文件&quot;&gt;&lt;/a&gt;手动创建plist文件&lt;/h2&gt;&lt;h3 id=&quot;info-Plist&quot;&gt;&lt;a href=&quot;#info-Plist&quot; class=&quot;headerlink&quot; title=&quot;info.Plist&quot;&gt;&lt;/a&gt;info.Plist&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;系统plist文件&lt;/p&gt;
+&lt;h4 id=&quot;通过对应的key获取info-plist中的信息&quot;&gt;&lt;a href=&quot;#通过对应的key获取info-plist中的信息&quot; class=&quot;headerlink&quot; title=&quot;通过对应的key获取info.plist中的信息&quot;&gt;&lt;/a&gt;通过对应的key获取info.plist中的信息&lt;/h4&gt;&lt;p&gt;如版本号versio&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSDictionary&lt;/span&gt; *infoDic = [[&lt;span class=&quot;built_in&quot;&gt;NSBundle&lt;/span&gt; mainBundle] infoDictionary];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt; *versionNumber = infoDic[versionKey];&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://sjc2wbq.github.io/categories/iOS/"/>
+    
+    
+      <category term="file system" scheme="http://sjc2wbq.github.io/tags/file-system/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>tableViewCell、collectionViewCell </title>
+    <link href="http://sjc2wbq.github.io/2016/02/14/Tableview/"/>
+    <id>http://sjc2wbq.github.io/2016/02/14/Tableview/</id>
+    <published>2016-02-14T01:35:22.000Z</published>
+    <updated>2016-05-20T04:02:51.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li>注册重用法</li>
+<li>tableview自适应高度</li>
+<li>tableview撤销高亮</li>
+<li>参数的传递<ol>
+<li>纯代码（didselectRow）</li>
+<li>storyBoard方式（prepareForSegue）</li>
+</ol>
+</li>
+</ul>
+<h3 id="tableViewCell、collectionViewCell重用注册法"><a href="#tableViewCell、collectionViewCell重用注册法" class="headerlink" title="tableViewCell、collectionViewCell重用注册法"></a>tableViewCell、collectionViewCell重用注册法</h3><blockquote>
+<ol>
+<li><strong>纯代码</strong>注册时用<strong>registerClass</strong>如下图示例</li>
+<li><strong>xib界面</strong>注册时用<strong>registerNib</strong>作(tableView或collectionView)的cell  </li>
+<li><strong>storyboard</strong></li>
+</ol>
+</blockquote>
+<ul>
+<li><h4 id="注册方法"><a href="#注册方法" class="headerlink" title="注册方法"></a>注册方法</h4></li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[<span class="keyword">self</span>.myCollectionView registerClass:[MycollectionViewCell <span class="keyword">class</span>]</div><div class="line">         forCellWithReuseIdentifier:<span class="string">@"cell"</span>];</div><div class="line"></div><div class="line">[<span class="keyword">self</span>.myCollectionView registerNib:[<span class="built_in">UINib</span> nibWithNibName:<span class="string">@"mycollectionCell"</span></div><div class="line">                            bundle:<span class="literal">nil</span>]</div><div class="line">         forCellWithReuseIdentifier:cellIndentify];</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<ul>
+<li><h4 id="重用方法"><a href="#重用方法" class="headerlink" title="重用方法"></a>重用方法</h4></li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MycollectionViewCell *cell;</div><div class="line">cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIndentify</div><div class="line">                                                  forIndexPath:indexPath];</div></pre></td></tr></table></figure>
+<h3 id="让tableViewCell横线没有空隙"><a href="#让tableViewCell横线没有空隙" class="headerlink" title="让tableViewCell横线没有空隙"></a>让tableViewCell横线没有空隙</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cell.separatorInset = <span class="built_in">UIEdgeInsetsZero</span>;</div><div class="line">cell.layoutMargins = <span class="built_in">UIEdgeInsetsZero</span>;</div><div class="line">cell.preservesSuperviewLayoutMargins = <span class="literal">NO</span>;</div></pre></td></tr></table></figure>
+<h3 id="tableview自适应高度"><a href="#tableview自适应高度" class="headerlink" title="tableview自适应高度"></a>tableview自适应高度</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-(<span class="built_in">CGFloat</span>)tableView:(<span class="built_in">UITableView</span> *)tableView estimatedHeightForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath&#123;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="built_in">UITableViewAutomaticDimension</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="tableView-编辑操作"><a href="#tableView-编辑操作" class="headerlink" title="tableView 编辑操作"></a>tableView 编辑操作</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//编辑的状态</span></div><div class="line">-(<span class="built_in">UITableViewCellEditingStyle</span>)tableView:(<span class="built_in">UITableView</span> *)tableView editingStyleForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">UITableViewCellEditingStyleDelete</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//左滑时的题目</span></div><div class="line">-(<span class="built_in">NSString</span> *)tableView:(<span class="built_in">UITableView</span> *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">@"删除此诗"</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//编辑状态下的操作</span></div><div class="line">-(<span class="keyword">void</span>)tableView:(<span class="built_in">UITableView</span> *)tableView commitEditingStyle:(<span class="built_in">UITableViewCellEditingStyle</span>)editingStyle forRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPathP&#123;</div><div class="line">    <span class="keyword">if</span> (editingStyle == <span class="built_in">UITableViewCellEditingStyleDelete</span>) &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;目录&quot;&gt;&lt;a href=&quot;#目录&quot; class=&quot;headerlink&quot; title=&quot;目录&quot;&gt;&lt;/a&gt;目录&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;注册重用法&lt;/li&gt;
+&lt;li&gt;tableview自适应高度&lt;/li&gt;
+&lt;li&gt;tableview撤销高亮&lt;/li&gt;
+&lt;li&gt;参数的传递&lt;ol&gt;
+&lt;li&gt;纯代码（didselectRow）&lt;/li&gt;
+&lt;li&gt;storyBoard方式（prepareForSegue）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;tableViewCell、collectionViewCell重用注册法&quot;&gt;&lt;a href=&quot;#tableViewCell、collectionViewCell重用注册法&quot; class=&quot;headerlink&quot; title=&quot;tableViewCell、collectionViewCell重用注册法&quot;&gt;&lt;/a&gt;tableViewCell、collectionViewCell重用注册法&lt;/h3&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;纯代码&lt;/strong&gt;注册时用&lt;strong&gt;registerClass&lt;/strong&gt;如下图示例&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;xib界面&lt;/strong&gt;注册时用&lt;strong&gt;registerNib&lt;/strong&gt;作(tableView或collectionView)的cell  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;storyboard&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;h4 id=&quot;注册方法&quot;&gt;&lt;a href=&quot;#注册方法&quot; class=&quot;headerlink&quot; title=&quot;注册方法&quot;&gt;&lt;/a&gt;注册方法&lt;/h4&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;[&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.myCollectionView registerClass:[MycollectionViewCell &lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt;]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;         forCellWithReuseIdentifier:&lt;span class=&quot;string&quot;&gt;@&quot;cell&quot;&lt;/span&gt;];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;[&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.myCollectionView registerNib:[&lt;span class=&quot;built_in&quot;&gt;UINib&lt;/span&gt; nibWithNibName:&lt;span class=&quot;string&quot;&gt;@&quot;mycollectionCell&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;                            bundle:&lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;         forCellWithReuseIdentifier:cellIndentify];&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://sjc2wbq.github.io/categories/iOS/"/>
+    
+    
+      <category term="tableView" scheme="http://sjc2wbq.github.io/tags/tableView/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>网络请求</title>
+    <link href="http://sjc2wbq.github.io/2016/02/13/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82NSURLSession/"/>
+    <id>http://sjc2wbq.github.io/2016/02/13/网络请求NSURLSession/</id>
+    <published>2016-02-13T01:35:22.000Z</published>
+    <updated>2016-05-20T04:06:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="工作流程（AFNetworking）"><a href="#工作流程（AFNetworking）" class="headerlink" title="工作流程（AFNetworking）"></a>工作流程（AFNetworking）</h1><h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><h3 id="工作模式"><a href="#工作模式" class="headerlink" title="工作模式"></a>工作模式</h3><p>创建一个NSURLSessionConfiguration，用于第二步创建NSSession时设置工作模式和网络设置：</p>
+<h3 id="网络设置"><a href="#网络设置" class="headerlink" title="网络设置"></a>网络设置</h3><p>创建一个NSURLSession，系统提供了两个创建方法：</p>
+<h2 id="task"><a href="#task" class="headerlink" title="task"></a>task</h2><blockquote>
+<p>创建一个NSURLRequest调用刚才的NSURLSession对象提供的Task函数，创建一个<strong>NSURLSessionTask</strong>。<br>根据职能不同Task有三种<strong>子类</strong>：<br>NSURLSessionUploadTask：上传用的Task，传完以后不会再下载返回结果；<br>NSURLSessionDownloadTask：下载用的Task；<br>NSURLSessionDataTask：可以上传内容，上传完成后再进行下载。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="得到的Task，调用resume开始工作。"><a href="#得到的Task，调用resume开始工作。" class="headerlink" title="得到的Task，调用resume开始工作。"></a>得到的Task，调用resume开始工作。</h2><h2 id="解耦和封装网络请求处理"><a href="#解耦和封装网络请求处理" class="headerlink" title="解耦和封装网络请求处理"></a>解耦和封装网络请求处理</h2><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+(<span class="keyword">id</span>)setServerListCompletionHandle:(<span class="keyword">void</span>(^)(<span class="built_in">NSArray</span> *model,<span class="built_in">NSError</span> *error))completionHandle;</div></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSURLSession</span> *session = [<span class="built_in">NSURLSession</span> sharedSession];</div><div class="line">   <span class="built_in">NSURLSessionTask</span> *task = [session dataTaskWithURL:[<span class="built_in">NSURL</span> URLWithString:kHeroAddress]</div><div class="line">                                  completionHandler:^(<span class="built_in">NSData</span> * _Nullable data, <span class="built_in">NSURLResponse</span> * _Nullable response, <span class="built_in">NSError</span> * _Nullable error) &#123;</div><div class="line">       <span class="comment">/*data参数是从 kHeroAddress上下载的数据</span></div><div class="line">        这个数据是服务器把字典/数组根据Json协议编码以后生成的</div><div class="line">        拿到Jason数据以后，反编码 回到字典或者数组</div><div class="line">       */</div><div class="line">       <span class="comment">//因为根据返回值类型，可以看到是字典类型的</span></div><div class="line">       <span class="comment">//Serialization:序列化</span></div><div class="line">       <span class="comment">//参数2：代表当前data的原始数据是什么类型</span></div><div class="line">       <span class="comment">//NSJSONReadingMutableContainers:代表原始数据是数组/字典</span></div><div class="line">       <span class="built_in">NSError</span> *err = <span class="literal">nil</span>;</div><div class="line">       <span class="built_in">NSDictionary</span> *responseObj;</div><div class="line">       reponseObj = [<span class="built_in">NSJSONSerialization</span> JSONObjectWithData:data</div><div class="line">                                                    options:<span class="built_in">NSJSONReadingMutableContainers</span></div><div class="line">                                                      error:&amp;err];</div><div class="line"><span class="meta">#warning 解析数据转化</span></div><div class="line">       <span class="keyword">self</span>.parse = [HerosParse parse:responseObj];</div><div class="line">       <span class="comment">//数据获取完以后，刷新界面，网络请求是子线程的，刷新界面需要回到主线程</span></div><div class="line">       <span class="comment">//开始发送请求</span></div><div class="line">       [[<span class="built_in">NSOperationQueue</span> mainQueue]addOperationWithBlock:^&#123;</div><div class="line">           [<span class="keyword">self</span>.tableView reloadData];</div><div class="line">       &#125;];</div><div class="line">   &#125;];</div><div class="line">   [task resume];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;工作流程（AFNetworking）&quot;&gt;&lt;a href=&quot;#工作流程（AFNetworking）&quot; class=&quot;headerlink&quot; title=&quot;工作流程（AFNetworking）&quot;&gt;&lt;/a&gt;工作流程（AFNetworking）&lt;/h1&gt;&lt;h2 id=&quot;环境配置&quot;&gt;&lt;a href=&quot;#环境配置&quot; class=&quot;headerlink&quot; title=&quot;环境配置&quot;&gt;&lt;/a&gt;环境配置&lt;/h2&gt;&lt;h3 id=&quot;工作模式&quot;&gt;&lt;a href=&quot;#工作模式&quot; class=&quot;headerlink&quot; title=&quot;工作模式&quot;&gt;&lt;/a&gt;工作模式&lt;/h3&gt;&lt;p&gt;创建一个NSURLSessionConfiguration，用于第二步创建NSSession时设置工作模式和网络设置：&lt;/p&gt;
+&lt;h3 id=&quot;网络设置&quot;&gt;&lt;a href=&quot;#网络设置&quot; class=&quot;headerlink&quot; title=&quot;网络设置&quot;&gt;&lt;/a&gt;网络设置&lt;/h3&gt;&lt;p&gt;创建一个NSURLSession，系统提供了两个创建方法：&lt;/p&gt;
+&lt;h2 id=&quot;task&quot;&gt;&lt;a href=&quot;#task&quot; class=&quot;headerlink&quot; title=&quot;task&quot;&gt;&lt;/a&gt;task&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;创建一个NSURLRequest调用刚才的NSURLSession对象提供的Task函数，创建一个&lt;strong&gt;NSURLSessionTask&lt;/strong&gt;。&lt;br&gt;根据职能不同Task有三种&lt;strong&gt;子类&lt;/strong&gt;：&lt;br&gt;NSURLSessionUploadTask：上传用的Task，传完以后不会再下载返回结果；&lt;br&gt;NSURLSessionDownloadTask：下载用的Task；&lt;br&gt;NSURLSessionDataTask：可以上传内容，上传完成后再进行下载。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://sjc2wbq.github.io/categories/iOS/"/>
+    
+    
+      <category term="AFNetworking" scheme="http://sjc2wbq.github.io/tags/AFNetworking/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Thread</title>
+    <link href="http://sjc2wbq.github.io/2016/02/12/Thread/"/>
+    <id>http://sjc2wbq.github.io/2016/02/12/Thread/</id>
+    <published>2016-02-12T01:35:22.000Z</published>
+    <updated>2016-05-20T04:07:29.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="多线程的实现方式"><a href="#多线程的实现方式" class="headerlink" title="多线程的实现方式"></a>多线程的实现方式</h1><p> 1.pThread:最早期，纯c，兼容所有c语言基础的代码<br> 2.NSThread:本质上是使用oc对pThread的一个封装，是早期iOS使用的多线程<br> 3.GCD：使用C语法+block语法，目前为止，苹果主推的多线程技术，功能强大，效率高<br> 4.NSOperation：使用oc对GCD的封装，在GCD基础上额外增加了几个特性，不过效率没有GCD高，通常在不使用这些特性时，依然选择GCD</p>
+<a id="more"></a>
+<h2 id="NSThread"><a href="#NSThread" class="headerlink" title="NSThread"></a>NSThread</h2><h2 id="3GCD"><a href="#3GCD" class="headerlink" title="3GCD"></a>3GCD</h2><h3 id="进程锁"><a href="#进程锁" class="headerlink" title="进程锁"></a>进程锁</h3><h3 id="Barrier"><a href="#Barrier" class="headerlink" title="Barrier"></a>Barrier</h3><h3 id="GCD单例模式"><a href="#GCD单例模式" class="headerlink" title="GCD单例模式"></a>GCD单例模式</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">+(MySingle *)sharedMySingle&#123;</div><div class="line">    <span class="keyword">static</span> MySingle *my = <span class="literal">nil</span>;</div><div class="line">    <span class="comment">//传统的单例模式在多线程情况下容易出现同一时间被多线程同时调用的现象</span></div><div class="line">    <span class="comment">//基于线程安全的考虑，GCD提供了专门制作单例的代码</span></div><div class="line">    <span class="keyword">static</span> <span class="built_in">dispatch_once_t</span> onceToken;</div><div class="line">    <span class="built_in">dispatch_once</span>(&amp;onceToken, ^&#123;</div><div class="line">        my = [MySingle new];</div><div class="line">    &#125;);</div><div class="line">    <span class="keyword">return</span> my;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="NSOperation"><a href="#NSOperation" class="headerlink" title="NSOperation"></a>NSOperation</h2><h2 id="GCD与NSOperation的选择"><a href="#GCD与NSOperation的选择" class="headerlink" title="GCD与NSOperation的选择"></a>GCD与NSOperation的选择</h2><p>GCD是基于c的底层api，NSOperation属于object-c类。ios 首先引入的是NSOperation，IOS4之后引入了GCD和NSOperationQueue并且其内部是用gcd实现的。</p>
+<p>相对于GCD：<br>1，NSOperation拥有更多的函数可用，具体查看api。<br>2，在NSOperationQueue中，可以建立各个NSOperation之间的依赖关系。<br>3，有kvo，可以监测operation是否正在执行（isExecuted）、是否结束（isFinished），是否取消（isCanceld）。<br>4，NSOperationQueue可以方便的管理并发、NSOperation之间的优先级。<br>GCD主要与block结合使用。代码简洁高效</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;多线程的实现方式&quot;&gt;&lt;a href=&quot;#多线程的实现方式&quot; class=&quot;headerlink&quot; title=&quot;多线程的实现方式&quot;&gt;&lt;/a&gt;多线程的实现方式&lt;/h1&gt;&lt;p&gt; 1.pThread:最早期，纯c，兼容所有c语言基础的代码&lt;br&gt; 2.NSThread:本质上是使用oc对pThread的一个封装，是早期iOS使用的多线程&lt;br&gt; 3.GCD：使用C语法+block语法，目前为止，苹果主推的多线程技术，功能强大，效率高&lt;br&gt; 4.NSOperation：使用oc对GCD的封装，在GCD基础上额外增加了几个特性，不过效率没有GCD高，通常在不使用这些特性时，依然选择GCD&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://sjc2wbq.github.io/categories/iOS/"/>
+    
+    
+      <category term="thread" scheme="http://sjc2wbq.github.io/tags/thread/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>UISearch</title>
+    <link href="http://sjc2wbq.github.io/2016/02/10/UISearch/"/>
+    <id>http://sjc2wbq.github.io/2016/02/10/UISearch/</id>
+    <published>2016-02-10T01:35:22.000Z</published>
+    <updated>2016-03-02T04:23:18.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="iOS8之前"><a href="#iOS8之前" class="headerlink" title="iOS8之前"></a>iOS8之前</h1><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wait to add</div></pre></td></tr></table></figure>
+<h1 id="iOS8之后"><a href="#iOS8之后" class="headerlink" title="iOS8之后"></a>iOS8之后</h1><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ViewController</span> ()&lt;<span class="title">UISearchResultsUpdating</span>,<span class="title">UISearchBarDelegate</span>&gt;</span></div><div class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>) <span class="built_in">UISearchController</span> *searchC;</div><div class="line"></div><div class="line">- (<span class="built_in">UISearchController</span> *)searchC&#123;</div><div class="line">    <span class="keyword">if</span> (!_searchC) &#123;</div><div class="line">        _searchC = [[<span class="built_in">UISearchController</span> alloc]initWithSearchResultsController:[TableViewController new]];</div><div class="line">        _searchC.searchBar.scopeButtonTitles = @[<span class="string">@"Device"</span>,<span class="string">@"Soft"</span>,<span class="string">@"Other"</span>];</div><div class="line">        <span class="comment">//设置搜索结果发生变化时，代理由谁负责</span></div><div class="line">        _searchC.searchResultsUpdater = <span class="keyword">self</span>;</div><div class="line"><span class="meta">#warning 应对scope变化时的无法监听的问题</span></div><div class="line">        _searchC.searchBar.delegate = <span class="keyword">self</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> _searchC;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">#warning 应对scope变化时的无法监听的问题</span></div><div class="line"><span class="meta">#pragma mark - UISearchBar Delegate</span></div><div class="line">-(<span class="keyword">void</span>)searchBar:(<span class="built_in">UISearchBar</span> *)searchBar selectedScopeButtonIndexDidChange:(<span class="built_in">NSInteger</span>)selectedScope&#123;</div><div class="line">    [<span class="keyword">self</span> updateSearchResultsForSearchController:<span class="keyword">self</span>.searchC];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">#warning 实际上scope选项变化时并没有触发</span></div><div class="line">-(<span class="keyword">void</span>)updateSearchResultsForSearchController:(<span class="built_in">UISearchController</span> *)searchController&#123;</div><div class="line">    <span class="built_in">NSString</span> *text = searchController.searchBar.text;</div><div class="line">    <span class="built_in">NSInteger</span> selectedIndex = searchController.searchBar.selectedScopeButtonIndex;</div><div class="line">    <span class="built_in">NSMutableArray</span> *tmpArr = [<span class="built_in">NSMutableArray</span> new];</div><div class="line">    <span class="keyword">for</span> (Product *p <span class="keyword">in</span> <span class="keyword">self</span>.dataList) &#123;</div><div class="line">        <span class="keyword">if</span> ([p.name containsString:text] &amp;&amp; p.type == selectedIndex) &#123;</div><div class="line">            [tmpArr addObject:p];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    TableViewController *vc = (TableViewController *)searchController.searchResultsController;</div><div class="line">    vc.resultArr = tmpArr;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;iOS8之前&quot;&gt;&lt;a href=&quot;#iOS8之前&quot; class=&quot;headerlink&quot; title=&quot;iOS8之前&quot;&gt;&lt;/a&gt;iOS8之前&lt;/h1&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutt
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>test</title>
+    <link href="http://sjc2wbq.github.io/2016/02/09/test/"/>
+    <id>http://sjc2wbq.github.io/2016/02/09/test/</id>
+    <published>2016-02-09T01:35:22.000Z</published>
+    <updated>2016-05-20T04:00:34.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>一到家就各种出问题哦，哎哎哎，咋回事呢！咋回事呢！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;一到家就各种出问题哦，哎哎哎，咋回事呢！咋回事呢！&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>上帝与你同在</title>
+    <link href="http://sjc2wbq.github.io/2016/02/08/much/"/>
+    <id>http://sjc2wbq.github.io/2016/02/08/much/</id>
+    <published>2016-02-08T11:27:26.000Z</published>
+    <updated>2016-05-20T04:09:14.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>附近有座教堂，离家也就十分钟，每次远远的看到它，都给我一种奇怪的感觉，在这样一个小城市，尤其显得突兀，怀着好奇的心态，几次都想走进去看看，虽然我很唯物主义，但是对于宗教，对于基督，我一直是抱着尊敬的态度的，<br><div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 100%;"><img src="/image/church1.jpg" alt=""></div></div><div class="group-picture-row"><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/church2.jpg" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/church3.jpg" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/church4.jpg" alt=""></div></div></div></div></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;附近有座教堂，离家也就十分钟，每次远远的看到它，都给我一种奇怪的感觉，在这样一个小城市，尤其显得突兀，怀着好奇的心态，几次都想走进去看看，虽然我很唯物主义，但是对于宗教，对于基督，我一直是抱着尊敬的态度的，&lt;br&gt;&lt;div class=&quot;group-picture&quot;&gt;&lt;di
+    
+    </summary>
+    
+      <category term="life" scheme="http://sjc2wbq.github.io/categories/life/"/>
+    
+    
+      <category term="god be with you" scheme="http://sjc2wbq.github.io/tags/god-be-with-you/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>绘图</title>
+    <link href="http://sjc2wbq.github.io/2016/02/07/drawPath/"/>
+    <id>http://sjc2wbq.github.io/2016/02/07/drawPath/</id>
+    <published>2016-02-07T01:35:22.000Z</published>
+    <updated>2016-05-20T04:04:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="绘图"><a href="#绘图" class="headerlink" title="绘图"></a>绘图</h1><h3 id="（一）UIBezierPath"><a href="#（一）UIBezierPath" class="headerlink" title="（一）UIBezierPath"></a>（一）UIBezierPath</h3><p>-画出坠落轨迹</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)drawRect:(<span class="built_in">CGRect</span>)rect &#123;</div><div class="line">    <span class="comment">//draw a parabola with one point</span></div><div class="line">    <span class="built_in">UIBezierPath</span> *parabola_path = [<span class="built_in">UIBezierPath</span> bezierPath];</div><div class="line">    [parabola_path moveToPoint:<span class="built_in">CGPointMake</span>(<span class="number">150</span>, <span class="number">40</span>)];</div><div class="line">    <span class="comment">//加一个受力点</span></div><div class="line">    [parabola_path addQuadCurveToPoint:<span class="built_in">CGPointMake</span>(<span class="number">150</span>, <span class="number">140</span>) controlPoint:<span class="built_in">CGPointMake</span>(<span class="number">220</span>, <span class="number">65</span>)];</div><div class="line">    [parabola_path moveToPoint:<span class="built_in">CGPointMake</span>(<span class="number">220</span>, <span class="number">65</span>)];</div><div class="line">    <span class="comment">//[parabola_path addLineToPoint:CGPointMake(200, 65)];</span></div><div class="line">     [[<span class="built_in">UIColor</span> orangeColor]setStroke];</div><div class="line">    parabola_path.lineWidth = <span class="number">10</span>;</div><div class="line">    [parabola_path stroke];  </div><div class="line">    <span class="comment">//draw a parabol with more than one point</span></div><div class="line">    <span class="built_in">UIBezierPath</span> *sline_path = [<span class="built_in">UIBezierPath</span> bezierPath];</div><div class="line">    [sline_path moveToPoint:<span class="built_in">CGPointMake</span>(<span class="number">150</span>, <span class="number">30</span>)];</div><div class="line">    <span class="comment">//加两个受力点</span></div><div class="line">    [sline_path addCurveToPoint:<span class="built_in">CGPointMake</span>(<span class="number">150</span>, <span class="number">400</span>) controlPoint1:<span class="built_in">CGPointMake</span>(<span class="number">80</span>,<span class="number">70</span>) controlPoint2:<span class="built_in">CGPointMake</span>(<span class="number">230</span>, <span class="number">160</span>)];</div><div class="line">    sline_path.lineWidth = <span class="number">5</span>;</div><div class="line">    [sline_path stroke];</div><div class="line">    <span class="comment">//sline_path</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>-在draw:rect方法外画图（比如控制器中）</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)drawRect:(<span class="built_in">CGRect</span>)rect &#123;</div><div class="line">    <span class="comment">// Drawing code</span></div><div class="line">    <span class="built_in">CGContextRef</span> context = <span class="built_in">UIGraphicsGetCurrentContext</span>();</div><div class="line">    <span class="built_in">CGContextMoveToPoint</span>(context, <span class="number">40</span>, <span class="number">40</span>);</div><div class="line">    <span class="built_in">CGContextAddLineToPoint</span>(context, <span class="number">40</span>, <span class="number">140</span>);</div><div class="line">    <span class="built_in">CGContextAddLineToPoint</span>(context, <span class="number">140</span>, <span class="number">40</span>);</div><div class="line">    <span class="built_in">CGContextAddLineToPoint</span>(context, <span class="number">40</span>, <span class="number">40</span>);</div><div class="line">    <span class="comment">// set the color of context ,stroke</span></div><div class="line">    <span class="comment">// what is CGColor ?</span></div><div class="line">    <span class="built_in">CGContextSetStrokeColorWithColor</span>(context, [<span class="built_in">UIColor</span> redColor].CGColor);</div><div class="line">    <span class="built_in">CGContextSetFillColorWithColor</span>(context, [<span class="built_in">UIColor</span> greenColor].CGColor);</div><div class="line"></div><div class="line">    <span class="comment">//stroke path(miao bian) and fill path(tian chong) at the same time</span></div><div class="line">    <span class="built_in">CGContextDrawPath</span>(context, kCGPathFillStroke);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>画出字符</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)drawRect:(<span class="built_in">CGRect</span>)rect &#123;</div><div class="line">  <span class="built_in">NSString</span> *temp = <span class="string">@"boy,good good study,day day up,孩子，孩子，你为什么这么坏，脏话，下流话，你说出来，啊啊啊，what are you saying"</span>;</div><div class="line">  <span class="comment">//存放字符串与绘画有关属性的字典</span></div><div class="line">  <span class="built_in">NSDictionary</span> *dic = @&#123;<span class="built_in">NSFontAttributeName</span>:[<span class="built_in">UIFont</span> systemFontOfSize:<span class="number">20</span>],<span class="built_in">NSForegroundColorAttributeName</span>:[<span class="built_in">UIColor</span> blackColor]&#125;;</div><div class="line">  <span class="comment">//根据字符串的属性，和最大的宽度，高度，算出字符串显示范围</span></div><div class="line">  <span class="comment">//限定最宽200，算一下要多高能显示全</span></div><div class="line">  <span class="comment">//options:根据字体，最后一行课件，行间距</span></div><div class="line">  <span class="built_in">CGRect</span> stRect = [temp boundingRectWithSize:<span class="built_in">CGSizeMake</span>(<span class="number">200</span>, MAXFLOAT) options:<span class="built_in">NSStringDrawingTruncatesLastVisibleLine</span>|<span class="built_in">NSStringDrawingUsesLineFragmentOrigin</span>|<span class="built_in">NSStringDrawingTruncatesLastVisibleLine</span> attributes:dic context:<span class="literal">nil</span>];</div><div class="line">  <span class="comment">//画出字符串</span></div><div class="line">  [temp drawInRect:<span class="built_in">CGRectMake</span>(<span class="number">20</span>, <span class="number">20</span>, <span class="number">200</span>, stRect.size.height) withAttributes:dic];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>画出图片</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)drawRect:(<span class="built_in">CGRect</span>)rect &#123;</div><div class="line"></div><div class="line">    <span class="built_in">UIImage</span> *image = [<span class="built_in">UIImage</span> imageNamed:<span class="string">@"welcome_320x480_1"</span>];</div><div class="line">    <span class="comment">//起点:70 80 大小206 250</span></div><div class="line">    <span class="built_in">UIBezierPath</span> *path = [<span class="built_in">UIBezierPath</span> bezierPathWithOvalInRect:<span class="built_in">CGRectMake</span>(<span class="number">70</span>, <span class="number">80</span>, <span class="number">206</span>, <span class="number">250</span>)];</div><div class="line">    <span class="comment">//剪切属性，让路径的外部不可以绘画</span></div><div class="line">    [path addClip];</div><div class="line">    [image drawInRect:<span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">320</span>,<span class="number">480</span>)];</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="（二）Core-Graphics"><a href="#（二）Core-Graphics" class="headerlink" title="（二）Core Graphics"></a>（二）Core Graphics</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)drawRect:(<span class="built_in">CGRect</span>)rect &#123;</div><div class="line">    <span class="built_in">UIBezierPath</span> *path = [<span class="built_in">UIBezierPath</span> bezierPath];</div><div class="line">    [path moveToPoint:<span class="built_in">CGPointMake</span>(<span class="number">40</span>, <span class="number">40</span>)];</div><div class="line">    [path addLineToPoint:<span class="built_in">CGPointMake</span>(<span class="number">40</span>, <span class="number">140</span>)];</div><div class="line">    [path addLineToPoint:<span class="built_in">CGPointMake</span>(<span class="number">140</span>, <span class="number">40</span>)];</div><div class="line">    [path addLineToPoint:<span class="built_in">CGPointMake</span>(<span class="number">40</span>, <span class="number">40</span>)];</div><div class="line"></div><div class="line">    <span class="comment">//set the color of strokepath</span></div><div class="line">    <span class="comment">//set the color of the fillpath</span></div><div class="line">    [[<span class="built_in">UIColor</span> redColor]setStroke];</div><div class="line">    [[<span class="built_in">UIColor</span> greenColor]setFill];</div><div class="line"></div><div class="line">    <span class="comment">//set the width of the line</span></div><div class="line">    path.lineWidth = <span class="number">10</span>;</div><div class="line">    <span class="comment">//set the style of the jionline(lianjie chu yangshi)</span></div><div class="line">    path.lineJoinStyle = kCGLineJoinRound;</div><div class="line">    <span class="comment">//set the corner of line(xian tou yangshi)</span></div><div class="line">    path.lineCapStyle = kCGLineCapRound;</div><div class="line"></div><div class="line">    [path stroke];</div><div class="line">    [path fill];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;绘图&quot;&gt;&lt;a href=&quot;#绘图&quot; class=&quot;headerlink&quot; title=&quot;绘图&quot;&gt;&lt;/a&gt;绘图&lt;/h1&gt;&lt;h3 id=&quot;（一）UIBezierPath&quot;&gt;&lt;a href=&quot;#（一）UIBezierPath&quot; class=&quot;headerlink&quot; title=&quot;（一）UIBezierPath&quot;&gt;&lt;/a&gt;（一）UIBezierPath&lt;/h3&gt;&lt;p&gt;-画出坠落轨迹&lt;/p&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;20&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;- (&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt;)drawRect:(&lt;span class=&quot;built_in&quot;&gt;CGRect&lt;/span&gt;)rect &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//draw a parabola with one point&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;UIBezierPath&lt;/span&gt; *parabola_path = [&lt;span class=&quot;built_in&quot;&gt;UIBezierPath&lt;/span&gt; bezierPath];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    [parabola_path moveToPoint:&lt;span class=&quot;built_in&quot;&gt;CGPointMake&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;150&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;40&lt;/span&gt;)];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//加一个受力点&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    [parabola_path addQuadCurveToPoint:&lt;span class=&quot;built_in&quot;&gt;CGPointMake&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;150&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;140&lt;/span&gt;) controlPoint:&lt;span class=&quot;built_in&quot;&gt;CGPointMake&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;220&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;65&lt;/span&gt;)];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    [parabola_path moveToPoint:&lt;span class=&quot;built_in&quot;&gt;CGPointMake&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;220&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;65&lt;/span&gt;)];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//[parabola_path addLineToPoint:CGPointMake(200, 65)];&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;     [[&lt;span class=&quot;built_in&quot;&gt;UIColor&lt;/span&gt; orangeColor]setStroke];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    parabola_path.lineWidth = &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    [parabola_path stroke];  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//draw a parabol with more than one point&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;UIBezierPath&lt;/span&gt; *sline_path = [&lt;span class=&quot;built_in&quot;&gt;UIBezierPath&lt;/span&gt; bezierPath];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    [sline_path moveToPoint:&lt;span class=&quot;built_in&quot;&gt;CGPointMake&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;150&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;30&lt;/span&gt;)];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//加两个受力点&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    [sline_path addCurveToPoint:&lt;span class=&quot;built_in&quot;&gt;CGPointMake&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;150&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;400&lt;/span&gt;) controlPoint1:&lt;span class=&quot;built_in&quot;&gt;CGPointMake&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;80&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;70&lt;/span&gt;) controlPoint2:&lt;span class=&quot;built_in&quot;&gt;CGPointMake&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;230&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;160&lt;/span&gt;)];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    sline_path.lineWidth = &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    [sline_path stroke];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//sline_path&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://sjc2wbq.github.io/categories/iOS/"/>
+    
+    
+      <category term="Graphic" scheme="http://sjc2wbq.github.io/tags/Graphic/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hi gitcafe and github</title>
+    <link href="http://sjc2wbq.github.io/2016/01/24/hi-gitcafe-and-github/"/>
+    <id>http://sjc2wbq.github.io/2016/01/24/hi-gitcafe-and-github/</id>
+    <published>2016-01-24T05:26:07.000Z</published>
+    <updated>2016-05-20T04:07:11.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>glad to be here with u to learn and to live</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;glad to be here with u to learn and to live&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="life" scheme="http://sjc2wbq.github.io/categories/life/"/>
+    
+    
+      <category term="coming" scheme="http://sjc2wbq.github.io/tags/coming/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Notification</title>
+    <link href="http://sjc2wbq.github.io/2016/01/17/Notification/"/>
+    <id>http://sjc2wbq.github.io/2016/01/17/Notification/</id>
+    <published>2016-01-17T13:38:50.000Z</published>
+    <updated>2016-05-20T04:04:39.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="NSNotificationCenter"><a href="#NSNotificationCenter" class="headerlink" title="NSNotificationCenter"></a>NSNotificationCenter</h1><blockquote>
+<p>iOS通知中心</p>
+</blockquote>
+<h2 id="NSNotification类"><a href="#NSNotification类" class="headerlink" title="- NSNotification类"></a>- NSNotification类</h2><blockquote>
+<p>一个消息对象类,有三个成员变量</p>
+</blockquote>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">@property</span> (<span class="keyword">readonly</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *name;</div><div class="line"><span class="keyword">@property</span> (<span class="keyword">readonly</span>, <span class="keyword">retain</span>) <span class="keyword">id</span> object;</div><div class="line"><span class="keyword">@property</span> (<span class="keyword">readonly</span>, <span class="keyword">copy</span>) <span class="built_in">NSDictionary</span> *userInfo;</div></pre></td></tr></table></figure>
+<ul>
+<li>name:辨别消息对象的唯一标识</li>
+<li>object:针对某一个对象的消息</li>
+<li>userInfo:用来传值的一个字典</li>
+</ul>
+<h2 id="NSNotificationCenter类"><a href="#NSNotificationCenter类" class="headerlink" title="- NSNotificationCenter类"></a>- NSNotificationCenter类</h2><blockquote>
+<p>通知中心,使用单例设计,每个应用程序都会有一个默认的通知中心.用于调度通知的发送和接受</p>
+</blockquote>
+<pre><code class="objc">
+</code></pre>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;NSNotificationCenter&quot;&gt;&lt;a href=&quot;#NSNotificationCenter&quot; class=&quot;headerlink&quot; title=&quot;NSNotificationCenter&quot;&gt;&lt;/a&gt;NSNotificationCenter&lt;/h1&gt;&lt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://sjc2wbq.github.io/categories/iOS/"/>
+    
+    
+      <category term="Notification" scheme="http://sjc2wbq.github.io/tags/Notification/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Animation</title>
+    <link href="http://sjc2wbq.github.io/2016/01/17/Animation/"/>
+    <id>http://sjc2wbq.github.io/2016/01/17/Animation/</id>
+    <published>2016-01-17T13:38:50.000Z</published>
+    <updated>2016-05-20T04:04:11.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="CA-CoreAnimation动画"><a href="#CA-CoreAnimation动画" class="headerlink" title="CA:CoreAnimation动画"></a>CA:CoreAnimation动画</h1><blockquote>
+<p>属于CALayer层的动画,属于最底层,UIView的底层也是CALayer,UIView是基于CALayer的封装,CALayer具备UIView的所有属性和方法</p>
+</blockquote>
+<h3 id="1-CABasicAnimation"><a href="#1-CABasicAnimation" class="headerlink" title="1. CABasicAnimation"></a>1. CABasicAnimation</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">CABasicAnimation</span> *animation = [<span class="built_in">CABasicAnimation</span> animationWithKeyPath:<span class="string">@"transform.rotation.y"</span>];</div><div class="line">animation.toValue = @(M_PI*<span class="number">2</span>);</div><div class="line">animation.duration = <span class="number">3</span>;</div><div class="line">animation.repeatCount = MAXFLOAT;</div><div class="line">[_imageView.layer addAnimation:animation forKey:<span class="string">@"animationY"</span>];</div></pre></td></tr></table></figure>
+<ol>
+<li><strong>key</strong>：addAnimation时的key,为自定义动画时的标识，可用于指定动画进行操作,比如删除指定动画<br>key获取</li>
+<li><strong>KeyPath</strong>：系统动画类型标识，用于获得系统动画<ul>
+<li>transform.rotation.x :系统绕x轴旋转动画</li>
+<li>transform.rotation.y :系统绕y轴旋转动画</li>
+<li>transform.rotation.z :系统绕z轴旋转动画</li>
+<li>position : 用于CAKeyframeAnimation做沿“轨迹”运动,见下详细示例</li>
+</ul>
+</li>
+</ol>
+<h3 id="2-CAKeyframeAnimation"><a href="#2-CAKeyframeAnimation" class="headerlink" title="2. CAKeyframeAnimation"></a>2. <em>CAKeyframeAnimation</em></h3><blockquote>
+<p>CA帧动画,通常可用于按“轨迹”运动，与UIBezierPath结合</p>
+</blockquote>
+  <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIBezierPath</span> *path = [<span class="built_in">UIBezierPath</span> bezierPathWithOvalInRect:rect];</div><div class="line"><span class="built_in">UIBezierPath</span> *arc = [<span class="built_in">UIBezierPath</span> bezierPathWithArcCenter:<span class="keyword">self</span>.view.center radius:<span class="number">120</span> startAngle:M_PI_2*<span class="number">3</span> endAngle:M_PI_2*<span class="number">3</span>+M_PI*<span class="number">2</span> clockwise:<span class="literal">YES</span>];</div><div class="line">  <span class="comment">//要沿着路劲跑，必须用关键帧动画</span></div><div class="line">  <span class="comment">//position:沿着路径动画</span></div><div class="line"><span class="built_in">CAKeyframeAnimation</span> *moveAnimation = [<span class="built_in">CAKeyframeAnimation</span> animationWithKeyPath:<span class="string">@"position"</span>];</div><div class="line">  <span class="comment">//设置动画的路径</span></div><div class="line">moveAnimation.path = arc.CGPath;</div><div class="line">moveAnimation.duration = <span class="number">3</span>;</div><div class="line">moveAnimation.repeatCount = MAXFLOAT;</div><div class="line">[_imageView.layer addAnimation:moveAnimation forKey:<span class="string">@"runWithPath"</span>];</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="3-CGAffineTransfor"><a href="#3-CGAffineTransfor" class="headerlink" title="3. CGAffineTransfor"></a>3. CGAffineTransfor</h3><h3 id="4-CAAnimationGroup"><a href="#4-CAAnimationGroup" class="headerlink" title="4. CAAnimationGroup"></a>4. CAAnimationGroup</h3><blockquote>
+<p>动画组,可同时为一个对象添加管理多个动画,</p>
+</blockquote>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">CAAnimationGroup</span> *group =[<span class="built_in">CAAnimationGroup</span> animation];</div><div class="line">  group.animations = @[xScaleAnimation,yScaleAnimation,moveAnimation];</div><div class="line">  group.repeatCount = <span class="number">2</span>;</div><div class="line">  group.duration = <span class="number">2</span>;</div><div class="line">   <span class="comment">//可以通过代理来监听动画的开始和结束，此协议已经被自动引入，不需要手动再引</span></div><div class="line">group.delegate = <span class="keyword">self</span>;</div><div class="line">[_imageView.layer addAnimation:group forKey:<span class="string">@"groupAnimation"</span>];</div></pre></td></tr></table></figure>
+<h3 id="5-delegateMethod"><a href="#5-delegateMethod" class="headerlink" title="5. delegateMethod"></a>5. delegateMethod</h3><blockquote>
+<p>监测动画的代理方法,由于CAAnimation自动引入了代理，无需在类名后手动引入代理，只需给代理赋值即可<code>animation.delegate = self;</code></p>
+</blockquote>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-(<span class="keyword">void</span>)animationDidStart:(<span class="built_in">CAAnimation</span> *)anim&#123;</div><div class="line">&#125;</div><div class="line">-(<span class="keyword">void</span>)animationDidStop:(<span class="built_in">CAAnimation</span> *)anim finished:(<span class="built_in">BOOL</span>)flag&#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="UIView动画"><a href="#UIView动画" class="headerlink" title="UIView动画"></a>UIView动画</h1><blockquote>
+<p>UIView的Animation是核心动画CoreAnimation对UIView的扩展类</p>
+</blockquote>
+<h3 id="1-基础动画"><a href="#1-基础动画" class="headerlink" title="1. 基础动画"></a>1. 基础动画</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[<span class="built_in">UIView</span> animateWithDuration:duration</div><div class="line">         animations:^&#123;</div><div class="line">&#125;];</div><div class="line"></div><div class="line">[<span class="built_in">UIView</span> animateWithDuration:duration</div><div class="line">         animations:^&#123;</div><div class="line">       &#125; completion:^(<span class="built_in">BOOL</span> finished) &#123;</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<h3 id="2-基础动画，带option选项"><a href="#2-基础动画，带option选项" class="headerlink" title="2. 基础动画，带option选项"></a>2. 基础动画，带option选项</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[<span class="built_in">UIView</span> animateWithDuration:duration</div><div class="line">         delay:<span class="number">0</span></div><div class="line">         options:<span class="built_in">UIViewAnimationOptionCurveLinear</span></div><div class="line">         animations:^&#123;</div><div class="line">      &#125; completion:^(<span class="built_in">BOOL</span> finished)&#123;</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<p>其中的<strong>option</strong>参数有以下几种：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- UIViewAnimationOptionCurveLinear(线性变化)</div><div class="line">- UIViewAnimationOptionRepeat（重复）</div><div class="line">- UIViewAnimationOptionAutoreverse（自动重来）</div></pre></td></tr></table></figure></p>
+<h3 id="3-带有阻尼damping值-加速度velocity的动画-可实现弹跳动画"><a href="#3-带有阻尼damping值-加速度velocity的动画-可实现弹跳动画" class="headerlink" title="3. 带有阻尼damping值,加速度velocity的动画(可实现弹跳动画)"></a>3. 带有阻尼damping值,加速度velocity的动画(可实现弹跳动画)</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[<span class="built_in">UIView</span> animateWithDuration:duration</div><div class="line">         delay:<span class="number">0</span></div><div class="line">         usingSpringWithDamping:damping</div><div class="line">         initialSpringVelocity:velocity</div><div class="line">         options:<span class="built_in">UIViewAnimationOptionCurveLinear</span> animations:^&#123;</div><div class="line">          <span class="comment">//动画进行时操作</span></div><div class="line">       &#125; completion:^(<span class="built_in">BOOL</span> finished) &#123;</div><div class="line">          <span class="comment">//完成操作</span></div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<ol>
+<li><strong>damping</strong> :值越小，弹跳次数越多</li>
+<li><strong>velocity</strong> :  值越大，弹跳速度越快</li>
+</ol>
+<h3 id="4-帧动画-可对动画过程中的某个阶段-帧-进行操作"><a href="#4-帧动画-可对动画过程中的某个阶段-帧-进行操作" class="headerlink" title="4. 帧动画,可对动画过程中的某个阶段[帧]进行操作"></a>4. 帧动画,可对动画过程中的某个阶段[帧]进行操作</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">[<span class="built_in">UIView</span> animateKeyframesWithDuration:duration</div><div class="line">         delay:<span class="number">0</span></div><div class="line">         options:<span class="built_in">UIViewKeyframeAnimationOptionCalculationModeLinear</span></div><div class="line">         animations:^&#123;</div><div class="line">            <span class="comment">//添加帧动画</span></div><div class="line">                [<span class="built_in">UIView</span> addKeyframeWithRelativeStartTime:start</div><div class="line">                        relativeDuration:duratuion</div><div class="line">                        animations:^&#123;</div><div class="line">                &#125;];</div><div class="line">            <span class="comment">//如果用Autolayout做布局，需调用</span></div><div class="line">                [<span class="keyword">self</span>.view layoutIfNeeded];</div><div class="line">      &#125; completion:^(<span class="built_in">BOOL</span> finished) &#123;</div><div class="line">            <span class="comment">//完成操作</span></div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<ol>
+<li><p><strong>添加帧动画</strong></p>
+<p>其中<em>start</em>,<em>duration</em>参数为总时段的所占比率，如start=1/3,duration=1/3,即表示从时段的第1/3阶段开始,进行1/3时长的动画</p>
+</li>
+<li><p><strong>加载底层视图</strong></p>
+<p>以下形式为<strong>单独刷新imageView的layout</strong>，如在帧中,分时控制，一个物体自上而下,自左而右碰撞(不断走Z字路线),分段里,需单独改变,用以下方式.此时如果用Masnory做AutoLayout,需注意用mas_remakeConstraints:^(MASConstraintMaker *make)</p>
+</li>
+<li><p><strong>layoutIfNeeded</strong></p>
+<p>当使用Autuolayout做布局时,需要调用<em>layoutIfNeeded</em>刷新视图,当只需要刷新特定对象时,需要首先<em>setNeedsLayout</em>,如下图示例所示</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[<span class="keyword">self</span>.imageView mas_remakeConstraints:^(MASConstraintMaker *make) &#123;</div><div class="line">               make.right.equalTo(<span class="number">0</span>);</div><div class="line">               make.bottom.equalTo(<span class="number">-200</span>);</div><div class="line">               make.size.equalTo(<span class="built_in">CGSizeMake</span>(<span class="number">100</span>, <span class="number">100</span>));</div><div class="line">           &#125;];</div><div class="line">[<span class="keyword">self</span>.imageView setNeedsLayout];</div><div class="line">[<span class="keyword">self</span>.imageView layoutIfNeeded];</div></pre></td></tr></table></figure>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;CA-CoreAnimation动画&quot;&gt;&lt;a href=&quot;#CA-CoreAnimation动画&quot; class=&quot;headerlink&quot; title=&quot;CA:CoreAnimation动画&quot;&gt;&lt;/a&gt;CA:CoreAnimation动画&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;属于CALayer层的动画,属于最底层,UIView的底层也是CALayer,UIView是基于CALayer的封装,CALayer具备UIView的所有属性和方法&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;1-CABasicAnimation&quot;&gt;&lt;a href=&quot;#1-CABasicAnimation&quot; class=&quot;headerlink&quot; title=&quot;1. CABasicAnimation&quot;&gt;&lt;/a&gt;1. CABasicAnimation&lt;/h3&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;CABasicAnimation&lt;/span&gt; *animation = [&lt;span class=&quot;built_in&quot;&gt;CABasicAnimation&lt;/span&gt; animationWithKeyPath:&lt;span class=&quot;string&quot;&gt;@&quot;transform.rotation.y&quot;&lt;/span&gt;];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;animation.toValue = @(M_PI*&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;animation.duration = &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;animation.repeatCount = MAXFLOAT;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;[_imageView.layer addAnimation:animation forKey:&lt;span class=&quot;string&quot;&gt;@&quot;animationY&quot;&lt;/span&gt;];&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;key&lt;/strong&gt;：addAnimation时的key,为自定义动画时的标识，可用于指定动画进行操作,比如删除指定动画&lt;br&gt;key获取&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;KeyPath&lt;/strong&gt;：系统动画类型标识，用于获得系统动画&lt;ul&gt;
+&lt;li&gt;transform.rotation.x :系统绕x轴旋转动画&lt;/li&gt;
+&lt;li&gt;transform.rotation.y :系统绕y轴旋转动画&lt;/li&gt;
+&lt;li&gt;transform.rotation.z :系统绕z轴旋转动画&lt;/li&gt;
+&lt;li&gt;position : 用于CAKeyframeAnimation做沿“轨迹”运动,见下详细示例&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;2-CAKeyframeAnimation&quot;&gt;&lt;a href=&quot;#2-CAKeyframeAnimation&quot; class=&quot;headerlink&quot; title=&quot;2. CAKeyframeAnimation&quot;&gt;&lt;/a&gt;2. &lt;em&gt;CAKeyframeAnimation&lt;/em&gt;&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;CA帧动画,通常可用于按“轨迹”运动，与UIBezierPath结合&lt;/p&gt;
+&lt;/blockquote&gt;
+  &lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;UIBezierPath&lt;/span&gt; *path = [&lt;span class=&quot;built_in&quot;&gt;UIBezierPath&lt;/span&gt; bezierPathWithOvalInRect:rect];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;UIBezierPath&lt;/span&gt; *arc = [&lt;span class=&quot;built_in&quot;&gt;UIBezierPath&lt;/span&gt; bezierPathWithArcCenter:&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.view.center radius:&lt;span class=&quot;number&quot;&gt;120&lt;/span&gt; startAngle:M_PI_2*&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt; endAngle:M_PI_2*&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;+M_PI*&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt; clockwise:&lt;span class=&quot;literal&quot;&gt;YES&lt;/span&gt;];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;//要沿着路劲跑，必须用关键帧动画&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;//position:沿着路径动画&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;CAKeyframeAnimation&lt;/span&gt; *moveAnimation = [&lt;span class=&quot;built_in&quot;&gt;CAKeyframeAnimation&lt;/span&gt; animationWithKeyPath:&lt;span class=&quot;string&quot;&gt;@&quot;position&quot;&lt;/span&gt;];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;//设置动画的路径&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;moveAnimation.path = arc.CGPath;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;moveAnimation.duration = &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;moveAnimation.repeatCount = MAXFLOAT;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;[_imageView.layer addAnimation:moveAnimation forKey:&lt;span class=&quot;string&quot;&gt;@&quot;runWithPath&quot;&lt;/span&gt;];&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://sjc2wbq.github.io/categories/iOS/"/>
+    
+    
+      <category term="Animation" scheme="http://sjc2wbq.github.io/tags/Animation/"/>
+    
+  </entry>
+  
+</feed>
