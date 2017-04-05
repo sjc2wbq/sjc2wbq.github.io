@@ -216,7 +216,7 @@ h6 {
   padding: 0;
   font-weight: bold;
   line-height: 1.5;
-  font-family: 'Avant Garde', 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Comic Sans MS', 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 h2,
 h3,
@@ -999,7 +999,7 @@ pre .javascript .function {
   line-height: 36px;
   font-size: 20px;
   font-weight: normal;
-  font-family: 'Brush Script Std', 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Brush Script MT', 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 .site-subtitle {
   margin-top: 10px;
@@ -1692,7 +1692,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #4dd0ff;
+  background: #ff458c;
 }
 .links-of-blogroll {
   font-size: 13px;
