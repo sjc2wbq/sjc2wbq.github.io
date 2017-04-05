@@ -842,41 +842,92 @@
   </entry>
   
   <entry>
-    <title>Notification</title>
-    <link href="http://sjc2wbq.github.io/2016/01/17/Notification/"/>
-    <id>http://sjc2wbq.github.io/2016/01/17/Notification/</id>
+    <title>Animation</title>
+    <link href="http://sjc2wbq.github.io/2016/01/17/Animation/"/>
+    <id>http://sjc2wbq.github.io/2016/01/17/Animation/</id>
     <published>2016-01-17T13:38:50.000Z</published>
-    <updated>2016-05-20T04:04:39.000Z</updated>
+    <updated>2016-05-20T04:04:11.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="NSNotificationCenter"><a href="#NSNotificationCenter" class="headerlink" title="NSNotificationCenter"></a>NSNotificationCenter</h1><blockquote>
-<p>iOS通知中心</p>
+    <content type="html"><![CDATA[<h1 id="CA-CoreAnimation动画"><a href="#CA-CoreAnimation动画" class="headerlink" title="CA:CoreAnimation动画"></a>CA:CoreAnimation动画</h1><blockquote>
+<p>属于CALayer层的动画,属于最底层,UIView的底层也是CALayer,UIView是基于CALayer的封装,CALayer具备UIView的所有属性和方法</p>
 </blockquote>
-<h2 id="NSNotification类"><a href="#NSNotification类" class="headerlink" title="- NSNotification类"></a>- NSNotification类</h2><blockquote>
-<p>一个消息对象类,有三个成员变量</p>
-</blockquote>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">@property</span> (<span class="keyword">readonly</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *name;</div><div class="line"><span class="keyword">@property</span> (<span class="keyword">readonly</span>, <span class="keyword">retain</span>) <span class="keyword">id</span> object;</div><div class="line"><span class="keyword">@property</span> (<span class="keyword">readonly</span>, <span class="keyword">copy</span>) <span class="built_in">NSDictionary</span> *userInfo;</div></pre></td></tr></table></figure>
-<ul>
-<li>name:辨别消息对象的唯一标识</li>
-<li>object:针对某一个对象的消息</li>
-<li>userInfo:用来传值的一个字典</li>
+<h3 id="1-CABasicAnimation"><a href="#1-CABasicAnimation" class="headerlink" title="1. CABasicAnimation"></a>1. CABasicAnimation</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">CABasicAnimation</span> *animation = [<span class="built_in">CABasicAnimation</span> animationWithKeyPath:<span class="string">@"transform.rotation.y"</span>];</div><div class="line">animation.toValue = @(M_PI*<span class="number">2</span>);</div><div class="line">animation.duration = <span class="number">3</span>;</div><div class="line">animation.repeatCount = MAXFLOAT;</div><div class="line">[_imageView.layer addAnimation:animation forKey:<span class="string">@"animationY"</span>];</div></pre></td></tr></table></figure>
+<ol>
+<li><strong>key</strong>：addAnimation时的key,为自定义动画时的标识，可用于指定动画进行操作,比如删除指定动画<br>key获取</li>
+<li><strong>KeyPath</strong>：系统动画类型标识，用于获得系统动画<ul>
+<li>transform.rotation.x :系统绕x轴旋转动画</li>
+<li>transform.rotation.y :系统绕y轴旋转动画</li>
+<li>transform.rotation.z :系统绕z轴旋转动画</li>
+<li>position : 用于CAKeyframeAnimation做沿“轨迹”运动,见下详细示例</li>
 </ul>
-<h2 id="NSNotificationCenter类"><a href="#NSNotificationCenter类" class="headerlink" title="- NSNotificationCenter类"></a>- NSNotificationCenter类</h2><blockquote>
-<p>通知中心,使用单例设计,每个应用程序都会有一个默认的通知中心.用于调度通知的发送和接受</p>
+</li>
+</ol>
+<h3 id="2-CAKeyframeAnimation"><a href="#2-CAKeyframeAnimation" class="headerlink" title="2. CAKeyframeAnimation"></a>2. <em>CAKeyframeAnimation</em></h3><blockquote>
+<p>CA帧动画,通常可用于按“轨迹”运动，与UIBezierPath结合</p>
 </blockquote>
-<pre><code class="objc">
-</code></pre>
+  <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIBezierPath</span> *path = [<span class="built_in">UIBezierPath</span> bezierPathWithOvalInRect:rect];</div><div class="line"><span class="built_in">UIBezierPath</span> *arc = [<span class="built_in">UIBezierPath</span> bezierPathWithArcCenter:<span class="keyword">self</span>.view.center radius:<span class="number">120</span> startAngle:M_PI_2*<span class="number">3</span> endAngle:M_PI_2*<span class="number">3</span>+M_PI*<span class="number">2</span> clockwise:<span class="literal">YES</span>];</div><div class="line">  <span class="comment">//要沿着路劲跑，必须用关键帧动画</span></div><div class="line">  <span class="comment">//position:沿着路径动画</span></div><div class="line"><span class="built_in">CAKeyframeAnimation</span> *moveAnimation = [<span class="built_in">CAKeyframeAnimation</span> animationWithKeyPath:<span class="string">@"position"</span>];</div><div class="line">  <span class="comment">//设置动画的路径</span></div><div class="line">moveAnimation.path = arc.CGPath;</div><div class="line">moveAnimation.duration = <span class="number">3</span>;</div><div class="line">moveAnimation.repeatCount = MAXFLOAT;</div><div class="line">[_imageView.layer addAnimation:moveAnimation forKey:<span class="string">@"runWithPath"</span>];</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="3-CGAffineTransfor"><a href="#3-CGAffineTransfor" class="headerlink" title="3. CGAffineTransfor"></a>3. CGAffineTransfor</h3><h3 id="4-CAAnimationGroup"><a href="#4-CAAnimationGroup" class="headerlink" title="4. CAAnimationGroup"></a>4. CAAnimationGroup</h3><blockquote>
+<p>动画组,可同时为一个对象添加管理多个动画,</p>
+</blockquote>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">CAAnimationGroup</span> *group =[<span class="built_in">CAAnimationGroup</span> animation];</div><div class="line">  group.animations = @[xScaleAnimation,yScaleAnimation,moveAnimation];</div><div class="line">  group.repeatCount = <span class="number">2</span>;</div><div class="line">  group.duration = <span class="number">2</span>;</div><div class="line">   <span class="comment">//可以通过代理来监听动画的开始和结束，此协议已经被自动引入，不需要手动再引</span></div><div class="line">group.delegate = <span class="keyword">self</span>;</div><div class="line">[_imageView.layer addAnimation:group forKey:<span class="string">@"groupAnimation"</span>];</div></pre></td></tr></table></figure>
+<h3 id="5-delegateMethod"><a href="#5-delegateMethod" class="headerlink" title="5. delegateMethod"></a>5. delegateMethod</h3><blockquote>
+<p>监测动画的代理方法,由于CAAnimation自动引入了代理，无需在类名后手动引入代理，只需给代理赋值即可<code>animation.delegate = self;</code></p>
+</blockquote>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-(<span class="keyword">void</span>)animationDidStart:(<span class="built_in">CAAnimation</span> *)anim&#123;</div><div class="line">&#125;</div><div class="line">-(<span class="keyword">void</span>)animationDidStop:(<span class="built_in">CAAnimation</span> *)anim finished:(<span class="built_in">BOOL</span>)flag&#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="UIView动画"><a href="#UIView动画" class="headerlink" title="UIView动画"></a>UIView动画</h1><blockquote>
+<p>UIView的Animation是核心动画CoreAnimation对UIView的扩展类</p>
+</blockquote>
+<h3 id="1-基础动画"><a href="#1-基础动画" class="headerlink" title="1. 基础动画"></a>1. 基础动画</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[<span class="built_in">UIView</span> animateWithDuration:duration</div><div class="line">         animations:^&#123;</div><div class="line">&#125;];</div><div class="line"></div><div class="line">[<span class="built_in">UIView</span> animateWithDuration:duration</div><div class="line">         animations:^&#123;</div><div class="line">       &#125; completion:^(<span class="built_in">BOOL</span> finished) &#123;</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<h3 id="2-基础动画，带option选项"><a href="#2-基础动画，带option选项" class="headerlink" title="2. 基础动画，带option选项"></a>2. 基础动画，带option选项</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[<span class="built_in">UIView</span> animateWithDuration:duration</div><div class="line">         delay:<span class="number">0</span></div><div class="line">         options:<span class="built_in">UIViewAnimationOptionCurveLinear</span></div><div class="line">         animations:^&#123;</div><div class="line">      &#125; completion:^(<span class="built_in">BOOL</span> finished)&#123;</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<p>其中的<strong>option</strong>参数有以下几种：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- UIViewAnimationOptionCurveLinear(线性变化)</div><div class="line">- UIViewAnimationOptionRepeat（重复）</div><div class="line">- UIViewAnimationOptionAutoreverse（自动重来）</div></pre></td></tr></table></figure></p>
+<h3 id="3-带有阻尼damping值-加速度velocity的动画-可实现弹跳动画"><a href="#3-带有阻尼damping值-加速度velocity的动画-可实现弹跳动画" class="headerlink" title="3. 带有阻尼damping值,加速度velocity的动画(可实现弹跳动画)"></a>3. 带有阻尼damping值,加速度velocity的动画(可实现弹跳动画)</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[<span class="built_in">UIView</span> animateWithDuration:duration</div><div class="line">         delay:<span class="number">0</span></div><div class="line">         usingSpringWithDamping:damping</div><div class="line">         initialSpringVelocity:velocity</div><div class="line">         options:<span class="built_in">UIViewAnimationOptionCurveLinear</span> animations:^&#123;</div><div class="line">          <span class="comment">//动画进行时操作</span></div><div class="line">       &#125; completion:^(<span class="built_in">BOOL</span> finished) &#123;</div><div class="line">          <span class="comment">//完成操作</span></div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<ol>
+<li><strong>damping</strong> :值越小，弹跳次数越多</li>
+<li><strong>velocity</strong> :  值越大，弹跳速度越快</li>
+</ol>
+<h3 id="4-帧动画-可对动画过程中的某个阶段-帧-进行操作"><a href="#4-帧动画-可对动画过程中的某个阶段-帧-进行操作" class="headerlink" title="4. 帧动画,可对动画过程中的某个阶段[帧]进行操作"></a>4. 帧动画,可对动画过程中的某个阶段[帧]进行操作</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">[<span class="built_in">UIView</span> animateKeyframesWithDuration:duration</div><div class="line">         delay:<span class="number">0</span></div><div class="line">         options:<span class="built_in">UIViewKeyframeAnimationOptionCalculationModeLinear</span></div><div class="line">         animations:^&#123;</div><div class="line">            <span class="comment">//添加帧动画</span></div><div class="line">                [<span class="built_in">UIView</span> addKeyframeWithRelativeStartTime:start</div><div class="line">                        relativeDuration:duratuion</div><div class="line">                        animations:^&#123;</div><div class="line">                &#125;];</div><div class="line">            <span class="comment">//如果用Autolayout做布局，需调用</span></div><div class="line">                [<span class="keyword">self</span>.view layoutIfNeeded];</div><div class="line">      &#125; completion:^(<span class="built_in">BOOL</span> finished) &#123;</div><div class="line">            <span class="comment">//完成操作</span></div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<ol>
+<li><p><strong>添加帧动画</strong></p>
+<p>其中<em>start</em>,<em>duration</em>参数为总时段的所占比率，如start=1/3,duration=1/3,即表示从时段的第1/3阶段开始,进行1/3时长的动画</p>
+</li>
+<li><p><strong>加载底层视图</strong></p>
+<p>以下形式为<strong>单独刷新imageView的layout</strong>，如在帧中,分时控制，一个物体自上而下,自左而右碰撞(不断走Z字路线),分段里,需单独改变,用以下方式.此时如果用Masnory做AutoLayout,需注意用mas_remakeConstraints:^(MASConstraintMaker *make)</p>
+</li>
+<li><p><strong>layoutIfNeeded</strong></p>
+<p>当使用Autuolayout做布局时,需要调用<em>layoutIfNeeded</em>刷新视图,当只需要刷新特定对象时,需要首先<em>setNeedsLayout</em>,如下图示例所示</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[<span class="keyword">self</span>.imageView mas_remakeConstraints:^(MASConstraintMaker *make) &#123;</div><div class="line">               make.right.equalTo(<span class="number">0</span>);</div><div class="line">               make.bottom.equalTo(<span class="number">-200</span>);</div><div class="line">               make.size.equalTo(<span class="built_in">CGSizeMake</span>(<span class="number">100</span>, <span class="number">100</span>));</div><div class="line">           &#125;];</div><div class="line">[<span class="keyword">self</span>.imageView setNeedsLayout];</div><div class="line">[<span class="keyword">self</span>.imageView layoutIfNeeded];</div></pre></td></tr></table></figure>
+</li>
+</ol>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;NSNotificationCenter&quot;&gt;&lt;a href=&quot;#NSNotificationCenter&quot; class=&quot;headerlink&quot; title=&quot;NSNotificationCenter&quot;&gt;&lt;/a&gt;NSNotificationCenter&lt;/h1&gt;&lt;
+      &lt;h1 id=&quot;CA-CoreAnimation动画&quot;&gt;&lt;a href=&quot;#CA-CoreAnimation动画&quot; class=&quot;headerlink&quot; title=&quot;CA:CoreAnimation动画&quot;&gt;&lt;/a&gt;CA:CoreAnimation动画&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;属于CALayer层的动画,属于最底层,UIView的底层也是CALayer,UIView是基于CALayer的封装,CALayer具备UIView的所有属性和方法&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;1-CABasicAnimation&quot;&gt;&lt;a href=&quot;#1-CABasicAnimation&quot; class=&quot;headerlink&quot; title=&quot;1. CABasicAnimation&quot;&gt;&lt;/a&gt;1. CABasicAnimation&lt;/h3&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;CABasicAnimation&lt;/span&gt; *animation = [&lt;span class=&quot;built_in&quot;&gt;CABasicAnimation&lt;/span&gt; animationWithKeyPath:&lt;span class=&quot;string&quot;&gt;@&quot;transform.rotation.y&quot;&lt;/span&gt;];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;animation.toValue = @(M_PI*&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;animation.duration = &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;animation.repeatCount = MAXFLOAT;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;[_imageView.layer addAnimation:animation forKey:&lt;span class=&quot;string&quot;&gt;@&quot;animationY&quot;&lt;/span&gt;];&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;key&lt;/strong&gt;：addAnimation时的key,为自定义动画时的标识，可用于指定动画进行操作,比如删除指定动画&lt;br&gt;key获取&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;KeyPath&lt;/strong&gt;：系统动画类型标识，用于获得系统动画&lt;ul&gt;
+&lt;li&gt;transform.rotation.x :系统绕x轴旋转动画&lt;/li&gt;
+&lt;li&gt;transform.rotation.y :系统绕y轴旋转动画&lt;/li&gt;
+&lt;li&gt;transform.rotation.z :系统绕z轴旋转动画&lt;/li&gt;
+&lt;li&gt;position : 用于CAKeyframeAnimation做沿“轨迹”运动,见下详细示例&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;2-CAKeyframeAnimation&quot;&gt;&lt;a href=&quot;#2-CAKeyframeAnimation&quot; class=&quot;headerlink&quot; title=&quot;2. CAKeyframeAnimation&quot;&gt;&lt;/a&gt;2. &lt;em&gt;CAKeyframeAnimation&lt;/em&gt;&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;CA帧动画,通常可用于按“轨迹”运动，与UIBezierPath结合&lt;/p&gt;
+&lt;/blockquote&gt;
+  &lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;UIBezierPath&lt;/span&gt; *path = [&lt;span class=&quot;built_in&quot;&gt;UIBezierPath&lt;/span&gt; bezierPathWithOvalInRect:rect];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;UIBezierPath&lt;/span&gt; *arc = [&lt;span class=&quot;built_in&quot;&gt;UIBezierPath&lt;/span&gt; bezierPathWithArcCenter:&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.view.center radius:&lt;span class=&quot;number&quot;&gt;120&lt;/span&gt; startAngle:M_PI_2*&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt; endAngle:M_PI_2*&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;+M_PI*&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt; clockwise:&lt;span class=&quot;literal&quot;&gt;YES&lt;/span&gt;];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;//要沿着路劲跑，必须用关键帧动画&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;//position:沿着路径动画&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;CAKeyframeAnimation&lt;/span&gt; *moveAnimation = [&lt;span class=&quot;built_in&quot;&gt;CAKeyframeAnimation&lt;/span&gt; animationWithKeyPath:&lt;span class=&quot;string&quot;&gt;@&quot;position&quot;&lt;/span&gt;];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;//设置动画的路径&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;moveAnimation.path = arc.CGPath;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;moveAnimation.duration = &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;moveAnimation.repeatCount = MAXFLOAT;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;[_imageView.layer addAnimation:moveAnimation forKey:&lt;span class=&quot;string&quot;&gt;@&quot;runWithPath&quot;&lt;/span&gt;];&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
       <category term="iOS" scheme="http://sjc2wbq.github.io/categories/iOS/"/>
     
     
-      <category term="Notification" scheme="http://sjc2wbq.github.io/tags/Notification/"/>
+      <category term="Animation" scheme="http://sjc2wbq.github.io/tags/Animation/"/>
     
   </entry>
   
