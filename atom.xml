@@ -842,41 +842,29 @@
   </entry>
   
   <entry>
-    <title>Notification</title>
-    <link href="http://sjc2wbq.github.io/2016/01/17/Notification/"/>
-    <id>http://sjc2wbq.github.io/2016/01/17/Notification/</id>
+    <title>CALayer</title>
+    <link href="http://sjc2wbq.github.io/2016/01/17/CALayer/"/>
+    <id>http://sjc2wbq.github.io/2016/01/17/CALayer/</id>
     <published>2016-01-17T13:38:50.000Z</published>
-    <updated>2016-05-20T04:04:39.000Z</updated>
+    <updated>2016-01-21T12:38:50.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="NSNotificationCenter"><a href="#NSNotificationCenter" class="headerlink" title="NSNotificationCenter"></a>NSNotificationCenter</h1><blockquote>
-<p>iOS通知中心</p>
+    <content type="html"><![CDATA[<h1 id="CALayer"><a href="#CALayer" class="headerlink" title="CALayer"></a>CALayer</h1><blockquote>
+<p>CAlayer是UIView的底层,通过修改CALayer去做一些界面的修改i</p>
 </blockquote>
-<h2 id="NSNotification类"><a href="#NSNotification类" class="headerlink" title="- NSNotification类"></a>- NSNotification类</h2><blockquote>
-<p>一个消息对象类,有三个成员变量</p>
-</blockquote>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">@property</span> (<span class="keyword">readonly</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *name;</div><div class="line"><span class="keyword">@property</span> (<span class="keyword">readonly</span>, <span class="keyword">retain</span>) <span class="keyword">id</span> object;</div><div class="line"><span class="keyword">@property</span> (<span class="keyword">readonly</span>, <span class="keyword">copy</span>) <span class="built_in">NSDictionary</span> *userInfo;</div></pre></td></tr></table></figure>
 <ul>
-<li>name:辨别消息对象的唯一标识</li>
-<li>object:针对某一个对象的消息</li>
-<li>userInfo:用来传值的一个字典</li>
+<li>发送通知</li>
+<li>接收通知</li>
+<li>删除通知</li>
 </ul>
-<h2 id="NSNotificationCenter类"><a href="#NSNotificationCenter类" class="headerlink" title="- NSNotificationCenter类"></a>- NSNotificationCenter类</h2><blockquote>
-<p>通知中心,使用单例设计,每个应用程序都会有一个默认的通知中心.用于调度通知的发送和接受</p>
-</blockquote>
-<pre><code class="objc">
-</code></pre>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;NSNotificationCenter&quot;&gt;&lt;a href=&quot;#NSNotificationCenter&quot; class=&quot;headerlink&quot; title=&quot;NSNotificationCenter&quot;&gt;&lt;/a&gt;NSNotificationCenter&lt;/h1&gt;&lt;
+      &lt;h1 id=&quot;CALayer&quot;&gt;&lt;a href=&quot;#CALayer&quot; class=&quot;headerlink&quot; title=&quot;CALayer&quot;&gt;&lt;/a&gt;CALayer&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;CAlayer是UIView的底层,通过修改CALayer去做一些界面的修
     
     </summary>
     
-      <category term="iOS" scheme="http://sjc2wbq.github.io/categories/iOS/"/>
-    
-    
-      <category term="Notification" scheme="http://sjc2wbq.github.io/tags/Notification/"/>
     
   </entry>
   
