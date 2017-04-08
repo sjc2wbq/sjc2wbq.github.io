@@ -101,34 +101,43 @@
 
 
 
-<meta name="description" content="You can’t always get what you wantBut if you try sometimes you might findYou get what you need  change22
+<meta name="description" content="You can’t always get what you wantBut if you try sometimes you might findYou get what you need change 1
 
 
 
 
 
-if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBer">
+if(isMobile){
+  alert(&apos;移动端&apos;)
+  var audioEl = document.getElementById(&apos;bgmusic&apos;);
+  audioEl.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="NOTES">
 <meta property="og:url" content="http://sjc2wbq.github.io/about/index.html">
 <meta property="og:site_name" content="NOTES">
-<meta property="og:description" content="You can’t always get what you wantBut if you try sometimes you might findYou get what you need  change22
+<meta property="og:description" content="You can’t always get what you wantBut if you try sometimes you might findYou get what you need change 1
 
 
 
 
 
-if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBer">
-<meta property="og:updated_time" content="2017-04-08T01:00:34.000Z">
+if(isMobile){
+  alert(&apos;移动端&apos;)
+  var audioEl = document.getElementById(&apos;bgmusic&apos;);
+  audioEl.">
+<meta property="og:updated_time" content="2017-04-08T03:23:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NOTES">
-<meta name="twitter:description" content="You can’t always get what you wantBut if you try sometimes you might findYou get what you need  change22
+<meta name="twitter:description" content="You can’t always get what you wantBut if you try sometimes you might findYou get what you need change 1
 
 
 
 
 
-if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBer">
+if(isMobile){
+  alert(&apos;移动端&apos;)
+  var audioEl = document.getElementById(&apos;bgmusic&apos;);
+  audioEl.">
 
 
 
@@ -298,13 +307,13 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
 
     
     
-      <blockquote class="blockquote-center" &="" align="center"><font size="4" &="" face="Bradley Hand"><br><br>You can’t always get what you want<br><br>But if you try sometimes you might find<br><br>You get what you need<br>  change22<br></font></blockquote>
+      <blockquote class="blockquote-center" &="" align="center"><font size="4" &="" face="Bradley Hand"><br><br>You can’t always get what you want<br><br>But if you try sometimes you might find<br><br>You get what you need<br> change 1<br></font></blockquote>
 
 <!-- <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=0 height=0 id="bgmusic" src="http://music.163.com/outchain/player?type=0&id=631130037&auto=1&height=32"></iframe> -->
-<audio id="bgmusic" preload="" loop controls src="http://7xq46x.com1.z0.glb.clouddn.com/You%20Can%27t%20Always%20Get%20What%20You%20Want%20-%20Ituana.mp3" hidden></audio>
-
-<script type="text/javascript">
-if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))){
+<!-- ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) -->
+<p><audio id="bgmusic" preload="" loop controls src="http://7xq46x.com1.z0.glb.clouddn.com/You%20Can%27t%20Always%20Get%20What%20You%20Want%20-%20Ituana.mp3" hidden></audio></p>
+<script type="text/javascript" src="/scripts/mobileMediaPlay.js">
+if(isMobile){
   alert('移动端')
   var audioEl = document.getElementById('bgmusic');
   audioEl.autoplay = 'autoplay';
@@ -317,18 +326,6 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
           audioEl.load(); // iOS 9   还需要额外的 load 一下, 否则直接 play 无效
           audioEl.play(); // iOS 7/8 仅需要 play 一下
       }
-
-      // 可以自动播放时正确的事件顺序是
-      // loadstart
-      // loadedmetadata
-      // loadeddata
-      // canplay
-      // play
-      // playing
-      //
-      // 不能自动播放时触发的事件是
-      // iPhone5  iOS 7.0.6 loadstart
-      // iPhone6s iOS 9.1   loadstart -> loadedmetadata -> loadeddata -> canplay
       audioEl.addEventListener('loadstart', function() {
           log('loadstart');
       }, false);
