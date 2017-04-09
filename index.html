@@ -362,7 +362,7 @@
       
         
           
-            <p>随便听听<br>change 5</p>
+            <p>随便听听<br>change 6</p>
 <p><audio id="bgmusic" autoplay preload="" controls src="http://oo5fnv8gq.bkt.clouddn.com/%E5%8F%A4%E5%A4%A9%E4%B9%90%20-%20%E5%90%BB%E5%BE%97%E5%88%B0%E7%88%B1%E4%B8%8D%E5%88%B0.mp3"></audio><br><!--吻得到爱不到--></p>
 <!-- <src= 'http://oo5fnv8gq.bkt.clouddn.com/%E5%8F%A4%E5%B7%A8%E5%9F%BA,%E5%8F%A4%E5%A4%A9%E4%B9%90%20-%20%E5%BD%93%E5%B9%B4%E6%83%85.mp3' > -->
 <!--当年情-->
@@ -386,9 +386,13 @@ if(isMobile()){
 </script>
 
 <script type="text/javascript">
+var audioEl = document.getElementById('bgmusic');
+audioEl.addEventListener('ended', function() {  
+  audioEl.src='http://oo5fnv8gq.bkt.clouddn.com/%E5%8F%A4%E5%B7%A8%E5%9F%BA,%E5%8F%A4%E5%A4%A9%E4%B9%90%20-%20%E5%BD%93%E5%B9%B4%E6%83%85.mp3';
+  audioEl.play();
+}, false);
 if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))){
   //alert('移动端')
-  var audioEl = document.getElementById('bgmusic');
   audioEl.autoplay = 'autoplay';
   (function() {
       function log(info) {
@@ -421,11 +425,6 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
       }, false);
       audioEl.addEventListener('pause', function() {
           log('pause');
-      }, false);
-      audioEl.addEventListener('ended', function() {  
-        alert('end');
-        audioEl.src='http://oo5fnv8gq.bkt.clouddn.com/%E5%8F%A4%E5%B7%A8%E5%9F%BA,%E5%8F%A4%E5%A4%A9%E4%B9%90%20-%20%E5%BD%93%E5%B9%B4%E6%83%85.mp3';
-        audioEl.play();
       }, false);
       // 由于 iOS Safari 限制不允许 audio autoplay, 必须用户主动交互(例如 click)后才能播放 audio,
       // 因此我们通过一个用户交互事件来主动 play 一下 audio.
@@ -1471,6 +1470,73 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
   
   
 
+  <article class="post post-type-picture " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://sjc2wbq.github.io/2016/03/01/pic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JunChuan Shi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NOTES">
+    </span>
+
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a href="/2016/03/01/pic/"><div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 100%;"><img src="/image/4.jpg" alt=""></div></div><div class="group-picture-row"><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/2.jpg" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/3.jpg" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/1.jpg" alt=""></div></div></div></div>
+</a>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://sjc2wbq.github.io/2016/03/01/7788/">
 
@@ -1597,73 +1663,6 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
             </a>
           </div>
           <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-picture " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sjc2wbq.github.io/2016/03/01/pic/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunChuan Shi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NOTES">
-    </span>
-
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <a href="/2016/03/01/pic/"><div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 100%;"><img src="/image/4.jpg" alt=""></div></div><div class="group-picture-row"><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/2.jpg" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/3.jpg" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/1.jpg" alt=""></div></div></div></div>
-</a>
-          
         
       
     </div>
