@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sjc2wbq.github.io/"/>
-  <updated>2017-04-09T17:30:49.000Z</updated>
+  <updated>2017-04-09T17:36:34.000Z</updated>
   <id>http://sjc2wbq.github.io/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="http://sjc2wbq.github.io/2017/04/05/music/"/>
     <id>http://sjc2wbq.github.io/2017/04/05/music/</id>
     <published>2017-04-04T20:19:21.000Z</published>
-    <updated>2017-04-09T17:30:49.000Z</updated>
+    <updated>2017-04-09T17:36:34.000Z</updated>
     
-    <content type="html"><![CDATA[<p>随便听听<br>change 3</p>
+    <content type="html"><![CDATA[<p>随便听听<br>change 4</p>
 <p><audio id="bgmusic" autoplay loop preload="" controls src="http://oo5fnv8gq.bkt.clouddn.com/%E5%8F%A4%E5%A4%A9%E4%B9%90%20-%20%E5%90%BB%E5%BE%97%E5%88%B0%E7%88%B1%E4%B8%8D%E5%88%B0.mp3"></audio><br><!--吻得到爱不到--></p>
 <!-- <src= 'http://oo5fnv8gq.bkt.clouddn.com/%E5%8F%A4%E5%B7%A8%E5%9F%BA,%E5%8F%A4%E5%A4%A9%E4%B9%90%20-%20%E5%BD%93%E5%B9%B4%E6%83%85.mp3' > -->
 <!--当年情-->
@@ -83,8 +83,8 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
           log('pause');
       }, false);
       audioEl.addEventListener('ended', function() {  
-        alert("end")
-      }, false)；
+        alert("end");
+      }, false);
       // 由于 iOS Safari 限制不允许 audio autoplay, 必须用户主动交互(例如 click)后才能播放 audio,
       // 因此我们通过一个用户交互事件来主动 play 一下 audio.
       window.addEventListener('touchstart', forceSafariPlayAudio, false);
@@ -97,7 +97,7 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
     
     <summary type="html">
     
-      &lt;p&gt;随便听听&lt;br&gt;change 3&lt;/p&gt;
+      &lt;p&gt;随便听听&lt;br&gt;change 4&lt;/p&gt;
 &lt;p&gt;&lt;audio id=&quot;bgmusic&quot; autoplay loop preload=&quot;&quot; controls src=&quot;http://oo5fnv8gq.bkt.clouddn.com/%E5%8F%A4%E5%A4%A9%E4
     
     </summary>
@@ -447,6 +447,27 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
   </entry>
   
   <entry>
+    <title></title>
+    <link href="http://sjc2wbq.github.io/2016/03/01/pic/"/>
+    <id>http://sjc2wbq.github.io/2016/03/01/pic/</id>
+    <published>2016-03-01T01:35:22.000Z</published>
+    <updated>2016-05-20T04:06:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 100%;"><img src="/image/4.jpg" alt=""></div></div><div class="group-picture-row"><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/2.jpg" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/3.jpg" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/1.jpg" alt=""></div></div></div></div>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;div class=&quot;group-picture&quot;&gt;&lt;div class=&quot;group-picture-container&quot;&gt;&lt;div class=&quot;group-picture-row&quot;&gt;&lt;div class=&quot;group-picture-column&quot; style=&quot;widt
+    
+    </summary>
+    
+      <category term="life" scheme="http://sjc2wbq.github.io/categories/life/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>pieces colloction</title>
     <link href="http://sjc2wbq.github.io/2016/03/01/7788/"/>
     <id>http://sjc2wbq.github.io/2016/03/01/7788/</id>
@@ -547,27 +568,6 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
     
     
       <category term="pieces colloction" scheme="http://sjc2wbq.github.io/tags/pieces-colloction/"/>
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="http://sjc2wbq.github.io/2016/03/01/pic/"/>
-    <id>http://sjc2wbq.github.io/2016/03/01/pic/</id>
-    <published>2016-03-01T01:35:22.000Z</published>
-    <updated>2016-05-20T04:06:54.000Z</updated>
-    
-    <content type="html"><![CDATA[<div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 100%;"><img src="/image/4.jpg" alt=""></div></div><div class="group-picture-row"><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/2.jpg" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/3.jpg" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/1.jpg" alt=""></div></div></div></div>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;div class=&quot;group-picture&quot;&gt;&lt;div class=&quot;group-picture-container&quot;&gt;&lt;div class=&quot;group-picture-row&quot;&gt;&lt;div class=&quot;group-picture-column&quot; style=&quot;widt
-    
-    </summary>
-    
-      <category term="life" scheme="http://sjc2wbq.github.io/categories/life/"/>
-    
     
   </entry>
   
@@ -911,6 +911,45 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
   </entry>
   
   <entry>
+    <title>Notification</title>
+    <link href="http://sjc2wbq.github.io/2016/01/17/Notification/"/>
+    <id>http://sjc2wbq.github.io/2016/01/17/Notification/</id>
+    <published>2016-01-17T13:38:50.000Z</published>
+    <updated>2016-05-20T04:04:39.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="NSNotificationCenter"><a href="#NSNotificationCenter" class="headerlink" title="NSNotificationCenter"></a>NSNotificationCenter</h1><blockquote>
+<p>iOS通知中心</p>
+</blockquote>
+<h2 id="NSNotification类"><a href="#NSNotification类" class="headerlink" title="- NSNotification类"></a>- NSNotification类</h2><blockquote>
+<p>一个消息对象类,有三个成员变量</p>
+</blockquote>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">@property</span> (<span class="keyword">readonly</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *name;</div><div class="line"><span class="keyword">@property</span> (<span class="keyword">readonly</span>, <span class="keyword">retain</span>) <span class="keyword">id</span> object;</div><div class="line"><span class="keyword">@property</span> (<span class="keyword">readonly</span>, <span class="keyword">copy</span>) <span class="built_in">NSDictionary</span> *userInfo;</div></pre></td></tr></table></figure>
+<ul>
+<li>name:辨别消息对象的唯一标识</li>
+<li>object:针对某一个对象的消息</li>
+<li>userInfo:用来传值的一个字典</li>
+</ul>
+<h2 id="NSNotificationCenter类"><a href="#NSNotificationCenter类" class="headerlink" title="- NSNotificationCenter类"></a>- NSNotificationCenter类</h2><blockquote>
+<p>通知中心,使用单例设计,每个应用程序都会有一个默认的通知中心.用于调度通知的发送和接受</p>
+</blockquote>
+<pre><code class="objc">
+</code></pre>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;NSNotificationCenter&quot;&gt;&lt;a href=&quot;#NSNotificationCenter&quot; class=&quot;headerlink&quot; title=&quot;NSNotificationCenter&quot;&gt;&lt;/a&gt;NSNotificationCenter&lt;/h1&gt;&lt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://sjc2wbq.github.io/categories/iOS/"/>
+    
+    
+      <category term="Notification" scheme="http://sjc2wbq.github.io/tags/Notification/"/>
+    
+  </entry>
+  
+  <entry>
     <title>KVO and KVC</title>
     <link href="http://sjc2wbq.github.io/2016/01/17/KVOandKVC/"/>
     <id>http://sjc2wbq.github.io/2016/01/17/KVOandKVC/</id>
@@ -977,45 +1016,6 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
     
     
       <category term="KVO &amp; KVC" scheme="http://sjc2wbq.github.io/tags/KVO-KVC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Notification</title>
-    <link href="http://sjc2wbq.github.io/2016/01/17/Notification/"/>
-    <id>http://sjc2wbq.github.io/2016/01/17/Notification/</id>
-    <published>2016-01-17T13:38:50.000Z</published>
-    <updated>2016-05-20T04:04:39.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="NSNotificationCenter"><a href="#NSNotificationCenter" class="headerlink" title="NSNotificationCenter"></a>NSNotificationCenter</h1><blockquote>
-<p>iOS通知中心</p>
-</blockquote>
-<h2 id="NSNotification类"><a href="#NSNotification类" class="headerlink" title="- NSNotification类"></a>- NSNotification类</h2><blockquote>
-<p>一个消息对象类,有三个成员变量</p>
-</blockquote>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">@property</span> (<span class="keyword">readonly</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *name;</div><div class="line"><span class="keyword">@property</span> (<span class="keyword">readonly</span>, <span class="keyword">retain</span>) <span class="keyword">id</span> object;</div><div class="line"><span class="keyword">@property</span> (<span class="keyword">readonly</span>, <span class="keyword">copy</span>) <span class="built_in">NSDictionary</span> *userInfo;</div></pre></td></tr></table></figure>
-<ul>
-<li>name:辨别消息对象的唯一标识</li>
-<li>object:针对某一个对象的消息</li>
-<li>userInfo:用来传值的一个字典</li>
-</ul>
-<h2 id="NSNotificationCenter类"><a href="#NSNotificationCenter类" class="headerlink" title="- NSNotificationCenter类"></a>- NSNotificationCenter类</h2><blockquote>
-<p>通知中心,使用单例设计,每个应用程序都会有一个默认的通知中心.用于调度通知的发送和接受</p>
-</blockquote>
-<pre><code class="objc">
-</code></pre>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;NSNotificationCenter&quot;&gt;&lt;a href=&quot;#NSNotificationCenter&quot; class=&quot;headerlink&quot; title=&quot;NSNotificationCenter&quot;&gt;&lt;/a&gt;NSNotificationCenter&lt;/h1&gt;&lt;
-    
-    </summary>
-    
-      <category term="iOS" scheme="http://sjc2wbq.github.io/categories/iOS/"/>
-    
-    
-      <category term="Notification" scheme="http://sjc2wbq.github.io/tags/Notification/"/>
     
   </entry>
   
