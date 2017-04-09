@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sjc2wbq.github.io/"/>
-  <updated>2017-04-09T18:30:21.000Z</updated>
+  <updated>2017-04-09T18:31:28.000Z</updated>
   <id>http://sjc2wbq.github.io/</id>
   
   <author>
@@ -20,10 +20,10 @@
     <link href="http://sjc2wbq.github.io/2017/04/05/music/"/>
     <id>http://sjc2wbq.github.io/2017/04/05/music/</id>
     <published>2017-04-04T20:19:21.000Z</published>
-    <updated>2017-04-09T18:30:21.000Z</updated>
+    <updated>2017-04-09T18:31:28.000Z</updated>
     
-    <content type="html"><![CDATA[<div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 100%;"><img src="http://oo5f0tnid.bkt.clouddn.com/timg-2.jpeg" alt=""></div></div><div class="group-picture-row"></div></div></div>
-<audio id="bgmusic" autoplay preload="" controls hidden></audio>
+    <content type="html"><![CDATA[<p>change1<br><div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 100%;"><img src="http://oo5f0tnid.bkt.clouddn.com/timg-2.jpeg" alt=""></div></div><div class="group-picture-row"></div></div></div></p>
+<audio id="bgmusic" preload="" controls hidden></audio>
 
 
 <!--吻得到爱不到-->
@@ -102,7 +102,7 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
     
     <summary type="html">
     
-      &lt;div class=&quot;group-picture&quot;&gt;&lt;div class=&quot;group-picture-container&quot;&gt;&lt;div class=&quot;group-picture-row&quot;&gt;&lt;div class=&quot;group-picture-column&quot; style=&quot;widt
+      &lt;p&gt;change1&lt;br&gt;&lt;div class=&quot;group-picture&quot;&gt;&lt;div class=&quot;group-picture-container&quot;&gt;&lt;div class=&quot;group-picture-row&quot;&gt;&lt;div class=&quot;group-picture-colum
     
     </summary>
     
