@@ -105,8 +105,8 @@
 var i = 0;
 audioEl.addEventListener(&apos;ended&apos;, function() {  
   i = i + 1;
-  if(i%2 == 1){
-      audioEl.src=&apos;http://oo5fnv8gq.bkt.clouddn">
+  if(i%3 == 1){
+    audioEl.src=&apos;http://oo5fnv8gq.bkt.clouddn.c">
 <meta property="og:type" content="article">
 <meta property="og:title" content="~♪♬♬♪♪♬♬♪~">
 <meta property="og:url" content="http://sjc2wbq.github.io/2017/04/05/music/index.html">
@@ -115,17 +115,17 @@ audioEl.addEventListener(&apos;ended&apos;, function() {
 var i = 0;
 audioEl.addEventListener(&apos;ended&apos;, function() {  
   i = i + 1;
-  if(i%2 == 1){
-      audioEl.src=&apos;http://oo5fnv8gq.bkt.clouddn">
-<meta property="og:updated_time" content="2017-04-09T19:19:41.000Z">
+  if(i%3 == 1){
+    audioEl.src=&apos;http://oo5fnv8gq.bkt.clouddn.c">
+<meta property="og:updated_time" content="2017-04-09T20:07:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="~♪♬♬♪♪♬♬♪~">
 <meta name="twitter:description" content="var audioEl = document.getElementById(&apos;bgmusic&apos;);
 var i = 0;
 audioEl.addEventListener(&apos;ended&apos;, function() {  
   i = i + 1;
-  if(i%2 == 1){
-      audioEl.src=&apos;http://oo5fnv8gq.bkt.clouddn">
+  if(i%3 == 1){
+    audioEl.src=&apos;http://oo5fnv8gq.bkt.clouddn.c">
 
 
 
@@ -371,7 +371,7 @@ audioEl.addEventListener(&apos;ended&apos;, function() {
       
 
       
-        <audio id="bgmusic" autoplay preload="" controls hidden src="http://oo5fnv8gq.bkt.clouddn.com/%E5%8F%A4%E5%A4%A9%E4%B9%90%20-%20%E5%90%BB%E5%BE%97%E5%88%B0%E7%88%B1%E4%B8%8D%E5%88%B0.mp3"></audio>
+        <audio id="bgmusic" autoplay preload="" controls hidden src="http://oo5fnv8gq.bkt.clouddn.com/%E5%8F%A4%E5%A4%A9%E4%B9%90-%E5%83%8F%E6%88%91%E8%BF%99%E4%B8%80%E7%A7%8D%E7%94%B7%E4%BA%BA%20-%202011.mp3"></audio>
 
 
 <!--吻得到爱不到-->
@@ -390,14 +390,20 @@ var audioEl = document.getElementById('bgmusic');
 var i = 0;
 audioEl.addEventListener('ended', function() {  
   i = i + 1;
-  if(i%2 == 1){
-      audioEl.src='http://oo5fnv8gq.bkt.clouddn.com/%E5%8F%A4%E5%B7%A8%E5%9F%BA,%E5%8F%A4%E5%A4%A9%E4%B9%90%20-%20%E5%BD%93%E5%B9%B4%E6%83%85.mp3';
-    <!-- 当年情 -->
-  }
-  if(i%2 == 0){
+  if(i%3 == 1){
     audioEl.src='http://oo5fnv8gq.bkt.clouddn.com/%E5%8F%A4%E5%A4%A9%E4%B9%90%20-%20%E5%90%BB%E5%BE%97%E5%88%B0%E7%88%B1%E4%B8%8D%E5%88%B0.mp3';
     <!-- 吻得到爱不到 -->
   }
+  if(i%3 == 2){
+      audioEl.src='http://oo5fnv8gq.bkt.clouddn.com/%E5%8F%A4%E5%B7%A8%E5%9F%BA,%E5%8F%A4%E5%A4%A9%E4%B9%90%20-%20%E5%BD%93%E5%B9%B4%E6%83%85.mp3';
+    <!-- 当年情 -->
+  }
+  if(i%3 == 0){
+    audioEl.src='http://oo5fnv8gq.bkt.clouddn.com/%E5%8F%A4%E5%A4%A9%E4%B9%90-%E5%83%8F%E6%88%91%E8%BF%99%E4%B8%80%E7%A7%8D%E7%94%B7%E4%BA%BA%20-%202011.mp3';
+    <!--像我这一种男人 -->
+  }
+
+
   audioEl.play();
 }, false);
 if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))){
