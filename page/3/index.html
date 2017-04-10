@@ -274,7 +274,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sjc2wbq.github.io/2016/01/17/Notification/">
+    <link itemprop="mainEntityOfPage" href="http://sjc2wbq.github.io/2016/01/17/Animation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JunChuan Shi">
@@ -296,8 +296,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/01/17/Notification/" itemprop="url">
-                  Notification
+                <a class="post-title-link" href="/2016/01/17/Animation/" itemprop="url">
+                  Animation
                 </a>
               
             
@@ -353,7 +353,7 @@
 
           
           
-             <span id="/2016/01/17/Notification/" class="leancloud_visitors" data-flag-title="Notification">
+             <span id="/2016/01/17/Animation/" class="leancloud_visitors" data-flag-title="Animation">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -383,26 +383,31 @@
 
       
         
-          
-            <h1 id="NSNotificationCenter"><a href="#NSNotificationCenter" class="headerlink" title="NSNotificationCenter"></a>NSNotificationCenter</h1><blockquote>
-<p>iOS通知中心</p>
+          <h1 id="CA-CoreAnimation动画"><a href="#CA-CoreAnimation动画" class="headerlink" title="CA:CoreAnimation动画"></a>CA:CoreAnimation动画</h1><blockquote>
+<p>属于CALayer层的动画,属于最底层,UIView的底层也是CALayer,UIView是基于CALayer的封装,CALayer具备UIView的所有属性和方法</p>
 </blockquote>
-<h2 id="NSNotification类"><a href="#NSNotification类" class="headerlink" title="- NSNotification类"></a>- NSNotification类</h2><blockquote>
-<p>一个消息对象类,有三个成员变量</p>
-</blockquote>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">@property</span> (<span class="keyword">readonly</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *name;</div><div class="line"><span class="keyword">@property</span> (<span class="keyword">readonly</span>, <span class="keyword">retain</span>) <span class="keyword">id</span> object;</div><div class="line"><span class="keyword">@property</span> (<span class="keyword">readonly</span>, <span class="keyword">copy</span>) <span class="built_in">NSDictionary</span> *userInfo;</div></pre></td></tr></table></figure>
-<ul>
-<li>name:辨别消息对象的唯一标识</li>
-<li>object:针对某一个对象的消息</li>
-<li>userInfo:用来传值的一个字典</li>
+<h3 id="1-CABasicAnimation"><a href="#1-CABasicAnimation" class="headerlink" title="1. CABasicAnimation"></a>1. CABasicAnimation</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">CABasicAnimation</span> *animation = [<span class="built_in">CABasicAnimation</span> animationWithKeyPath:<span class="string">@"transform.rotation.y"</span>];</div><div class="line">animation.toValue = @(M_PI*<span class="number">2</span>);</div><div class="line">animation.duration = <span class="number">3</span>;</div><div class="line">animation.repeatCount = MAXFLOAT;</div><div class="line">[_imageView.layer addAnimation:animation forKey:<span class="string">@"animationY"</span>];</div></pre></td></tr></table></figure>
+<ol>
+<li><strong>key</strong>：addAnimation时的key,为自定义动画时的标识，可用于指定动画进行操作,比如删除指定动画<br>key获取</li>
+<li><strong>KeyPath</strong>：系统动画类型标识，用于获得系统动画<ul>
+<li>transform.rotation.x :系统绕x轴旋转动画</li>
+<li>transform.rotation.y :系统绕y轴旋转动画</li>
+<li>transform.rotation.z :系统绕z轴旋转动画</li>
+<li>position : 用于CAKeyframeAnimation做沿“轨迹”运动,见下详细示例</li>
 </ul>
-<h2 id="NSNotificationCenter类"><a href="#NSNotificationCenter类" class="headerlink" title="- NSNotificationCenter类"></a>- NSNotificationCenter类</h2><blockquote>
-<p>通知中心,使用单例设计,每个应用程序都会有一个默认的通知中心.用于调度通知的发送和接受</p>
+</li>
+</ol>
+<h3 id="2-CAKeyframeAnimation"><a href="#2-CAKeyframeAnimation" class="headerlink" title="2. CAKeyframeAnimation"></a>2. <em>CAKeyframeAnimation</em></h3><blockquote>
+<p>CA帧动画,通常可用于按“轨迹”运动，与UIBezierPath结合</p>
 </blockquote>
-<pre><code class="objc">
-</code></pre>
-
-          
+  <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIBezierPath</span> *path = [<span class="built_in">UIBezierPath</span> bezierPathWithOvalInRect:rect];</div><div class="line"><span class="built_in">UIBezierPath</span> *arc = [<span class="built_in">UIBezierPath</span> bezierPathWithArcCenter:<span class="keyword">self</span>.view.center radius:<span class="number">120</span> startAngle:M_PI_2*<span class="number">3</span> endAngle:M_PI_2*<span class="number">3</span>+M_PI*<span class="number">2</span> clockwise:<span class="literal">YES</span>];</div><div class="line">  <span class="comment">//要沿着路劲跑，必须用关键帧动画</span></div><div class="line">  <span class="comment">//position:沿着路径动画</span></div><div class="line"><span class="built_in">CAKeyframeAnimation</span> *moveAnimation = [<span class="built_in">CAKeyframeAnimation</span> animationWithKeyPath:<span class="string">@"position"</span>];</div><div class="line">  <span class="comment">//设置动画的路径</span></div><div class="line">moveAnimation.path = arc.CGPath;</div><div class="line">moveAnimation.duration = <span class="number">3</span>;</div><div class="line">moveAnimation.repeatCount = MAXFLOAT;</div><div class="line">[_imageView.layer addAnimation:moveAnimation forKey:<span class="string">@"runWithPath"</span>];</div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/01/17/Animation/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
