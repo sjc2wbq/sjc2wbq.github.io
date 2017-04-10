@@ -931,7 +931,7 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
 <h4 id="OC单例创建"><a href="#OC单例创建" class="headerlink" title="OC单例创建"></a>OC单例创建</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Persion</span> : <span class="title">NSObject</span></span></div><div class="line"><span class="keyword">@end</span></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Persion</span></span></div><div class="line">+ (<span class="keyword">instancetype</span>)sharedInstance &#123;</div><div class="line">    <span class="keyword">static</span> Persion *sharedInstance = <span class="literal">nil</span>;</div><div class="line">    <span class="keyword">static</span> <span class="built_in">dispatch_once_t</span> onceToken;</div><div class="line">    <span class="built_in">dispatch_once</span>(&amp;onceToken, ^&#123;</div><div class="line">        sharedInstance = [[Persion alloc] init];</div><div class="line">    &#125;);</div><div class="line">    <span class="keyword">return</span> sharedInstance;</div><div class="line">&#125;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
 <p>在使用单例时，我们需要知道<br><div class="note sucess"><p>单例是全局唯一,在程序的生命周期中不管在何处使用都应该是同一个对象。</p>
 </div>
-<div class="note info"><p>确保单例的唯一性,需要是初始化方法私有化。这样的话，需要我们重载类的所有初始化方法。</p>
+<div class="note info"><p>确保单例的唯一性,需要是初始化方法私有化,需要我们重载类的所有初始化方法。</p>
 </div><br><div class="note warning"><p>也因为第一条，在生命周期中只有唯一一个，就意味着我们需要确保单例的线程安全。</p>
 </div></p>
 <p>下面列举几种swift 单例的创建方法</p>
@@ -1353,73 +1353,6 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
   
   
 
-  <article class="post post-type-picture " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sjc2wbq.github.io/2016/03/01/pic/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunChuan Shi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NOTES">
-    </span>
-
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <a href="/2016/03/01/pic/"><div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 100%;"><img src="/image/4.jpg" alt=""></div></div><div class="group-picture-row"><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/2.jpg" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/3.jpg" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/1.jpg" alt=""></div></div></div></div>
-</a>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://sjc2wbq.github.io/2016/03/01/7788/">
 
@@ -1546,6 +1479,73 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
             </a>
           </div>
           <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-picture " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://sjc2wbq.github.io/2016/03/01/pic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JunChuan Shi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NOTES">
+    </span>
+
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a href="/2016/03/01/pic/"><div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 100%;"><img src="/image/4.jpg" alt=""></div></div><div class="group-picture-row"><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/2.jpg" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/3.jpg" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/1.jpg" alt=""></div></div></div></div>
+</a>
+          
         
       
     </div>
