@@ -109,7 +109,7 @@ OC单例创建123456789101112@interface Persion : NSObject@end@implementation Pe
 <meta property="og:site_name" content="NOTES">
 <meta property="og:description" content="单例，作为日常中出场率较高的设计模式，还是值得单独一篇文章来列举下常见的创建方式，Objective-C 下，一般是这么创建单例。
 OC单例创建123456789101112@interface Persion : NSObject@end@implementation Persion+ (instancetype)sharedInstance &amp;#123;    static Persion *">
-<meta property="og:updated_time" content="2017-04-10T07:23:38.000Z">
+<meta property="og:updated_time" content="2017-04-10T07:26:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用Swift创建Singleton的几种方式">
 <meta name="twitter:description" content="单例，作为日常中出场率较高的设计模式，还是值得单独一篇文章来列举下常见的创建方式，Objective-C 下，一般是这么创建单例。
@@ -383,7 +383,7 @@ OC单例创建123456789101112@interface Persion : NSObject@end@implementation Pe
       
         <p><em>单例，作为日常中出场率较高的设计模式，还是值得单独一篇文章来列举下常见的创建方式，Objective-C 下，一般是这么创建单例。</em></p>
 <h4 id="OC单例创建"><a href="#OC单例创建" class="headerlink" title="OC单例创建"></a>OC单例创建</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Persion</span> : <span class="title">NSObject</span></span></div><div class="line"><span class="keyword">@end</span></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Persion</span></span></div><div class="line">+ (<span class="keyword">instancetype</span>)sharedInstance &#123;</div><div class="line">    <span class="keyword">static</span> Persion *sharedInstance = <span class="literal">nil</span>;</div><div class="line">    <span class="keyword">static</span> <span class="built_in">dispatch_once_t</span> onceToken;</div><div class="line">    <span class="built_in">dispatch_once</span>(&amp;onceToken, ^&#123;</div><div class="line">        sharedInstance = [[Persion alloc] init];</div><div class="line">    &#125;);</div><div class="line">    <span class="keyword">return</span> sharedInstance;</div><div class="line">&#125;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
-<p>在使用单例时我们需要知道:<div class="note default"><p>单例是全局唯一,在程序的生命周期中不管在何处使用都应该是同一个对象。</p>
+<p>在使用单例时我们需要知道:<div class="note "><p>单例是全局唯一,在程序的生命周期中不管在何处使用都应该是同一个对象。</p>
 </div><div class="note info"><p>确保单例的唯一性,需要是初始化方法私有化,需要我们重载类的所有初始化方法。</p>
 </div><div class="note warning"><p>也因为第一条，在生命周期中只有唯一一个，我们需要确保单例的线程安全。</p>
 </div>下面列举几种swift单例的创建方法:</p>
