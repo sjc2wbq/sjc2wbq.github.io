@@ -767,7 +767,7 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
       
         
           
-            <p><blockquote class="blockquote-center">stay calm stay focus</blockquote><br><img src="/image/fighting.jpg" class="full-image"><br><!-- ![](/image/fighting.jpg) --><br>  没睡好,很困,记一下:</p>
+            <p><blockquote class="blockquote-center">stay calm stay focus</blockquote><br><img src="/image/fighting.jpg" alt=""><br>  没睡好,很困,记一下:</p>
 <blockquote>
 <p>一个好用的库/(ㄒoㄒ)/~~</p>
 </blockquote>
@@ -927,7 +927,7 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
       
         
           
-            <p>单例，作为日常中出场率较高的设计模式，还是值得单独一篇文章来列举下常见的创建方式。Objective-C 下，一般是这么创建单例</p>
+            <p><em>单例，作为日常中出场率较高的设计模式，还是值得单独一篇文章来列举下常见的创建方式。Objective-C 下，一般是这么创建单例。</em></p>
 <h4 id="OC单例创建"><a href="#OC单例创建" class="headerlink" title="OC单例创建"></a>OC单例创建</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Persion</span> : <span class="title">NSObject</span></span></div><div class="line"><span class="keyword">@end</span></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Persion</span></span></div><div class="line">+ (<span class="keyword">instancetype</span>)sharedInstance &#123;</div><div class="line">    <span class="keyword">static</span> Persion *sharedInstance = <span class="literal">nil</span>;</div><div class="line">    <span class="keyword">static</span> <span class="built_in">dispatch_once_t</span> onceToken;</div><div class="line">    <span class="built_in">dispatch_once</span>(&amp;onceToken, ^&#123;</div><div class="line">        sharedInstance = [[Persion alloc] init];</div><div class="line">    &#125;);</div><div class="line">    <span class="keyword">return</span> sharedInstance;</div><div class="line">&#125;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
 <p>在使用单例时，我们需要知道</p>
 <ul>
