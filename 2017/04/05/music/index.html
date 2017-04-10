@@ -101,31 +101,19 @@
 
 
 
-<meta name="description" content="var audioEl = document.getElementById(&apos;bgmusic&apos;);
-var i = 0;
-audioEl.addEventListener(&apos;ended&apos;, function() {  
-  i = i + 1;
-  if(i%3 == 1){
-    audioEl.src=&apos;http://oo5fnv8gq.bkt.clouddn.c">
+<meta name="description" content="由于由于 iOS Safari 限制不允许 audio autoplay，在iOS端的web自动播放音乐被禁止，通过window.addEventListener(&amp;#39;touchstart&amp;#39;, forceSafariPlayAudio, false)监听手势触发，做个“伪”自动播放，当下滑或者触屏幕时开启播放
+添加script脚本，通过audioEl.addEventListene">
 <meta property="og:type" content="article">
-<meta property="og:title" content="~♪♬♬♪♪♬♬♪~">
+<meta property="og:title" content="如何在iOS端web插入音乐并且自动顺序播放音乐">
 <meta property="og:url" content="http://sjc2wbq.github.io/2017/04/05/music/index.html">
 <meta property="og:site_name" content="NOTES">
-<meta property="og:description" content="var audioEl = document.getElementById(&apos;bgmusic&apos;);
-var i = 0;
-audioEl.addEventListener(&apos;ended&apos;, function() {  
-  i = i + 1;
-  if(i%3 == 1){
-    audioEl.src=&apos;http://oo5fnv8gq.bkt.clouddn.c">
-<meta property="og:updated_time" content="2017-04-09T20:14:53.000Z">
+<meta property="og:description" content="由于由于 iOS Safari 限制不允许 audio autoplay，在iOS端的web自动播放音乐被禁止，通过window.addEventListener(&amp;#39;touchstart&amp;#39;, forceSafariPlayAudio, false)监听手势触发，做个“伪”自动播放，当下滑或者触屏幕时开启播放
+添加script脚本，通过audioEl.addEventListene">
+<meta property="og:updated_time" content="2017-04-10T06:04:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="~♪♬♬♪♪♬♬♪~">
-<meta name="twitter:description" content="var audioEl = document.getElementById(&apos;bgmusic&apos;);
-var i = 0;
-audioEl.addEventListener(&apos;ended&apos;, function() {  
-  i = i + 1;
-  if(i%3 == 1){
-    audioEl.src=&apos;http://oo5fnv8gq.bkt.clouddn.c">
+<meta name="twitter:title" content="如何在iOS端web插入音乐并且自动顺序播放音乐">
+<meta name="twitter:description" content="由于由于 iOS Safari 限制不允许 audio autoplay，在iOS端的web自动播放音乐被禁止，通过window.addEventListener(&amp;#39;touchstart&amp;#39;, forceSafariPlayAudio, false)监听手势触发，做个“伪”自动播放，当下滑或者触屏幕时开启播放
+添加script脚本，通过audioEl.addEventListene">
 
 
 
@@ -159,7 +147,7 @@ audioEl.addEventListener(&apos;ended&apos;, function() {
 
 
 
-  <title> ~♪♬♬♪♪♬♬♪~ | NOTES </title>
+  <title> 如何在iOS端web插入音乐并且自动顺序播放音乐 | NOTES </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -309,7 +297,7 @@ audioEl.addEventListener(&apos;ended&apos;, function() {
             
             
               
-                ~♪♬♬♪♪♬♬♪~
+                如何在iOS端web插入音乐并且自动顺序播放音乐
               
             
           </h1>
@@ -342,7 +330,7 @@ audioEl.addEventListener(&apos;ended&apos;, function() {
 
           
           
-             <span id="/2017/04/05/music/" class="leancloud_visitors" data-flag-title="~♪♬♬♪♪♬♬♪~">
+             <span id="/2017/04/05/music/" class="leancloud_visitors" data-flag-title="如何在iOS端web插入音乐并且自动顺序播放音乐">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -371,7 +359,13 @@ audioEl.addEventListener(&apos;ended&apos;, function() {
       
 
       
-        <audio id="bgmusic" autoplay preload="" controls hidden src="http://oo5fnv8gq.bkt.clouddn.com/%E5%8F%A4%E5%A4%A9%E4%B9%90-%E5%83%8F%E6%88%91%E8%BF%99%E4%B8%80%E7%A7%8D%E7%94%B7%E4%BA%BA.mp3"></audio>
+        <ol>
+<li>由于由于 iOS Safari 限制不允许 audio autoplay，在iOS端的web自动播放音乐被禁止，通过<code>window.addEventListener(&#39;touchstart&#39;, forceSafariPlayAudio, false)</code>监听手势触发，做个“伪”自动播放，当下滑或者触屏幕时开启播放</li>
+<li>添加script脚本，通过<code>audioEl.addEventListener(&#39;ended&#39;, function(){}，false)</code>方法监听歌曲播放结束时的状态，用七牛云存储获得音乐src，顺序播放三个曲目。</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">audio</span> <span class="attr">id</span>=<span class="string">"bgmusic"</span> <span class="attr">autoplay</span> <span class="attr">preload</span>  <span class="attr">controls</span> <span class="attr">hidden</span> <span class="attr">src</span> = <span class="string">'http://oo5fnv8gq.bkt.clouddn.com/%E5%8F%A4%E5%A4%A9%E4%B9%90-%E5%83%8F%E6%88%91%E8%BF%99%E4%B8%80%E7%A7%8D%E7%94%B7%E4%BA%BA.mp3'</span>&gt;</span><span class="tag">&lt;/<span class="name">audio</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="xml"></span></div><div class="line">var audioEl = document.getElementById('bgmusic');<span class="comment">&lt;!-- 获得audio --&gt;</span></div><div class="line">var i = 0;</div><div class="line">audioEl.addEventListener('ended', function() &#123;  </div><div class="line">  i = i + 1;</div><div class="line">  if(i%3 == 1)&#123;<span class="comment">&lt;!-- 对3取余替换音乐的src --&gt;</span></div><div class="line">    audioEl.src='http://oo5fnv8gq.bkt.clouddn.com/%E5%8F%A4%E5%A4%A9%E4%B9%90%20-%20%E5%90%BB%E5%BE%97%E5%88%B0%E7%88%B1%E4%B8%8D%E5%88%B0.mp3';</div><div class="line">    <span class="comment">&lt;!-- 曲目1 --&gt;</span></div><div class="line">  &#125;</div><div class="line">  if(i%3 == 2)&#123;</div><div class="line">      audioEl.src='http://oo5fnv8gq.bkt.clouddn.com/%E5%8F%A4%E5%B7%A8%E5%9F%BA,%E5%8F%A4%E5%A4%A9%E4%B9%90%20-%20%E5%BD%93%E5%B9%B4%E6%83%85.mp3';</div><div class="line">    <span class="comment">&lt;!-- 曲目2 --&gt;</span></div><div class="line">  &#125;</div><div class="line">  if(i%3 == 0)&#123;</div><div class="line">    audioEl.src='http://oo5fnv8gq.bkt.clouddn.com/%E5%8F%A4%E5%A4%A9%E4%B9%90-%E5%83%8F%E6%88%91%E8%BF%99%E4%B8%80%E7%A7%8D%E7%94%B7%E4%BA%BA.mp3';</div><div class="line">    <span class="comment">&lt;!-- 曲目3 --&gt;</span></div><div class="line">  &#125;</div><div class="line">  audioEl.play();</div><div class="line">&#125;, false);</div><div class="line"></div><div class="line">if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)))&#123;</div><div class="line">  <span class="comment">&lt;!-- 判断web端为移动端时，监听手势做“伪”自动播放 --&gt;</span></div><div class="line">  audioEl.autoplay = 'autoplay';</div><div class="line">  (function() &#123;</div><div class="line">      function log(info) &#123;</div><div class="line">          console.log(info);</div><div class="line">      &#125;</div><div class="line">      function forceSafariPlayAudio() &#123;</div><div class="line">          audioEl.load(); <span class="comment">&lt;!-- iOS 9   还需要额外的 load 一下, 否则直接 play 无效 --&gt;</span></div><div class="line">          audioEl.play(); <span class="comment">&lt;!-- iOS 7/8 仅需要 play 一下 --&gt;</span></div><div class="line">      &#125;</div><div class="line">      audioEl.addEventListener('loadstart', function() &#123;</div><div class="line">          log('loadstart');</div><div class="line">      &#125;, false);</div><div class="line">      audioEl.addEventListener('loadeddata', function() &#123;</div><div class="line">          log('loadeddata');</div><div class="line">      &#125;, false);</div><div class="line">      audioEl.addEventListener('loadedmetadata', function() &#123;</div><div class="line">          log('loadedmetadata');</div><div class="line">      &#125;, false);</div><div class="line">      audioEl.addEventListener('canplay', function() &#123;</div><div class="line">          log('canplay');</div><div class="line">      &#125;, false);</div><div class="line">      audioEl.addEventListener('play', function() &#123;</div><div class="line">          log('play');</div><div class="line">          <span class="comment">&lt;!-- 当 audio 能够播放后, 移除这个事件 --&gt;</span></div><div class="line">          window.removeEventListener('touchstart', forceSafariPlayAudio, false);</div><div class="line">      &#125;, false);</div><div class="line">      audioEl.addEventListener('playing', function() &#123;</div><div class="line">          log('playing');</div><div class="line">      &#125;, false);</div><div class="line">      audioEl.addEventListener('pause', function() &#123;</div><div class="line">          log('pause');</div><div class="line">      &#125;, false);</div><div class="line">      <span class="comment">&lt;!-- 由于 iOS Safari 限制不允许 audio autoplay, 必须用户主动交互(例如 click)后才能播放 audio --&gt;</span>,</div><div class="line">      window.addEventListener('touchstart', forceSafariPlayAudio, false);</div><div class="line">  &#125;)();</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<audio id="bgmusic" autoplay preload="" controls hidden src="http://oo5fnv8gq.bkt.clouddn.com/%E5%8F%A4%E5%A4%A9%E4%B9%90%20-%20%E5%90%BB%E5%BE%97%E5%88%B0%E7%88%B1%E4%B8%8D%E5%88%B0.mp3"></audio>
+
 
 
 <!--吻得到爱不到-->
@@ -390,17 +384,18 @@ var audioEl = document.getElementById('bgmusic');
 var i = 0;
 audioEl.addEventListener('ended', function() {  
   i = i + 1;
+
   if(i%3 == 1){
-    audioEl.src='http://oo5fnv8gq.bkt.clouddn.com/%E5%8F%A4%E5%A4%A9%E4%B9%90%20-%20%E5%90%BB%E5%BE%97%E5%88%B0%E7%88%B1%E4%B8%8D%E5%88%B0.mp3';
-    <!-- 吻得到爱不到 -->
-  }
-  if(i%3 == 2){
       audioEl.src='http://oo5fnv8gq.bkt.clouddn.com/%E5%8F%A4%E5%B7%A8%E5%9F%BA,%E5%8F%A4%E5%A4%A9%E4%B9%90%20-%20%E5%BD%93%E5%B9%B4%E6%83%85.mp3';
     <!-- 当年情 -->
   }
-  if(i%3 == 0){
+  if(i%3 == 2){
     audioEl.src='http://oo5fnv8gq.bkt.clouddn.com/%E5%8F%A4%E5%A4%A9%E4%B9%90-%E5%83%8F%E6%88%91%E8%BF%99%E4%B8%80%E7%A7%8D%E7%94%B7%E4%BA%BA.mp3';
     <!--像我这一种男人 -->
+  }
+  if(i%3 == 0){
+    audioEl.src='http://oo5fnv8gq.bkt.clouddn.com/%E5%8F%A4%E5%A4%A9%E4%B9%90%20-%20%E5%90%BB%E5%BE%97%E5%88%B0%E7%88%B1%E4%B8%8D%E5%88%B0.mp3';
+    <!-- 吻得到爱不到 -->
   }
 
 
@@ -485,8 +480,8 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/19/choochoo/" rel="next" title="choochoo">
-                <i class="fa fa-chevron-left"></i> choochoo
+              <a href="/2016/06/02/regular-expressioncheckPhone/" rel="next" title="regular expression of checkPhone">
+                <i class="fa fa-chevron-left"></i> regular expression of checkPhone
               </a>
             
           </div>
@@ -580,7 +575,7 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
