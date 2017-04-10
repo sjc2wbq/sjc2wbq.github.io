@@ -929,10 +929,10 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
           
             <p><em>单例，作为日常中出场率较高的设计模式，还是值得单独一篇文章来列举下常见的创建方式。Objective-C 下，一般是这么创建单例。</em></p>
 <h4 id="OC单例创建"><a href="#OC单例创建" class="headerlink" title="OC单例创建"></a>OC单例创建</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Persion</span> : <span class="title">NSObject</span></span></div><div class="line"><span class="keyword">@end</span></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Persion</span></span></div><div class="line">+ (<span class="keyword">instancetype</span>)sharedInstance &#123;</div><div class="line">    <span class="keyword">static</span> Persion *sharedInstance = <span class="literal">nil</span>;</div><div class="line">    <span class="keyword">static</span> <span class="built_in">dispatch_once_t</span> onceToken;</div><div class="line">    <span class="built_in">dispatch_once</span>(&amp;onceToken, ^&#123;</div><div class="line">        sharedInstance = [[Persion alloc] init];</div><div class="line">    &#125;);</div><div class="line">    <span class="keyword">return</span> sharedInstance;</div><div class="line">&#125;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
-<p>在使用单例时，我们需要知道<br><div class="note info"><p>单例是全局唯一。 在程序的生命周期中，不管在何处使用 ，都应该是同一个对象。</p>
+<p>在使用单例时，我们需要知道<br><div class="note sucess"><p>单例是全局唯一,在程序的生命周期中不管在何处使用都应该是同一个对象。</p>
 </div>
-<div class="note warning"><p>确保单例的唯一性，需要是初始化方法私有化。这样的话，需要我们重载类的所有初始化方法</p>
-</div><br><div class="note danger"><p>也因为第一条，在生命周期中只有唯一一个，就意味着我们需要确保单例的线程安全。</p>
+<div class="note info"><p>确保单例的唯一性,需要是初始化方法私有化。这样的话，需要我们重载类的所有初始化方法.</p>
+</div><br><div class="note warning"><p>也因为第一条，在生命周期中只有唯一一个，就意味着我们需要确保单例的线程安全。</p>
 </div></p>
 <p>下面列举几种swift 单例的创建方法</p>
 <h4 id="先来一段比较丑的创建方式"><a href="#先来一段比较丑的创建方式" class="headerlink" title="先来一段比较丑的创建方式"></a>先来一段比较丑的创建方式</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> TheOneAndOnlyPerson &#123;</div><div class="line">    <span class="keyword">class</span> var sharedInstance: TheOneAndOnlyPerson &#123;</div><div class="line">        <span class="keyword">struct</span> Static &#123;</div><div class="line">            <span class="keyword">static</span> var onceToken: <span class="built_in">dispatch_once_t</span> = <span class="number">0</span></div><div class="line">            <span class="keyword">static</span> var instance: TheOneAndOnlyPerson? = <span class="literal">nil</span></div><div class="line">        &#125;</div><div class="line">        <span class="built_in">dispatch_once</span>(&amp;Static.onceToken) &#123;</div><div class="line">            Static.instance = TheOneAndOnlyPerson()</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> Static.instance!</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -1587,6 +1587,173 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://sjc2wbq.github.io/2016/02/14/文件系统/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JunChuan Shi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NOTES">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/14/文件系统/" itemprop="url">
+                  file system
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-02-14T09:35:22+08:00">
+                2016-02-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/02/14/文件系统/" class="leancloud_visitors" data-flag-title="file system">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>ios的文件管理有1.属性列表2.归档3.数据库(SQLite)4.coreData4种方式</p>
+</blockquote>
+<h1 id="属性列表Plist"><a href="#属性列表Plist" class="headerlink" title="属性列表Plist"></a>属性列表Plist</h1><h2 id="IPA的存储空间"><a href="#IPA的存储空间" class="headerlink" title="IPA的存储空间"></a>IPA的存储空间</h2><h3 id="沙盒-Sandbox-读可写"><a href="#沙盒-Sandbox-读可写" class="headerlink" title="沙盒        Sandbox :读可写"></a>沙盒        Sandbox :读可写</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSString</span> *docPath = <span class="built_in">NSSearchPathForDirectoriesInDomains</span>(<span class="built_in">NSDocumentDirectory</span>, <span class="built_in">NSUserDomainMask</span>, <span class="literal">YES</span>).firstObject;</div></pre></td></tr></table></figure>
+<h3 id="应用程序文件-Bundle-只读"><a href="#应用程序文件-Bundle-只读" class="headerlink" title="应用程序文件 Bundle :只读"></a>应用程序文件 Bundle :只读</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSString</span> *settingPath = [[<span class="built_in">NSBundle</span> mainBundle] pathForResource:<span class="string">@"Setting"</span> ofType:<span class="string">@"plist"</span>];</div></pre></td></tr></table></figure>
+<h2 id="手动创建plist文件"><a href="#手动创建plist文件" class="headerlink" title="手动创建plist文件"></a>手动创建plist文件</h2><h3 id="info-Plist"><a href="#info-Plist" class="headerlink" title="info.Plist"></a>info.Plist</h3><blockquote>
+<p>系统plist文件</p>
+<h4 id="通过对应的key获取info-plist中的信息"><a href="#通过对应的key获取info-plist中的信息" class="headerlink" title="通过对应的key获取info.plist中的信息"></a>通过对应的key获取info.plist中的信息</h4><p>如版本号versio</p>
+</blockquote>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSDictionary</span> *infoDic = [[<span class="built_in">NSBundle</span> mainBundle] infoDictionary];</div><div class="line"><span class="built_in">NSString</span> *versionNumber = infoDic[versionKey];</div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/02/14/文件系统/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://sjc2wbq.github.io/2016/02/14/Tableview/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1720,173 +1887,6 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2016/02/14/Tableview/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sjc2wbq.github.io/2016/02/14/文件系统/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunChuan Shi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NOTES">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/14/文件系统/" itemprop="url">
-                  file system
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-02-14T09:35:22+08:00">
-                2016-02-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2016/02/14/文件系统/" class="leancloud_visitors" data-flag-title="file system">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Visitors </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>ios的文件管理有1.属性列表2.归档3.数据库(SQLite)4.coreData4种方式</p>
-</blockquote>
-<h1 id="属性列表Plist"><a href="#属性列表Plist" class="headerlink" title="属性列表Plist"></a>属性列表Plist</h1><h2 id="IPA的存储空间"><a href="#IPA的存储空间" class="headerlink" title="IPA的存储空间"></a>IPA的存储空间</h2><h3 id="沙盒-Sandbox-读可写"><a href="#沙盒-Sandbox-读可写" class="headerlink" title="沙盒        Sandbox :读可写"></a>沙盒        Sandbox :读可写</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSString</span> *docPath = <span class="built_in">NSSearchPathForDirectoriesInDomains</span>(<span class="built_in">NSDocumentDirectory</span>, <span class="built_in">NSUserDomainMask</span>, <span class="literal">YES</span>).firstObject;</div></pre></td></tr></table></figure>
-<h3 id="应用程序文件-Bundle-只读"><a href="#应用程序文件-Bundle-只读" class="headerlink" title="应用程序文件 Bundle :只读"></a>应用程序文件 Bundle :只读</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSString</span> *settingPath = [[<span class="built_in">NSBundle</span> mainBundle] pathForResource:<span class="string">@"Setting"</span> ofType:<span class="string">@"plist"</span>];</div></pre></td></tr></table></figure>
-<h2 id="手动创建plist文件"><a href="#手动创建plist文件" class="headerlink" title="手动创建plist文件"></a>手动创建plist文件</h2><h3 id="info-Plist"><a href="#info-Plist" class="headerlink" title="info.Plist"></a>info.Plist</h3><blockquote>
-<p>系统plist文件</p>
-<h4 id="通过对应的key获取info-plist中的信息"><a href="#通过对应的key获取info-plist中的信息" class="headerlink" title="通过对应的key获取info.plist中的信息"></a>通过对应的key获取info.plist中的信息</h4><p>如版本号versio</p>
-</blockquote>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSDictionary</span> *infoDic = [[<span class="built_in">NSBundle</span> mainBundle] infoDictionary];</div><div class="line"><span class="built_in">NSString</span> *versionNumber = infoDic[versionKey];</div></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/02/14/文件系统/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
