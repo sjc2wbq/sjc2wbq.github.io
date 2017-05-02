@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sjc2wbq.github.io/"/>
-  <updated>2017-05-02T16:53:26.000Z</updated>
+  <updated>2017-05-02T18:59:46.000Z</updated>
   <id>http://sjc2wbq.github.io/</id>
   
   <author>
@@ -14,6 +14,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>dyld</title>
+    <link href="http://sjc2wbq.github.io/2017/05/03/dyld/"/>
+    <id>http://sjc2wbq.github.io/2017/05/03/dyld/</id>
+    <published>2017-05-02T17:42:33.000Z</published>
+    <updated>2017-05-02T18:59:46.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>the OS X dynamic linker</p>
+<p> static linking, generally referred to simply as ‘linking’. This is the step that typically happens after compiling, where the machine language the compiler churned out from your source code, the object files, are ‘linked’ together into a single binary file</p>
+<p> LLDB的Xcode默认的调试器，它与LLVM编译器一起，带给我们更丰富的流程控制和数据检测的调试功能</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;the OS X dynamic linker&lt;/p&gt;
+&lt;p&gt; static linking, generally referred to simply as ‘linking’. This is the step that typically happens after 
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>ivar and property</title>
@@ -53,7 +75,7 @@
     <link href="http://sjc2wbq.github.io/2017/05/02/runtime%E7%9A%84%E7%90%86%E8%A7%A3/"/>
     <id>http://sjc2wbq.github.io/2017/05/02/runtime的理解/</id>
     <published>2017-05-02T10:20:04.000Z</published>
-    <updated>2017-05-02T16:49:51.000Z</updated>
+    <updated>2017-05-02T21:10:07.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="runtime-运行时机制"><a href="#runtime-运行时机制" class="headerlink" title="runtime 运行时机制"></a>runtime 运行时机制</h3><h4 id="1-是什么？"><a href="#1-是什么？" class="headerlink" title="1 是什么？"></a>1 是什么？</h4><blockquote>
 <p>runtime是一套比较底层的C语言API，属于一个C语言库，包含了很多底层的C语言API<br>平时编写的OC代码，在程序运行过程中，其实都是转成了runtime的C语言代码，runtime算是OC的幕后工作者</p>
@@ -73,7 +95,23 @@
 </blockquote>
 <p>相关应用</p>
 <ul>
-<li>methodSwizzling<br>比如公司项目后期突然提出新的需求要为所有页面添加统计功能，也就是用户进入这个页面就统计一次，<br>实现：给UIViewController写一个类别加到pch<br>类别中新建一个swillingViewDidLoad方法<br>在实现中，+(load)中运用runtime的method_exchangeImplementations替换掉系统的viewDidload方法和swillingViewDidLoad方法；<br>在swillingViewDidLoad方法中加入统计方法，然后调用swillingViewDidLoad方法<br>这样，当controller调用viewDidload时通过运行时，指向了自定义的swillingViewDidLoad，在这个方法里先执行了我们的统计方法，然后调用swillingViewDidload方法，指向系统的viewDidload方法，这样就实现了在每个类viewDidload前进行统计的操作。<br>还有数组越界，给系统的NSArray 替换一个自定义objectAtIndex</li>
+<li>methodSwizzling<blockquote>
+<p>比如公司项目后期突然提出新的需求要为所有页面添加统计功能，也就是用户进入这个页面就统计一次，<br>实现：给UIViewController写一个类别加到pch<br>类别中新建一个swillingViewDidLoad方法<br>在实现中，+(load)中运用runtime的method_exchangeImplementations替换掉系统的viewDidload方法和swillingViewDidLoad方法；<br>在swillingViewDidLoad方法中加入统计方法，然后调用swillingViewDidLoad方法<br>这样，当controller调用viewDidload时通过运行时，指向了自定义的swillingViewDidLoad，在这个方法里先执行了我们的统计方法，然后调用swillingViewDidload方法，指向系统的viewDidload方法，这样就实现了在每个类viewDidload前进行统计的操作。<br>还有数组越界，给系统的NSArray 替换一个自定义objectAtIndex</p>
+</blockquote>
+</li>
+<li><p>动态地给Category 添加属性</p>
+<blockquote>
+<p>分类里面不能添加Ivar是因为分类本身并不是一个真正的类，它并没有自己的ISA。有兴趣可以研究一下类是怎么被创建出来的，类最开始生成了很多基本属性，比如IvarList，MethodList，分类只会将自己的method attach到主类，并不会影响到主类的IvarList。这就是为什么分类里面不能增加成员变量的原因。</p>
+  <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">    <span class="comment">//runtime中的category</span></div><div class="line">    <span class="keyword">struct</span> objc_category &#123;</div><div class="line">    <span class="keyword">char</span></div><div class="line">     *category_name                                      OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">char</span> *class_name                                         OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">struct</span> objc_method_list *instance_methods                OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">struct</span> objc_method_list *class_methods                   OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">struct</span> objc_protocol_list *protocols                     OBJC2_UNAVAILABLE;</div><div class="line">&#125;</div><div class="line">http:<span class="comment">//ios.jobbole.com/84341/</span></div></pre></td></tr></table></figure>
+</blockquote>
+<p>所有的关联对象都由AssociationsManager管理,而AssociationsManager定义如下：</p>
+  <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> AssociationsManager &#123;</div><div class="line">    <span class="keyword">static</span> OSSpinLock _lock;</div><div class="line">    <span class="keyword">static</span> AssociationsHashMap *_map;               <span class="comment">// associative references:  object pointer -&gt; PtrPtrHashMap.</span></div><div class="line">public:</div><div class="line">    AssociationsManager()   &#123; OSSpinLockLock(&amp;_lock); &#125;</div><div class="line">    ~AssociationsManager()  &#123; OSSpinLockUnlock(&amp;_lock); &#125;</div><div class="line"></div><div class="line">    AssociationsHashMap &amp;associations() &#123;</div><div class="line">        <span class="keyword">if</span> (_map == <span class="literal">NULL</span>)</div><div class="line">            _map = new AssociationsHashMap();</div><div class="line">        <span class="keyword">return</span> *_map;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>  AssociationsManager里面是由一个静态AssociationsHashMap来存储所有的关联对象的。这相当于把所有对象的关联对象都存在一个全局map里面。而map的的key是这个对象的指针地址（任意两个不同对象的指针地址一定是不同的），而这个map的value又是另外一个AssociationsHashMap，里面保存了关联对象的kv对。</p>
+  <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">    <span class="keyword">void</span> *objc_destructInstance(<span class="keyword">id</span> obj)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (obj) &#123;</div><div class="line">        Class isa_gen = _object_getClass(obj);</div><div class="line">        class_t *isa = newcls(isa_gen);</div><div class="line"></div><div class="line">        <span class="comment">// Read all of the flags at once for performance.</span></div><div class="line">        <span class="keyword">bool</span> cxx = hasCxxStructors(isa);</div><div class="line">        <span class="keyword">bool</span> assoc = !UseGC &amp; _class_instancesHaveAssociatedObjects(isa_gen);</div><div class="line"></div><div class="line">        <span class="comment">// This order is important.</span></div><div class="line">        <span class="keyword">if</span> (cxx) object_cxxDestruct(obj);</div><div class="line">        <span class="keyword">if</span> (assoc) _object_remove_assocations(obj);</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (!UseGC) objc_clear_deallocating(obj);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> obj;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>  runtime的销毁对象函数objc_destructInstance里面会判断这个对象有没有关联对象，如果有，会调用_object_remove_assocations做关联对象的清理工作。</p>
+</li>
+</ul>
+<ul>
 <li>NSCoding（归档和解档，利用runtime遍历模型对象的所有属性）</li>
 <li>字典 –&gt; 模型（利用runtime遍历模型对象的所有属性，根据属性名从字典中取出对应的值，设置到模型的属性上）</li>
 <li>KVO（利用runtime动态产生一个类）</li>
@@ -90,6 +128,102 @@
     <summary type="html">
     
       &lt;h3 id=&quot;runtime-运行时机制&quot;&gt;&lt;a href=&quot;#runtime-运行时机制&quot; class=&quot;headerlink&quot; title=&quot;runtime 运行时机制&quot;&gt;&lt;/a&gt;runtime 运行时机制&lt;/h3&gt;&lt;h4 id=&quot;1-是什么？&quot;&gt;&lt;a href=&quot;#1-是
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>runtime</title>
+    <link href="http://sjc2wbq.github.io/2017/04/20/runtime/"/>
+    <id>http://sjc2wbq.github.io/2017/04/20/runtime/</id>
+    <published>2017-04-20T03:44:21.000Z</published>
+    <updated>2017-05-02T17:15:26.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h2><blockquote>
+<p>包含多个变量或者数组的集合</p>
+</blockquote>
+<p>1.结构体定义<br>struct 结构体名{<br>  变量或数组<br>};<br>2.结构体定义，并且初始化结构体变量 struct1<br>struct 结构体名{<br>  。。。<br>}结构体变量名struct1;</p>
+<p>OC中的类<br>www.jianshu.com/p/41735c66dccb</p>
+<h3 id="isa"><a href="#isa" class="headerlink" title="isa"></a>isa</h3><p>每个实例对象有个isa的指针，指向对象的类，Class也有isa的指针，指向MeteClass（元类）可以理解为表明所属权，声明了实例与所属类的关系</p>
+<h4 id="元类"><a href="#元类" class="headerlink" title="元类"></a>元类</h4><h2 id="运行时类的动态化处理（3步）"><a href="#运行时类的动态化处理（3步）" class="headerlink" title="运行时类的动态化处理（3步）"></a>运行时类的动态化处理（3步）</h2><ol>
+<li>objc_allocateClassPair()   为 class pair 分配类存</li>
+<li>class_addMethod() class_addIvar          添加方法或者成员变量</li>
+<li>objc_registerClssPair()    注册类</li>
+</ol>
+<blockquote>
+<p>class(类) pair(元类）</p>
+</blockquote>
+<p>Object-c的一个类也是一个对象，也可以发送消息给一个类</p>
+<h3 id="类（Class）"><a href="#类（Class）" class="headerlink" title="类（Class）"></a>类（Class）</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_class *Class;</div><div class="line"><span class="keyword">struct</span> objc_class &#123;</div><div class="line">    Class isa  OBJC_ISA_AVAILABILITY;</div><div class="line"><span class="meta">#if !__OBJC2__</span></div><div class="line">    Class super_class                                        OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *name                                         OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">long</span> version                                             OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">long</span> info                                                OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">long</span> instance_size                                       OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">struct</span> objc_ivar_list *ivars                             OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">struct</span> objc_method_list **methodLists                    OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">struct</span> objc_cache *cache                                 OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">struct</span> objc_protocol_list *protocols                     OBJC2_UNAVAILABLE;</div><div class="line"><span class="meta">#endif</span></div><div class="line"></div><div class="line">&#125; OBJC2_UNAVAILABLE;</div></pre></td></tr></table></figure>
+<h3 id="对象（id）"><a href="#对象（id）" class="headerlink" title="对象（id）"></a>对象（id）</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_object &#123;</div><div class="line">    Class isa;</div><div class="line">&#125; *<span class="keyword">id</span>;</div></pre></td></tr></table></figure>
+<ul>
+<li>对象是一个含有指向类结构的指针isa的结构体<br>理解：id（每个对象）含有一个isa指向对应的类</li>
+<li>Objective-C中对象最重要的特点是你可以发送消息给它们：<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[<span class="string">@"stringValue"</span></div><div class="line">    writeToFile:<span class="string">@"/file.txt"</span> atomically:<span class="literal">YES</span> encoding:<span class="built_in">NSUTF8StringEncoding</span> error:<span class="literal">NULL</span>];</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Objective-C对象（这儿是NSCFString）在发送消息时，运行时库会追寻着对象的isa指针得到了对象所属的类（这儿是NSCFString类）。这个类包含了能应用于这个类的所有实例方法和指向超类的指针以便可以找到父类的实例方法。运行时库检查这个类和其超类的方法列表，找到一个匹配这条消息的方法（在上面的代码里，是NSString类的writeToFile:atomically:encoding:error方法）。运行时库基于那个方法调用函数（IMP）<br><br><strong> 重点就是类要定义这个你发送给对象的消息。 </strong></p>
+<h3 id="元类pair"><a href="#元类pair" class="headerlink" title="元类pair"></a>元类pair</h3><p>Objective-C的一个类也是一个对象。这意味着你可以发送消息给一个类。</p>
+<p><font color="yellow">总结说OC中所有的类都是一种对象。由一个类实例化来的对象叫实例对象，那么，类作为对象（称之为类对象），又是什么类的对象？就是元类（Metaclass）</font>元类就是类对象所属的类。所以，实例对象是类的实例，类作为对象又是元类的实例。已经说了，OC中所有的类都属于一种对象，所以元类也是对象，那么元类是什么的实例呢？答曰：根元类，根元类是其自身的实例.也就是说根元类的元类就是它自己。基类的元类的isa指针指向他自己。</p>
+<ul>
+<li>当你给对象发送消息时，消息是在寻找这个对象的类的方法列表。</li>
+<li>当你给类发消息时，消息是在寻找这个类的元类的方法列表。</li>
+</ul>
+<p>用一张图表明他们之间的关系：<br><img src="http://oo5f0tnid.bkt.clouddn.com/1361289384_8487.PNG" alt="img"><br>注意：根元类的superclass不是nil而是根类。对于OC原生的类，根元类的父类就是系统的根类NSOject。但根类不一定是NSObject，因为后面介绍的objc_allocateClassPair函数也可创建出一个根类。<br><br><strong>元类是必不可少的，因为它存储了类的类方法。每个类都必须有独一无二的元类，因为每个类都有独一无二的<font color="yellow">类方法<font></font></font></strong></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSStringEncoding</span> defaultStringEncoding = [<span class="built_in">NSString</span> defaultStringEncoding];</div></pre></td></tr></table></figure>
+<p>在这个示例里，defaultStringEncoding被发送给了NSString类。</p>
+<p>因为Objective-C中每个类本身也是一个对象。如上面所展示的，这意味着类结构必须以一个isa指针开始，从而可以和objc_object在二进制层面兼容，然后这个结构的下一字段必须是一个指向超类的指针（对于基类则为nil）。</p>
+<h4 id="实例对象、类对象、元类对象，有什么区别？"><a href="#实例对象、类对象、元类对象，有什么区别？" class="headerlink" title="实例对象、类对象、元类对象，有什么区别？"></a>实例对象、类对象、元类对象，有什么区别？</h4><ul>
+<li><p>实例对象：当我们在代码中new一个实例对象时，拷贝了实例所属的类的成员变量，但不拷贝类定义的方法。调用实例方法时，根据实例的isa指针去寻找方法对应的函数指针。</p>
+</li>
+<li><p>类对象：是一个功能完整的对象。特殊之处在于它们是由程序员定义而在运行时由编译器创建的，它没有自己的实例变量（这里区别于类的成员变量，他们是属于实例对象的，而不是属于类对象的，类方法是属于类对象自己的），但类对象中存着成员变量与实例方法列表。</p>
+</li>
+<li><p>元类对象：OC 的类方法是使用元类的根本原因，因为其中存储着对应的类对象调用的方法即类方法。其他时候都倾向于隐藏元类，因此真实世界没有人发送消息给元类对象。元类的定义和创建看起来都是编译器自动完成的，无需人为干涉。要获取一个类的元类，可使用如下定义的函数：</p>
+</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Class objc_getMetaClass(<span class="keyword">const</span> <span class="keyword">char</span>* name); <span class="comment">//name为类的名字</span></div></pre></td></tr></table></figure>
+<p>此外还有一个获取对象所属的类的函数：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Class object_getClass(<span class="keyword">id</span> obj) ;</div></pre></td></tr></table></figure></p>
+<p>由于类对象是元类的实例，所以当传入的参数为类名时，返回的就是指向该类所属的元类的指针。</p>
+<p>runtime 相关函数<br>相关函数</p>
+<p>1增加</p>
+<p>增加函数:class_addMethod</p>
+<p>增加实例变量:class_addIvar</p>
+<p>增加属性:@dynamic标签，或者class_addMethod，因为属性其实就是由getter和setter函数组成</p>
+<p>增加Protocol:class<em>addProtocol (说实话我真不知道动态增加一个protocol有什么用,-</em>-!!)</p>
+<ol>
+<li>增加</li>
+</ol>
+<p>增加函数:class_addMethod</p>
+<p>增加实例变量:class_addIvar</p>
+<p>增加属性:@dynamic标签，或者class_addMethod，因为属性其实就是由getter和setter函数组成</p>
+<p>增加Protocol:class<em>addProtocol (说实话我真不知道动态增加一个protocol有什么用,-</em>-!!)</p>
+<ol>
+<li>获取</li>
+</ol>
+<p>获取函数列表及每个函数的信息(函数指针、函数名等等):class_getClassMethod method_getName …</p>
+<p>获取属性列表及每个属性的信息:class_copyPropertyList property_getName</p>
+<p>获取类本身的信息,如类名等：class_getName class_getInstanceSize</p>
+<p>获取变量列表及变量信息：class_copyIvarList</p>
+<p>获取变量的值</p>
+<ol>
+<li>替换</li>
+</ol>
+<p>将实例替换成另一个类：object_setClass</p>
+<p>替换类方法的定义：class_replaceMethod</p>
+<p>4.其他常用方法：</p>
+<p>交换两个方法的实现：method_exchangeImplementations.</p>
+<p>设置一个方法的实现：method_setImplementation.</p>
+<h4 id="消息转发"><a href="#消息转发" class="headerlink" title="消息转发"></a>消息转发</h4><p>三个步骤<br>每个步骤对应 系统方法</p>
+<h4 id="KVO的底层实现"><a href="#KVO的底层实现" class="headerlink" title="KVO的底层实现"></a>KVO的底层实现</h4><h3 id="GCD"><a href="#GCD" class="headerlink" title="GCD"></a>GCD</h3><p>dispatch barrier</p>
+<h3 id="instruments"><a href="#instruments" class="headerlink" title="instruments"></a>instruments</h3>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;结构体&quot;&gt;&lt;a href=&quot;#结构体&quot; class=&quot;headerlink&quot; title=&quot;结构体&quot;&gt;&lt;/a&gt;结构体&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;包含多个变量或者数组的集合&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;1.结构体定义&lt;br&gt;struct 
     
     </summary>
     
@@ -632,6 +766,77 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
   </entry>
   
   <entry>
+    <title>tableViewCell、collectionViewCell </title>
+    <link href="http://sjc2wbq.github.io/2016/02/14/Tableview/"/>
+    <id>http://sjc2wbq.github.io/2016/02/14/Tableview/</id>
+    <published>2016-02-14T01:35:22.000Z</published>
+    <updated>2016-05-20T04:02:51.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li>注册重用法</li>
+<li>tableview自适应高度</li>
+<li>tableview撤销高亮</li>
+<li>参数的传递<ol>
+<li>纯代码（didselectRow）</li>
+<li>storyBoard方式（prepareForSegue）</li>
+</ol>
+</li>
+</ul>
+<h3 id="tableViewCell、collectionViewCell重用注册法"><a href="#tableViewCell、collectionViewCell重用注册法" class="headerlink" title="tableViewCell、collectionViewCell重用注册法"></a>tableViewCell、collectionViewCell重用注册法</h3><blockquote>
+<ol>
+<li><strong>纯代码</strong>注册时用<strong>registerClass</strong>如下图示例</li>
+<li><strong>xib界面</strong>注册时用<strong>registerNib</strong>作(tableView或collectionView)的cell  </li>
+<li><strong>storyboard</strong></li>
+</ol>
+</blockquote>
+<ul>
+<li><h4 id="注册方法"><a href="#注册方法" class="headerlink" title="注册方法"></a>注册方法</h4></li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[<span class="keyword">self</span>.myCollectionView registerClass:[MycollectionViewCell <span class="keyword">class</span>]</div><div class="line">         forCellWithReuseIdentifier:<span class="string">@"cell"</span>];</div><div class="line"></div><div class="line">[<span class="keyword">self</span>.myCollectionView registerNib:[<span class="built_in">UINib</span> nibWithNibName:<span class="string">@"mycollectionCell"</span></div><div class="line">                            bundle:<span class="literal">nil</span>]</div><div class="line">         forCellWithReuseIdentifier:cellIndentify];</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<ul>
+<li><h4 id="重用方法"><a href="#重用方法" class="headerlink" title="重用方法"></a>重用方法</h4></li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MycollectionViewCell *cell;</div><div class="line">cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIndentify</div><div class="line">                                                  forIndexPath:indexPath];</div></pre></td></tr></table></figure>
+<h3 id="让tableViewCell横线没有空隙"><a href="#让tableViewCell横线没有空隙" class="headerlink" title="让tableViewCell横线没有空隙"></a>让tableViewCell横线没有空隙</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cell.separatorInset = <span class="built_in">UIEdgeInsetsZero</span>;</div><div class="line">cell.layoutMargins = <span class="built_in">UIEdgeInsetsZero</span>;</div><div class="line">cell.preservesSuperviewLayoutMargins = <span class="literal">NO</span>;</div></pre></td></tr></table></figure>
+<h3 id="tableview自适应高度"><a href="#tableview自适应高度" class="headerlink" title="tableview自适应高度"></a>tableview自适应高度</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-(<span class="built_in">CGFloat</span>)tableView:(<span class="built_in">UITableView</span> *)tableView estimatedHeightForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath&#123;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="built_in">UITableViewAutomaticDimension</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="tableView-编辑操作"><a href="#tableView-编辑操作" class="headerlink" title="tableView 编辑操作"></a>tableView 编辑操作</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//编辑的状态</span></div><div class="line">-(<span class="built_in">UITableViewCellEditingStyle</span>)tableView:(<span class="built_in">UITableView</span> *)tableView editingStyleForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">UITableViewCellEditingStyleDelete</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//左滑时的题目</span></div><div class="line">-(<span class="built_in">NSString</span> *)tableView:(<span class="built_in">UITableView</span> *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">@"删除此诗"</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//编辑状态下的操作</span></div><div class="line">-(<span class="keyword">void</span>)tableView:(<span class="built_in">UITableView</span> *)tableView commitEditingStyle:(<span class="built_in">UITableViewCellEditingStyle</span>)editingStyle forRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPathP&#123;</div><div class="line">    <span class="keyword">if</span> (editingStyle == <span class="built_in">UITableViewCellEditingStyleDelete</span>) &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;目录&quot;&gt;&lt;a href=&quot;#目录&quot; class=&quot;headerlink&quot; title=&quot;目录&quot;&gt;&lt;/a&gt;目录&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;注册重用法&lt;/li&gt;
+&lt;li&gt;tableview自适应高度&lt;/li&gt;
+&lt;li&gt;tableview撤销高亮&lt;/li&gt;
+&lt;li&gt;参数的传递&lt;ol&gt;
+&lt;li&gt;纯代码（didselectRow）&lt;/li&gt;
+&lt;li&gt;storyBoard方式（prepareForSegue）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;tableViewCell、collectionViewCell重用注册法&quot;&gt;&lt;a href=&quot;#tableViewCell、collectionViewCell重用注册法&quot; class=&quot;headerlink&quot; title=&quot;tableViewCell、collectionViewCell重用注册法&quot;&gt;&lt;/a&gt;tableViewCell、collectionViewCell重用注册法&lt;/h3&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;纯代码&lt;/strong&gt;注册时用&lt;strong&gt;registerClass&lt;/strong&gt;如下图示例&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;xib界面&lt;/strong&gt;注册时用&lt;strong&gt;registerNib&lt;/strong&gt;作(tableView或collectionView)的cell  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;storyboard&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;h4 id=&quot;注册方法&quot;&gt;&lt;a href=&quot;#注册方法&quot; class=&quot;headerlink&quot; title=&quot;注册方法&quot;&gt;&lt;/a&gt;注册方法&lt;/h4&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;[&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.myCollectionView registerClass:[MycollectionViewCell &lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt;]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;         forCellWithReuseIdentifier:&lt;span class=&quot;string&quot;&gt;@&quot;cell&quot;&lt;/span&gt;];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;[&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.myCollectionView registerNib:[&lt;span class=&quot;built_in&quot;&gt;UINib&lt;/span&gt; nibWithNibName:&lt;span class=&quot;string&quot;&gt;@&quot;mycollectionCell&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;                            bundle:&lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;         forCellWithReuseIdentifier:cellIndentify];&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://sjc2wbq.github.io/categories/iOS/"/>
+    
+    
+      <category term="tableView" scheme="http://sjc2wbq.github.io/tags/tableView/"/>
+    
+  </entry>
+  
+  <entry>
     <title>file system</title>
     <link href="http://sjc2wbq.github.io/2016/02/14/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/"/>
     <id>http://sjc2wbq.github.io/2016/02/14/文件系统/</id>
@@ -711,77 +916,6 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
     
     
       <category term="file system" scheme="http://sjc2wbq.github.io/tags/file-system/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>tableViewCell、collectionViewCell </title>
-    <link href="http://sjc2wbq.github.io/2016/02/14/Tableview/"/>
-    <id>http://sjc2wbq.github.io/2016/02/14/Tableview/</id>
-    <published>2016-02-14T01:35:22.000Z</published>
-    <updated>2016-05-20T04:02:51.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
-<li>注册重用法</li>
-<li>tableview自适应高度</li>
-<li>tableview撤销高亮</li>
-<li>参数的传递<ol>
-<li>纯代码（didselectRow）</li>
-<li>storyBoard方式（prepareForSegue）</li>
-</ol>
-</li>
-</ul>
-<h3 id="tableViewCell、collectionViewCell重用注册法"><a href="#tableViewCell、collectionViewCell重用注册法" class="headerlink" title="tableViewCell、collectionViewCell重用注册法"></a>tableViewCell、collectionViewCell重用注册法</h3><blockquote>
-<ol>
-<li><strong>纯代码</strong>注册时用<strong>registerClass</strong>如下图示例</li>
-<li><strong>xib界面</strong>注册时用<strong>registerNib</strong>作(tableView或collectionView)的cell  </li>
-<li><strong>storyboard</strong></li>
-</ol>
-</blockquote>
-<ul>
-<li><h4 id="注册方法"><a href="#注册方法" class="headerlink" title="注册方法"></a>注册方法</h4></li>
-</ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[<span class="keyword">self</span>.myCollectionView registerClass:[MycollectionViewCell <span class="keyword">class</span>]</div><div class="line">         forCellWithReuseIdentifier:<span class="string">@"cell"</span>];</div><div class="line"></div><div class="line">[<span class="keyword">self</span>.myCollectionView registerNib:[<span class="built_in">UINib</span> nibWithNibName:<span class="string">@"mycollectionCell"</span></div><div class="line">                            bundle:<span class="literal">nil</span>]</div><div class="line">         forCellWithReuseIdentifier:cellIndentify];</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<ul>
-<li><h4 id="重用方法"><a href="#重用方法" class="headerlink" title="重用方法"></a>重用方法</h4></li>
-</ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MycollectionViewCell *cell;</div><div class="line">cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIndentify</div><div class="line">                                                  forIndexPath:indexPath];</div></pre></td></tr></table></figure>
-<h3 id="让tableViewCell横线没有空隙"><a href="#让tableViewCell横线没有空隙" class="headerlink" title="让tableViewCell横线没有空隙"></a>让tableViewCell横线没有空隙</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cell.separatorInset = <span class="built_in">UIEdgeInsetsZero</span>;</div><div class="line">cell.layoutMargins = <span class="built_in">UIEdgeInsetsZero</span>;</div><div class="line">cell.preservesSuperviewLayoutMargins = <span class="literal">NO</span>;</div></pre></td></tr></table></figure>
-<h3 id="tableview自适应高度"><a href="#tableview自适应高度" class="headerlink" title="tableview自适应高度"></a>tableview自适应高度</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-(<span class="built_in">CGFloat</span>)tableView:(<span class="built_in">UITableView</span> *)tableView estimatedHeightForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath&#123;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="built_in">UITableViewAutomaticDimension</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="tableView-编辑操作"><a href="#tableView-编辑操作" class="headerlink" title="tableView 编辑操作"></a>tableView 编辑操作</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//编辑的状态</span></div><div class="line">-(<span class="built_in">UITableViewCellEditingStyle</span>)tableView:(<span class="built_in">UITableView</span> *)tableView editingStyleForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">UITableViewCellEditingStyleDelete</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//左滑时的题目</span></div><div class="line">-(<span class="built_in">NSString</span> *)tableView:(<span class="built_in">UITableView</span> *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">@"删除此诗"</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//编辑状态下的操作</span></div><div class="line">-(<span class="keyword">void</span>)tableView:(<span class="built_in">UITableView</span> *)tableView commitEditingStyle:(<span class="built_in">UITableViewCellEditingStyle</span>)editingStyle forRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPathP&#123;</div><div class="line">    <span class="keyword">if</span> (editingStyle == <span class="built_in">UITableViewCellEditingStyleDelete</span>) &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;目录&quot;&gt;&lt;a href=&quot;#目录&quot; class=&quot;headerlink&quot; title=&quot;目录&quot;&gt;&lt;/a&gt;目录&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;注册重用法&lt;/li&gt;
-&lt;li&gt;tableview自适应高度&lt;/li&gt;
-&lt;li&gt;tableview撤销高亮&lt;/li&gt;
-&lt;li&gt;参数的传递&lt;ol&gt;
-&lt;li&gt;纯代码（didselectRow）&lt;/li&gt;
-&lt;li&gt;storyBoard方式（prepareForSegue）&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;tableViewCell、collectionViewCell重用注册法&quot;&gt;&lt;a href=&quot;#tableViewCell、collectionViewCell重用注册法&quot; class=&quot;headerlink&quot; title=&quot;tableViewCell、collectionViewCell重用注册法&quot;&gt;&lt;/a&gt;tableViewCell、collectionViewCell重用注册法&lt;/h3&gt;&lt;blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;纯代码&lt;/strong&gt;注册时用&lt;strong&gt;registerClass&lt;/strong&gt;如下图示例&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;xib界面&lt;/strong&gt;注册时用&lt;strong&gt;registerNib&lt;/strong&gt;作(tableView或collectionView)的cell  &lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;storyboard&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;h4 id=&quot;注册方法&quot;&gt;&lt;a href=&quot;#注册方法&quot; class=&quot;headerlink&quot; title=&quot;注册方法&quot;&gt;&lt;/a&gt;注册方法&lt;/h4&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;[&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.myCollectionView registerClass:[MycollectionViewCell &lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt;]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;         forCellWithReuseIdentifier:&lt;span class=&quot;string&quot;&gt;@&quot;cell&quot;&lt;/span&gt;];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;[&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.myCollectionView registerNib:[&lt;span class=&quot;built_in&quot;&gt;UINib&lt;/span&gt; nibWithNibName:&lt;span class=&quot;string&quot;&gt;@&quot;mycollectionCell&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;                            bundle:&lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;         forCellWithReuseIdentifier:cellIndentify];&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="iOS" scheme="http://sjc2wbq.github.io/categories/iOS/"/>
-    
-    
-      <category term="tableView" scheme="http://sjc2wbq.github.io/tags/tableView/"/>
     
   </entry>
   
@@ -943,100 +1077,6 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
     
     
       <category term="Graphic" scheme="http://sjc2wbq.github.io/tags/Graphic/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>hi gitcafe and github</title>
-    <link href="http://sjc2wbq.github.io/2016/01/24/hi-gitcafe-and-github/"/>
-    <id>http://sjc2wbq.github.io/2016/01/24/hi-gitcafe-and-github/</id>
-    <published>2016-01-24T05:26:07.000Z</published>
-    <updated>2016-05-20T04:07:11.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>glad to be here with u to learn and to live</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;glad to be here with u to learn and to live&lt;/p&gt;
-
-    
-    </summary>
-    
-      <category term="life" scheme="http://sjc2wbq.github.io/categories/life/"/>
-    
-    
-      <category term="coming" scheme="http://sjc2wbq.github.io/tags/coming/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>KVO and KVC</title>
-    <link href="http://sjc2wbq.github.io/2016/01/17/KVOandKVC/"/>
-    <id>http://sjc2wbq.github.io/2016/01/17/KVOandKVC/</id>
-    <published>2016-01-17T13:38:50.000Z</published>
-    <updated>2016-05-20T04:04:30.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="KVO"><a href="#KVO" class="headerlink" title="KVO"></a>KVO</h1><blockquote>
-<p>key Value Observer</p>
-</blockquote>
-<h2 id="为想要观察的对象添加观察者"><a href="#为想要观察的对象添加观察者" class="headerlink" title="为想要观察的对象添加观察者"></a>为想要观察的对象添加观察者</h2><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[object addObserver:observer</div><div class="line">        forKeyPath:<span class="string">@"frame"</span></div><div class="line">        options:<span class="built_in">NSKeyValueObservingOptionNew</span></div><div class="line">        context:<span class="literal">nil</span>];</div></pre></td></tr></table></figure>
-<ul>
-<li><strong>object</strong>:被观察对象</li>
-<li><strong>observer</strong>:观察对象</li>
-<li><strong>forKeyPath</strong>:需要检测的属性(property的name),如UIViewV的frame,center</li>
-<li><strong>context</strong>:任意类型(一种标识,可用于同时监听不同对象的相同属性？)<br>options:</li>
-<li><strong>options:</strong></li>
-</ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSKeyValueObservingOptionNew</span>  更改前的值</div><div class="line"><span class="built_in">NSKeyValueObservingOptionOld</span>  更改后的值</div><div class="line"><span class="built_in">NSKeyValueObservingOptionInitial</span> 初始化的值,一旦注册,立马调用一次,通常会带有新值,不会带有旧值</div><div class="line"><span class="built_in">NSKeyValueObservingOptionPrior</span> 分两次调用,值改变之前和值改变后</div></pre></td></tr></table></figure>
-<h2 id="添加观察键值变化的处理方法"><a href="#添加观察键值变化的处理方法" class="headerlink" title="添加观察键值变化的处理方法"></a>添加观察键值变化的处理方法</h2><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">-(<span class="keyword">void</span>)observeValueForKeyPath:(<span class="built_in">NSString</span> *)keyPath</div><div class="line">                     ofObject:(<span class="keyword">id</span>)object</div><div class="line">                     change:(<span class="built_in">NSDictionary</span>&lt;<span class="built_in">NSString</span> *,<span class="keyword">id</span>&gt; *)change</div><div class="line">                     context:(<span class="keyword">void</span> *)context</div><div class="line">&#125;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
-<ul>
-<li><strong>KeyPath</strong>:对应forKeyPath</li>
-<li><strong>object</strong>: 被观察者</li>
-<li><strong>change</strong>: 对应相应选项下值的改变(字典类型)可通过对应的key取值,key有new,old,等,可打印输出观察取key值</li>
-<li><strong>context</strong>: 对应context<a id="more"></a>
-<h1 id="KVC"><a href="#KVC" class="headerlink" title="KVC"></a>KVC</h1><blockquote>
-<p>key Value Coding</p>
-</blockquote>
-</li>
-</ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[x setValue:obj forKey:key];       -&gt; x.key = objc(x中编码为“key”的属性的值设为objc)</div><div class="line">[x setValue:obj forKeyPath:path]（用于传递属性）   -&gt; x.path =objc(x中键路径为path的内容设为objc) 如path = a.b 则是把x类中属性a（a是一个类，有b属性）的属性b赋值为 objc</div><div class="line">[x setValuesForKeysWithDictionary:dic]; -&gt; x中所有编码为dic中的“key”值的属性的值设为所有dic中对应“key”的值</div></pre></td></tr></table></figure>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[x setObject:objc forKey:key]; 不要搞混！！！它是<span class="built_in">NSMutableDictionary</span>特有的方法（可变字典添加键值对的，可想做类似于[<span class="built_in">NSMutableArray</span> addObject:objc ]）</div></pre></td></tr></table></figure>
-<p><a href="http://www.cocoachina.com/industry/20140224/7866.html" target="_blank" rel="external">http://www.cocoachina.com/industry/20140224/7866.html</a></p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@class</span> <span class="title">HerosAllParse</span>;</span></div><div class="line"><span class="comment">/*</span></div><div class="line"> 解析规则</div><div class="line"> 1.遇到字典新建类型，</div><div class="line"> 2.然后在类里面，把所有的键对应的属性声明</div><div class="line"> 3.每个类型都需要一个解析方法</div><div class="line"> 4.对于数组类型的属性，标记它的内容，通过@class引入类型</div><div class="line"> 5.解析方法的实现顺序，由底层向表层实现</div><div class="line">*/</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">HerosParse</span> : <span class="title">NSObject</span></span></div><div class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>) <span class="built_in">NSArray</span>&lt;HerosAllParse *&gt; *all;</div><div class="line">+(<span class="keyword">instancetype</span>)parse:(<span class="built_in">NSDictionary</span> *)dic;</div><div class="line"><span class="keyword">@end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">HerosAllParse</span> : <span class="title">NSObject</span></span></div><div class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>) <span class="built_in">NSString</span> *cnName;</div><div class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>) <span class="built_in">NSString</span> *enName;</div><div class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>) <span class="built_in">NSString</span> *location;</div><div class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>) <span class="built_in">NSString</span> *price;</div><div class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>) <span class="built_in">NSString</span> *rating;</div><div class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>) <span class="built_in">NSString</span> *tags;</div><div class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>) <span class="built_in">NSString</span> *title;</div><div class="line">+(<span class="keyword">instancetype</span>)parse:(<span class="built_in">NSDictionary</span> *)dic;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">HerosParse</span></span></div><div class="line"></div><div class="line">+(<span class="keyword">instancetype</span>)parse:(<span class="built_in">NSDictionary</span> *)dic&#123;</div><div class="line">    <span class="built_in">NSMutableArray</span> *ary = [<span class="built_in">NSMutableArray</span> new];</div><div class="line">    <span class="built_in">NSArray</span> *arr = dic[<span class="string">@"all"</span>];</div><div class="line">    <span class="keyword">for</span> (<span class="built_in">NSDictionary</span> *dic <span class="keyword">in</span> arr) &#123;</div><div class="line">        [ary addObject:[HerosAllParse parse:dic]];</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//[dic setValue:ary forKey:@"all"];</span></div><div class="line">    <span class="comment">//为什么得转换为可变dic？？？？？？</span></div><div class="line"></div><div class="line">    <span class="built_in">NSMutableDictionary</span> *multableDic = [<span class="built_in">NSMutableDictionary</span> dictionaryWithDictionary:dic];</div><div class="line">    [multableDic setObject:ary forKey:<span class="string">@"all"</span>];</div><div class="line"></div><div class="line">    <span class="keyword">id</span> objc = [<span class="keyword">self</span> new];</div><div class="line">    [objc setValuesForKeysWithDictionary:multableDic];</div><div class="line">    <span class="keyword">return</span> objc;</div><div class="line">&#125;</div><div class="line">-(<span class="keyword">void</span>)setNilValueForKey:(<span class="built_in">NSString</span> *)key&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line">-(<span class="keyword">void</span>)setValue:(<span class="keyword">id</span>)value forUndefinedKey:(<span class="built_in">NSString</span> *)key&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"><span class="keyword">@end</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">HerosAllParse</span></span></div><div class="line">+(<span class="keyword">instancetype</span>)parse:(<span class="built_in">NSDictionary</span> *)dic&#123;</div><div class="line">    <span class="keyword">id</span> objc = [<span class="keyword">self</span> new];</div><div class="line">    [objc setValuesForKeysWithDictionary:dic];</div><div class="line">    <span class="keyword">return</span> objc;</div><div class="line">&#125;</div><div class="line">-(<span class="keyword">void</span>)setValue:(<span class="keyword">id</span>)value forUndefinedKey:(<span class="built_in">NSString</span> *)key&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line">-(<span class="keyword">void</span>)setNilValueForKey:(<span class="built_in">NSString</span> *)key&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
-<h1 id="通知"><a href="#通知" class="headerlink" title="通知"></a>通知</h1><blockquote>
-<p>与KVO的区别？</p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;KVO&quot;&gt;&lt;a href=&quot;#KVO&quot; class=&quot;headerlink&quot; title=&quot;KVO&quot;&gt;&lt;/a&gt;KVO&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;key Value Observer&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;为想要观察的对象添加观察者&quot;&gt;&lt;a href=&quot;#为想要观察的对象添加观察者&quot; class=&quot;headerlink&quot; title=&quot;为想要观察的对象添加观察者&quot;&gt;&lt;/a&gt;为想要观察的对象添加观察者&lt;/h2&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;[object addObserver:observer&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        forKeyPath:&lt;span class=&quot;string&quot;&gt;@&quot;frame&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        options:&lt;span class=&quot;built_in&quot;&gt;NSKeyValueObservingOptionNew&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        context:&lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;];&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;object&lt;/strong&gt;:被观察对象&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;observer&lt;/strong&gt;:观察对象&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;forKeyPath&lt;/strong&gt;:需要检测的属性(property的name),如UIViewV的frame,center&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;context&lt;/strong&gt;:任意类型(一种标识,可用于同时监听不同对象的相同属性？)&lt;br&gt;options:&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;options:&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSKeyValueObservingOptionNew&lt;/span&gt;  更改前的值&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSKeyValueObservingOptionOld&lt;/span&gt;  更改后的值&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSKeyValueObservingOptionInitial&lt;/span&gt; 初始化的值,一旦注册,立马调用一次,通常会带有新值,不会带有旧值&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSKeyValueObservingOptionPrior&lt;/span&gt; 分两次调用,值改变之前和值改变后&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;添加观察键值变化的处理方法&quot;&gt;&lt;a href=&quot;#添加观察键值变化的处理方法&quot; class=&quot;headerlink&quot; title=&quot;添加观察键值变化的处理方法&quot;&gt;&lt;/a&gt;添加观察键值变化的处理方法&lt;/h2&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;-(&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt;)observeValueForKeyPath:(&lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt; *)keyPath&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;                     ofObject:(&lt;span class=&quot;keyword&quot;&gt;id&lt;/span&gt;)object&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;                     change:(&lt;span class=&quot;built_in&quot;&gt;NSDictionary&lt;/span&gt;&amp;lt;&lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt; *,&lt;span class=&quot;keyword&quot;&gt;id&lt;/span&gt;&amp;gt; *)change&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;                     context:(&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; *)context&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;@end&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;KeyPath&lt;/strong&gt;:对应forKeyPath&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;object&lt;/strong&gt;: 被观察者&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;change&lt;/strong&gt;: 对应相应选项下值的改变(字典类型)可通过对应的key取值,key有new,old,等,可打印输出观察取key值&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;context&lt;/strong&gt;: 对应context
-    
-    </summary>
-    
-      <category term="iOS" scheme="http://sjc2wbq.github.io/categories/iOS/"/>
-    
-    
-      <category term="KVO &amp; KVC" scheme="http://sjc2wbq.github.io/tags/KVO-KVC/"/>
     
   </entry>
   
