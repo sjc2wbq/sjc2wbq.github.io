@@ -274,6 +274,309 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://sjc2wbq.github.io/2017/05/02/objc-ivar-and-property/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JunChuan Shi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NOTES">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/02/objc-ivar-and-property/" itemprop="url">
+                  ivar and property
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-02T22:13:33+08:00">
+                2017-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/05/02/objc-ivar-and-property/" class="leancloud_visitors" data-flag-title="ivar and property">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>成员变量</strong>：<br>定义了一个类的全局变量（不直接被外部访问，只能通过方法读或写）</p>
+<p><strong>属性</strong>：提供了<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">由此而知：&lt;font color = yellow&gt;当在OC里面默认申明一个属性，如果没有关联相应的成员变量会默认生成一个以下划线开头+属性名的成员变量&lt;/font&gt;</div><div class="line"></div><div class="line">```@property```声明```setter getter```方法</div><div class="line"></div><div class="line">```@synthesize```定义```setter getter```方法</div><div class="line"></div><div class="line">在Xcode4.5及以后的版本中，可以省略```@synthesize```编译器会自动帮你加上```setter getter```方法，并且默认会去访问```_age```这个成员变量，如果找不到```_age```这个成员变量，会自动生成一个叫做 _age的私有成员变量。在.m文件中同时实现```getter和setter```方法时候需要```@synthesize age = _age```或者在.h文件里手写成员变量 ```NSString *_age</div></pre></td></tr></table></figure></p>
+<p>ivar:<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_ivar *Ivar;</div></pre></td></tr></table></figure></p>
+<p>objc_ivar结构体定义如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> objc_ivar &#123;</div><div class="line">    <span class="keyword">char</span> *ivar_name                                          OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">char</span> *ivar_type                                          OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">int</span> ivar_offset                                          OBJC2_UNAVAILABLE;</div><div class="line"><span class="meta">#ifdef __LP64__</span></div><div class="line">    <span class="keyword">int</span> space                                                OBJC2_UNAVAILABLE;</div><div class="line"><span class="meta">#endif</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://sjc2wbq.github.io/2017/05/02/runtime的理解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JunChuan Shi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NOTES">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/02/runtime的理解/" itemprop="url">
+                  runtime的理解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-02T18:20:04+08:00">
+                2017-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/05/02/runtime的理解/" class="leancloud_visitors" data-flag-title="runtime的理解">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="runtime-运行时机制"><a href="#runtime-运行时机制" class="headerlink" title="runtime 运行时机制"></a>runtime 运行时机制</h3><h4 id="1-是什么？"><a href="#1-是什么？" class="headerlink" title="1 是什么？"></a>1 是什么？</h4><blockquote>
+<p>runtime是一套比较底层的C语言API，属于一个C语言库，包含了很多底层的C语言API<br>平时编写的OC代码，在程序运行过程中，其实都是转成了runtime的C语言代码，runtime算是OC的幕后工作者</p>
+</blockquote>
+<p>举列子<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[[MJPerson alloc]init]</div></pre></td></tr></table></figure></p>
+<p>runtime:<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">objc_msgSend(objc_msgSend(<span class="string">"MJPerson"</span>,<span class="string">"alloc"</span>), <span class="string">"init"</span>)</div></pre></td></tr></table></figure></p>
+<h4 id="2-用过么？怎么用？"><a href="#2-用过么？怎么用？" class="headerlink" title="2 用过么？怎么用？"></a>2 用过么？怎么用？</h4><blockquote>
+<p>runtime是属于OC的底层，可以进行一些非常底层的操作（用OC是无法实现的，不好实现）</p>
+<ul>
+<li>在程序运行过程中，动态创建一个类（比如KVO的底层实现）</li>
+<li>在程序运行过程中，动态地为某个类增加属性/方法。修改属性值/方法</li>
+<li>遍历一个累的所有成员变量（属性）/所有方法</li>
+</ul>
+</blockquote>
+<h4 id="3-相关的头文件和函数"><a href="#3-相关的头文件和函数" class="headerlink" title="3 相关的头文件和函数"></a>3 相关的头文件和函数</h4><blockquote>
+<p>头文件</p>
+<ul>
+<li><objc runtime.h=""></objc></li>
+<li><objc message.h="">
+
+</objc></li>
+</ul>
+</blockquote>
+<p>相关应用</p>
+<ul>
+<li>methodSwizzling<br>比如公司项目后期突然提出新的需求要为所有页面添加统计功能，也就是用户进入这个页面就统计一次，<br>实现：给UIViewController写一个类别加到pch<br>类别中新建一个swillingViewDidLoad方法<br>在实现中，+(load)中运用runtime的method_exchangeImplementations替换掉系统的viewDidload方法和swillingViewDidLoad方法；<br>在swillingViewDidLoad方法中加入统计方法，然后调用swillingViewDidLoad方法<br>这样，当controller调用viewDidload时通过运行时，指向了自定义的swillingViewDidLoad，在这个方法里先执行了我们的统计方法，然后调用swillingViewDidload方法，指向系统的viewDidload方法，这样就实现了在每个类viewDidload前进行统计的操作。<br>还有数组越界，给系统的NSArray 替换一个自定义objectAtIndex</li>
+<li>NSCoding（归档和解档，利用runtime遍历模型对象的所有属性）</li>
+<li>字典 –&gt; 模型（利用runtime遍历模型对象的所有属性，根据属性名从字典中取出对应的值，设置到模型的属性上）</li>
+<li>KVO（利用runtime动态产生一个类）</li>
+<li>用于封装框架（想怎么改就怎么改）</li>
+</ul>
+<p>相关函数</p>
+<ul>
+<li>objc_msgSend :给对象发送消息</li>
+<li>class_copyMethodList: 遍历某个类所有的方法</li>
+<li>class_copyIvarList: 遍历某个类所有的成员变量</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://sjc2wbq.github.io/2017/04/05/music/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1336,6 +1639,73 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
   
   
 
+  <article class="post post-type-picture " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://sjc2wbq.github.io/2016/03/01/pic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JunChuan Shi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NOTES">
+    </span>
+
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a href="/2016/03/01/pic/"><div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 100%;"><img src="/image/4.jpg" alt=""></div></div><div class="group-picture-row"><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/2.jpg" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/3.jpg" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/1.jpg" alt=""></div></div></div></div>
+</a>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://sjc2wbq.github.io/2016/03/01/7788/">
 
@@ -1494,418 +1864,6 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-picture " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sjc2wbq.github.io/2016/03/01/pic/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunChuan Shi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NOTES">
-    </span>
-
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <a href="/2016/03/01/pic/"><div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 100%;"><img src="/image/4.jpg" alt=""></div></div><div class="group-picture-row"><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/2.jpg" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/3.jpg" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/1.jpg" alt=""></div></div></div></div>
-</a>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sjc2wbq.github.io/2016/02/14/文件系统/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunChuan Shi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NOTES">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/14/文件系统/" itemprop="url">
-                  file system
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-02-14T09:35:22+08:00">
-                2016-02-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2016/02/14/文件系统/" class="leancloud_visitors" data-flag-title="file system">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Visitors </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>ios的文件管理有1.属性列表2.归档3.数据库(SQLite)4.coreData4种方式</p>
-</blockquote>
-<h1 id="属性列表Plist"><a href="#属性列表Plist" class="headerlink" title="属性列表Plist"></a>属性列表Plist</h1><h2 id="IPA的存储空间"><a href="#IPA的存储空间" class="headerlink" title="IPA的存储空间"></a>IPA的存储空间</h2><h3 id="沙盒-Sandbox-读可写"><a href="#沙盒-Sandbox-读可写" class="headerlink" title="沙盒        Sandbox :读可写"></a>沙盒        Sandbox :读可写</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSString</span> *docPath = <span class="built_in">NSSearchPathForDirectoriesInDomains</span>(<span class="built_in">NSDocumentDirectory</span>, <span class="built_in">NSUserDomainMask</span>, <span class="literal">YES</span>).firstObject;</div></pre></td></tr></table></figure>
-<h3 id="应用程序文件-Bundle-只读"><a href="#应用程序文件-Bundle-只读" class="headerlink" title="应用程序文件 Bundle :只读"></a>应用程序文件 Bundle :只读</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSString</span> *settingPath = [[<span class="built_in">NSBundle</span> mainBundle] pathForResource:<span class="string">@"Setting"</span> ofType:<span class="string">@"plist"</span>];</div></pre></td></tr></table></figure>
-<h2 id="手动创建plist文件"><a href="#手动创建plist文件" class="headerlink" title="手动创建plist文件"></a>手动创建plist文件</h2><h3 id="info-Plist"><a href="#info-Plist" class="headerlink" title="info.Plist"></a>info.Plist</h3><blockquote>
-<p>系统plist文件</p>
-<h4 id="通过对应的key获取info-plist中的信息"><a href="#通过对应的key获取info-plist中的信息" class="headerlink" title="通过对应的key获取info.plist中的信息"></a>通过对应的key获取info.plist中的信息</h4><p>如版本号versio</p>
-</blockquote>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSDictionary</span> *infoDic = [[<span class="built_in">NSBundle</span> mainBundle] infoDictionary];</div><div class="line"><span class="built_in">NSString</span> *versionNumber = infoDic[versionKey];</div></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/02/14/文件系统/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sjc2wbq.github.io/2016/02/14/Tableview/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunChuan Shi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NOTES">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/14/Tableview/" itemprop="url">
-                  tableViewCell、collectionViewCell 
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-02-14T09:35:22+08:00">
-                2016-02-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2016/02/14/Tableview/" class="leancloud_visitors" data-flag-title="tableViewCell、collectionViewCell ">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Visitors </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
-<li>注册重用法</li>
-<li>tableview自适应高度</li>
-<li>tableview撤销高亮</li>
-<li>参数的传递<ol>
-<li>纯代码（didselectRow）</li>
-<li>storyBoard方式（prepareForSegue）</li>
-</ol>
-</li>
-</ul>
-<h3 id="tableViewCell、collectionViewCell重用注册法"><a href="#tableViewCell、collectionViewCell重用注册法" class="headerlink" title="tableViewCell、collectionViewCell重用注册法"></a>tableViewCell、collectionViewCell重用注册法</h3><blockquote>
-<ol>
-<li><strong>纯代码</strong>注册时用<strong>registerClass</strong>如下图示例</li>
-<li><strong>xib界面</strong>注册时用<strong>registerNib</strong>作(tableView或collectionView)的cell  </li>
-<li><strong>storyboard</strong></li>
-</ol>
-</blockquote>
-<ul>
-<li><h4 id="注册方法"><a href="#注册方法" class="headerlink" title="注册方法"></a>注册方法</h4></li>
-</ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[<span class="keyword">self</span>.myCollectionView registerClass:[MycollectionViewCell <span class="keyword">class</span>]</div><div class="line">         forCellWithReuseIdentifier:<span class="string">@"cell"</span>];</div><div class="line"></div><div class="line">[<span class="keyword">self</span>.myCollectionView registerNib:[<span class="built_in">UINib</span> nibWithNibName:<span class="string">@"mycollectionCell"</span></div><div class="line">                            bundle:<span class="literal">nil</span>]</div><div class="line">         forCellWithReuseIdentifier:cellIndentify];</div></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/02/14/Tableview/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1955,7 +1913,7 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

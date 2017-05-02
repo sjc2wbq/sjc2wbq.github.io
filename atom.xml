@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sjc2wbq.github.io/"/>
-  <updated>2017-04-10T07:28:08.000Z</updated>
+  <updated>2017-05-02T16:33:06.000Z</updated>
   <id>http://sjc2wbq.github.io/</id>
   
   <author>
@@ -14,6 +14,84 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ivar and property</title>
+    <link href="http://sjc2wbq.github.io/2017/05/02/objc-ivar-and-property/"/>
+    <id>http://sjc2wbq.github.io/2017/05/02/objc-ivar-and-property/</id>
+    <published>2017-05-02T14:13:33.000Z</published>
+    <updated>2017-05-02T16:33:06.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>成员变量</strong>：<br>定义了一个类的全局变量（不直接被外部访问，只能通过方法读或写）</p>
+<p><strong>属性</strong>：提供了<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">由此而知：&lt;font color = yellow&gt;当在OC里面默认申明一个属性，如果没有关联相应的成员变量会默认生成一个以下划线开头+属性名的成员变量&lt;/font&gt;</div><div class="line"></div><div class="line">```@property```声明```setter getter```方法</div><div class="line"></div><div class="line">```@synthesize```定义```setter getter```方法</div><div class="line"></div><div class="line">在Xcode4.5及以后的版本中，可以省略```@synthesize```编译器会自动帮你加上```setter getter```方法，并且默认会去访问```_age```这个成员变量，如果找不到```_age```这个成员变量，会自动生成一个叫做 _age的私有成员变量。在.m文件中同时实现```getter和setter```方法时候需要```@synthesize age = _age```或者在.h文件里手写成员变量 ```NSString *_age</div></pre></td></tr></table></figure></p>
+<p>ivar:<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_ivar *Ivar;</div></pre></td></tr></table></figure></p>
+<p>objc_ivar结构体定义如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> objc_ivar &#123;</div><div class="line">    <span class="keyword">char</span> *ivar_name                                          OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">char</span> *ivar_type                                          OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">int</span> ivar_offset                                          OBJC2_UNAVAILABLE;</div><div class="line"><span class="meta">#ifdef __LP64__</span></div><div class="line">    <span class="keyword">int</span> space                                                OBJC2_UNAVAILABLE;</div><div class="line"><span class="meta">#endif</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;成员变量&lt;/strong&gt;：&lt;br&gt;定义了一个类的全局变量（不直接被外部访问，只能通过方法读或写）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;属性&lt;/strong&gt;：提供了&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td cl
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>runtime的理解</title>
+    <link href="http://sjc2wbq.github.io/2017/05/02/runtime%E7%9A%84%E7%90%86%E8%A7%A3/"/>
+    <id>http://sjc2wbq.github.io/2017/05/02/runtime的理解/</id>
+    <published>2017-05-02T10:20:04.000Z</published>
+    <updated>2017-05-02T16:33:16.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="runtime-运行时机制"><a href="#runtime-运行时机制" class="headerlink" title="runtime 运行时机制"></a>runtime 运行时机制</h3><h4 id="1-是什么？"><a href="#1-是什么？" class="headerlink" title="1 是什么？"></a>1 是什么？</h4><blockquote>
+<p>runtime是一套比较底层的C语言API，属于一个C语言库，包含了很多底层的C语言API<br>平时编写的OC代码，在程序运行过程中，其实都是转成了runtime的C语言代码，runtime算是OC的幕后工作者</p>
+</blockquote>
+<p>举列子<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[[MJPerson alloc]init]</div></pre></td></tr></table></figure></p>
+<p>runtime:<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">objc_msgSend(objc_msgSend(<span class="string">"MJPerson"</span>,<span class="string">"alloc"</span>), <span class="string">"init"</span>)</div></pre></td></tr></table></figure></p>
+<h4 id="2-用过么？怎么用？"><a href="#2-用过么？怎么用？" class="headerlink" title="2 用过么？怎么用？"></a>2 用过么？怎么用？</h4><blockquote>
+<p>runtime是属于OC的底层，可以进行一些非常底层的操作（用OC是无法实现的，不好实现）</p>
+<ul>
+<li>在程序运行过程中，动态创建一个类（比如KVO的底层实现）</li>
+<li>在程序运行过程中，动态地为某个类增加属性/方法。修改属性值/方法</li>
+<li>遍历一个累的所有成员变量（属性）/所有方法</li>
+</ul>
+</blockquote>
+<h4 id="3-相关的头文件和函数"><a href="#3-相关的头文件和函数" class="headerlink" title="3 相关的头文件和函数"></a>3 相关的头文件和函数</h4><blockquote>
+<p>头文件</p>
+<ul>
+<li><objc runtime.h=""></objc></li>
+<li><objc message.h="">
+
+</objc></li>
+</ul>
+</blockquote>
+<p>相关应用</p>
+<ul>
+<li>methodSwizzling<br>比如公司项目后期突然提出新的需求要为所有页面添加统计功能，也就是用户进入这个页面就统计一次，<br>实现：给UIViewController写一个类别加到pch<br>类别中新建一个swillingViewDidLoad方法<br>在实现中，+(load)中运用runtime的method_exchangeImplementations替换掉系统的viewDidload方法和swillingViewDidLoad方法；<br>在swillingViewDidLoad方法中加入统计方法，然后调用swillingViewDidLoad方法<br>这样，当controller调用viewDidload时通过运行时，指向了自定义的swillingViewDidLoad，在这个方法里先执行了我们的统计方法，然后调用swillingViewDidload方法，指向系统的viewDidload方法，这样就实现了在每个类viewDidload前进行统计的操作。<br>还有数组越界，给系统的NSArray 替换一个自定义objectAtIndex</li>
+<li>NSCoding（归档和解档，利用runtime遍历模型对象的所有属性）</li>
+<li>字典 –&gt; 模型（利用runtime遍历模型对象的所有属性，根据属性名从字典中取出对应的值，设置到模型的属性上）</li>
+<li>KVO（利用runtime动态产生一个类）</li>
+<li>用于封装框架（想怎么改就怎么改）</li>
+</ul>
+<p>相关函数</p>
+<ul>
+<li>objc_msgSend :给对象发送消息</li>
+<li>class_copyMethodList: 遍历某个类所有的方法</li>
+<li>class_copyIvarList: 遍历某个类所有的成员变量</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;runtime-运行时机制&quot;&gt;&lt;a href=&quot;#runtime-运行时机制&quot; class=&quot;headerlink&quot; title=&quot;runtime 运行时机制&quot;&gt;&lt;/a&gt;runtime 运行时机制&lt;/h3&gt;&lt;h4 id=&quot;1-是什么？&quot;&gt;&lt;a href=&quot;#1-是
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>如何在iOS端web插入音乐并且自动顺序播放音乐</title>
@@ -426,6 +504,27 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
   </entry>
   
   <entry>
+    <title></title>
+    <link href="http://sjc2wbq.github.io/2016/03/01/pic/"/>
+    <id>http://sjc2wbq.github.io/2016/03/01/pic/</id>
+    <published>2016-03-01T01:35:22.000Z</published>
+    <updated>2016-05-20T04:06:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 100%;"><img src="/image/4.jpg" alt=""></div></div><div class="group-picture-row"><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/2.jpg" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/3.jpg" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/1.jpg" alt=""></div></div></div></div>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;div class=&quot;group-picture&quot;&gt;&lt;div class=&quot;group-picture-container&quot;&gt;&lt;div class=&quot;group-picture-row&quot;&gt;&lt;div class=&quot;group-picture-column&quot; style=&quot;widt
+    
+    </summary>
+    
+      <category term="life" scheme="http://sjc2wbq.github.io/categories/life/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>pieces colloction</title>
     <link href="http://sjc2wbq.github.io/2016/03/01/7788/"/>
     <id>http://sjc2wbq.github.io/2016/03/01/7788/</id>
@@ -530,23 +629,73 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
   </entry>
   
   <entry>
-    <title></title>
-    <link href="http://sjc2wbq.github.io/2016/03/01/pic/"/>
-    <id>http://sjc2wbq.github.io/2016/03/01/pic/</id>
-    <published>2016-03-01T01:35:22.000Z</published>
-    <updated>2016-05-20T04:06:54.000Z</updated>
+    <title>tableViewCell、collectionViewCell </title>
+    <link href="http://sjc2wbq.github.io/2016/02/14/Tableview/"/>
+    <id>http://sjc2wbq.github.io/2016/02/14/Tableview/</id>
+    <published>2016-02-14T01:35:22.000Z</published>
+    <updated>2016-05-20T04:02:51.000Z</updated>
     
-    <content type="html"><![CDATA[<div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 100%;"><img src="/image/4.jpg" alt=""></div></div><div class="group-picture-row"><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/2.jpg" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/3.jpg" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="/image/1.jpg" alt=""></div></div></div></div>
+    <content type="html"><![CDATA[<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li>注册重用法</li>
+<li>tableview自适应高度</li>
+<li>tableview撤销高亮</li>
+<li>参数的传递<ol>
+<li>纯代码（didselectRow）</li>
+<li>storyBoard方式（prepareForSegue）</li>
+</ol>
+</li>
+</ul>
+<h3 id="tableViewCell、collectionViewCell重用注册法"><a href="#tableViewCell、collectionViewCell重用注册法" class="headerlink" title="tableViewCell、collectionViewCell重用注册法"></a>tableViewCell、collectionViewCell重用注册法</h3><blockquote>
+<ol>
+<li><strong>纯代码</strong>注册时用<strong>registerClass</strong>如下图示例</li>
+<li><strong>xib界面</strong>注册时用<strong>registerNib</strong>作(tableView或collectionView)的cell  </li>
+<li><strong>storyboard</strong></li>
+</ol>
+</blockquote>
+<ul>
+<li><h4 id="注册方法"><a href="#注册方法" class="headerlink" title="注册方法"></a>注册方法</h4></li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[<span class="keyword">self</span>.myCollectionView registerClass:[MycollectionViewCell <span class="keyword">class</span>]</div><div class="line">         forCellWithReuseIdentifier:<span class="string">@"cell"</span>];</div><div class="line"></div><div class="line">[<span class="keyword">self</span>.myCollectionView registerNib:[<span class="built_in">UINib</span> nibWithNibName:<span class="string">@"mycollectionCell"</span></div><div class="line">                            bundle:<span class="literal">nil</span>]</div><div class="line">         forCellWithReuseIdentifier:cellIndentify];</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<ul>
+<li><h4 id="重用方法"><a href="#重用方法" class="headerlink" title="重用方法"></a>重用方法</h4></li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MycollectionViewCell *cell;</div><div class="line">cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIndentify</div><div class="line">                                                  forIndexPath:indexPath];</div></pre></td></tr></table></figure>
+<h3 id="让tableViewCell横线没有空隙"><a href="#让tableViewCell横线没有空隙" class="headerlink" title="让tableViewCell横线没有空隙"></a>让tableViewCell横线没有空隙</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cell.separatorInset = <span class="built_in">UIEdgeInsetsZero</span>;</div><div class="line">cell.layoutMargins = <span class="built_in">UIEdgeInsetsZero</span>;</div><div class="line">cell.preservesSuperviewLayoutMargins = <span class="literal">NO</span>;</div></pre></td></tr></table></figure>
+<h3 id="tableview自适应高度"><a href="#tableview自适应高度" class="headerlink" title="tableview自适应高度"></a>tableview自适应高度</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-(<span class="built_in">CGFloat</span>)tableView:(<span class="built_in">UITableView</span> *)tableView estimatedHeightForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath&#123;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="built_in">UITableViewAutomaticDimension</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="tableView-编辑操作"><a href="#tableView-编辑操作" class="headerlink" title="tableView 编辑操作"></a>tableView 编辑操作</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//编辑的状态</span></div><div class="line">-(<span class="built_in">UITableViewCellEditingStyle</span>)tableView:(<span class="built_in">UITableView</span> *)tableView editingStyleForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">UITableViewCellEditingStyleDelete</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//左滑时的题目</span></div><div class="line">-(<span class="built_in">NSString</span> *)tableView:(<span class="built_in">UITableView</span> *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">@"删除此诗"</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//编辑状态下的操作</span></div><div class="line">-(<span class="keyword">void</span>)tableView:(<span class="built_in">UITableView</span> *)tableView commitEditingStyle:(<span class="built_in">UITableViewCellEditingStyle</span>)editingStyle forRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPathP&#123;</div><div class="line">    <span class="keyword">if</span> (editingStyle == <span class="built_in">UITableViewCellEditingStyleDelete</span>) &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 ]]></content>
     
     <summary type="html">
     
-      &lt;div class=&quot;group-picture&quot;&gt;&lt;div class=&quot;group-picture-container&quot;&gt;&lt;div class=&quot;group-picture-row&quot;&gt;&lt;div class=&quot;group-picture-column&quot; style=&quot;widt
+      &lt;h2 id=&quot;目录&quot;&gt;&lt;a href=&quot;#目录&quot; class=&quot;headerlink&quot; title=&quot;目录&quot;&gt;&lt;/a&gt;目录&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;注册重用法&lt;/li&gt;
+&lt;li&gt;tableview自适应高度&lt;/li&gt;
+&lt;li&gt;tableview撤销高亮&lt;/li&gt;
+&lt;li&gt;参数的传递&lt;ol&gt;
+&lt;li&gt;纯代码（didselectRow）&lt;/li&gt;
+&lt;li&gt;storyBoard方式（prepareForSegue）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;tableViewCell、collectionViewCell重用注册法&quot;&gt;&lt;a href=&quot;#tableViewCell、collectionViewCell重用注册法&quot; class=&quot;headerlink&quot; title=&quot;tableViewCell、collectionViewCell重用注册法&quot;&gt;&lt;/a&gt;tableViewCell、collectionViewCell重用注册法&lt;/h3&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;纯代码&lt;/strong&gt;注册时用&lt;strong&gt;registerClass&lt;/strong&gt;如下图示例&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;xib界面&lt;/strong&gt;注册时用&lt;strong&gt;registerNib&lt;/strong&gt;作(tableView或collectionView)的cell  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;storyboard&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;h4 id=&quot;注册方法&quot;&gt;&lt;a href=&quot;#注册方法&quot; class=&quot;headerlink&quot; title=&quot;注册方法&quot;&gt;&lt;/a&gt;注册方法&lt;/h4&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;[&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.myCollectionView registerClass:[MycollectionViewCell &lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt;]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;         forCellWithReuseIdentifier:&lt;span class=&quot;string&quot;&gt;@&quot;cell&quot;&lt;/span&gt;];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;[&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.myCollectionView registerNib:[&lt;span class=&quot;built_in&quot;&gt;UINib&lt;/span&gt; nibWithNibName:&lt;span class=&quot;string&quot;&gt;@&quot;mycollectionCell&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;                            bundle:&lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;         forCellWithReuseIdentifier:cellIndentify];&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
-      <category term="life" scheme="http://sjc2wbq.github.io/categories/life/"/>
+      <category term="iOS" scheme="http://sjc2wbq.github.io/categories/iOS/"/>
     
+    
+      <category term="tableView" scheme="http://sjc2wbq.github.io/tags/tableView/"/>
     
   </entry>
   
@@ -630,77 +779,6 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
     
     
       <category term="file system" scheme="http://sjc2wbq.github.io/tags/file-system/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>tableViewCell、collectionViewCell </title>
-    <link href="http://sjc2wbq.github.io/2016/02/14/Tableview/"/>
-    <id>http://sjc2wbq.github.io/2016/02/14/Tableview/</id>
-    <published>2016-02-14T01:35:22.000Z</published>
-    <updated>2016-05-20T04:02:51.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
-<li>注册重用法</li>
-<li>tableview自适应高度</li>
-<li>tableview撤销高亮</li>
-<li>参数的传递<ol>
-<li>纯代码（didselectRow）</li>
-<li>storyBoard方式（prepareForSegue）</li>
-</ol>
-</li>
-</ul>
-<h3 id="tableViewCell、collectionViewCell重用注册法"><a href="#tableViewCell、collectionViewCell重用注册法" class="headerlink" title="tableViewCell、collectionViewCell重用注册法"></a>tableViewCell、collectionViewCell重用注册法</h3><blockquote>
-<ol>
-<li><strong>纯代码</strong>注册时用<strong>registerClass</strong>如下图示例</li>
-<li><strong>xib界面</strong>注册时用<strong>registerNib</strong>作(tableView或collectionView)的cell  </li>
-<li><strong>storyboard</strong></li>
-</ol>
-</blockquote>
-<ul>
-<li><h4 id="注册方法"><a href="#注册方法" class="headerlink" title="注册方法"></a>注册方法</h4></li>
-</ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[<span class="keyword">self</span>.myCollectionView registerClass:[MycollectionViewCell <span class="keyword">class</span>]</div><div class="line">         forCellWithReuseIdentifier:<span class="string">@"cell"</span>];</div><div class="line"></div><div class="line">[<span class="keyword">self</span>.myCollectionView registerNib:[<span class="built_in">UINib</span> nibWithNibName:<span class="string">@"mycollectionCell"</span></div><div class="line">                            bundle:<span class="literal">nil</span>]</div><div class="line">         forCellWithReuseIdentifier:cellIndentify];</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<ul>
-<li><h4 id="重用方法"><a href="#重用方法" class="headerlink" title="重用方法"></a>重用方法</h4></li>
-</ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MycollectionViewCell *cell;</div><div class="line">cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIndentify</div><div class="line">                                                  forIndexPath:indexPath];</div></pre></td></tr></table></figure>
-<h3 id="让tableViewCell横线没有空隙"><a href="#让tableViewCell横线没有空隙" class="headerlink" title="让tableViewCell横线没有空隙"></a>让tableViewCell横线没有空隙</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cell.separatorInset = <span class="built_in">UIEdgeInsetsZero</span>;</div><div class="line">cell.layoutMargins = <span class="built_in">UIEdgeInsetsZero</span>;</div><div class="line">cell.preservesSuperviewLayoutMargins = <span class="literal">NO</span>;</div></pre></td></tr></table></figure>
-<h3 id="tableview自适应高度"><a href="#tableview自适应高度" class="headerlink" title="tableview自适应高度"></a>tableview自适应高度</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-(<span class="built_in">CGFloat</span>)tableView:(<span class="built_in">UITableView</span> *)tableView estimatedHeightForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath&#123;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="built_in">UITableViewAutomaticDimension</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="tableView-编辑操作"><a href="#tableView-编辑操作" class="headerlink" title="tableView 编辑操作"></a>tableView 编辑操作</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//编辑的状态</span></div><div class="line">-(<span class="built_in">UITableViewCellEditingStyle</span>)tableView:(<span class="built_in">UITableView</span> *)tableView editingStyleForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">UITableViewCellEditingStyleDelete</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//左滑时的题目</span></div><div class="line">-(<span class="built_in">NSString</span> *)tableView:(<span class="built_in">UITableView</span> *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">@"删除此诗"</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//编辑状态下的操作</span></div><div class="line">-(<span class="keyword">void</span>)tableView:(<span class="built_in">UITableView</span> *)tableView commitEditingStyle:(<span class="built_in">UITableViewCellEditingStyle</span>)editingStyle forRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPathP&#123;</div><div class="line">    <span class="keyword">if</span> (editingStyle == <span class="built_in">UITableViewCellEditingStyleDelete</span>) &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;目录&quot;&gt;&lt;a href=&quot;#目录&quot; class=&quot;headerlink&quot; title=&quot;目录&quot;&gt;&lt;/a&gt;目录&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;注册重用法&lt;/li&gt;
-&lt;li&gt;tableview自适应高度&lt;/li&gt;
-&lt;li&gt;tableview撤销高亮&lt;/li&gt;
-&lt;li&gt;参数的传递&lt;ol&gt;
-&lt;li&gt;纯代码（didselectRow）&lt;/li&gt;
-&lt;li&gt;storyBoard方式（prepareForSegue）&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;tableViewCell、collectionViewCell重用注册法&quot;&gt;&lt;a href=&quot;#tableViewCell、collectionViewCell重用注册法&quot; class=&quot;headerlink&quot; title=&quot;tableViewCell、collectionViewCell重用注册法&quot;&gt;&lt;/a&gt;tableViewCell、collectionViewCell重用注册法&lt;/h3&gt;&lt;blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;纯代码&lt;/strong&gt;注册时用&lt;strong&gt;registerClass&lt;/strong&gt;如下图示例&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;xib界面&lt;/strong&gt;注册时用&lt;strong&gt;registerNib&lt;/strong&gt;作(tableView或collectionView)的cell  &lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;storyboard&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;h4 id=&quot;注册方法&quot;&gt;&lt;a href=&quot;#注册方法&quot; class=&quot;headerlink&quot; title=&quot;注册方法&quot;&gt;&lt;/a&gt;注册方法&lt;/h4&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;[&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.myCollectionView registerClass:[MycollectionViewCell &lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt;]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;         forCellWithReuseIdentifier:&lt;span class=&quot;string&quot;&gt;@&quot;cell&quot;&lt;/span&gt;];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;[&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.myCollectionView registerNib:[&lt;span class=&quot;built_in&quot;&gt;UINib&lt;/span&gt; nibWithNibName:&lt;span class=&quot;string&quot;&gt;@&quot;mycollectionCell&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;                            bundle:&lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;         forCellWithReuseIdentifier:cellIndentify];&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="iOS" scheme="http://sjc2wbq.github.io/categories/iOS/"/>
-    
-    
-      <category term="tableView" scheme="http://sjc2wbq.github.io/tags/tableView/"/>
     
   </entry>
   
@@ -886,135 +964,6 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
     
     
       <category term="coming" scheme="http://sjc2wbq.github.io/tags/coming/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Notification</title>
-    <link href="http://sjc2wbq.github.io/2016/01/17/Notification/"/>
-    <id>http://sjc2wbq.github.io/2016/01/17/Notification/</id>
-    <published>2016-01-17T13:38:50.000Z</published>
-    <updated>2016-05-20T04:04:39.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="NSNotificationCenter"><a href="#NSNotificationCenter" class="headerlink" title="NSNotificationCenter"></a>NSNotificationCenter</h1><blockquote>
-<p>iOS通知中心</p>
-</blockquote>
-<h2 id="NSNotification类"><a href="#NSNotification类" class="headerlink" title="- NSNotification类"></a>- NSNotification类</h2><blockquote>
-<p>一个消息对象类,有三个成员变量</p>
-</blockquote>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">@property</span> (<span class="keyword">readonly</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *name;</div><div class="line"><span class="keyword">@property</span> (<span class="keyword">readonly</span>, <span class="keyword">retain</span>) <span class="keyword">id</span> object;</div><div class="line"><span class="keyword">@property</span> (<span class="keyword">readonly</span>, <span class="keyword">copy</span>) <span class="built_in">NSDictionary</span> *userInfo;</div></pre></td></tr></table></figure>
-<ul>
-<li>name:辨别消息对象的唯一标识</li>
-<li>object:针对某一个对象的消息</li>
-<li>userInfo:用来传值的一个字典</li>
-</ul>
-<h2 id="NSNotificationCenter类"><a href="#NSNotificationCenter类" class="headerlink" title="- NSNotificationCenter类"></a>- NSNotificationCenter类</h2><blockquote>
-<p>通知中心,使用单例设计,每个应用程序都会有一个默认的通知中心.用于调度通知的发送和接受</p>
-</blockquote>
-<pre><code class="objc">
-</code></pre>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;NSNotificationCenter&quot;&gt;&lt;a href=&quot;#NSNotificationCenter&quot; class=&quot;headerlink&quot; title=&quot;NSNotificationCenter&quot;&gt;&lt;/a&gt;NSNotificationCenter&lt;/h1&gt;&lt;
-    
-    </summary>
-    
-      <category term="iOS" scheme="http://sjc2wbq.github.io/categories/iOS/"/>
-    
-    
-      <category term="Notification" scheme="http://sjc2wbq.github.io/tags/Notification/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Animation</title>
-    <link href="http://sjc2wbq.github.io/2016/01/17/Animation/"/>
-    <id>http://sjc2wbq.github.io/2016/01/17/Animation/</id>
-    <published>2016-01-17T13:38:50.000Z</published>
-    <updated>2016-05-20T04:04:11.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="CA-CoreAnimation动画"><a href="#CA-CoreAnimation动画" class="headerlink" title="CA:CoreAnimation动画"></a>CA:CoreAnimation动画</h1><blockquote>
-<p>属于CALayer层的动画,属于最底层,UIView的底层也是CALayer,UIView是基于CALayer的封装,CALayer具备UIView的所有属性和方法</p>
-</blockquote>
-<h3 id="1-CABasicAnimation"><a href="#1-CABasicAnimation" class="headerlink" title="1. CABasicAnimation"></a>1. CABasicAnimation</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">CABasicAnimation</span> *animation = [<span class="built_in">CABasicAnimation</span> animationWithKeyPath:<span class="string">@"transform.rotation.y"</span>];</div><div class="line">animation.toValue = @(M_PI*<span class="number">2</span>);</div><div class="line">animation.duration = <span class="number">3</span>;</div><div class="line">animation.repeatCount = MAXFLOAT;</div><div class="line">[_imageView.layer addAnimation:animation forKey:<span class="string">@"animationY"</span>];</div></pre></td></tr></table></figure>
-<ol>
-<li><strong>key</strong>：addAnimation时的key,为自定义动画时的标识，可用于指定动画进行操作,比如删除指定动画<br>key获取</li>
-<li><strong>KeyPath</strong>：系统动画类型标识，用于获得系统动画<ul>
-<li>transform.rotation.x :系统绕x轴旋转动画</li>
-<li>transform.rotation.y :系统绕y轴旋转动画</li>
-<li>transform.rotation.z :系统绕z轴旋转动画</li>
-<li>position : 用于CAKeyframeAnimation做沿“轨迹”运动,见下详细示例</li>
-</ul>
-</li>
-</ol>
-<h3 id="2-CAKeyframeAnimation"><a href="#2-CAKeyframeAnimation" class="headerlink" title="2. CAKeyframeAnimation"></a>2. <em>CAKeyframeAnimation</em></h3><blockquote>
-<p>CA帧动画,通常可用于按“轨迹”运动，与UIBezierPath结合</p>
-</blockquote>
-  <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIBezierPath</span> *path = [<span class="built_in">UIBezierPath</span> bezierPathWithOvalInRect:rect];</div><div class="line"><span class="built_in">UIBezierPath</span> *arc = [<span class="built_in">UIBezierPath</span> bezierPathWithArcCenter:<span class="keyword">self</span>.view.center radius:<span class="number">120</span> startAngle:M_PI_2*<span class="number">3</span> endAngle:M_PI_2*<span class="number">3</span>+M_PI*<span class="number">2</span> clockwise:<span class="literal">YES</span>];</div><div class="line">  <span class="comment">//要沿着路劲跑，必须用关键帧动画</span></div><div class="line">  <span class="comment">//position:沿着路径动画</span></div><div class="line"><span class="built_in">CAKeyframeAnimation</span> *moveAnimation = [<span class="built_in">CAKeyframeAnimation</span> animationWithKeyPath:<span class="string">@"position"</span>];</div><div class="line">  <span class="comment">//设置动画的路径</span></div><div class="line">moveAnimation.path = arc.CGPath;</div><div class="line">moveAnimation.duration = <span class="number">3</span>;</div><div class="line">moveAnimation.repeatCount = MAXFLOAT;</div><div class="line">[_imageView.layer addAnimation:moveAnimation forKey:<span class="string">@"runWithPath"</span>];</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<h3 id="3-CGAffineTransfor"><a href="#3-CGAffineTransfor" class="headerlink" title="3. CGAffineTransfor"></a>3. CGAffineTransfor</h3><h3 id="4-CAAnimationGroup"><a href="#4-CAAnimationGroup" class="headerlink" title="4. CAAnimationGroup"></a>4. CAAnimationGroup</h3><blockquote>
-<p>动画组,可同时为一个对象添加管理多个动画,</p>
-</blockquote>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">CAAnimationGroup</span> *group =[<span class="built_in">CAAnimationGroup</span> animation];</div><div class="line">  group.animations = @[xScaleAnimation,yScaleAnimation,moveAnimation];</div><div class="line">  group.repeatCount = <span class="number">2</span>;</div><div class="line">  group.duration = <span class="number">2</span>;</div><div class="line">   <span class="comment">//可以通过代理来监听动画的开始和结束，此协议已经被自动引入，不需要手动再引</span></div><div class="line">group.delegate = <span class="keyword">self</span>;</div><div class="line">[_imageView.layer addAnimation:group forKey:<span class="string">@"groupAnimation"</span>];</div></pre></td></tr></table></figure>
-<h3 id="5-delegateMethod"><a href="#5-delegateMethod" class="headerlink" title="5. delegateMethod"></a>5. delegateMethod</h3><blockquote>
-<p>监测动画的代理方法,由于CAAnimation自动引入了代理，无需在类名后手动引入代理，只需给代理赋值即可<code>animation.delegate = self;</code></p>
-</blockquote>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-(<span class="keyword">void</span>)animationDidStart:(<span class="built_in">CAAnimation</span> *)anim&#123;</div><div class="line">&#125;</div><div class="line">-(<span class="keyword">void</span>)animationDidStop:(<span class="built_in">CAAnimation</span> *)anim finished:(<span class="built_in">BOOL</span>)flag&#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="UIView动画"><a href="#UIView动画" class="headerlink" title="UIView动画"></a>UIView动画</h1><blockquote>
-<p>UIView的Animation是核心动画CoreAnimation对UIView的扩展类</p>
-</blockquote>
-<h3 id="1-基础动画"><a href="#1-基础动画" class="headerlink" title="1. 基础动画"></a>1. 基础动画</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[<span class="built_in">UIView</span> animateWithDuration:duration</div><div class="line">         animations:^&#123;</div><div class="line">&#125;];</div><div class="line"></div><div class="line">[<span class="built_in">UIView</span> animateWithDuration:duration</div><div class="line">         animations:^&#123;</div><div class="line">       &#125; completion:^(<span class="built_in">BOOL</span> finished) &#123;</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
-<h3 id="2-基础动画，带option选项"><a href="#2-基础动画，带option选项" class="headerlink" title="2. 基础动画，带option选项"></a>2. 基础动画，带option选项</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[<span class="built_in">UIView</span> animateWithDuration:duration</div><div class="line">         delay:<span class="number">0</span></div><div class="line">         options:<span class="built_in">UIViewAnimationOptionCurveLinear</span></div><div class="line">         animations:^&#123;</div><div class="line">      &#125; completion:^(<span class="built_in">BOOL</span> finished)&#123;</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
-<p>其中的<strong>option</strong>参数有以下几种：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- UIViewAnimationOptionCurveLinear(线性变化)</div><div class="line">- UIViewAnimationOptionRepeat（重复）</div><div class="line">- UIViewAnimationOptionAutoreverse（自动重来）</div></pre></td></tr></table></figure></p>
-<h3 id="3-带有阻尼damping值-加速度velocity的动画-可实现弹跳动画"><a href="#3-带有阻尼damping值-加速度velocity的动画-可实现弹跳动画" class="headerlink" title="3. 带有阻尼damping值,加速度velocity的动画(可实现弹跳动画)"></a>3. 带有阻尼damping值,加速度velocity的动画(可实现弹跳动画)</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[<span class="built_in">UIView</span> animateWithDuration:duration</div><div class="line">         delay:<span class="number">0</span></div><div class="line">         usingSpringWithDamping:damping</div><div class="line">         initialSpringVelocity:velocity</div><div class="line">         options:<span class="built_in">UIViewAnimationOptionCurveLinear</span> animations:^&#123;</div><div class="line">          <span class="comment">//动画进行时操作</span></div><div class="line">       &#125; completion:^(<span class="built_in">BOOL</span> finished) &#123;</div><div class="line">          <span class="comment">//完成操作</span></div><div class="line">&#125;];</div></pre></td></tr></table></figure>
-<ol>
-<li><strong>damping</strong> :值越小，弹跳次数越多</li>
-<li><strong>velocity</strong> :  值越大，弹跳速度越快</li>
-</ol>
-<h3 id="4-帧动画-可对动画过程中的某个阶段-帧-进行操作"><a href="#4-帧动画-可对动画过程中的某个阶段-帧-进行操作" class="headerlink" title="4. 帧动画,可对动画过程中的某个阶段[帧]进行操作"></a>4. 帧动画,可对动画过程中的某个阶段[帧]进行操作</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">[<span class="built_in">UIView</span> animateKeyframesWithDuration:duration</div><div class="line">         delay:<span class="number">0</span></div><div class="line">         options:<span class="built_in">UIViewKeyframeAnimationOptionCalculationModeLinear</span></div><div class="line">         animations:^&#123;</div><div class="line">            <span class="comment">//添加帧动画</span></div><div class="line">                [<span class="built_in">UIView</span> addKeyframeWithRelativeStartTime:start</div><div class="line">                        relativeDuration:duratuion</div><div class="line">                        animations:^&#123;</div><div class="line">                &#125;];</div><div class="line">            <span class="comment">//如果用Autolayout做布局，需调用</span></div><div class="line">                [<span class="keyword">self</span>.view layoutIfNeeded];</div><div class="line">      &#125; completion:^(<span class="built_in">BOOL</span> finished) &#123;</div><div class="line">            <span class="comment">//完成操作</span></div><div class="line">&#125;];</div></pre></td></tr></table></figure>
-<ol>
-<li><p><strong>添加帧动画</strong></p>
-<p>其中<em>start</em>,<em>duration</em>参数为总时段的所占比率，如start=1/3,duration=1/3,即表示从时段的第1/3阶段开始,进行1/3时长的动画</p>
-</li>
-<li><p><strong>加载底层视图</strong></p>
-<p>以下形式为<strong>单独刷新imageView的layout</strong>，如在帧中,分时控制，一个物体自上而下,自左而右碰撞(不断走Z字路线),分段里,需单独改变,用以下方式.此时如果用Masnory做AutoLayout,需注意用mas_remakeConstraints:^(MASConstraintMaker *make)</p>
-</li>
-<li><p><strong>layoutIfNeeded</strong></p>
-<p>当使用Autuolayout做布局时,需要调用<em>layoutIfNeeded</em>刷新视图,当只需要刷新特定对象时,需要首先<em>setNeedsLayout</em>,如下图示例所示</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[<span class="keyword">self</span>.imageView mas_remakeConstraints:^(MASConstraintMaker *make) &#123;</div><div class="line">               make.right.equalTo(<span class="number">0</span>);</div><div class="line">               make.bottom.equalTo(<span class="number">-200</span>);</div><div class="line">               make.size.equalTo(<span class="built_in">CGSizeMake</span>(<span class="number">100</span>, <span class="number">100</span>));</div><div class="line">           &#125;];</div><div class="line">[<span class="keyword">self</span>.imageView setNeedsLayout];</div><div class="line">[<span class="keyword">self</span>.imageView layoutIfNeeded];</div></pre></td></tr></table></figure>
-</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;CA-CoreAnimation动画&quot;&gt;&lt;a href=&quot;#CA-CoreAnimation动画&quot; class=&quot;headerlink&quot; title=&quot;CA:CoreAnimation动画&quot;&gt;&lt;/a&gt;CA:CoreAnimation动画&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;属于CALayer层的动画,属于最底层,UIView的底层也是CALayer,UIView是基于CALayer的封装,CALayer具备UIView的所有属性和方法&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;1-CABasicAnimation&quot;&gt;&lt;a href=&quot;#1-CABasicAnimation&quot; class=&quot;headerlink&quot; title=&quot;1. CABasicAnimation&quot;&gt;&lt;/a&gt;1. CABasicAnimation&lt;/h3&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;CABasicAnimation&lt;/span&gt; *animation = [&lt;span class=&quot;built_in&quot;&gt;CABasicAnimation&lt;/span&gt; animationWithKeyPath:&lt;span class=&quot;string&quot;&gt;@&quot;transform.rotation.y&quot;&lt;/span&gt;];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;animation.toValue = @(M_PI*&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;animation.duration = &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;animation.repeatCount = MAXFLOAT;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;[_imageView.layer addAnimation:animation forKey:&lt;span class=&quot;string&quot;&gt;@&quot;animationY&quot;&lt;/span&gt;];&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;key&lt;/strong&gt;：addAnimation时的key,为自定义动画时的标识，可用于指定动画进行操作,比如删除指定动画&lt;br&gt;key获取&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;KeyPath&lt;/strong&gt;：系统动画类型标识，用于获得系统动画&lt;ul&gt;
-&lt;li&gt;transform.rotation.x :系统绕x轴旋转动画&lt;/li&gt;
-&lt;li&gt;transform.rotation.y :系统绕y轴旋转动画&lt;/li&gt;
-&lt;li&gt;transform.rotation.z :系统绕z轴旋转动画&lt;/li&gt;
-&lt;li&gt;position : 用于CAKeyframeAnimation做沿“轨迹”运动,见下详细示例&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&quot;2-CAKeyframeAnimation&quot;&gt;&lt;a href=&quot;#2-CAKeyframeAnimation&quot; class=&quot;headerlink&quot; title=&quot;2. CAKeyframeAnimation&quot;&gt;&lt;/a&gt;2. &lt;em&gt;CAKeyframeAnimation&lt;/em&gt;&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;CA帧动画,通常可用于按“轨迹”运动，与UIBezierPath结合&lt;/p&gt;
-&lt;/blockquote&gt;
-  &lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;UIBezierPath&lt;/span&gt; *path = [&lt;span class=&quot;built_in&quot;&gt;UIBezierPath&lt;/span&gt; bezierPathWithOvalInRect:rect];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;UIBezierPath&lt;/span&gt; *arc = [&lt;span class=&quot;built_in&quot;&gt;UIBezierPath&lt;/span&gt; bezierPathWithArcCenter:&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.view.center radius:&lt;span class=&quot;number&quot;&gt;120&lt;/span&gt; startAngle:M_PI_2*&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt; endAngle:M_PI_2*&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;+M_PI*&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt; clockwise:&lt;span class=&quot;literal&quot;&gt;YES&lt;/span&gt;];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;//要沿着路劲跑，必须用关键帧动画&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;//position:沿着路径动画&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;CAKeyframeAnimation&lt;/span&gt; *moveAnimation = [&lt;span class=&quot;built_in&quot;&gt;CAKeyframeAnimation&lt;/span&gt; animationWithKeyPath:&lt;span class=&quot;string&quot;&gt;@&quot;position&quot;&lt;/span&gt;];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;//设置动画的路径&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;moveAnimation.path = arc.CGPath;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;moveAnimation.duration = &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;moveAnimation.repeatCount = MAXFLOAT;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;[_imageView.layer addAnimation:moveAnimation forKey:&lt;span class=&quot;string&quot;&gt;@&quot;runWithPath&quot;&lt;/span&gt;];&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="iOS" scheme="http://sjc2wbq.github.io/categories/iOS/"/>
-    
-    
-      <category term="Animation" scheme="http://sjc2wbq.github.io/tags/Animation/"/>
     
   </entry>
   
