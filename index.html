@@ -274,6 +274,151 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://sjc2wbq.github.io/2017/05/03/7788总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JunChuan Shi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NOTES">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/03/7788总结/" itemprop="url">
+                  7788总结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-03T05:28:42+08:00">
+                2017-05-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/05/03/7788总结/" class="leancloud_visitors" data-flag-title="7788总结">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>strong 与 copy 区别</strong>：</p>
+<blockquote>
+<p>使用strong，指向同一个地址，并且引用计数加1；而使用copy，是内容复制，创建一个新的内存区域</p>
+</blockquote>
+<ol>
+<li>strong对应的setter方法，是将_property先release（_property release），然后将参数retain（property retain），最后是_property = property。</li>
+<li>copy对应的setter方法，是将_property先release（_property release），然后拷贝参数内容（property copy），创建一块新的内存地址，最后_property = property。</li>
+</ol>
+<p><strong>深拷贝与浅拷贝</strong>：</p>
+<ul>
+<li>深拷贝：内容拷贝</li>
+<li>浅拷贝：指针拷贝</li>
+</ul>
+<p><a href="http://www.jianshu.com/p/e6a7cdcc705d" target="_blank" rel="external">详情</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://sjc2wbq.github.io/2017/05/03/dyld/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -660,22 +805,24 @@
 <p>比如公司项目后期突然提出新的需求要为所有页面添加统计功能，也就是用户进入这个页面就统计一次，<br>实现：给UIViewController写一个类别加到pch<br>类别中新建一个swillingViewDidLoad方法<br>在实现中，+(load)中运用runtime的method_exchangeImplementations替换掉系统的viewDidload方法和swillingViewDidLoad方法；<br>在swillingViewDidLoad方法中加入统计方法，然后调用swillingViewDidLoad方法<br>这样，当controller调用viewDidload时通过运行时，指向了自定义的swillingViewDidLoad，在这个方法里先执行了我们的统计方法，然后调用swillingViewDidload方法，指向系统的viewDidload方法，这样就实现了在每个类viewDidload前进行统计的操作。<br>还有数组越界，给系统的NSArray 替换一个自定义objectAtIndex</p>
 </blockquote>
 </li>
-<li><p>动态地给Category 添加属性</p>
-<blockquote>
+<li>动态地给Category 添加属性<blockquote>
 <p>分类里面不能添加Ivar是因为分类本身并不是一个真正的类，它并没有自己的ISA。有兴趣可以研究一下类是怎么被创建出来的，类最开始生成了很多基本属性，比如IvarList，MethodList，分类只会将自己的method attach到主类，并不会影响到主类的IvarList。这就是为什么分类里面不能增加成员变量的原因。</p>
-  <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">    <span class="comment">//runtime中的category</span></div><div class="line">    <span class="keyword">struct</span> objc_category &#123;</div><div class="line">    <span class="keyword">char</span></div><div class="line">     *category_name                                      OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">char</span> *class_name                                         OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">struct</span> objc_method_list *instance_methods                OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">struct</span> objc_method_list *class_methods                   OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">struct</span> objc_protocol_list *protocols                     OBJC2_UNAVAILABLE;</div><div class="line">&#125;</div><div class="line">http:<span class="comment">//ios.jobbole.com/84341/</span></div></pre></td></tr></table></figure>
+  <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">    <span class="comment">//runtime中的category</span></div><div class="line">    <span class="keyword">struct</span> objc_category &#123;</div><div class="line">    <span class="keyword">char</span></div><div class="line">     *category_name                                      OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">char</span> *class_name                                         OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">struct</span> objc_method_list *instance_methods                OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">struct</span> objc_method_list *class_methods                   OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">struct</span> objc_protocol_list *protocols                     OBJC2_UNAVAILABLE;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </blockquote>
-<p>所有的关联对象都由AssociationsManager管理,而AssociationsManager定义如下：</p>
-  <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> AssociationsManager &#123;</div><div class="line">    <span class="keyword">static</span> OSSpinLock _lock;</div><div class="line">    <span class="keyword">static</span> AssociationsHashMap *_map;               <span class="comment">// associative references:  object pointer -&gt; PtrPtrHashMap.</span></div><div class="line">public:</div><div class="line">    AssociationsManager()   &#123; OSSpinLockLock(&amp;_lock); &#125;</div><div class="line">    ~AssociationsManager()  &#123; OSSpinLockUnlock(&amp;_lock); &#125;</div><div class="line"></div><div class="line">    AssociationsHashMap &amp;associations() &#123;</div><div class="line">        <span class="keyword">if</span> (_map == <span class="literal">NULL</span>)</div><div class="line">            _map = new AssociationsHashMap();</div><div class="line">        <span class="keyword">return</span> *_map;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>  AssociationsManager里面是由一个静态AssociationsHashMap来存储所有的关联对象的。这相当于把所有对象的关联对象都存在一个全局map里面。而map的的key是这个对象的指针地址（任意两个不同对象的指针地址一定是不同的），而这个map的value又是另外一个AssociationsHashMap，里面保存了关联对象的kv对。</p>
-  <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">    <span class="keyword">void</span> *objc_destructInstance(<span class="keyword">id</span> obj)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (obj) &#123;</div><div class="line">        Class isa_gen = _object_getClass(obj);</div><div class="line">        class_t *isa = newcls(isa_gen);</div><div class="line"></div><div class="line">        <span class="comment">// Read all of the flags at once for performance.</span></div><div class="line">        <span class="keyword">bool</span> cxx = hasCxxStructors(isa);</div><div class="line">        <span class="keyword">bool</span> assoc = !UseGC &amp; _class_instancesHaveAssociatedObjects(isa_gen);</div><div class="line"></div><div class="line">        <span class="comment">// This order is important.</span></div><div class="line">        <span class="keyword">if</span> (cxx) object_cxxDestruct(obj);</div><div class="line">        <span class="keyword">if</span> (assoc) _object_remove_assocations(obj);</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (!UseGC) objc_clear_deallocating(obj);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> obj;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>  runtime的销毁对象函数objc_destructInstance里面会判断这个对象有没有关联对象，如果有，会调用_object_remove_assocations做关联对象的清理工作。</p>
 </li>
 </ul>
-<ul>
-<li>NSCoding（归档和解档，利用runtime遍历模型对象的所有属性）</li>
+<p><a href="http://ios.jobbole.com/84341/" target="_blank" rel="external">详情</a></p>
+<p>  所有的关联对象都由AssociationsManager管理,而AssociationsManager定义如下：</p>
+<pre><code><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> AssociationsManager &#123;</div><div class="line">    <span class="keyword">static</span> OSSpinLock _lock;</div><div class="line">    <span class="keyword">static</span> AssociationsHashMap *_map;               <span class="comment">// associative references:  object pointer -&gt; PtrPtrHashMap.</span></div><div class="line">public:</div><div class="line">    AssociationsManager()   &#123; OSSpinLockLock(&amp;_lock); &#125;</div><div class="line">    ~AssociationsManager()  &#123; OSSpinLockUnlock(&amp;_lock); &#125;</div><div class="line"></div><div class="line">    AssociationsHashMap &amp;associations() &#123;</div><div class="line">        <span class="keyword">if</span> (_map == <span class="literal">NULL</span>)</div><div class="line">            _map = new AssociationsHashMap();</div><div class="line">        <span class="keyword">return</span> *_map;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+
+AssociationsManager里面是由一个静态AssociationsHashMap来存储所有的关联对象的。这相当于把所有对象的关联对象都存在一个全局map里面。而map的的key是这个对象的指针地址（任意两个不同对象的指针地址一定是不同的），而这个map的value又是另外一个AssociationsHashMap，里面保存了关联对象的kv对。
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">    <span class="keyword">void</span> *objc_destructInstance(<span class="keyword">id</span> obj)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (obj) &#123;</div><div class="line">        Class isa_gen = _object_getClass(obj);</div><div class="line">        class_t *isa = newcls(isa_gen);</div><div class="line"></div><div class="line">        <span class="comment">// Read all of the flags at once for performance.</span></div><div class="line">        <span class="keyword">bool</span> cxx = hasCxxStructors(isa);</div><div class="line">        <span class="keyword">bool</span> assoc = !UseGC &amp; _class_instancesHaveAssociatedObjects(isa_gen);</div><div class="line"></div><div class="line">        <span class="comment">// This order is important.</span></div><div class="line">        <span class="keyword">if</span> (cxx) object_cxxDestruct(obj);</div><div class="line">        <span class="keyword">if</span> (assoc) _object_remove_assocations(obj);</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (!UseGC) objc_clear_deallocating(obj);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> obj;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+runtime的销毁对象函数objc_destructInstance里面会判断这个对象有没有关联对象，如果有，会调用_object_remove_assocations做关联对象的清理工作。
+</code></pre><ul>
+<li>NSCoding（归档和解档，利用runtime遍历模型对象的所有属性,写成宏文件）<a href="http://www.cnblogs.com/junhuawang/p/5798827.html" target="_blank" rel="external">详情</a></li>
 <li>字典 –&gt; 模型（利用runtime遍历模型对象的所有属性，根据属性名从字典中取出对应的值，设置到模型的属性上）</li>
-<li>KVO（利用runtime动态产生一个类）</li>
+<li>KVO（利用runtime动态产生一个类）<a href="http://www.cnblogs.com/starainDou/p/5108952.html" target="_blank" rel="external">详情</a></li>
 <li>用于封装框架（想怎么改就怎么改）</li>
 </ul>
 <p>相关函数</p>
@@ -1810,183 +1957,6 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sjc2wbq.github.io/2016/03/20/Blog/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunChuan Shi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NOTES">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/20/Blog/" itemprop="url">
-                  Blog
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-20T13:29:02+08:00">
-                2016-03-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2016/03/20/Blog/" class="leancloud_visitors" data-flag-title="Blog">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Visitors </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <div class="note "><p>架构设计</p>
-</div>
-<p>博客中谈了较多架构层的干货，可以关注下</p>
-<ul>
-<li><a href="http://casatwy.com/iosying-yong-jia-gou-tan-kai-pian.html" target="_blank" rel="external">iOS应用架构谈 开篇</a></li>
-<li><a href="http://casatwy.com/iosying-yong-jia-gou-tan-viewceng-de-zu-zhi-he-diao-yong-fang-an.html" target="_blank" rel="external">iOS应用架构谈 view层的组织和调用方案</a></li>
-<li><a href="http://casatwy.com/iosying-yong-jia-gou-tan-wang-luo-ceng-she-ji-fang-an.html" target="_blank" rel="external">iOS应用架构谈 网络层设计方案</a></li>
-<li><a href="http://casatwy.com/iosying-yong-jia-gou-tan-ben-di-chi-jiu-hua-fang-an-ji-dong-tai-bu-shu.html" target="_blank" rel="external">iOS应用架构谈 本地持久化方案及动态部署</a></li>
-</ul>
-<p><a href="http://www.jianshu.com/p/921ab32c3c71" target="_blank" rel="external">iOS大型项目开发漫谈</a> cp 个人见解总会有很多地方值得看<br><br><a href="http://blog.ibireme.com/2015/11/12/smooth_user_interfaces_for_ios/" target="_blank" rel="external">iOS 保持界面流畅的技巧</a>专业的界面调优下面简单列几条概要:</p>
-<ul>
-<li>CPU 资源消耗原因和解决方案 （分析）</li>
-<li>GPU 资源消耗原因和解决方案 （分析）</li>
-<li>AsyncDisplayKit （解决方案）</li>
-<li>微博 Demo 性能优化技巧 （示例讲解）</li>
-</ul>
-<div class="note info"><p>干货</p>
-</div>
-<p><a href="http://blog.ibireme.com" target="_blank" rel="external">伽蓝之堂</a><br>干货之多，受益无穷。大量自己实践总结，优秀国际技术翻译引进。举例：</p>
-<ul>
-<li><a href="http://blog.ibireme.com/2015/11/12/smooth_user_interfaces_for_ios/" target="_blank" rel="external">iOS 保持界面流畅的技巧</a></li>
-<li><a href="http://blog.ibireme.com/2015/11/12/smooth_user_interfaces_for_ios/" target="_blank" rel="external">深入理解RunLoop</a></li>
-<li><a href="http://blog.ibireme.com/2013/08/12/color-model/" target="_blank" rel="external">颜色模型</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2036,7 +2006,7 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

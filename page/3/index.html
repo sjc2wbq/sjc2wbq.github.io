@@ -274,6 +274,165 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://sjc2wbq.github.io/2016/02/07/drawPath/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JunChuan Shi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NOTES">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/07/drawPath/" itemprop="url">
+                  绘图
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-02-07T09:35:22+08:00">
+                2016-02-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/02/07/drawPath/" class="leancloud_visitors" data-flag-title="绘图">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="绘图"><a href="#绘图" class="headerlink" title="绘图"></a>绘图</h1><h3 id="（一）UIBezierPath"><a href="#（一）UIBezierPath" class="headerlink" title="（一）UIBezierPath"></a>（一）UIBezierPath</h3><p>-画出坠落轨迹</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)drawRect:(<span class="built_in">CGRect</span>)rect &#123;</div><div class="line">    <span class="comment">//draw a parabola with one point</span></div><div class="line">    <span class="built_in">UIBezierPath</span> *parabola_path = [<span class="built_in">UIBezierPath</span> bezierPath];</div><div class="line">    [parabola_path moveToPoint:<span class="built_in">CGPointMake</span>(<span class="number">150</span>, <span class="number">40</span>)];</div><div class="line">    <span class="comment">//加一个受力点</span></div><div class="line">    [parabola_path addQuadCurveToPoint:<span class="built_in">CGPointMake</span>(<span class="number">150</span>, <span class="number">140</span>) controlPoint:<span class="built_in">CGPointMake</span>(<span class="number">220</span>, <span class="number">65</span>)];</div><div class="line">    [parabola_path moveToPoint:<span class="built_in">CGPointMake</span>(<span class="number">220</span>, <span class="number">65</span>)];</div><div class="line">    <span class="comment">//[parabola_path addLineToPoint:CGPointMake(200, 65)];</span></div><div class="line">     [[<span class="built_in">UIColor</span> orangeColor]setStroke];</div><div class="line">    parabola_path.lineWidth = <span class="number">10</span>;</div><div class="line">    [parabola_path stroke];  </div><div class="line">    <span class="comment">//draw a parabol with more than one point</span></div><div class="line">    <span class="built_in">UIBezierPath</span> *sline_path = [<span class="built_in">UIBezierPath</span> bezierPath];</div><div class="line">    [sline_path moveToPoint:<span class="built_in">CGPointMake</span>(<span class="number">150</span>, <span class="number">30</span>)];</div><div class="line">    <span class="comment">//加两个受力点</span></div><div class="line">    [sline_path addCurveToPoint:<span class="built_in">CGPointMake</span>(<span class="number">150</span>, <span class="number">400</span>) controlPoint1:<span class="built_in">CGPointMake</span>(<span class="number">80</span>,<span class="number">70</span>) controlPoint2:<span class="built_in">CGPointMake</span>(<span class="number">230</span>, <span class="number">160</span>)];</div><div class="line">    sline_path.lineWidth = <span class="number">5</span>;</div><div class="line">    [sline_path stroke];</div><div class="line">    <span class="comment">//sline_path</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/02/07/drawPath/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://sjc2wbq.github.io/2016/01/24/hi-gitcafe-and-github/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -385,6 +544,320 @@
         
           
             <p>glad to be here with u to learn and to live</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://sjc2wbq.github.io/2016/01/17/Animation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JunChuan Shi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NOTES">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/01/17/Animation/" itemprop="url">
+                  Animation
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-01-17T21:38:50+08:00">
+                2016-01-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/01/17/Animation/" class="leancloud_visitors" data-flag-title="Animation">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="CA-CoreAnimation动画"><a href="#CA-CoreAnimation动画" class="headerlink" title="CA:CoreAnimation动画"></a>CA:CoreAnimation动画</h1><blockquote>
+<p>属于CALayer层的动画,属于最底层,UIView的底层也是CALayer,UIView是基于CALayer的封装,CALayer具备UIView的所有属性和方法</p>
+</blockquote>
+<h3 id="1-CABasicAnimation"><a href="#1-CABasicAnimation" class="headerlink" title="1. CABasicAnimation"></a>1. CABasicAnimation</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">CABasicAnimation</span> *animation = [<span class="built_in">CABasicAnimation</span> animationWithKeyPath:<span class="string">@"transform.rotation.y"</span>];</div><div class="line">animation.toValue = @(M_PI*<span class="number">2</span>);</div><div class="line">animation.duration = <span class="number">3</span>;</div><div class="line">animation.repeatCount = MAXFLOAT;</div><div class="line">[_imageView.layer addAnimation:animation forKey:<span class="string">@"animationY"</span>];</div></pre></td></tr></table></figure>
+<ol>
+<li><strong>key</strong>：addAnimation时的key,为自定义动画时的标识，可用于指定动画进行操作,比如删除指定动画<br>key获取</li>
+<li><strong>KeyPath</strong>：系统动画类型标识，用于获得系统动画<ul>
+<li>transform.rotation.x :系统绕x轴旋转动画</li>
+<li>transform.rotation.y :系统绕y轴旋转动画</li>
+<li>transform.rotation.z :系统绕z轴旋转动画</li>
+<li>position : 用于CAKeyframeAnimation做沿“轨迹”运动,见下详细示例</li>
+</ul>
+</li>
+</ol>
+<h3 id="2-CAKeyframeAnimation"><a href="#2-CAKeyframeAnimation" class="headerlink" title="2. CAKeyframeAnimation"></a>2. <em>CAKeyframeAnimation</em></h3><blockquote>
+<p>CA帧动画,通常可用于按“轨迹”运动，与UIBezierPath结合</p>
+</blockquote>
+  <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIBezierPath</span> *path = [<span class="built_in">UIBezierPath</span> bezierPathWithOvalInRect:rect];</div><div class="line"><span class="built_in">UIBezierPath</span> *arc = [<span class="built_in">UIBezierPath</span> bezierPathWithArcCenter:<span class="keyword">self</span>.view.center radius:<span class="number">120</span> startAngle:M_PI_2*<span class="number">3</span> endAngle:M_PI_2*<span class="number">3</span>+M_PI*<span class="number">2</span> clockwise:<span class="literal">YES</span>];</div><div class="line">  <span class="comment">//要沿着路劲跑，必须用关键帧动画</span></div><div class="line">  <span class="comment">//position:沿着路径动画</span></div><div class="line"><span class="built_in">CAKeyframeAnimation</span> *moveAnimation = [<span class="built_in">CAKeyframeAnimation</span> animationWithKeyPath:<span class="string">@"position"</span>];</div><div class="line">  <span class="comment">//设置动画的路径</span></div><div class="line">moveAnimation.path = arc.CGPath;</div><div class="line">moveAnimation.duration = <span class="number">3</span>;</div><div class="line">moveAnimation.repeatCount = MAXFLOAT;</div><div class="line">[_imageView.layer addAnimation:moveAnimation forKey:<span class="string">@"runWithPath"</span>];</div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/01/17/Animation/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://sjc2wbq.github.io/2016/01/17/CALayer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JunChuan Shi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NOTES">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/01/17/CALayer/" itemprop="url">
+                  CALayer
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-01-17T21:38:50+08:00">
+                2016-01-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/01/17/CALayer/" class="leancloud_visitors" data-flag-title="CALayer">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="CALayer"><a href="#CALayer" class="headerlink" title="CALayer"></a>CALayer</h1><blockquote>
+<p>CAlayer是UIView的底层,通过修改CALayer去做一些界面的修改i</p>
+</blockquote>
+<ul>
+<li>发送通知</li>
+<li>接收通知</li>
+<li>删除通知</li>
+</ul>
 
           
         
@@ -603,181 +1076,6 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sjc2wbq.github.io/2016/01/17/Animation/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunChuan Shi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NOTES">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/01/17/Animation/" itemprop="url">
-                  Animation
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-01-17T21:38:50+08:00">
-                2016-01-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2016/01/17/Animation/" class="leancloud_visitors" data-flag-title="Animation">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Visitors </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="CA-CoreAnimation动画"><a href="#CA-CoreAnimation动画" class="headerlink" title="CA:CoreAnimation动画"></a>CA:CoreAnimation动画</h1><blockquote>
-<p>属于CALayer层的动画,属于最底层,UIView的底层也是CALayer,UIView是基于CALayer的封装,CALayer具备UIView的所有属性和方法</p>
-</blockquote>
-<h3 id="1-CABasicAnimation"><a href="#1-CABasicAnimation" class="headerlink" title="1. CABasicAnimation"></a>1. CABasicAnimation</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">CABasicAnimation</span> *animation = [<span class="built_in">CABasicAnimation</span> animationWithKeyPath:<span class="string">@"transform.rotation.y"</span>];</div><div class="line">animation.toValue = @(M_PI*<span class="number">2</span>);</div><div class="line">animation.duration = <span class="number">3</span>;</div><div class="line">animation.repeatCount = MAXFLOAT;</div><div class="line">[_imageView.layer addAnimation:animation forKey:<span class="string">@"animationY"</span>];</div></pre></td></tr></table></figure>
-<ol>
-<li><strong>key</strong>：addAnimation时的key,为自定义动画时的标识，可用于指定动画进行操作,比如删除指定动画<br>key获取</li>
-<li><strong>KeyPath</strong>：系统动画类型标识，用于获得系统动画<ul>
-<li>transform.rotation.x :系统绕x轴旋转动画</li>
-<li>transform.rotation.y :系统绕y轴旋转动画</li>
-<li>transform.rotation.z :系统绕z轴旋转动画</li>
-<li>position : 用于CAKeyframeAnimation做沿“轨迹”运动,见下详细示例</li>
-</ul>
-</li>
-</ol>
-<h3 id="2-CAKeyframeAnimation"><a href="#2-CAKeyframeAnimation" class="headerlink" title="2. CAKeyframeAnimation"></a>2. <em>CAKeyframeAnimation</em></h3><blockquote>
-<p>CA帧动画,通常可用于按“轨迹”运动，与UIBezierPath结合</p>
-</blockquote>
-  <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIBezierPath</span> *path = [<span class="built_in">UIBezierPath</span> bezierPathWithOvalInRect:rect];</div><div class="line"><span class="built_in">UIBezierPath</span> *arc = [<span class="built_in">UIBezierPath</span> bezierPathWithArcCenter:<span class="keyword">self</span>.view.center radius:<span class="number">120</span> startAngle:M_PI_2*<span class="number">3</span> endAngle:M_PI_2*<span class="number">3</span>+M_PI*<span class="number">2</span> clockwise:<span class="literal">YES</span>];</div><div class="line">  <span class="comment">//要沿着路劲跑，必须用关键帧动画</span></div><div class="line">  <span class="comment">//position:沿着路径动画</span></div><div class="line"><span class="built_in">CAKeyframeAnimation</span> *moveAnimation = [<span class="built_in">CAKeyframeAnimation</span> animationWithKeyPath:<span class="string">@"position"</span>];</div><div class="line">  <span class="comment">//设置动画的路径</span></div><div class="line">moveAnimation.path = arc.CGPath;</div><div class="line">moveAnimation.duration = <span class="number">3</span>;</div><div class="line">moveAnimation.repeatCount = MAXFLOAT;</div><div class="line">[_imageView.layer addAnimation:moveAnimation forKey:<span class="string">@"runWithPath"</span>];</div></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/01/17/Animation/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://sjc2wbq.github.io/2016/01/17/Notification/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -939,145 +1237,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sjc2wbq.github.io/2016/01/17/CALayer/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JunChuan Shi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NOTES">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/01/17/CALayer/" itemprop="url">
-                  CALayer
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-01-17T21:38:50+08:00">
-                2016-01-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2016/01/17/CALayer/" class="leancloud_visitors" data-flag-title="CALayer">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Visitors </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="CALayer"><a href="#CALayer" class="headerlink" title="CALayer"></a>CALayer</h1><blockquote>
-<p>CAlayer是UIView的底层,通过修改CALayer去做一些界面的修改i</p>
-</blockquote>
-<ul>
-<li>发送通知</li>
-<li>接收通知</li>
-<li>删除通知</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1127,7 +1286,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
