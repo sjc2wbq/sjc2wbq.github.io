@@ -115,7 +115,7 @@ runtime是一套比较底层的C语言API，属于一个C语言库，包含了�
 
 举列子1[[MJPerson alloc]init]
 runtime:1objc_msgSend(objc_msgSend(&quot;MJPerson&quot;,&quot;al">
-<meta property="og:updated_time" content="2017-05-02T21:45:20.000Z">
+<meta property="og:updated_time" content="2017-05-02T21:47:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="runtime的理解">
 <meta name="twitter:description" content="runtime 运行时机制1 是什么？
@@ -402,6 +402,7 @@ runtime:1objc_msgSend(objc_msgSend(&quot;MJPerson&quot;,&quot;al">
 
 AssociationsManager里面是由一个静态AssociationsHashMap来存储所有的关联对象的。这相当于把所有对象的关联对象都存在一个全局map里面。而map的的key是这个对象的指针地址（任意两个不同对象的指针地址一定是不同的），而这个map的value又是另外一个AssociationsHashMap，里面保存了关联对象的kv对。
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">    <span class="keyword">void</span> *objc_destructInstance(<span class="keyword">id</span> obj)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (obj) &#123;</div><div class="line">        Class isa_gen = _object_getClass(obj);</div><div class="line">        class_t *isa = newcls(isa_gen);</div><div class="line"></div><div class="line">        <span class="comment">// Read all of the flags at once for performance.</span></div><div class="line">        <span class="keyword">bool</span> cxx = hasCxxStructors(isa);</div><div class="line">        <span class="keyword">bool</span> assoc = !UseGC &amp; _class_instancesHaveAssociatedObjects(isa_gen);</div><div class="line"></div><div class="line">        <span class="comment">// This order is important.</span></div><div class="line">        <span class="keyword">if</span> (cxx) object_cxxDestruct(obj);</div><div class="line">        <span class="keyword">if</span> (assoc) _object_remove_assocations(obj);</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (!UseGC) objc_clear_deallocating(obj);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> obj;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
 
 runtime的销毁对象函数objc_destructInstance里面会判断这个对象有没有关联对象，如果有，会调用_object_remove_assocations做关联对象的清理工作。
 </code></pre><ul>
