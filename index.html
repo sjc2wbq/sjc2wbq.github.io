@@ -362,8 +362,14 @@
       
         
           
-            <p><strong>成员变量</strong>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">定义了一个类的全局变量（不直接被外部访问，只能通过方法读或写）</div></pre></td></tr></table></figure></p>
-<p><strong>属性</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">由此而知：当在OC里面默认申明一个属性，如果没有关联相应的成员变量会默认生成一个以下划线开头+属性名的成员变量</div><div class="line"></div><div class="line">@property声明setter getter方法</div><div class="line"></div><div class="line">@synthesize定义setter getter方法</div><div class="line"></div><div class="line">在Xcode4.5及以后的版本中，可以省略@synthesize编译器会自动帮你加上setter getter方法，并且默认会去访问_age这个成员变量，如果找不到_age这个成员变量，会自动生成一个叫做 _age的私有成员变量。在.m文件中同时实现getter和setter方法时候需要@synthesize age = _age或者在.h文件里手写成员变量 NSString *_age</div></pre></td></tr></table></figure></p>
+            <p><strong>成员变量</strong>：</p>
+<p>定义了一个类的全局变量（不直接被外部访问，只能通过方法读或写）</p>
+<p><strong>属性</strong>:</p>
+<p>提供了getter和setter方法的成员变量（直接能被外部访问）</p>
+<p>由此而知：当在OC里面默认申明一个属性，如果没有关联相应的成员变量会默认生成一个以下划线开头+属性名的成员变量</p>
+<p>@property声明setter getter方法</p>
+<p>@synthesize定义setter getter方法</p>
+<p>在Xcode4.5及以后的版本中，可以省略@synthesize编译器会自动帮你加上setter getter方法，并且默认会去访问_age这个成员变量，如果找不到_age这个成员变量，会自动生成一个叫做 _age的私有成员变量。在.m文件中同时实现getter和setter方法时候需要@synthesize age = _age或者在.h文件里手写成员变量 NSString *_age</p>
 <p><strong>ivar</strong>:<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_ivar *Ivar;</div></pre></td></tr></table></figure></p>
 <p><strong>objc_ivar结构体定义如下</strong>：</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> objc_ivar &#123;</div><div class="line">    <span class="keyword">char</span> *ivar_name                                          OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">char</span> *ivar_type                                          OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">int</span> ivar_offset                                          OBJC2_UNAVAILABLE;</div><div class="line"><span class="meta">#ifdef __LP64__</span></div><div class="line">    <span class="keyword">int</span> space                                                OBJC2_UNAVAILABLE;</div><div class="line"><span class="meta">#endif</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
