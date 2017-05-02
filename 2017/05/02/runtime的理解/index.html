@@ -115,7 +115,7 @@ runtime是一套比较底层的C语言API，属于一个C语言库，包含了�
 
 举列子1[[MJPerson alloc]init]
 runtime:1objc_msgSend(objc_msgSend(&quot;MJPerson&quot;,&quot;al">
-<meta property="og:updated_time" content="2017-05-02T21:49:30.000Z">
+<meta property="og:updated_time" content="2017-05-02T21:51:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="runtime的理解">
 <meta name="twitter:description" content="runtime 运行时机制1 是什么？
@@ -390,7 +390,7 @@ runtime:1objc_msgSend(objc_msgSend(&quot;MJPerson&quot;,&quot;al">
 <p>比如公司项目后期突然提出新的需求要为所有页面添加统计功能，也就是用户进入这个页面就统计一次，<br>实现：给UIViewController写一个类别加到pch<br>类别中新建一个swillingViewDidLoad方法<br>在实现中，+(load)中运用runtime的method_exchangeImplementations替换掉系统的viewDidload方法和swillingViewDidLoad方法；<br>在swillingViewDidLoad方法中加入统计方法，然后调用swillingViewDidLoad方法<br>这样，当controller调用viewDidload时通过运行时，指向了自定义的swillingViewDidLoad，在这个方法里先执行了我们的统计方法，然后调用swillingViewDidload方法，指向系统的viewDidload方法，这样就实现了在每个类viewDidload前进行统计的操作。<br>还有数组越界，给系统的NSArray 替换一个自定义objectAtIndex</p>
 </blockquote>
 </li>
-<li><p>动态地给Category 添加属性<a href="http://ios.jobbole.com/84341/" target="_blank" rel="external">详情</a></p>
+<li><p>动态地给Category 添加属性<a href="http://ios.jobbole.com/84341/" target="_blank" rel="external"><strong>详情</strong></a></p>
 <blockquote>
 <p>分类里面不能添加Ivar是因为分类本身并不是一个真正的类，它并没有自己的ISA。有兴趣可以研究一下类是怎么被创建出来的，类最开始生成了很多基本属性，比如IvarList，MethodList，分类只会将自己的method attach到主类，并不会影响到主类的IvarList。这就是为什么分类里面不能增加成员变量的原因。</p>
   <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">    <span class="comment">//runtime中的category</span></div><div class="line">    <span class="keyword">struct</span> objc_category &#123;</div><div class="line">    <span class="keyword">char</span></div><div class="line">     *category_name                                      OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">char</span> *class_name                                         OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">struct</span> objc_method_list *instance_methods                OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">struct</span> objc_method_list *class_methods                   OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">struct</span> objc_protocol_list *protocols                     OBJC2_UNAVAILABLE;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -403,9 +403,9 @@ runtime:1objc_msgSend(objc_msgSend(&quot;MJPerson&quot;,&quot;al">
 </li>
 </ul>
 <ul>
-<li>NSCoding（归档和解档，利用runtime遍历模型对象的所有属性,写成宏文件）<a href="http://www.cnblogs.com/junhuawang/p/5798827.html" target="_blank" rel="external">详情</a></li>
+<li>NSCoding（归档和解档，利用runtime遍历模型对象的所有属性,写成宏文件）<a href="http://www.cnblogs.com/junhuawang/p/5798827.html" target="_blank" rel="external"><strong>详情</strong></a></li>
 <li>字典 –&gt; 模型（利用runtime遍历模型对象的所有属性，根据属性名从字典中取出对应的值，设置到模型的属性上）</li>
-<li>KVO（利用runtime动态产生一个类）<a href="http://www.cnblogs.com/starainDou/p/5108952.html" target="_blank" rel="external">详情</a></li>
+<li>KVO（利用runtime动态产生一个类）<a href="http://www.cnblogs.com/starainDou/p/5108952.html" target="_blank" rel="external"><strong>详情</strong></a></li>
 <li>用于封装框架（想怎么改就怎么改）</li>
 </ul>
 <p>相关函数</p>
