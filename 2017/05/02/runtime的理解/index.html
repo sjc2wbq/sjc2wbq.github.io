@@ -101,28 +101,28 @@
 
 
 
-<meta name="description" content="runtime 运行时机制1 是什么？
+<meta name="description" content="runtime 运行时机制(详情)1 是什么？
 runtime是一套比较底层的C语言API，属于一个C语言库，包含了很多底层的C语言API平时编写的OC代码，在程序运行过程中，其实都是转成了runtime的C语言代码，runtime算是OC的幕后工作者
 
 举列子1[[MJPerson alloc]init]
-runtime:1objc_msgSend(objc_msgSend(&quot;MJPerson&quot;,&quot;al">
+runtime:1objc_msgSend(objc_msgSend(&quot;MJPerson&quot;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="runtime的理解">
 <meta property="og:url" content="http://sjc2wbq.github.io/2017/05/02/runtime的理解/index.html">
 <meta property="og:site_name" content="NOTES">
-<meta property="og:description" content="runtime 运行时机制1 是什么？
+<meta property="og:description" content="runtime 运行时机制(详情)1 是什么？
 runtime是一套比较底层的C语言API，属于一个C语言库，包含了很多底层的C语言API平时编写的OC代码，在程序运行过程中，其实都是转成了runtime的C语言代码，runtime算是OC的幕后工作者
 
 举列子1[[MJPerson alloc]init]
-runtime:1objc_msgSend(objc_msgSend(&quot;MJPerson&quot;,&quot;al">
-<meta property="og:updated_time" content="2017-05-02T22:00:06.000Z">
+runtime:1objc_msgSend(objc_msgSend(&quot;MJPerson&quot;">
+<meta property="og:updated_time" content="2017-05-03T01:00:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="runtime的理解">
-<meta name="twitter:description" content="runtime 运行时机制1 是什么？
+<meta name="twitter:description" content="runtime 运行时机制(详情)1 是什么？
 runtime是一套比较底层的C语言API，属于一个C语言库，包含了很多底层的C语言API平时编写的OC代码，在程序运行过程中，其实都是转成了runtime的C语言代码，runtime算是OC的幕后工作者
 
 举列子1[[MJPerson alloc]init]
-runtime:1objc_msgSend(objc_msgSend(&quot;MJPerson&quot;,&quot;al">
+runtime:1objc_msgSend(objc_msgSend(&quot;MJPerson&quot;">
 
 
 
@@ -368,7 +368,7 @@ runtime:1objc_msgSend(objc_msgSend(&quot;MJPerson&quot;,&quot;al">
       
 
       
-        <h3 id="runtime-运行时机制"><a href="#runtime-运行时机制" class="headerlink" title="runtime 运行时机制"></a>runtime 运行时机制</h3><h4 id="1-是什么？"><a href="#1-是什么？" class="headerlink" title="1 是什么？"></a>1 是什么？</h4><blockquote>
+        <h3 id="runtime-运行时机制-详情"><a href="#runtime-运行时机制-详情" class="headerlink" title="runtime 运行时机制(详情)"></a>runtime 运行时机制(<a href="http://www.jianshu.com/p/6b905584f536" target="_blank" rel="external"><strong>详情</strong></a>)</h3><h4 id="1-是什么？"><a href="#1-是什么？" class="headerlink" title="1 是什么？"></a>1 是什么？</h4><blockquote>
 <p>runtime是一套比较底层的C语言API，属于一个C语言库，包含了很多底层的C语言API<br>平时编写的OC代码，在程序运行过程中，其实都是转成了runtime的C语言代码，runtime算是OC的幕后工作者</p>
 </blockquote>
 <p>举列子<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[[MJPerson alloc]init]</div></pre></td></tr></table></figure></p>
@@ -407,8 +407,19 @@ runtime:1objc_msgSend(objc_msgSend(&quot;MJPerson&quot;,&quot;al">
 </li>
 <li><p>字典 –&gt; 模型（利用runtime遍历模型对象的所有属性，根据属性名从字典中取出对应的值，设置到模型的属性上）</p>
 </li>
-<li>KVO（利用runtime动态产生一个类）<a href="http://www.cnblogs.com/starainDou/p/5108952.html" target="_blank" rel="external"><strong>详情</strong></a></li>
+<li><a href="http://sjc2wbq.github.io/2016/01/17/KVOandKVC/">KVO</a>（利用runtime动态产生一个类）<a href="http://www.cnblogs.com/starainDou/p/5108952.html" target="_blank" rel="external"><strong>详情</strong></a></li>
+<li><p>消息转发<a href="http://blog.csdn.net/coyote1994/article/details/52454600" target="_blank" rel="external"><strong>详情</strong></a></p>
+<p>当我们像一个对象发送消息［Receiver message］，Receiver没有实现该消息，即[Receiver respondsToSelector:SEL]返回为NO情况下，其实系统不会立刻出现crash，这时Runtime system会对message进行转发。转发之后，如果该消息依然没有被执行就会出现Crash！Runtime System为我们提供了三种解决这种给对象发送没有实现消息方案。</p>
+<ol>
+<li><p>动态方法解析 <figure class="highlight plain"><figcaption><span>(BOOL)resolveInstanceMethod:(SEL)sel```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">2. 备用接收者 ```- (id)forwardingTargetForSelector:(SEL)aSelector</div></pre></td></tr></table></figure></p>
+</li>
+<li><p>完整转发 <code>- (void)forwardInvocation:(NSInvocation *)anInvocation</code></p>
+<p><a href="https://zhidao.baidu.com/question/50557962.html" target="_blank" rel="external">API HOOK技术</a></p>
+</li>
+</ol>
+</li>
 <li>用于封装框架（想怎么改就怎么改）</li>
+<li><a href="http://blog.csdn.net/coyote1994/article/details/52472670" target="_blank" rel="external">万能界面跳转</a></li>
 </ul>
 <p>相关函数</p>
 <ul>
@@ -667,7 +678,7 @@ runtime:1objc_msgSend(objc_msgSend(&quot;MJPerson&quot;,&quot;al">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#runtime-运行时机制"><span class="nav-number">1.</span> <span class="nav-text">runtime 运行时机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-是什么？"><span class="nav-number">1.1.</span> <span class="nav-text">1 是什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-用过么？怎么用？"><span class="nav-number">1.2.</span> <span class="nav-text">2 用过么？怎么用？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-相关的头文件和函数"><span class="nav-number">1.3.</span> <span class="nav-text">3 相关的头文件和函数</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#runtime-运行时机制-详情"><span class="nav-number">1.</span> <span class="nav-text">runtime 运行时机制(详情)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-是什么？"><span class="nav-number">1.1.</span> <span class="nav-text">1 是什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-用过么？怎么用？"><span class="nav-number">1.2.</span> <span class="nav-text">2 用过么？怎么用？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-相关的头文件和函数"><span class="nav-number">1.3.</span> <span class="nav-text">3 相关的头文件和函数</span></a></li></ol></li></ol></div>
             
 
           </div>
