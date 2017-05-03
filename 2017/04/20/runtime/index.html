@@ -105,8 +105,9 @@
 包含多个变量或者数组的集合
 
 1.结构体定义struct 结构体名{  变量或数组};2.结构体定义，并且初始化结构体变量 struct1struct 结构体名{  。。。}结构体变量名struct1;
-OC中的类www.jianshu.com/p/41735c66dccb
-isa每个实例对象有个isa的指针，指向对象的类，Class也有isa的指针，指向MeteClass（元类）可以理解">
+OC中的类
+isa每个实例对象有个isa的指针，指向对象的类，Class也有isa的指针，指向MeteClass（元类）可以理解为表明所属权，声明了实例与所属类的关系
+运行时类的动态化处理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="runtime">
 <meta property="og:url" content="http://sjc2wbq.github.io/2017/04/20/runtime/index.html">
@@ -115,18 +116,20 @@ isa每个实例对象有个isa的指针，指向对象的类，Class也有isa的
 包含多个变量或者数组的集合
 
 1.结构体定义struct 结构体名{  变量或数组};2.结构体定义，并且初始化结构体变量 struct1struct 结构体名{  。。。}结构体变量名struct1;
-OC中的类www.jianshu.com/p/41735c66dccb
-isa每个实例对象有个isa的指针，指向对象的类，Class也有isa的指针，指向MeteClass（元类）可以理解">
+OC中的类
+isa每个实例对象有个isa的指针，指向对象的类，Class也有isa的指针，指向MeteClass（元类）可以理解为表明所属权，声明了实例与所属类的关系
+运行时类的动态化处理">
 <meta property="og:image" content="http://oo5f0tnid.bkt.clouddn.com/1361289384_8487.PNG">
-<meta property="og:updated_time" content="2017-05-02T17:15:26.000Z">
+<meta property="og:updated_time" content="2017-05-03T01:54:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="runtime">
 <meta name="twitter:description" content="结构体
 包含多个变量或者数组的集合
 
 1.结构体定义struct 结构体名{  变量或数组};2.结构体定义，并且初始化结构体变量 struct1struct 结构体名{  。。。}结构体变量名struct1;
-OC中的类www.jianshu.com/p/41735c66dccb
-isa每个实例对象有个isa的指针，指向对象的类，Class也有isa的指针，指向MeteClass（元类）可以理解">
+OC中的类
+isa每个实例对象有个isa的指针，指向对象的类，Class也有isa的指针，指向MeteClass（元类）可以理解为表明所属权，声明了实例与所属类的关系
+运行时类的动态化处理">
 <meta name="twitter:image" content="http://oo5f0tnid.bkt.clouddn.com/1361289384_8487.PNG">
 
 
@@ -373,13 +376,13 @@ isa每个实例对象有个isa的指针，指向对象的类，Class也有isa的
       
 
       
-        <h2 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h2><blockquote>
+        <h4 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h4><blockquote>
 <p>包含多个变量或者数组的集合</p>
 </blockquote>
 <p>1.结构体定义<br>struct 结构体名{<br>  变量或数组<br>};<br>2.结构体定义，并且初始化结构体变量 struct1<br>struct 结构体名{<br>  。。。<br>}结构体变量名struct1;</p>
-<p>OC中的类<br>www.jianshu.com/p/41735c66dccb</p>
-<h3 id="isa"><a href="#isa" class="headerlink" title="isa"></a>isa</h3><p>每个实例对象有个isa的指针，指向对象的类，Class也有isa的指针，指向MeteClass（元类）可以理解为表明所属权，声明了实例与所属类的关系</p>
-<h4 id="元类"><a href="#元类" class="headerlink" title="元类"></a>元类</h4><h2 id="运行时类的动态化处理（3步）"><a href="#运行时类的动态化处理（3步）" class="headerlink" title="运行时类的动态化处理（3步）"></a>运行时类的动态化处理（3步）</h2><ol>
+<p><a href="www.jianshu.com/p/41735c66dccb">OC中的类</a></p>
+<h4 id="isa"><a href="#isa" class="headerlink" title="isa"></a>isa</h4><p>每个实例对象有个isa的指针，指向对象的类，Class也有isa的指针，指向MeteClass（元类）可以理解为表明所属权，声明了实例与所属类的关系</p>
+<h4 id="运行时类的动态化处理（3步）"><a href="#运行时类的动态化处理（3步）" class="headerlink" title="运行时类的动态化处理（3步）"></a>运行时类的动态化处理（3步）</h4><ol>
 <li>objc_allocateClassPair()   为 class pair 分配类存</li>
 <li>class_addMethod() class_addIvar          添加方法或者成员变量</li>
 <li>objc_registerClssPair()    注册类</li>
@@ -388,15 +391,15 @@ isa每个实例对象有个isa的指针，指向对象的类，Class也有isa的
 <p>class(类) pair(元类）</p>
 </blockquote>
 <p>Object-c的一个类也是一个对象，也可以发送消息给一个类</p>
-<h3 id="类（Class）"><a href="#类（Class）" class="headerlink" title="类（Class）"></a>类（Class）</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_class *Class;</div><div class="line"><span class="keyword">struct</span> objc_class &#123;</div><div class="line">    Class isa  OBJC_ISA_AVAILABILITY;</div><div class="line"><span class="meta">#if !__OBJC2__</span></div><div class="line">    Class super_class                                        OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *name                                         OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">long</span> version                                             OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">long</span> info                                                OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">long</span> instance_size                                       OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">struct</span> objc_ivar_list *ivars                             OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">struct</span> objc_method_list **methodLists                    OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">struct</span> objc_cache *cache                                 OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">struct</span> objc_protocol_list *protocols                     OBJC2_UNAVAILABLE;</div><div class="line"><span class="meta">#endif</span></div><div class="line"></div><div class="line">&#125; OBJC2_UNAVAILABLE;</div></pre></td></tr></table></figure>
-<h3 id="对象（id）"><a href="#对象（id）" class="headerlink" title="对象（id）"></a>对象（id）</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_object &#123;</div><div class="line">    Class isa;</div><div class="line">&#125; *<span class="keyword">id</span>;</div></pre></td></tr></table></figure>
+<h4 id="类（Class）"><a href="#类（Class）" class="headerlink" title="类（Class）"></a>类（Class）</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_class *Class;</div><div class="line"><span class="keyword">struct</span> objc_class &#123;</div><div class="line">    Class isa  OBJC_ISA_AVAILABILITY;</div><div class="line"><span class="meta">#if !__OBJC2__</span></div><div class="line">    Class super_class                                        OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *name                                         OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">long</span> version                                             OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">long</span> info                                                OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">long</span> instance_size                                       OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">struct</span> objc_ivar_list *ivars                             OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">struct</span> objc_method_list **methodLists                    OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">struct</span> objc_cache *cache                                 OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">struct</span> objc_protocol_list *protocols                     OBJC2_UNAVAILABLE;</div><div class="line"><span class="meta">#endif</span></div><div class="line"></div><div class="line">&#125; OBJC2_UNAVAILABLE;</div></pre></td></tr></table></figure>
+<h4 id="对象（id）"><a href="#对象（id）" class="headerlink" title="对象（id）"></a>对象（id）</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_object &#123;</div><div class="line">    Class isa;</div><div class="line">&#125; *<span class="keyword">id</span>;</div></pre></td></tr></table></figure>
 <ul>
 <li>对象是一个含有指向类结构的指针isa的结构体<br>理解：id（每个对象）含有一个isa指向对应的类</li>
 <li>Objective-C中对象最重要的特点是你可以发送消息给它们：<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[<span class="string">@"stringValue"</span></div><div class="line">    writeToFile:<span class="string">@"/file.txt"</span> atomically:<span class="literal">YES</span> encoding:<span class="built_in">NSUTF8StringEncoding</span> error:<span class="literal">NULL</span>];</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>Objective-C对象（这儿是NSCFString）在发送消息时，运行时库会追寻着对象的isa指针得到了对象所属的类（这儿是NSCFString类）。这个类包含了能应用于这个类的所有实例方法和指向超类的指针以便可以找到父类的实例方法。运行时库检查这个类和其超类的方法列表，找到一个匹配这条消息的方法（在上面的代码里，是NSString类的writeToFile:atomically:encoding:error方法）。运行时库基于那个方法调用函数（IMP）<br><br><strong> 重点就是类要定义这个你发送给对象的消息。 </strong></p>
-<h3 id="元类pair"><a href="#元类pair" class="headerlink" title="元类pair"></a>元类pair</h3><p>Objective-C的一个类也是一个对象。这意味着你可以发送消息给一个类。</p>
+<h4 id="元类pair"><a href="#元类pair" class="headerlink" title="元类pair"></a>元类pair</h4><p>Objective-C的一个类也是一个对象。这意味着你可以发送消息给一个类。</p>
 <p><font color="yellow">总结说OC中所有的类都是一种对象。由一个类实例化来的对象叫实例对象，那么，类作为对象（称之为类对象），又是什么类的对象？就是元类（Metaclass）</font>元类就是类对象所属的类。所以，实例对象是类的实例，类作为对象又是元类的实例。已经说了，OC中所有的类都属于一种对象，所以元类也是对象，那么元类是什么的实例呢？答曰：根元类，根元类是其自身的实例.也就是说根元类的元类就是它自己。基类的元类的isa指针指向他自己。</p>
 <ul>
 <li>当你给对象发送消息时，消息是在寻找这个对象的类的方法列表。</li>
@@ -417,38 +420,7 @@ isa每个实例对象有个isa的指针，指向对象的类，Class也有isa的
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Class objc_getMetaClass(<span class="keyword">const</span> <span class="keyword">char</span>* name); <span class="comment">//name为类的名字</span></div></pre></td></tr></table></figure>
 <p>此外还有一个获取对象所属的类的函数：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Class object_getClass(<span class="keyword">id</span> obj) ;</div></pre></td></tr></table></figure></p>
 <p>由于类对象是元类的实例，所以当传入的参数为类名时，返回的就是指向该类所属的元类的指针。</p>
-<p>runtime 相关函数<br>相关函数</p>
-<p>1增加</p>
-<p>增加函数:class_addMethod</p>
-<p>增加实例变量:class_addIvar</p>
-<p>增加属性:@dynamic标签，或者class_addMethod，因为属性其实就是由getter和setter函数组成</p>
-<p>增加Protocol:class<em>addProtocol (说实话我真不知道动态增加一个protocol有什么用,-</em>-!!)</p>
-<ol>
-<li>增加</li>
-</ol>
-<p>增加函数:class_addMethod</p>
-<p>增加实例变量:class_addIvar</p>
-<p>增加属性:@dynamic标签，或者class_addMethod，因为属性其实就是由getter和setter函数组成</p>
-<p>增加Protocol:class<em>addProtocol (说实话我真不知道动态增加一个protocol有什么用,-</em>-!!)</p>
-<ol>
-<li>获取</li>
-</ol>
-<p>获取函数列表及每个函数的信息(函数指针、函数名等等):class_getClassMethod method_getName …</p>
-<p>获取属性列表及每个属性的信息:class_copyPropertyList property_getName</p>
-<p>获取类本身的信息,如类名等：class_getName class_getInstanceSize</p>
-<p>获取变量列表及变量信息：class_copyIvarList</p>
-<p>获取变量的值</p>
-<ol>
-<li>替换</li>
-</ol>
-<p>将实例替换成另一个类：object_setClass</p>
-<p>替换类方法的定义：class_replaceMethod</p>
-<p>4.其他常用方法：</p>
-<p>交换两个方法的实现：method_exchangeImplementations.</p>
-<p>设置一个方法的实现：method_setImplementation.</p>
-<h4 id="消息转发"><a href="#消息转发" class="headerlink" title="消息转发"></a>消息转发</h4><p>三个步骤<br>每个步骤对应 系统方法</p>
-<h4 id="KVO的底层实现"><a href="#KVO的底层实现" class="headerlink" title="KVO的底层实现"></a>KVO的底层实现</h4><h3 id="GCD"><a href="#GCD" class="headerlink" title="GCD"></a>GCD</h3><p>dispatch barrier</p>
-<h3 id="instruments"><a href="#instruments" class="headerlink" title="instruments"></a>instruments</h3>
+
       
     </div>
 
@@ -699,7 +671,7 @@ isa每个实例对象有个isa的指针，指向对象的类，Class也有isa的
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#结构体"><span class="nav-number">1.</span> <span class="nav-text">结构体</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#isa"><span class="nav-number">1.1.</span> <span class="nav-text">isa</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#元类"><span class="nav-number">1.1.1.</span> <span class="nav-text">元类</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行时类的动态化处理（3步）"><span class="nav-number">2.</span> <span class="nav-text">运行时类的动态化处理（3步）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类（Class）"><span class="nav-number">2.1.</span> <span class="nav-text">类（Class）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象（id）"><span class="nav-number">2.2.</span> <span class="nav-text">对象（id）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元类pair"><span class="nav-number">2.3.</span> <span class="nav-text">元类pair</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实例对象、类对象、元类对象，有什么区别？"><span class="nav-number">2.3.1.</span> <span class="nav-text">实例对象、类对象、元类对象，有什么区别？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#消息转发"><span class="nav-number">2.3.2.</span> <span class="nav-text">消息转发</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#KVO的底层实现"><span class="nav-number">2.3.3.</span> <span class="nav-text">KVO的底层实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GCD"><span class="nav-number">2.4.</span> <span class="nav-text">GCD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#instruments"><span class="nav-number">2.5.</span> <span class="nav-text">instruments</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#结构体"><span class="nav-number">1.</span> <span class="nav-text">结构体</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#isa"><span class="nav-number">2.</span> <span class="nav-text">isa</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运行时类的动态化处理（3步）"><span class="nav-number">3.</span> <span class="nav-text">运行时类的动态化处理（3步）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类（Class）"><span class="nav-number">4.</span> <span class="nav-text">类（Class）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对象（id）"><span class="nav-number">5.</span> <span class="nav-text">对象（id）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元类pair"><span class="nav-number">6.</span> <span class="nav-text">元类pair</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例对象、类对象、元类对象，有什么区别？"><span class="nav-number">7.</span> <span class="nav-text">实例对象、类对象、元类对象，有什么区别？</span></a></li></ol></div>
             
 
           </div>
