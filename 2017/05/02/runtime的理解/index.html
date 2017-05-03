@@ -107,7 +107,9 @@ runtime是一套比较底层的C语言API，属于一个C语言库，包含了�
 2 相关的头文件和函数
 头文件:12&amp;lt;objc/runtime.h&amp;gt;&amp;lt;objc/message.h&amp;gt;
 
-3 特性&amp;gt;">
+3 特性
+
+可以">
 <meta property="og:type" content="article">
 <meta property="og:title" content="runtime的理解">
 <meta property="og:url" content="http://sjc2wbq.github.io/2017/05/02/runtime的理解/index.html">
@@ -118,8 +120,10 @@ runtime是一套比较底层的C语言API，属于一个C语言库，包含了�
 2 相关的头文件和函数
 头文件:12&amp;lt;objc/runtime.h&amp;gt;&amp;lt;objc/message.h&amp;gt;
 
-3 特性&amp;gt;">
-<meta property="og:updated_time" content="2017-05-03T01:40:33.000Z">
+3 特性
+
+可以">
+<meta property="og:updated_time" content="2017-05-03T01:43:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="runtime的理解">
 <meta name="twitter:description" content="runtime 运行时机制(详情)1 是什么？
@@ -128,7 +132,9 @@ runtime是一套比较底层的C语言API，属于一个C语言库，包含了�
 2 相关的头文件和函数
 头文件:12&amp;lt;objc/runtime.h&amp;gt;&amp;lt;objc/message.h&amp;gt;
 
-3 特性&amp;gt;">
+3 特性
+
+可以">
 
 
 
@@ -380,12 +386,13 @@ runtime是一套比较底层的C语言API，属于一个C语言库，包含了�
 <h4 id="2-相关的头文件和函数"><a href="#2-相关的头文件和函数" class="headerlink" title="2 相关的头文件和函数"></a>2 相关的头文件和函数</h4><blockquote>
 <p>头文件:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;objc/runtime.h&gt;</div><div class="line">&lt;objc/message.h&gt;</div></pre></td></tr></table></figure></p>
 </blockquote>
-<h4 id="3-特性"><a href="#3-特性" class="headerlink" title="3 特性"></a>3 特性</h4><p>&gt;</p>
+<h4 id="3-特性"><a href="#3-特性" class="headerlink" title="3 特性"></a>3 特性</h4><blockquote>
 <ul>
 <li>可以动态地创建类</li>
 <li>动态的添加变量和属性，动态地遍历变量和属性</li>
 <li>动态地添加方法，转化方法</li>
 </ul>
+</blockquote>
 <h4 id="4相关应用"><a href="#4相关应用" class="headerlink" title="4相关应用"></a>4相关应用</h4><h4 id="methodSwizzling"><a href="#methodSwizzling" class="headerlink" title="methodSwizzling"></a>methodSwizzling</h4><blockquote>
 <p>比如公司项目后期突然提出新的需求要为所有页面添加统计功能，也就是用户进入这个页面就统计一次，</p>
 </blockquote>
@@ -412,10 +419,9 @@ runtime是一套比较底层的C语言API，属于一个C语言库，包含了�
 <p>当我们像一个对象发送消息［Receiver message］，Receiver没有实现该消息，即[Receiver respondsToSelector:SEL]返回为NO情况下，其实系统不会立刻出现crash，这时Runtime system会对message进行转发。转发之后，如果该消息依然没有被执行就会出现Crash！Runtime System为我们提供了三种解决这种给对象发送没有实现消息方案。</p>
 </blockquote>
 <ol>
-<li><p>动态方法解析 <figure class="highlight plain"><figcaption><span>(BOOL)resolveInstanceMethod:(SEL)sel```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">2. 备用接收者 ```- (id)forwardingTargetForSelector:(SEL)aSelector</div></pre></td></tr></table></figure></p>
-</li>
-<li><p>完整转发 <code>- (void)forwardInvocation:(NSInvocation *)anInvocation</code></p>
-</li>
+<li>动态方法解析+ (BOOL)resolveInstanceMethod:(SEL)sel</li>
+<li>备用接收者 - (id)forwardingTargetForSelector:(SEL)aSelector</li>
+<li>完整转发 - (void)forwardInvocation:(NSInvocation *)anInvocation</li>
 </ol>
 <p><a href="https://zhidao.baidu.com/question/50557962.html" target="_blank" rel="external">API HOOK技术</a></p>
 <h4 id="用于封装框架（想怎么改就怎么改）"><a href="#用于封装框架（想怎么改就怎么改）" class="headerlink" title="用于封装框架（想怎么改就怎么改）"></a>用于封装框架（想怎么改就怎么改）</h4><h4 id="万能界面跳转"><a href="#万能界面跳转" class="headerlink" title="万能界面跳转"></a><a href="http://blog.csdn.net/coyote1994/article/details/52472670" target="_blank" rel="external">万能界面跳转</a></h4><p>相关函数</p>
