@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sjc2wbq.github.io/"/>
-  <updated>2017-05-02T21:38:35.000Z</updated>
+  <updated>2017-05-02T16:53:26.000Z</updated>
   <id>http://sjc2wbq.github.io/</id>
   
   <author>
@@ -14,65 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>7788总结</title>
-    <link href="http://sjc2wbq.github.io/2017/05/03/7788%E6%80%BB%E7%BB%93/"/>
-    <id>http://sjc2wbq.github.io/2017/05/03/7788总结/</id>
-    <published>2017-05-02T21:28:42.000Z</published>
-    <updated>2017-05-02T21:38:35.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>strong 与 copy 区别</strong>：</p>
-<blockquote>
-<p>使用strong，指向同一个地址，并且引用计数加1；而使用copy，是内容复制，创建一个新的内存区域</p>
-</blockquote>
-<ol>
-<li>strong对应的setter方法，是将_property先release（_property release），然后将参数retain（property retain），最后是_property = property。</li>
-<li>copy对应的setter方法，是将_property先release（_property release），然后拷贝参数内容（property copy），创建一块新的内存地址，最后_property = property。</li>
-</ol>
-<p><strong>深拷贝与浅拷贝</strong>：</p>
-<ul>
-<li>深拷贝：内容拷贝</li>
-<li>浅拷贝：指针拷贝</li>
-</ul>
-<p><a href="http://www.jianshu.com/p/e6a7cdcc705d" target="_blank" rel="external">详情</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;strong&gt;strong 与 copy 区别&lt;/strong&gt;：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;使用strong，指向同一个地址，并且引用计数加1；而使用copy，是内容复制，创建一个新的内存区域&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;stro
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>dyld</title>
-    <link href="http://sjc2wbq.github.io/2017/05/03/dyld/"/>
-    <id>http://sjc2wbq.github.io/2017/05/03/dyld/</id>
-    <published>2017-05-02T17:42:33.000Z</published>
-    <updated>2017-05-02T18:59:46.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>the OS X dynamic linker</p>
-<p> static linking, generally referred to simply as ‘linking’. This is the step that typically happens after compiling, where the machine language the compiler churned out from your source code, the object files, are ‘linked’ together into a single binary file</p>
-<p> LLDB的Xcode默认的调试器，它与LLVM编译器一起，带给我们更丰富的流程控制和数据检测的调试功能</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;the OS X dynamic linker&lt;/p&gt;
-&lt;p&gt; static linking, generally referred to simply as ‘linking’. This is the step that typically happens after 
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>ivar and property</title>
@@ -108,11 +49,94 @@
   </entry>
   
   <entry>
+    <title>choochoo</title>
+    <link href="http://sjc2wbq.github.io/2016/08/19/choochoo/"/>
+    <id>http://sjc2wbq.github.io/2016/08/19/choochoo/</id>
+    <published>2016-08-19T06:16:33.000Z</published>
+    <updated>2016-11-24T04:08:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="我们家楚楚最好"><a href="#我们家楚楚最好" class="headerlink" title="我们家楚楚最好"></a>我们家楚楚最好</h1>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;我们家楚楚最好&quot;&gt;&lt;a href=&quot;#我们家楚楚最好&quot; class=&quot;headerlink&quot; title=&quot;我们家楚楚最好&quot;&gt;&lt;/a&gt;我们家楚楚最好&lt;/h1&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>runtime</title>
+    <link href="http://sjc2wbq.github.io/2016/08/19/runtime/"/>
+    <id>http://sjc2wbq.github.io/2016/08/19/runtime/</id>
+    <published>2016-08-19T03:44:21.000Z</published>
+    <updated>2017-05-17T02:08:09.000Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h4><blockquote>
+<p>包含多个变量或者数组的集合</p>
+</blockquote>
+<p>1.结构体定义<br>struct 结构体名{<br>  变量或数组<br>};<br>2.结构体定义，并且初始化结构体变量 struct1<br>struct 结构体名{<br>  。。。<br>}结构体变量名struct1;</p>
+<p><a href="www.jianshu.com/p/41735c66dccb">OC中的类</a></p>
+<h4 id="isa"><a href="#isa" class="headerlink" title="isa"></a>isa</h4><p>每个实例对象有个isa的指针，指向对象的类，Class也有isa的指针，指向MeteClass（元类）可以理解为表明所属权，声明了实例与所属类的关系</p>
+<h4 id="运行时类的动态化处理（3步）"><a href="#运行时类的动态化处理（3步）" class="headerlink" title="运行时类的动态化处理（3步）"></a>运行时类的动态化处理（3步）</h4><ol>
+<li>objc_allocateClassPair()   为 class pair 分配类存</li>
+<li>class_addMethod() class_addIvar          添加方法或者成员变量</li>
+<li>objc_registerClssPair()    注册类</li>
+</ol>
+<blockquote>
+<p>class(类) pair(元类）</p>
+</blockquote>
+<p>Object-c的一个类也是一个对象，也可以发送消息给一个类</p>
+<h4 id="类（Class）"><a href="#类（Class）" class="headerlink" title="类（Class）"></a>类（Class）</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_class *Class;</div><div class="line"><span class="keyword">struct</span> objc_class &#123;</div><div class="line">    Class isa  OBJC_ISA_AVAILABILITY;</div><div class="line"><span class="meta">#if !__OBJC2__</span></div><div class="line">    Class super_class                                        OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *name                                         OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">long</span> version                                             OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">long</span> info                                                OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">long</span> instance_size                                       OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">struct</span> objc_ivar_list *ivars                             OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">struct</span> objc_method_list **methodLists                    OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">struct</span> objc_cache *cache                                 OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">struct</span> objc_protocol_list *protocols                     OBJC2_UNAVAILABLE;</div><div class="line"><span class="meta">#endif</span></div><div class="line"></div><div class="line">&#125; OBJC2_UNAVAILABLE;</div></pre></td></tr></table></figure>
+<h4 id="对象（id）"><a href="#对象（id）" class="headerlink" title="对象（id）"></a>对象（id）</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_object &#123;</div><div class="line">    Class isa;</div><div class="line">&#125; *<span class="keyword">id</span>;</div></pre></td></tr></table></figure>
+<ul>
+<li>对象是一个含有指向类结构的指针isa的结构体<br>理解：id（每个对象）含有一个isa指向对应的类</li>
+<li>Objective-C中对象最重要的特点是你可以发送消息给它们：<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[<span class="string">@"stringValue"</span></div><div class="line">    writeToFile:<span class="string">@"/file.txt"</span> atomically:<span class="literal">YES</span> encoding:<span class="built_in">NSUTF8StringEncoding</span> error:<span class="literal">NULL</span>];</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Objective-C对象（这儿是NSCFString）在发送消息时，运行时库会追寻着对象的isa指针得到了对象所属的类（这儿是NSCFString类）。这个类包含了能应用于这个类的所有实例方法和指向超类的指针以便可以找到父类的实例方法。运行时库检查这个类和其超类的方法列表，找到一个匹配这条消息的方法（在上面的代码里，是NSString类的writeToFile:atomically:encoding:error方法）。运行时库基于那个方法调用函数（IMP）<br><br><strong> 重点就是类要定义这个你发送给对象的消息。 </strong></p>
+<h4 id="元类pair"><a href="#元类pair" class="headerlink" title="元类pair"></a>元类pair</h4><p>Objective-C的一个类也是一个对象。这意味着你可以发送消息给一个类。</p>
+<p><font color="yellow">总结说OC中所有的类都是一种对象。由一个类实例化来的对象叫实例对象，那么，类作为对象（称之为类对象），又是什么类的对象？就是元类（Metaclass）</font>元类就是类对象所属的类。所以，实例对象是类的实例，类作为对象又是元类的实例。已经说了，OC中所有的类都属于一种对象，所以元类也是对象，那么元类是什么的实例呢？答曰：根元类，根元类是其自身的实例.也就是说根元类的元类就是它自己。基类的元类的isa指针指向他自己。</p>
+<ul>
+<li>当你给对象发送消息时，消息是在寻找这个对象的类的方法列表。</li>
+<li>当你给类发消息时，消息是在寻找这个类的元类的方法列表。</li>
+</ul>
+<p>用一张图表明他们之间的关系：<br><img src="http://oo5f0tnid.bkt.clouddn.com/1361289384_8487.PNG" alt="img"><br>注意：根元类的superclass不是nil而是根类。对于OC原生的类，根元类的父类就是系统的根类NSOject。但根类不一定是NSObject，因为后面介绍的objc_allocateClassPair函数也可创建出一个根类。<br><br><strong>元类是必不可少的，因为它存储了类的类方法。每个类都必须有独一无二的元类，因为每个类都有独一无二的<font color="yellow">类方法<font></font></font></strong></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSStringEncoding</span> defaultStringEncoding = [<span class="built_in">NSString</span> defaultStringEncoding];</div></pre></td></tr></table></figure>
+<p>在这个示例里，defaultStringEncoding被发送给了NSString类。</p>
+<p>因为Objective-C中每个类本身也是一个对象。如上面所展示的，这意味着类结构必须以一个isa指针开始，从而可以和objc_object在二进制层面兼容，然后这个结构的下一字段必须是一个指向超类的指针（对于基类则为nil）。</p>
+<h4 id="实例对象、类对象、元类对象，有什么区别？"><a href="#实例对象、类对象、元类对象，有什么区别？" class="headerlink" title="实例对象、类对象、元类对象，有什么区别？"></a>实例对象、类对象、元类对象，有什么区别？</h4><ul>
+<li><p>实例对象：当我们在代码中new一个实例对象时，拷贝了实例所属的类的成员变量，但不拷贝类定义的方法。调用实例方法时，根据实例的isa指针去寻找方法对应的函数指针。</p>
+</li>
+<li><p>类对象：是一个功能完整的对象。特殊之处在于它们是由程序员定义而在运行时由编译器创建的，它没有自己的实例变量（这里区别于类的成员变量，他们是属于实例对象的，而不是属于类对象的，类方法是属于类对象自己的），但类对象中存着成员变量与实例方法列表。</p>
+</li>
+<li><p>元类对象：OC 的类方法是使用元类的根本原因，因为其中存储着对应的类对象调用的方法即类方法。其他时候都倾向于隐藏元类，因此真实世界没有人发送消息给元类对象。元类的定义和创建看起来都是编译器自动完成的，无需人为干涉。要获取一个类的元类，可使用如下定义的函数：</p>
+</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Class objc_getMetaClass(<span class="keyword">const</span> <span class="keyword">char</span>* name); <span class="comment">//name为类的名字</span></div></pre></td></tr></table></figure>
+<p>此外还有一个获取对象所属的类的函数：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Class object_getClass(<span class="keyword">id</span> obj) ;</div></pre></td></tr></table></figure></p>
+<p>由于类对象是元类的实例，所以当传入的参数为类名时，返回的就是指向该类所属的元类的指针。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;结构体&quot;&gt;&lt;a href=&quot;#结构体&quot; class=&quot;headerlink&quot; title=&quot;结构体&quot;&gt;&lt;/a&gt;结构体&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;包含多个变量或者数组的集合&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;1.结构体定义&lt;br&gt;struct 
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>runtime的理解</title>
-    <link href="http://sjc2wbq.github.io/2017/05/02/runtime%E7%9A%84%E7%90%86%E8%A7%A3/"/>
-    <id>http://sjc2wbq.github.io/2017/05/02/runtime的理解/</id>
-    <published>2017-05-02T10:20:04.000Z</published>
-    <updated>2017-05-03T01:55:01.000Z</updated>
+    <link href="http://sjc2wbq.github.io/2016/08/16/runtime%E7%9A%84%E7%90%86%E8%A7%A3/"/>
+    <id>http://sjc2wbq.github.io/2016/08/16/runtime的理解/</id>
+    <published>2016-08-16T10:20:04.000Z</published>
+    <updated>2017-05-17T02:09:32.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="runtime-运行时机制-详情"><a href="#runtime-运行时机制-详情" class="headerlink" title="runtime 运行时机制(详情)"></a>runtime 运行时机制(<a href="http://www.jianshu.com/p/6b905584f536" target="_blank" rel="external"><strong>详情</strong></a>)</h3><h4 id="1-是什么？"><a href="#1-是什么？" class="headerlink" title="1 是什么？"></a>1 是什么？</h4><blockquote>
 <p>runtime是一套比较底层的C语言API，属于一个C语言库，包含了很多底层的C语言API<br>平时编写的OC代码，在程序运行过程中，其实都是转成了runtime的C语言代码，runtime算是OC的幕后工作者</p>
@@ -176,64 +200,63 @@
   </entry>
   
   <entry>
-    <title>runtime</title>
-    <link href="http://sjc2wbq.github.io/2017/04/20/runtime/"/>
-    <id>http://sjc2wbq.github.io/2017/04/20/runtime/</id>
-    <published>2017-04-20T03:44:21.000Z</published>
-    <updated>2017-05-03T01:54:57.000Z</updated>
+    <title>7788总结</title>
+    <link href="http://sjc2wbq.github.io/2016/08/15/7788%E6%80%BB%E7%BB%93/"/>
+    <id>http://sjc2wbq.github.io/2016/08/15/7788总结/</id>
+    <published>2016-08-14T21:28:42.000Z</published>
+    <updated>2017-05-17T02:08:54.000Z</updated>
     
-    <content type="html"><![CDATA[<h4 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h4><blockquote>
-<p>包含多个变量或者数组的集合</p>
-</blockquote>
-<p>1.结构体定义<br>struct 结构体名{<br>  变量或数组<br>};<br>2.结构体定义，并且初始化结构体变量 struct1<br>struct 结构体名{<br>  。。。<br>}结构体变量名struct1;</p>
-<p><a href="www.jianshu.com/p/41735c66dccb">OC中的类</a></p>
-<h4 id="isa"><a href="#isa" class="headerlink" title="isa"></a>isa</h4><p>每个实例对象有个isa的指针，指向对象的类，Class也有isa的指针，指向MeteClass（元类）可以理解为表明所属权，声明了实例与所属类的关系</p>
-<h4 id="运行时类的动态化处理（3步）"><a href="#运行时类的动态化处理（3步）" class="headerlink" title="运行时类的动态化处理（3步）"></a>运行时类的动态化处理（3步）</h4><ol>
-<li>objc_allocateClassPair()   为 class pair 分配类存</li>
-<li>class_addMethod() class_addIvar          添加方法或者成员变量</li>
-<li>objc_registerClssPair()    注册类</li>
-</ol>
+    <content type="html"><![CDATA[<p><strong>strong 与 copy 区别</strong>：</p>
 <blockquote>
-<p>class(类) pair(元类）</p>
+<p>使用strong，指向同一个地址，并且引用计数加1；而使用copy，是内容复制，创建一个新的内存区域</p>
 </blockquote>
-<p>Object-c的一个类也是一个对象，也可以发送消息给一个类</p>
-<h4 id="类（Class）"><a href="#类（Class）" class="headerlink" title="类（Class）"></a>类（Class）</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_class *Class;</div><div class="line"><span class="keyword">struct</span> objc_class &#123;</div><div class="line">    Class isa  OBJC_ISA_AVAILABILITY;</div><div class="line"><span class="meta">#if !__OBJC2__</span></div><div class="line">    Class super_class                                        OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *name                                         OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">long</span> version                                             OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">long</span> info                                                OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">long</span> instance_size                                       OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">struct</span> objc_ivar_list *ivars                             OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">struct</span> objc_method_list **methodLists                    OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">struct</span> objc_cache *cache                                 OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">struct</span> objc_protocol_list *protocols                     OBJC2_UNAVAILABLE;</div><div class="line"><span class="meta">#endif</span></div><div class="line"></div><div class="line">&#125; OBJC2_UNAVAILABLE;</div></pre></td></tr></table></figure>
-<h4 id="对象（id）"><a href="#对象（id）" class="headerlink" title="对象（id）"></a>对象（id）</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_object &#123;</div><div class="line">    Class isa;</div><div class="line">&#125; *<span class="keyword">id</span>;</div></pre></td></tr></table></figure>
+<ol>
+<li>strong对应的setter方法，是将_property先release（_property release），然后将参数retain（property retain），最后是_property = property。</li>
+<li>copy对应的setter方法，是将_property先release（_property release），然后拷贝参数内容（property copy），创建一块新的内存地址，最后_property = property。</li>
+</ol>
+<p><strong>深拷贝与浅拷贝</strong>：</p>
 <ul>
-<li>对象是一个含有指向类结构的指针isa的结构体<br>理解：id（每个对象）含有一个isa指向对应的类</li>
-<li>Objective-C中对象最重要的特点是你可以发送消息给它们：<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[<span class="string">@"stringValue"</span></div><div class="line">    writeToFile:<span class="string">@"/file.txt"</span> atomically:<span class="literal">YES</span> encoding:<span class="built_in">NSUTF8StringEncoding</span> error:<span class="literal">NULL</span>];</div></pre></td></tr></table></figure>
-</li>
+<li>深拷贝：内容拷贝</li>
+<li>浅拷贝：指针拷贝</li>
 </ul>
-<p>Objective-C对象（这儿是NSCFString）在发送消息时，运行时库会追寻着对象的isa指针得到了对象所属的类（这儿是NSCFString类）。这个类包含了能应用于这个类的所有实例方法和指向超类的指针以便可以找到父类的实例方法。运行时库检查这个类和其超类的方法列表，找到一个匹配这条消息的方法（在上面的代码里，是NSString类的writeToFile:atomically:encoding:error方法）。运行时库基于那个方法调用函数（IMP）<br><br><strong> 重点就是类要定义这个你发送给对象的消息。 </strong></p>
-<h4 id="元类pair"><a href="#元类pair" class="headerlink" title="元类pair"></a>元类pair</h4><p>Objective-C的一个类也是一个对象。这意味着你可以发送消息给一个类。</p>
-<p><font color="yellow">总结说OC中所有的类都是一种对象。由一个类实例化来的对象叫实例对象，那么，类作为对象（称之为类对象），又是什么类的对象？就是元类（Metaclass）</font>元类就是类对象所属的类。所以，实例对象是类的实例，类作为对象又是元类的实例。已经说了，OC中所有的类都属于一种对象，所以元类也是对象，那么元类是什么的实例呢？答曰：根元类，根元类是其自身的实例.也就是说根元类的元类就是它自己。基类的元类的isa指针指向他自己。</p>
-<ul>
-<li>当你给对象发送消息时，消息是在寻找这个对象的类的方法列表。</li>
-<li>当你给类发消息时，消息是在寻找这个类的元类的方法列表。</li>
-</ul>
-<p>用一张图表明他们之间的关系：<br><img src="http://oo5f0tnid.bkt.clouddn.com/1361289384_8487.PNG" alt="img"><br>注意：根元类的superclass不是nil而是根类。对于OC原生的类，根元类的父类就是系统的根类NSOject。但根类不一定是NSObject，因为后面介绍的objc_allocateClassPair函数也可创建出一个根类。<br><br><strong>元类是必不可少的，因为它存储了类的类方法。每个类都必须有独一无二的元类，因为每个类都有独一无二的<font color="yellow">类方法<font></font></font></strong></p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSStringEncoding</span> defaultStringEncoding = [<span class="built_in">NSString</span> defaultStringEncoding];</div></pre></td></tr></table></figure>
-<p>在这个示例里，defaultStringEncoding被发送给了NSString类。</p>
-<p>因为Objective-C中每个类本身也是一个对象。如上面所展示的，这意味着类结构必须以一个isa指针开始，从而可以和objc_object在二进制层面兼容，然后这个结构的下一字段必须是一个指向超类的指针（对于基类则为nil）。</p>
-<h4 id="实例对象、类对象、元类对象，有什么区别？"><a href="#实例对象、类对象、元类对象，有什么区别？" class="headerlink" title="实例对象、类对象、元类对象，有什么区别？"></a>实例对象、类对象、元类对象，有什么区别？</h4><ul>
-<li><p>实例对象：当我们在代码中new一个实例对象时，拷贝了实例所属的类的成员变量，但不拷贝类定义的方法。调用实例方法时，根据实例的isa指针去寻找方法对应的函数指针。</p>
-</li>
-<li><p>类对象：是一个功能完整的对象。特殊之处在于它们是由程序员定义而在运行时由编译器创建的，它没有自己的实例变量（这里区别于类的成员变量，他们是属于实例对象的，而不是属于类对象的，类方法是属于类对象自己的），但类对象中存着成员变量与实例方法列表。</p>
-</li>
-<li><p>元类对象：OC 的类方法是使用元类的根本原因，因为其中存储着对应的类对象调用的方法即类方法。其他时候都倾向于隐藏元类，因此真实世界没有人发送消息给元类对象。元类的定义和创建看起来都是编译器自动完成的，无需人为干涉。要获取一个类的元类，可使用如下定义的函数：</p>
-</li>
-</ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Class objc_getMetaClass(<span class="keyword">const</span> <span class="keyword">char</span>* name); <span class="comment">//name为类的名字</span></div></pre></td></tr></table></figure>
-<p>此外还有一个获取对象所属的类的函数：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Class object_getClass(<span class="keyword">id</span> obj) ;</div></pre></td></tr></table></figure></p>
-<p>由于类对象是元类的实例，所以当传入的参数为类名时，返回的就是指向该类所属的元类的指针。</p>
+<p><a href="http://www.jianshu.com/p/e6a7cdcc705d" target="_blank" rel="external">详情</a></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h4 id=&quot;结构体&quot;&gt;&lt;a href=&quot;#结构体&quot; class=&quot;headerlink&quot; title=&quot;结构体&quot;&gt;&lt;/a&gt;结构体&lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;包含多个变量或者数组的集合&lt;/p&gt;
+      &lt;p&gt;&lt;strong&gt;strong 与 copy 区别&lt;/strong&gt;：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;使用strong，指向同一个地址，并且引用计数加1；而使用copy，是内容复制，创建一个新的内存区域&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;1.结构体定义&lt;br&gt;struct 
+&lt;ol&gt;
+&lt;li&gt;stro
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>dyld</title>
+    <link href="http://sjc2wbq.github.io/2016/08/14/dyld/"/>
+    <id>http://sjc2wbq.github.io/2016/08/14/dyld/</id>
+    <published>2016-08-13T17:42:33.000Z</published>
+    <updated>2017-05-17T02:10:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://www.mikeash.com/pyblog/friday-qa-2012-11-09-dyld-dynamic-linking-on-os-x.html" target="_blank" rel="external">https://www.mikeash.com/pyblog/friday-qa-2012-11-09-dyld-dynamic-linking-on-os-x.html</a><br>the OS X dynamic linker</p>
+<p> static linking, generally referred to simply as ‘linking’. This is the step that typically happens after compiling, where the machine language the compiler churned out from your source code, the object files, are ‘linked’ together into a single binary file</p>
+<p> LLDB的Xcode默认的调试器，它与LLVM编译器一起，带给我们更丰富的流程控制和数据检测的调试功能</p>
+<h3 id="LLVM"><a href="#LLVM" class="headerlink" title="LLVM"></a>LLVM</h3><p> <a href="http://ios.jobbole.com/92875/" target="_blank" rel="external">http://ios.jobbole.com/92875/</a></p>
+<blockquote>
+<p>The LLVM Project is a collection of modular and reusable compiler and toolchain technologies.</p>
+</blockquote>
+<p> LLVM架构的主要组成部分：</p>
+<p>前端：前端用来获取源代码然后将它转变为某种中间表示，我们可以选择不同的编译器来作为LLVM的前端，如gcc，clang。<br>Pass(通常翻译为“流程”)：Pass用来将程序的中间表示之间相互变换。一般情况下，Pass可以用来优化代码，这部分通常是我们关注的部分。<br>后端：后端用来生成实际的机器码。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://www.mikeash.com/pyblog/friday-qa-2012-11-09-dyld-dynamic-linking-on-os-x.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://ww
     
     </summary>
     
@@ -242,10 +265,10 @@
   
   <entry>
     <title>如何在iOS端web插入音乐并且自动顺序播放音乐</title>
-    <link href="http://sjc2wbq.github.io/2017/04/05/music/"/>
-    <id>http://sjc2wbq.github.io/2017/04/05/music/</id>
-    <published>2017-04-04T20:19:21.000Z</published>
-    <updated>2017-04-10T07:28:08.000Z</updated>
+    <link href="http://sjc2wbq.github.io/2016/07/05/music/"/>
+    <id>http://sjc2wbq.github.io/2016/07/05/music/</id>
+    <published>2016-07-04T20:19:21.000Z</published>
+    <updated>2017-05-17T02:07:40.000Z</updated>
     
     <content type="html"><![CDATA[<p><em>实现下如何在iOS端的网页中自动顺序播放多首歌曲：由于iOS端Safari安全机制的限制，iOS端中的web不能autoplay。</em></p>
 <div class="note "><p><code>window.addEventListener(&#39;touchstart&#39;, forceSafariPlayAudio, false)</code>监听手势触发，做“伪”自动播放。</p>
@@ -257,19 +280,6 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
 <audio id="bgmusic" autoplay preload="" controls hidden src="http://oo5fnv8gq.bkt.clouddn.com/%E5%8F%A4%E5%A4%A9%E4%B9%90%20-%20%E5%90%BB%E5%BE%97%E5%88%B0%E7%88%B1%E4%B8%8D%E5%88%B0.mp3"></audio>
 
-
-
-<!--吻得到爱不到-->
-<!-- <src= 'http://oo5fnv8gq.bkt.clouddn.com/%E5%8F%A4%E5%B7%A8%E5%9F%BA,%E5%8F%A4%E5%A4%A9%E4%B9%90%20-%20%E5%BD%93%E5%B9%B4%E6%83%85.mp3' > -->
-<!--当年情-->
-<!-- <source src= 'http://oo5fnv8gq.bkt.clouddn.com/%E7%83%82%E5%85%94%E5%AD%90%20-%20%E3%81%84%E3%81%91%E3%81%AA%E3%81%84%E3%83%9C%E3%83%BC%E3%83%80%E3%83%BC%E3%83%A9%E3%82%A4%E3%83%B3%20-%208Bit.mp3'> -->
-<!--极乐净土-->
-<!-- <source src= 'http://oo5fnv8gq.bkt.clouddn.com/Dr.%20Dre,Snoop%20Dogg%20-%20Still%20D.R.E.mp3' >
-<!--stillDre-->
-<!-- <source src= 'http://oo5fnv8gq.bkt.clouddn.com/Gorillaz%20-%20Clint%20Eastwood.mp3'> -->
-<!--ClintEastWood-->
-<!-- <source src= 'http://oo5fnv8gq.bkt.clouddn.com/Snoop%20Dogg,Wiz%20Khalifa,Bruno%20Mars%20-%20Young,%20Wild%20&%20Free.mp3'> -->
-<!--YoungWildandFree-->
 <script type="text/javascript">
 var audioEl = document.getElementById('bgmusic');
 var i = 0;
@@ -346,24 +356,6 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
     
     
       <category term="html" scheme="http://sjc2wbq.github.io/tags/html/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>choochoo</title>
-    <link href="http://sjc2wbq.github.io/2016/08/19/choochoo/"/>
-    <id>http://sjc2wbq.github.io/2016/08/19/choochoo/</id>
-    <published>2016-08-19T06:16:33.000Z</published>
-    <updated>2016-11-24T04:08:02.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="我们家楚楚最好"><a href="#我们家楚楚最好" class="headerlink" title="我们家楚楚最好"></a>我们家楚楚最好</h1>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;我们家楚楚最好&quot;&gt;&lt;a href=&quot;#我们家楚楚最好&quot; class=&quot;headerlink&quot; title=&quot;我们家楚楚最好&quot;&gt;&lt;/a&gt;我们家楚楚最好&lt;/h1&gt;
-    
-    </summary>
-    
     
   </entry>
   

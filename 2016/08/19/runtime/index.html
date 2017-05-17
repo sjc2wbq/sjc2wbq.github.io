@@ -83,7 +83,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="KVO & KVC," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -101,25 +101,36 @@
 
 
 
-<meta name="description" content="KVO
-key Value Observer它提供一种机制，当指定的对象的属性被修改后，则对象就会接受到通知。简单的说就是每次指定的被观察的对象的属性被修改后，KVO就会自动通知相应的观察者了。
+<meta name="description" content="结构体
+包含多个变量或者数组的集合
 
-为想要观察的对象添加观察者1234[object addObserver:observer        forKeyPath:@&quot;frame&quot;        options:NSKeyValueObs">
+1.结构体定义struct 结构体名{  变量或数组};2.结构体定义，并且初始化结构体变量 struct1struct 结构体名{  。。。}结构体变量名struct1;
+OC中的类
+isa每个实例对象有个isa的指针，指向对象的类，Class也有isa的指针，指向MeteClass（元类）可以理解为表明所属权，声明了实例与所属类的关系
+运行时类的动态化处理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="KVO and KVC">
-<meta property="og:url" content="http://sjc2wbq.github.io/2016/01/17/KVOandKVC/index.html">
+<meta property="og:title" content="runtime">
+<meta property="og:url" content="http://sjc2wbq.github.io/2016/08/19/runtime/index.html">
 <meta property="og:site_name" content="NOTES">
-<meta property="og:description" content="KVO
-key Value Observer它提供一种机制，当指定的对象的属性被修改后，则对象就会接受到通知。简单的说就是每次指定的被观察的对象的属性被修改后，KVO就会自动通知相应的观察者了。
+<meta property="og:description" content="结构体
+包含多个变量或者数组的集合
 
-为想要观察的对象添加观察者1234[object addObserver:observer        forKeyPath:@&quot;frame&quot;        options:NSKeyValueObs">
-<meta property="og:updated_time" content="2017-05-03T01:54:49.000Z">
+1.结构体定义struct 结构体名{  变量或数组};2.结构体定义，并且初始化结构体变量 struct1struct 结构体名{  。。。}结构体变量名struct1;
+OC中的类
+isa每个实例对象有个isa的指针，指向对象的类，Class也有isa的指针，指向MeteClass（元类）可以理解为表明所属权，声明了实例与所属类的关系
+运行时类的动态化处理">
+<meta property="og:image" content="http://oo5f0tnid.bkt.clouddn.com/1361289384_8487.PNG">
+<meta property="og:updated_time" content="2017-05-17T02:08:09.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="KVO and KVC">
-<meta name="twitter:description" content="KVO
-key Value Observer它提供一种机制，当指定的对象的属性被修改后，则对象就会接受到通知。简单的说就是每次指定的被观察的对象的属性被修改后，KVO就会自动通知相应的观察者了。
+<meta name="twitter:title" content="runtime">
+<meta name="twitter:description" content="结构体
+包含多个变量或者数组的集合
 
-为想要观察的对象添加观察者1234[object addObserver:observer        forKeyPath:@&quot;frame&quot;        options:NSKeyValueObs">
+1.结构体定义struct 结构体名{  变量或数组};2.结构体定义，并且初始化结构体变量 struct1struct 结构体名{  。。。}结构体变量名struct1;
+OC中的类
+isa每个实例对象有个isa的指针，指向对象的类，Class也有isa的指针，指向MeteClass（元类）可以理解为表明所属权，声明了实例与所属类的关系
+运行时类的动态化处理">
+<meta name="twitter:image" content="http://oo5f0tnid.bkt.clouddn.com/1361289384_8487.PNG">
 
 
 
@@ -147,13 +158,13 @@ key Value Observer它提供一种机制，当指定的对象的属性被修改�
 
 
 
-  <link rel="canonical" href="http://sjc2wbq.github.io/2016/01/17/KVOandKVC/"/>
+  <link rel="canonical" href="http://sjc2wbq.github.io/2016/08/19/runtime/"/>
 
 
 
 
 
-  <title> KVO and KVC | NOTES </title>
+  <title> runtime | NOTES </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -282,7 +293,7 @@ key Value Observer它提供一种机制，当指定的对象的属性被修改�
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sjc2wbq.github.io/2016/01/17/KVOandKVC/">
+    <link itemprop="mainEntityOfPage" href="http://sjc2wbq.github.io/2016/08/19/runtime/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JunChuan Shi">
@@ -303,7 +314,7 @@ key Value Observer它提供一种机制，当指定的对象的属性被修改�
             
             
               
-                KVO and KVC
+                runtime
               
             
           </h1>
@@ -318,8 +329,8 @@ key Value Observer它提供一种机制，当指定的对象的属性被修改�
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-01-17T21:38:50+08:00">
-                2016-01-17
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-08-19T11:44:21+08:00">
+                2016-08-19
               </time>
             
 
@@ -329,28 +340,6 @@ key Value Observer它提供一种机制，当指定的对象的属性被修改�
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -358,7 +347,7 @@ key Value Observer它提供一种机制，当指定的对象的属性被修改�
 
           
           
-             <span id="/2016/01/17/KVOandKVC/" class="leancloud_visitors" data-flag-title="KVO and KVC">
+             <span id="/2016/08/19/runtime/" class="leancloud_visitors" data-flag-title="runtime">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -387,37 +376,50 @@ key Value Observer它提供一种机制，当指定的对象的属性被修改�
       
 
       
-        <h3 id="KVO"><a href="#KVO" class="headerlink" title="KVO"></a>KVO</h3><blockquote>
-<p>key Value Observer它提供一种机制，当指定的对象的属性被修改后，则对象就会接受到通知。简单的说就是每次指定的被观察的对象的属性被修改后，KVO就会自动通知相应的观察者了。</p>
+        <h4 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h4><blockquote>
+<p>包含多个变量或者数组的集合</p>
 </blockquote>
-<h4 id="为想要观察的对象添加观察者"><a href="#为想要观察的对象添加观察者" class="headerlink" title="为想要观察的对象添加观察者"></a>为想要观察的对象添加观察者</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[object addObserver:observer</div><div class="line">        forKeyPath:<span class="string">@"frame"</span></div><div class="line">        options:<span class="built_in">NSKeyValueObservingOptionNew</span></div><div class="line">        context:<span class="literal">nil</span>];</div></pre></td></tr></table></figure>
+<p>1.结构体定义<br>struct 结构体名{<br>  变量或数组<br>};<br>2.结构体定义，并且初始化结构体变量 struct1<br>struct 结构体名{<br>  。。。<br>}结构体变量名struct1;</p>
+<p><a href="www.jianshu.com/p/41735c66dccb">OC中的类</a></p>
+<h4 id="isa"><a href="#isa" class="headerlink" title="isa"></a>isa</h4><p>每个实例对象有个isa的指针，指向对象的类，Class也有isa的指针，指向MeteClass（元类）可以理解为表明所属权，声明了实例与所属类的关系</p>
+<h4 id="运行时类的动态化处理（3步）"><a href="#运行时类的动态化处理（3步）" class="headerlink" title="运行时类的动态化处理（3步）"></a>运行时类的动态化处理（3步）</h4><ol>
+<li>objc_allocateClassPair()   为 class pair 分配类存</li>
+<li>class_addMethod() class_addIvar          添加方法或者成员变量</li>
+<li>objc_registerClssPair()    注册类</li>
+</ol>
+<blockquote>
+<p>class(类) pair(元类）</p>
+</blockquote>
+<p>Object-c的一个类也是一个对象，也可以发送消息给一个类</p>
+<h4 id="类（Class）"><a href="#类（Class）" class="headerlink" title="类（Class）"></a>类（Class）</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_class *Class;</div><div class="line"><span class="keyword">struct</span> objc_class &#123;</div><div class="line">    Class isa  OBJC_ISA_AVAILABILITY;</div><div class="line"><span class="meta">#if !__OBJC2__</span></div><div class="line">    Class super_class                                        OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *name                                         OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">long</span> version                                             OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">long</span> info                                                OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">long</span> instance_size                                       OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">struct</span> objc_ivar_list *ivars                             OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">struct</span> objc_method_list **methodLists                    OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">struct</span> objc_cache *cache                                 OBJC2_UNAVAILABLE;</div><div class="line">    <span class="keyword">struct</span> objc_protocol_list *protocols                     OBJC2_UNAVAILABLE;</div><div class="line"><span class="meta">#endif</span></div><div class="line"></div><div class="line">&#125; OBJC2_UNAVAILABLE;</div></pre></td></tr></table></figure>
+<h4 id="对象（id）"><a href="#对象（id）" class="headerlink" title="对象（id）"></a>对象（id）</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_object &#123;</div><div class="line">    Class isa;</div><div class="line">&#125; *<span class="keyword">id</span>;</div></pre></td></tr></table></figure>
 <ul>
-<li><strong>object</strong>:被观察对象</li>
-<li><strong>observer</strong>:观察对象</li>
-<li><strong>forKeyPath</strong>:需要检测的属性(property的name),如UIViewV的frame,center</li>
-<li><strong>context</strong>:任意类型(一种标识,可用于同时监听不同对象的相同属性？)<br>options:</li>
-<li><strong>options:</strong></li>
-</ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSKeyValueObservingOptionNew</span>  更改前的值</div><div class="line"><span class="built_in">NSKeyValueObservingOptionOld</span>  更改后的值</div><div class="line"><span class="built_in">NSKeyValueObservingOptionInitial</span> 初始化的值,一旦注册,立马调用一次,通常会带有新值,不会带有旧值</div><div class="line"><span class="built_in">NSKeyValueObservingOptionPrior</span> 分两次调用,值改变之前和值改变后</div></pre></td></tr></table></figure>
-<h4 id="添加观察键值变化的处理方法"><a href="#添加观察键值变化的处理方法" class="headerlink" title="添加观察键值变化的处理方法"></a>添加观察键值变化的处理方法</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">-(<span class="keyword">void</span>)observeValueForKeyPath:(<span class="built_in">NSString</span> *)keyPath</div><div class="line">                     ofObject:(<span class="keyword">id</span>)object</div><div class="line">                     change:(<span class="built_in">NSDictionary</span>&lt;<span class="built_in">NSString</span> *,<span class="keyword">id</span>&gt; *)change</div><div class="line">                     context:(<span class="keyword">void</span> *)context</div><div class="line">&#125;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
-<ul>
-<li><strong>KeyPath</strong>:对应forKeyPath</li>
-<li><strong>object</strong>: 被观察者</li>
-<li><strong>change</strong>: 对应相应选项下值的改变(字典类型)可通过对应的key取值,key有new,old,等,可打印输出观察取key值</li>
-<li><strong>context</strong>: 对应context<a id="more"></a>
+<li>对象是一个含有指向类结构的指针isa的结构体<br>理解：id（每个对象）含有一个isa指向对应的类</li>
+<li>Objective-C中对象最重要的特点是你可以发送消息给它们：<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[<span class="string">@"stringValue"</span></div><div class="line">    writeToFile:<span class="string">@"/file.txt"</span> atomically:<span class="literal">YES</span> encoding:<span class="built_in">NSUTF8StringEncoding</span> error:<span class="literal">NULL</span>];</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="KVC"><a href="#KVC" class="headerlink" title="KVC"></a>KVC</h3><blockquote>
-<p>key Value Coding</p>
-</blockquote>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[x setValue:obj forKey:key];       -&gt; x.key = objc(x中编码为“key”的属性的值设为objc)</div><div class="line">[x setValue:obj forKeyPath:path]（用于传递属性）   -&gt; x.path =objc(x中键路径为path的内容设为objc) 如path = a.b 则是把x类中属性a（a是一个类，有b属性）的属性b赋值为 objc</div><div class="line">[x setValuesForKeysWithDictionary:dic]; -&gt; x中所有编码为dic中的“key”值的属性的值设为所有dic中对应“key”的值</div></pre></td></tr></table></figure>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[x setObject:objc forKey:key]; 不要搞混！！！它是<span class="built_in">NSMutableDictionary</span>特有的方法（可变字典添加键值对的，可想做类似于[<span class="built_in">NSMutableArray</span> addObject:objc ]）</div></pre></td></tr></table></figure>
-<p><a href="http://www.cocoachina.com/industry/20140224/7866.html" target="_blank" rel="external">http://www.cocoachina.com/industry/20140224/7866.html</a></p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@class</span> <span class="title">HerosAllParse</span>;</span></div><div class="line"><span class="comment">/*</span></div><div class="line"> 解析规则</div><div class="line"> 1.遇到字典新建类型，</div><div class="line"> 2.然后在类里面，把所有的键对应的属性声明</div><div class="line"> 3.每个类型都需要一个解析方法</div><div class="line"> 4.对于数组类型的属性，标记它的内容，通过@class引入类型</div><div class="line"> 5.解析方法的实现顺序，由底层向表层实现</div><div class="line">*/</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">HerosParse</span> : <span class="title">NSObject</span></span></div><div class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>) <span class="built_in">NSArray</span>&lt;HerosAllParse *&gt; *all;</div><div class="line">+(<span class="keyword">instancetype</span>)parse:(<span class="built_in">NSDictionary</span> *)dic;</div><div class="line"><span class="keyword">@end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">HerosAllParse</span> : <span class="title">NSObject</span></span></div><div class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>) <span class="built_in">NSString</span> *cnName;</div><div class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>) <span class="built_in">NSString</span> *enName;</div><div class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>) <span class="built_in">NSString</span> *location;</div><div class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>) <span class="built_in">NSString</span> *price;</div><div class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>) <span class="built_in">NSString</span> *rating;</div><div class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>) <span class="built_in">NSString</span> *tags;</div><div class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>) <span class="built_in">NSString</span> *title;</div><div class="line">+(<span class="keyword">instancetype</span>)parse:(<span class="built_in">NSDictionary</span> *)dic;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">HerosParse</span></span></div><div class="line"></div><div class="line">+(<span class="keyword">instancetype</span>)parse:(<span class="built_in">NSDictionary</span> *)dic&#123;</div><div class="line">    <span class="built_in">NSMutableArray</span> *ary = [<span class="built_in">NSMutableArray</span> new];</div><div class="line">    <span class="built_in">NSArray</span> *arr = dic[<span class="string">@"all"</span>];</div><div class="line">    <span class="keyword">for</span> (<span class="built_in">NSDictionary</span> *dic <span class="keyword">in</span> arr) &#123;</div><div class="line">        [ary addObject:[HerosAllParse parse:dic]];</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//[dic setValue:ary forKey:@"all"];</span></div><div class="line">    <span class="comment">//为什么得转换为可变dic？？？？？？</span></div><div class="line"></div><div class="line">    <span class="built_in">NSMutableDictionary</span> *multableDic = [<span class="built_in">NSMutableDictionary</span> dictionaryWithDictionary:dic];</div><div class="line">    [multableDic setObject:ary forKey:<span class="string">@"all"</span>];</div><div class="line"></div><div class="line">    <span class="keyword">id</span> objc = [<span class="keyword">self</span> new];</div><div class="line">    [objc setValuesForKeysWithDictionary:multableDic];</div><div class="line">    <span class="keyword">return</span> objc;</div><div class="line">&#125;</div><div class="line">-(<span class="keyword">void</span>)setNilValueForKey:(<span class="built_in">NSString</span> *)key&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line">-(<span class="keyword">void</span>)setValue:(<span class="keyword">id</span>)value forUndefinedKey:(<span class="built_in">NSString</span> *)key&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"><span class="keyword">@end</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">HerosAllParse</span></span></div><div class="line">+(<span class="keyword">instancetype</span>)parse:(<span class="built_in">NSDictionary</span> *)dic&#123;</div><div class="line">    <span class="keyword">id</span> objc = [<span class="keyword">self</span> new];</div><div class="line">    [objc setValuesForKeysWithDictionary:dic];</div><div class="line">    <span class="keyword">return</span> objc;</div><div class="line">&#125;</div><div class="line">-(<span class="keyword">void</span>)setValue:(<span class="keyword">id</span>)value forUndefinedKey:(<span class="built_in">NSString</span> *)key&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line">-(<span class="keyword">void</span>)setNilValueForKey:(<span class="built_in">NSString</span> *)key&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
-<h4 id="通知"><a href="#通知" class="headerlink" title="通知"></a><a href="http://sjc2wbq.github.io/2016/01/17/Notification/">通知</a></h4><blockquote>
-<p>与KVO的区别？</p>
-</blockquote>
+<p>Objective-C对象（这儿是NSCFString）在发送消息时，运行时库会追寻着对象的isa指针得到了对象所属的类（这儿是NSCFString类）。这个类包含了能应用于这个类的所有实例方法和指向超类的指针以便可以找到父类的实例方法。运行时库检查这个类和其超类的方法列表，找到一个匹配这条消息的方法（在上面的代码里，是NSString类的writeToFile:atomically:encoding:error方法）。运行时库基于那个方法调用函数（IMP）<br><br><strong> 重点就是类要定义这个你发送给对象的消息。 </strong></p>
+<h4 id="元类pair"><a href="#元类pair" class="headerlink" title="元类pair"></a>元类pair</h4><p>Objective-C的一个类也是一个对象。这意味着你可以发送消息给一个类。</p>
+<p><font color="yellow">总结说OC中所有的类都是一种对象。由一个类实例化来的对象叫实例对象，那么，类作为对象（称之为类对象），又是什么类的对象？就是元类（Metaclass）</font>元类就是类对象所属的类。所以，实例对象是类的实例，类作为对象又是元类的实例。已经说了，OC中所有的类都属于一种对象，所以元类也是对象，那么元类是什么的实例呢？答曰：根元类，根元类是其自身的实例.也就是说根元类的元类就是它自己。基类的元类的isa指针指向他自己。</p>
+<ul>
+<li>当你给对象发送消息时，消息是在寻找这个对象的类的方法列表。</li>
+<li>当你给类发消息时，消息是在寻找这个类的元类的方法列表。</li>
+</ul>
+<p>用一张图表明他们之间的关系：<br><img src="http://oo5f0tnid.bkt.clouddn.com/1361289384_8487.PNG" alt="img"><br>注意：根元类的superclass不是nil而是根类。对于OC原生的类，根元类的父类就是系统的根类NSOject。但根类不一定是NSObject，因为后面介绍的objc_allocateClassPair函数也可创建出一个根类。<br><br><strong>元类是必不可少的，因为它存储了类的类方法。每个类都必须有独一无二的元类，因为每个类都有独一无二的<font color="yellow">类方法<font></font></font></strong></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSStringEncoding</span> defaultStringEncoding = [<span class="built_in">NSString</span> defaultStringEncoding];</div></pre></td></tr></table></figure>
+<p>在这个示例里，defaultStringEncoding被发送给了NSString类。</p>
+<p>因为Objective-C中每个类本身也是一个对象。如上面所展示的，这意味着类结构必须以一个isa指针开始，从而可以和objc_object在二进制层面兼容，然后这个结构的下一字段必须是一个指向超类的指针（对于基类则为nil）。</p>
+<h4 id="实例对象、类对象、元类对象，有什么区别？"><a href="#实例对象、类对象、元类对象，有什么区别？" class="headerlink" title="实例对象、类对象、元类对象，有什么区别？"></a>实例对象、类对象、元类对象，有什么区别？</h4><ul>
+<li><p>实例对象：当我们在代码中new一个实例对象时，拷贝了实例所属的类的成员变量，但不拷贝类定义的方法。调用实例方法时，根据实例的isa指针去寻找方法对应的函数指针。</p>
+</li>
+<li><p>类对象：是一个功能完整的对象。特殊之处在于它们是由程序员定义而在运行时由编译器创建的，它没有自己的实例变量（这里区别于类的成员变量，他们是属于实例对象的，而不是属于类对象的，类方法是属于类对象自己的），但类对象中存着成员变量与实例方法列表。</p>
+</li>
+<li><p>元类对象：OC 的类方法是使用元类的根本原因，因为其中存储着对应的类对象调用的方法即类方法。其他时候都倾向于隐藏元类，因此真实世界没有人发送消息给元类对象。元类的定义和创建看起来都是编译器自动完成的，无需人为干涉。要获取一个类的元类，可使用如下定义的函数：</p>
+</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Class objc_getMetaClass(<span class="keyword">const</span> <span class="keyword">char</span>* name); <span class="comment">//name为类的名字</span></div></pre></td></tr></table></figure>
+<p>此外还有一个获取对象所属的类的函数：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Class object_getClass(<span class="keyword">id</span> obj) ;</div></pre></td></tr></table></figure></p>
+<p>由于类对象是元类的实例，所以当传入的参数为类名时，返回的就是指向该类所属的元类的指针。</p>
 
       
     </div>
@@ -445,12 +447,6 @@ key Value Observer它提供一种机制，当指定的对象的属性被修改�
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/KVO-KVC/" rel="tag"># KVO & KVC</a>
-          
-        </div>
-      
 
       
         
@@ -460,14 +456,18 @@ key Value Observer它提供一种机制，当指定的对象的属性被修改�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/08/16/runtime的理解/" rel="next" title="runtime的理解">
+                <i class="fa fa-chevron-left"></i> runtime的理解
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/01/17/CALayer/" rel="prev" title="CALayer">
-                CALayer <i class="fa fa-chevron-right"></i>
+              <a href="/2016/08/19/choochoo/" rel="prev" title="choochoo">
+                choochoo <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -671,7 +671,7 @@ key Value Observer它提供一种机制，当指定的对象的属性被修改�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#KVO"><span class="nav-number">1.</span> <span class="nav-text">KVO</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为想要观察的对象添加观察者"><span class="nav-number">1.1.</span> <span class="nav-text">为想要观察的对象添加观察者</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加观察键值变化的处理方法"><span class="nav-number">1.2.</span> <span class="nav-text">添加观察键值变化的处理方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#KVC"><span class="nav-number">2.</span> <span class="nav-text">KVC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通知"><span class="nav-number">2.1.</span> <span class="nav-text">通知</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#结构体"><span class="nav-number">1.</span> <span class="nav-text">结构体</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#isa"><span class="nav-number">2.</span> <span class="nav-text">isa</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运行时类的动态化处理（3步）"><span class="nav-number">3.</span> <span class="nav-text">运行时类的动态化处理（3步）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类（Class）"><span class="nav-number">4.</span> <span class="nav-text">类（Class）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对象（id）"><span class="nav-number">5.</span> <span class="nav-text">对象（id）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元类pair"><span class="nav-number">6.</span> <span class="nav-text">元类pair</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例对象、类对象、元类对象，有什么区别？"><span class="nav-number">7.</span> <span class="nav-text">实例对象、类对象、元类对象，有什么区别？</span></a></li></ol></div>
             
 
           </div>
