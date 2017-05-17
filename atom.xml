@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sjc2wbq.github.io/"/>
-  <updated>2017-05-02T16:53:26.000Z</updated>
+  <updated>2017-05-17T02:15:51.000Z</updated>
   <id>http://sjc2wbq.github.io/</id>
   
   <author>
@@ -20,14 +20,13 @@
     <link href="http://sjc2wbq.github.io/2017/05/02/objc-ivar-and-property/"/>
     <id>http://sjc2wbq.github.io/2017/05/02/objc-ivar-and-property/</id>
     <published>2017-05-02T14:13:33.000Z</published>
-    <updated>2017-05-02T16:53:26.000Z</updated>
+    <updated>2017-05-17T02:15:51.000Z</updated>
     
     <content type="html"><![CDATA[<p><strong>成员变量</strong>：</p>
 <p>定义了一个类的全局变量（不直接被外部访问，只能通过方法读或写）</p>
 <p><strong>属性</strong>:</p>
 <p>提供了getter和setter方法的成员变量（直接能被外部访问）</p>
-<p>由此而知：当在OC里面默认申明一个属性，如果没有关联相应的成员变量会默认生成一个以下划线开头+属性名的成员变量</p>
-<p>@property声明setter getter方法</p>
+<p>由此而知：当在OC里面默认申明一个属性，如果没有关联相应的成员变量会默认生成一个以下划线开头+属性名的成员变量<br><a id="more"></a><br>@property声明setter getter方法</p>
 <p>@synthesize定义setter getter方法</p>
 <p>在Xcode4.5及以后的版本中，可以省略@synthesize编译器会自动帮你加上setter getter方法，并且默认会去访问_age这个成员变量，如果找不到_age这个成员变量，会自动生成一个叫做 _age的私有成员变量。在.m文件中同时实现getter和setter方法时候需要@synthesize age = _age或者在.h文件里手写成员变量 NSString *_age</p>
 <p><strong>ivar</strong>:<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_ivar *Ivar;</div></pre></td></tr></table></figure></p>
@@ -41,7 +40,7 @@
 &lt;p&gt;定义了一个类的全局变量（不直接被外部访问，只能通过方法读或写）&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;属性&lt;/strong&gt;:&lt;/p&gt;
 &lt;p&gt;提供了getter和setter方法的成员变量（直接能被外部访问）&lt;/p&gt;
-&lt;p
+&lt;p&gt;由此而知：当在OC里面默认申明一个属性，如果没有关联相应的成员变量会默认生成一个以下划线开头+属性名的成员变量&lt;br&gt;
     
     </summary>
     
@@ -786,6 +785,77 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
   </entry>
   
   <entry>
+    <title>tableViewCell、collectionViewCell </title>
+    <link href="http://sjc2wbq.github.io/2016/02/14/Tableview/"/>
+    <id>http://sjc2wbq.github.io/2016/02/14/Tableview/</id>
+    <published>2016-02-14T01:35:22.000Z</published>
+    <updated>2016-05-20T04:02:51.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li>注册重用法</li>
+<li>tableview自适应高度</li>
+<li>tableview撤销高亮</li>
+<li>参数的传递<ol>
+<li>纯代码（didselectRow）</li>
+<li>storyBoard方式（prepareForSegue）</li>
+</ol>
+</li>
+</ul>
+<h3 id="tableViewCell、collectionViewCell重用注册法"><a href="#tableViewCell、collectionViewCell重用注册法" class="headerlink" title="tableViewCell、collectionViewCell重用注册法"></a>tableViewCell、collectionViewCell重用注册法</h3><blockquote>
+<ol>
+<li><strong>纯代码</strong>注册时用<strong>registerClass</strong>如下图示例</li>
+<li><strong>xib界面</strong>注册时用<strong>registerNib</strong>作(tableView或collectionView)的cell  </li>
+<li><strong>storyboard</strong></li>
+</ol>
+</blockquote>
+<ul>
+<li><h4 id="注册方法"><a href="#注册方法" class="headerlink" title="注册方法"></a>注册方法</h4></li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[<span class="keyword">self</span>.myCollectionView registerClass:[MycollectionViewCell <span class="keyword">class</span>]</div><div class="line">         forCellWithReuseIdentifier:<span class="string">@"cell"</span>];</div><div class="line"></div><div class="line">[<span class="keyword">self</span>.myCollectionView registerNib:[<span class="built_in">UINib</span> nibWithNibName:<span class="string">@"mycollectionCell"</span></div><div class="line">                            bundle:<span class="literal">nil</span>]</div><div class="line">         forCellWithReuseIdentifier:cellIndentify];</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<ul>
+<li><h4 id="重用方法"><a href="#重用方法" class="headerlink" title="重用方法"></a>重用方法</h4></li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MycollectionViewCell *cell;</div><div class="line">cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIndentify</div><div class="line">                                                  forIndexPath:indexPath];</div></pre></td></tr></table></figure>
+<h3 id="让tableViewCell横线没有空隙"><a href="#让tableViewCell横线没有空隙" class="headerlink" title="让tableViewCell横线没有空隙"></a>让tableViewCell横线没有空隙</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cell.separatorInset = <span class="built_in">UIEdgeInsetsZero</span>;</div><div class="line">cell.layoutMargins = <span class="built_in">UIEdgeInsetsZero</span>;</div><div class="line">cell.preservesSuperviewLayoutMargins = <span class="literal">NO</span>;</div></pre></td></tr></table></figure>
+<h3 id="tableview自适应高度"><a href="#tableview自适应高度" class="headerlink" title="tableview自适应高度"></a>tableview自适应高度</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-(<span class="built_in">CGFloat</span>)tableView:(<span class="built_in">UITableView</span> *)tableView estimatedHeightForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath&#123;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="built_in">UITableViewAutomaticDimension</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="tableView-编辑操作"><a href="#tableView-编辑操作" class="headerlink" title="tableView 编辑操作"></a>tableView 编辑操作</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//编辑的状态</span></div><div class="line">-(<span class="built_in">UITableViewCellEditingStyle</span>)tableView:(<span class="built_in">UITableView</span> *)tableView editingStyleForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">UITableViewCellEditingStyleDelete</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//左滑时的题目</span></div><div class="line">-(<span class="built_in">NSString</span> *)tableView:(<span class="built_in">UITableView</span> *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">@"删除此诗"</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//编辑状态下的操作</span></div><div class="line">-(<span class="keyword">void</span>)tableView:(<span class="built_in">UITableView</span> *)tableView commitEditingStyle:(<span class="built_in">UITableViewCellEditingStyle</span>)editingStyle forRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPathP&#123;</div><div class="line">    <span class="keyword">if</span> (editingStyle == <span class="built_in">UITableViewCellEditingStyleDelete</span>) &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;目录&quot;&gt;&lt;a href=&quot;#目录&quot; class=&quot;headerlink&quot; title=&quot;目录&quot;&gt;&lt;/a&gt;目录&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;注册重用法&lt;/li&gt;
+&lt;li&gt;tableview自适应高度&lt;/li&gt;
+&lt;li&gt;tableview撤销高亮&lt;/li&gt;
+&lt;li&gt;参数的传递&lt;ol&gt;
+&lt;li&gt;纯代码（didselectRow）&lt;/li&gt;
+&lt;li&gt;storyBoard方式（prepareForSegue）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;tableViewCell、collectionViewCell重用注册法&quot;&gt;&lt;a href=&quot;#tableViewCell、collectionViewCell重用注册法&quot; class=&quot;headerlink&quot; title=&quot;tableViewCell、collectionViewCell重用注册法&quot;&gt;&lt;/a&gt;tableViewCell、collectionViewCell重用注册法&lt;/h3&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;纯代码&lt;/strong&gt;注册时用&lt;strong&gt;registerClass&lt;/strong&gt;如下图示例&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;xib界面&lt;/strong&gt;注册时用&lt;strong&gt;registerNib&lt;/strong&gt;作(tableView或collectionView)的cell  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;storyboard&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;h4 id=&quot;注册方法&quot;&gt;&lt;a href=&quot;#注册方法&quot; class=&quot;headerlink&quot; title=&quot;注册方法&quot;&gt;&lt;/a&gt;注册方法&lt;/h4&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;[&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.myCollectionView registerClass:[MycollectionViewCell &lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt;]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;         forCellWithReuseIdentifier:&lt;span class=&quot;string&quot;&gt;@&quot;cell&quot;&lt;/span&gt;];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;[&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.myCollectionView registerNib:[&lt;span class=&quot;built_in&quot;&gt;UINib&lt;/span&gt; nibWithNibName:&lt;span class=&quot;string&quot;&gt;@&quot;mycollectionCell&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;                            bundle:&lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;         forCellWithReuseIdentifier:cellIndentify];&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="http://sjc2wbq.github.io/categories/iOS/"/>
+    
+    
+      <category term="tableView" scheme="http://sjc2wbq.github.io/tags/tableView/"/>
+    
+  </entry>
+  
+  <entry>
     <title>file system</title>
     <link href="http://sjc2wbq.github.io/2016/02/14/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/"/>
     <id>http://sjc2wbq.github.io/2016/02/14/文件系统/</id>
@@ -865,77 +935,6 @@ if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobil
     
     
       <category term="file system" scheme="http://sjc2wbq.github.io/tags/file-system/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>tableViewCell、collectionViewCell </title>
-    <link href="http://sjc2wbq.github.io/2016/02/14/Tableview/"/>
-    <id>http://sjc2wbq.github.io/2016/02/14/Tableview/</id>
-    <published>2016-02-14T01:35:22.000Z</published>
-    <updated>2016-05-20T04:02:51.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
-<li>注册重用法</li>
-<li>tableview自适应高度</li>
-<li>tableview撤销高亮</li>
-<li>参数的传递<ol>
-<li>纯代码（didselectRow）</li>
-<li>storyBoard方式（prepareForSegue）</li>
-</ol>
-</li>
-</ul>
-<h3 id="tableViewCell、collectionViewCell重用注册法"><a href="#tableViewCell、collectionViewCell重用注册法" class="headerlink" title="tableViewCell、collectionViewCell重用注册法"></a>tableViewCell、collectionViewCell重用注册法</h3><blockquote>
-<ol>
-<li><strong>纯代码</strong>注册时用<strong>registerClass</strong>如下图示例</li>
-<li><strong>xib界面</strong>注册时用<strong>registerNib</strong>作(tableView或collectionView)的cell  </li>
-<li><strong>storyboard</strong></li>
-</ol>
-</blockquote>
-<ul>
-<li><h4 id="注册方法"><a href="#注册方法" class="headerlink" title="注册方法"></a>注册方法</h4></li>
-</ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[<span class="keyword">self</span>.myCollectionView registerClass:[MycollectionViewCell <span class="keyword">class</span>]</div><div class="line">         forCellWithReuseIdentifier:<span class="string">@"cell"</span>];</div><div class="line"></div><div class="line">[<span class="keyword">self</span>.myCollectionView registerNib:[<span class="built_in">UINib</span> nibWithNibName:<span class="string">@"mycollectionCell"</span></div><div class="line">                            bundle:<span class="literal">nil</span>]</div><div class="line">         forCellWithReuseIdentifier:cellIndentify];</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<ul>
-<li><h4 id="重用方法"><a href="#重用方法" class="headerlink" title="重用方法"></a>重用方法</h4></li>
-</ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MycollectionViewCell *cell;</div><div class="line">cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIndentify</div><div class="line">                                                  forIndexPath:indexPath];</div></pre></td></tr></table></figure>
-<h3 id="让tableViewCell横线没有空隙"><a href="#让tableViewCell横线没有空隙" class="headerlink" title="让tableViewCell横线没有空隙"></a>让tableViewCell横线没有空隙</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cell.separatorInset = <span class="built_in">UIEdgeInsetsZero</span>;</div><div class="line">cell.layoutMargins = <span class="built_in">UIEdgeInsetsZero</span>;</div><div class="line">cell.preservesSuperviewLayoutMargins = <span class="literal">NO</span>;</div></pre></td></tr></table></figure>
-<h3 id="tableview自适应高度"><a href="#tableview自适应高度" class="headerlink" title="tableview自适应高度"></a>tableview自适应高度</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-(<span class="built_in">CGFloat</span>)tableView:(<span class="built_in">UITableView</span> *)tableView estimatedHeightForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath&#123;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="built_in">UITableViewAutomaticDimension</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="tableView-编辑操作"><a href="#tableView-编辑操作" class="headerlink" title="tableView 编辑操作"></a>tableView 编辑操作</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//编辑的状态</span></div><div class="line">-(<span class="built_in">UITableViewCellEditingStyle</span>)tableView:(<span class="built_in">UITableView</span> *)tableView editingStyleForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">UITableViewCellEditingStyleDelete</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//左滑时的题目</span></div><div class="line">-(<span class="built_in">NSString</span> *)tableView:(<span class="built_in">UITableView</span> *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">@"删除此诗"</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//编辑状态下的操作</span></div><div class="line">-(<span class="keyword">void</span>)tableView:(<span class="built_in">UITableView</span> *)tableView commitEditingStyle:(<span class="built_in">UITableViewCellEditingStyle</span>)editingStyle forRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPathP&#123;</div><div class="line">    <span class="keyword">if</span> (editingStyle == <span class="built_in">UITableViewCellEditingStyleDelete</span>) &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;目录&quot;&gt;&lt;a href=&quot;#目录&quot; class=&quot;headerlink&quot; title=&quot;目录&quot;&gt;&lt;/a&gt;目录&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;注册重用法&lt;/li&gt;
-&lt;li&gt;tableview自适应高度&lt;/li&gt;
-&lt;li&gt;tableview撤销高亮&lt;/li&gt;
-&lt;li&gt;参数的传递&lt;ol&gt;
-&lt;li&gt;纯代码（didselectRow）&lt;/li&gt;
-&lt;li&gt;storyBoard方式（prepareForSegue）&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;tableViewCell、collectionViewCell重用注册法&quot;&gt;&lt;a href=&quot;#tableViewCell、collectionViewCell重用注册法&quot; class=&quot;headerlink&quot; title=&quot;tableViewCell、collectionViewCell重用注册法&quot;&gt;&lt;/a&gt;tableViewCell、collectionViewCell重用注册法&lt;/h3&gt;&lt;blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;纯代码&lt;/strong&gt;注册时用&lt;strong&gt;registerClass&lt;/strong&gt;如下图示例&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;xib界面&lt;/strong&gt;注册时用&lt;strong&gt;registerNib&lt;/strong&gt;作(tableView或collectionView)的cell  &lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;storyboard&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;h4 id=&quot;注册方法&quot;&gt;&lt;a href=&quot;#注册方法&quot; class=&quot;headerlink&quot; title=&quot;注册方法&quot;&gt;&lt;/a&gt;注册方法&lt;/h4&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;[&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.myCollectionView registerClass:[MycollectionViewCell &lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt;]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;         forCellWithReuseIdentifier:&lt;span class=&quot;string&quot;&gt;@&quot;cell&quot;&lt;/span&gt;];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;[&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.myCollectionView registerNib:[&lt;span class=&quot;built_in&quot;&gt;UINib&lt;/span&gt; nibWithNibName:&lt;span class=&quot;string&quot;&gt;@&quot;mycollectionCell&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;                            bundle:&lt;span class=&quot;literal&quot;&gt;nil&lt;/span&gt;]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;         forCellWithReuseIdentifier:cellIndentify];&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="iOS" scheme="http://sjc2wbq.github.io/categories/iOS/"/>
-    
-    
-      <category term="tableView" scheme="http://sjc2wbq.github.io/tags/tableView/"/>
     
   </entry>
   
